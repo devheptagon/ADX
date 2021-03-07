@@ -1,5 +1,4 @@
 temp
-client/api/node_modules
-client/app/node_modules
-client/data
-client/api/public/uploads
+data
+client/node_modules
+server/public/uploads
