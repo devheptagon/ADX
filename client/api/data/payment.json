@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "serviceName": "Stripe",
+    "processType": "Received",
+    "amount": "20",
+    "payer": {
+      "type": "Customer",
+      "id": 100000
+    },
+    "status": "Success",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  },
+  {
+    "id": 2,
+    "serviceName": "Stripe",
+    "processType": "Received",
+    "amount": "3",
+    "payer": {
+      "type": "Broker",
+      "id": 10000
+    },
+    "status": "Success",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  }
+]

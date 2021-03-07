@@ -1,0 +1,26 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+.info{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.header{
+  display: flex;
+  flex: 1;
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.description{
+  display: flex;
+  flex: 3;
+  color: royalblue;
+}

@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.colSearchResults{
+  margin-left: -1rem;
+}
+
+.h1, .p{
+  margin: 1rem;
+}
+
+.card{
+  margin: 1rem !important;
+}
+
+.card h5{
+  margin-bottom: 0 !important;
+}
+
+.breadcrumb{
+  margin: 1rem;
+  background-color: white !important;
+}

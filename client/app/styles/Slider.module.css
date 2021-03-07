@@ -1,0 +1,54 @@
+.m0p0{
+  margin: 0;
+  padding: 0;
+}
+
+.relative{
+  position: relative;
+}
+
+.slide{
+  min-height: 600px;
+  
+  width: 100%;
+}
+
+.overlay{
+  min-height: 320px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 8rem 4rem;
+  padding: 3rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,1);
+}
+
+.overlay h1{
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.forminputs {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.forminput{
+  display: flex;
+  flex: 1;
+  margin: 1rem;
+}
+
+.formbutton{
+  display: flex;
+  margin: 1rem;
+}

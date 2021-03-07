@@ -1,0 +1,1088 @@
+[{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cef9"
+  },
+  "advertID": 100000000,
+  "title": "Best Position on the Seafront all Rooms with Outstanding Views",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 750000,
+  "askingPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 29000,
+  "annualTurnover": 30000,
+  "location": {
+    "postcode": "DT3",
+    "city": "Weymouth",
+    "county": "Dorset",
+    "region": "South West"
+  },
+  "locationAccommodation": true,
+  "sectors": "Bar",
+  "moreTags": [
+    "Established Business",
+    "Close to Local Amenities",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale",
+    "With Car Park",
+    "Home Based",
+    "Accounts Available"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "231051-01-large.jpg",
+      "medium": "231051-01-medium.jpg",
+      "small": "231051-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>8 Letting Bedrooms ( all with own facilities)<br>All Letting Bedrooms have Harbour or Sea Views<br>2 Bedroom Owners Accommodation with Harbourside Garden/Car Parking<br>No Booking Agents Required - Higher profits!<br>Top Ten on TripAdvisor<br>The Guest House is in the best position in Weymouth as all rooms have views of either the sea or the harbour and is close to the Town Centre and Pavilion Theatre. The property is Grade II listed and all rooms are either en suite or have a designated shower room.<br>Our clients have carried out considerable improvements including a new boiler and the property has a very modern fire alarm system including a beacon system for the deaf; The property benefits from partial gas fired central heating which is currently laid to the Lower Ground, Ground and First Floors with independent electric heaters to rooms on the second and third floors making for efficiencies in the winter months.<br>A well established bed and breakfast business which has been in the present hands for many years and is now available due to ill health. Our clients, a husband and wife team purchased the business through Lawrence Wright and in recent years poor health has had an effect on the turnover and the agents have inspected accounts for the past five years which has seen turnover move from around £60,000 in 2015 to £48,000 in the most recent complete year but quality has not been compromised and the business remains in the <u>top ten on TripAdvisor with 100% rating the business Excellent or Very Good.</u></p><p>All business is attracted to the guest house <u>without the use of any booking agencies </u>with much repeat trade and excellent recommendations therefore profits are higher than average for this turnover. Of course, the employment of say Booking.com would boost turnover towards the vat threshold of £85,000 p.a.<br><br>Tenure: The property is held under the terms of a 60 year full repairing and insuring lease which commenced in September 2007 at a current rent of £14,500 p.a. which is fixed until the next rent review in September 2022</p><p>EPC: Not Applicable - Grade II Listed<br><br>Price: £320,000.<br><br>Call: Lawrence Wright, Sole Selling Agent on 01747 228941</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236579",
+  "agentUser": "Mr. Delgado",
+  "updatedTime": {
+    "$date": "2020-11-09T15:53:03.418Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-22T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cefa"
+  },
+  "advertID": 100000001,
+  "title": "Sweaty Mama Mitcham and Norbury Territory for Sale",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 740000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 28000,
+  "annualTurnover": 29000,
+  "location": {
+    "postcode": "SW1",
+    "city": "Wetminster",
+    "county": "London",
+    "region": "London"
+  },
+  "locationAccommodation": true,
+  "sectors": "Bar",
+  "moreTags": [
+    "Home Based",
+    "Currently Closed",
+    "Small Business"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "250999-01-large.jpg",
+      "medium": "250999-01-medium.jpg",
+      "small": "250999-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>WE ARE LOOKING FOR A NEW FRANCHISEE!</p><p>Sweaty Mama Mitcham and Norbury have an opportunity for a new franchisee.</p><p>The Mitcham and Norbury territory is for sale.</p><p>So, are you a mum debating whether to go back to work following maternity leave? Or perhaps want a job that fits around the kiddies or even takes them along with you? Well, Sweaty Mama could offer you the perfect work-life balance to suit your lifestyle. Pick your own hours of work to suit your family - with no need for childcare!</p><p>With ongoing support from our experienced HQ team, you will have all the tools and training you need to take over and continue to grow and develop this great opportunity. Sweaty Mama gives you a full training program in both running your business and operating classes, as well as ongoing training and marketing support.</p><p>There is a HUGE scope to build upon this successful business!</p><p>&nbsp;</p><p>There is also the option to use government funding to buy too.</p><p>&nbsp;</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-23T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-23T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cefb"
+  },
+  "advertID": 100000002,
+  "title": "FREEHOLD Convenience Shop for sale, includes 4 bed accommodation, retail takings 16k plus per week",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 730000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 27000,
+  "annualTurnover": 28000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Hotel",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268617-01-large.jpg",
+      "medium": "268617-01-medium.jpg",
+      "small": "268617-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-24T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-24T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cefc"
+  },
+  "advertID": 100000003,
+  "title": "GOLDEN OPPORTUNITY! GLORIOUS ROSS ON WYE SOUTH HEREFORDSHIRE.",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 720000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 26000,
+  "annualTurnover": 27000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Cafe",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "254102-01-large.jpg",
+      "medium": "254102-01-medium.jpg",
+      "small": "254102-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-25T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-25T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cefd"
+  },
+  "advertID": 100000004,
+  "title": "Off Licence in a prime location Warwick lease for sale",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 700000000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 25000,
+  "annualTurnover": 26000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Restaurant",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268441-01-large.jpg",
+      "medium": "268441-01-medium.jpg",
+      "small": "268441-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-26T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-26T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cefe"
+  },
+  "advertID": 100000005,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 690000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 24000,
+  "annualTurnover": 25000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Restaurant",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-27T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-27T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870ceff"
+  },
+  "advertID": 100000006,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 680000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 23000,
+  "annualTurnover": 24000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Restaurant",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-28T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-28T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf00"
+  },
+  "advertID": 100000007,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 670000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 22000,
+  "annualTurnover": 23000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Restaurant",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-29T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-29T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf01"
+  },
+  "advertID": 100000008,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Leasehold",
+  "freeHoldPrice": null,
+  "leaseHoldPrice": 660000,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 21000,
+  "annualTurnover": 22000,
+  "location": {
+    "postcode": "WS11",
+    "city": "London",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Hotel",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-07-30T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-07-30T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf02"
+  },
+  "advertID": 100000009,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 19000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 20000,
+  "annualTurnover": 21000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Hotel",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-10T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-10T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf03"
+  },
+  "advertID": 100000010,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 18000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 19000,
+  "annualTurnover": 20000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Bar",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-11T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-11T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf04"
+  },
+  "advertID": 100000011,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 17000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 18000,
+  "annualTurnover": 19000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Hotel",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-12T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-12T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf05"
+  },
+  "advertID": 100000012,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 16000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 17000,
+  "annualTurnover": 18000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Hotel",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-13T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-13T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf06"
+  },
+  "advertID": 100000013,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 15000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 16000,
+  "annualTurnover": 17000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Cafe",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-14T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-14T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf07"
+  },
+  "advertID": 100000014,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 14000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 15000,
+  "annualTurnover": 16000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Cafe",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-15T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-15T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf08"
+  },
+  "advertID": 100000015,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 13000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 14000,
+  "annualTurnover": 15000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Cafe",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-16T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-16T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf09"
+  },
+  "advertID": 100000016,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 12000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 13000,
+  "annualTurnover": 14000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "Staffordshire",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Pub",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-17T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-17T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf0a"
+  },
+  "advertID": 100000017,
+  "title": "VIRTUAL FREEHOLD BARBERS INVESTMENT PROPERTY",
+  "tenure": "Freehold",
+  "freeHoldPrice": 11000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 12000,
+  "annualTurnover": 13000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Pub",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-18T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-18T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa66e79b38608710870cf0b"
+  },
+  "advertID": 100000018,
+  "title": "Thriving turnkey business in a stunning state of the art complex with other restaurants",
+  "tenure": "Freehold",
+  "freeHoldPrice": 10000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 11000,
+  "annualTurnover": 12000,
+  "location": {
+    "postcode": "WS11",
+    "city": "Cannock",
+    "county": "London",
+    "region": "West Midlands"
+  },
+  "locationAccommodation": true,
+  "sectors": "Pub",
+  "moreTags": [
+    "Unique Business",
+    "Established Business",
+    "Accounts Available",
+    "Fully Fitted",
+    "Prime Location",
+    "Attractive Business",
+    "Retirement Sale"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "268048-01-large.jpg",
+      "medium": "268048-01-medium.jpg",
+      "small": "268048-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>We are very excited to present this excellent opportunity to purchase the Freehold of a very busy convenience shop. It is a very established and situated in a prime residential location within the Cannock area. Do not miss out on this great opportunity!</p><p>The shop is located in a prime residential location with no local competition.&nbsp;</p><p>We have been informed by the vendor the retail takings are £16,000 plus per week average.&nbsp;<br>Freehold Price £655,000</p><p>Description and Trade:<br>This busy Convenience Store and offers for sale Beers, Wines and Spirits, Newspapers &amp; Magazines and Sundry Lines.&nbsp;<br>The shop also has an ATM machine which is self-filled, generates £250 to £300 per month commission.&nbsp;</p><p>Premises:<br>The Shop is a double fronted shop with electric doors. It has CCTV, a suspended ceiling and tiled floor and is well fitted for the trade. Includes rear stock room leading to loading/unloading access, an office and W.C. Also has a locked parking area to the back of the shop for 2 cars.&nbsp;<br>Accommodation:<br>There is a 4-bed living accommodation upstairs, this consists of 4 double bedrooms. living room, kitchen and bathroom.&nbsp;<br>The property can achieve an annual rental income of £11,000 approximately.&nbsp;</p><p>Comments:<br>This a retirement sale of a very attractive business in a prime residential area with a consistent trading history of 100 years plus.&nbsp;</p><p>Our Client Informs Us That:<br>Takings and Profitability:<br>The Business is taking, on average, £16,000 per week average.<br>Lottery and Newspapers are not included in the counter sales. Lottery sales average between £400 and £500 per week and Newspaper sales are £300 per week. This is in addition to the £16,000 weekly sales.<br>Please note the business does not have pay point and pay zone, therefore they can be added to increase weekly takings.&nbsp;</p><p>Trading Hours:<br>8.00am – 8.00pm Monday to Saturday.<br>9.00am – 7.00pm Sunday.</p><p>Staff:<br>The Business is family run with 2 PT staff members.&nbsp;</p><p>Tenure:<br>This is a Freehold business with £0.00 Business rates</p><p>Price:<br>£655,000 plus stock at valuation (or near offer) for the Freehold, Business, Fixtures and Fittings.</p><p>Please note, as this is a confidential sale, the true location of this shop has not been disclosed. Please contact us should you wish to know the exact store location.&nbsp;</p><p>Viewing is highly recommended, strictly via agent only.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236552",
+  "agentUser": "Mr. Arel",
+  "updatedTime": {
+    "$date": "2020-08-19T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-08-19T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fa85bbc9e41434fc4df6b21"
+  },
+  "advertID": 100000019,
+  "title": "Agricultural Farm Milling Complex Bakery And Pellet Factory For Sale",
+  "tenure": "Freehold",
+  "freeHoldPrice": 9000000,
+  "leaseHoldPrice": null,
+  "priceGuide": "Price is Negotiable",
+  "annualNetProfit": 10000,
+  "annualTurnover": 11000,
+  "location": {
+    "postcode": "S36",
+    "city": "Hunshelf",
+    "county": "London",
+    "region": "Nort West"
+  },
+  "locationAccommodation": true,
+  "sectors": "Bar",
+  "moreTags": [
+    "Town Centre location",
+    "Prime Location"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "247729-01-large.jpg",
+      "medium": "247729-01-medium.jpg",
+      "small": "247729-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>This well established business has been owned by our clients since August 2017 and is only for sale today due our clients’ other business commitments. The business achieves its current level of turnover, whilst offering further potential for an enthusiastic owner operator to increase the takings, by way of, for example, introducing seven day trading. This business&nbsp;has already gained an excellent reputation within the area, achieving a 4.5 star rating on TripAdvisor.co.uk from over 170 reviews.</p><ul><li>Taking £5,000 - £6,000 per week</li><li>Rent £327 per week</li><li>Much sought after location</li><li>On busy main road within popular village centre</li><li>Seating for approx 39 plus al fresco seating for approx 6</li><li>Surrounded by independent bars, restaurants, cafes, pubs and other businesses</li><li>Middle of parade</li><li>40% wet sales</li><li>Within highly popular area with students &amp; young professionals</li><li>Scope to introduce breakfast/lunches</li><li>Close to offices, Metro Link stop &amp; large affluent residential area</li><li>High levels of passing trade</li><li>Hours of Opening 5:00pm – 11:00pm Wednesday to Sunday</li><li>10 year lease from July 2017</li></ul><p>The premises provide al fresco seating area for approximately 10 with retractable canopy, seating area for approximately 40, ‘L’ shaped bar, ladies &amp; gents WC facilities, kitchen providing washing up area, 6 burner oven, preparation area, cold storage &amp; exit to yard. Cellar accessed from seating area used for storage.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236578",
+  "agentUser": "Mr. Alex",
+  "updatedTime": {
+    "$date": "2020-11-10T07:15:00Z"
+  },
+  "createdTime": {
+    "$date": "2020-11-08T07:15:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fb2aa945a1af50232ad87fe"
+  },
+  "advertID": 100000029,
+  "title": "Agricultural Farm Milling Complex Bakery And Pellet Factory For Sale",
+  "slug": "agricultural-farm-milling-complex-bakery-and-pellet-factory-for-sale-100000029",
+  "tenure": "Freehold",
+  "freeHoldPrice": "10,000,000",
+  "leaseHoldPrice": null,
+  "askingPrice": null,
+  "priceGuide": null,
+  "annualNetProfit": "2,000,000",
+  "annualTurnover": "4,000,000",
+  "location": {
+    "postcode": "S36",
+    "city": "Hunshelf",
+    "county": "London",
+    "region": "Nort West"
+  },
+  "locationAccommodation": true,
+  "sectors": "Bar",
+  "moreTags": [
+    "Town Centre location",
+    "Prime Location"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "247729-01-large.jpg",
+      "medium": "247729-01-medium.jpg",
+      "small": "247729-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>This well established business has been owned by our clients since August 2017 and is only for sale today due our clients’ other business commitments. The business achieves its current level of turnover, whilst offering further potential for an enthusiastic owner operator to increase the takings, by way of, for example, introducing seven day trading. This business&nbsp;has already gained an excellent reputation within the area, achieving a 4.5 star rating on TripAdvisor.co.uk from over 170 reviews.</p><ul><li>Taking £5,000 - £6,000 per week</li><li>Rent £327 per week</li><li>Much sought after location</li><li>On busy main road within popular village centre</li><li>Seating for approx 39 plus al fresco seating for approx 6</li><li>Surrounded by independent bars, restaurants, cafes, pubs and other businesses</li><li>Middle of parade</li><li>40% wet sales</li><li>Within highly popular area with students &amp; young professionals</li><li>Scope to introduce breakfast/lunches</li><li>Close to offices, Metro Link stop &amp; large affluent residential area</li><li>High levels of passing trade</li><li>Hours of Opening 5:00pm – 11:00pm Wednesday to Sunday</li><li>10 year lease from July 2017</li></ul><p>The premises provide al fresco seating area for approximately 10 with retractable canopy, seating area for approximately 40, ‘L’ shaped bar, ladies &amp; gents WC facilities, kitchen providing washing up area, 6 burner oven, preparation area, cold storage &amp; exit to yard. Cellar accessed from seating area used for storage.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236578",
+  "agentUser": "Mr. Alex",
+  "updatedTime": {
+    "$date": "2020-11-16T16:36:36Z"
+  },
+  "createdTime": {
+    "$date": "2020-11-16T16:36:36Z"
+  }
+},{
+  "_id": {
+    "$oid": "5fb2ab34c0cf780243cad3b2"
+  },
+  "advertID": 100000030,
+  "title": "Agricultural Farm Milling Complex Bakery And Pellet Factory For Sale",
+  "slug": "agricultural-farm-milling-complex-bakery-and-pellet-factory-for-sale-100000030",
+  "tenure": "Freehold",
+  "freeHoldPrice": "10,000,000",
+  "leaseHoldPrice": null,
+  "askingPrice": null,
+  "priceGuide": null,
+  "annualNetProfit": "2,000,000",
+  "annualTurnover": "4,000,000",
+  "location": {
+    "postcode": "S36",
+    "city": "Hunshelf",
+    "county": "London",
+    "region": "Nort West"
+  },
+  "locationAccommodation": true,
+  "sectors": "Bar",
+  "moreTags": [
+    "Town Centre location",
+    "Prime Location"
+  ],
+  "website": null,
+  "socialMedia": null,
+  "reviews": null,
+  "comRegNo": null,
+  "media": [
+    {
+      "large": "247729-01-large.jpg",
+      "medium": "247729-01-medium.jpg",
+      "small": "247729-01-small.jpg"
+    }
+  ],
+  "description": "<div itemprop='description' style='line-height: 23px'><div class='table-responsive'><p>This well established business has been owned by our clients since August 2017 and is only for sale today due our clients’ other business commitments. The business achieves its current level of turnover, whilst offering further potential for an enthusiastic owner operator to increase the takings, by way of, for example, introducing seven day trading. This business&nbsp;has already gained an excellent reputation within the area, achieving a 4.5 star rating on TripAdvisor.co.uk from over 170 reviews.</p><ul><li>Taking £5,000 - £6,000 per week</li><li>Rent £327 per week</li><li>Much sought after location</li><li>On busy main road within popular village centre</li><li>Seating for approx 39 plus al fresco seating for approx 6</li><li>Surrounded by independent bars, restaurants, cafes, pubs and other businesses</li><li>Middle of parade</li><li>40% wet sales</li><li>Within highly popular area with students &amp; young professionals</li><li>Scope to introduce breakfast/lunches</li><li>Close to offices, Metro Link stop &amp; large affluent residential area</li><li>High levels of passing trade</li><li>Hours of Opening 5:00pm – 11:00pm Wednesday to Sunday</li><li>10 year lease from July 2017</li></ul><p>The premises provide al fresco seating area for approximately 10 with retractable canopy, seating area for approximately 40, ‘L’ shaped bar, ladies &amp; gents WC facilities, kitchen providing washing up area, 6 burner oven, preparation area, cold storage &amp; exit to yard. Cellar accessed from seating area used for storage.</p></div></div>",
+  "advertStatus": "For Sale",
+  "agentID": "236578",
+  "agentUser": "Mr. Alex",
+  "updatedTime": {
+    "$date": "2020-11-16T16:39:16Z"
+  },
+  "createdTime": {
+    "$date": "2020-11-16T16:39:16Z"
+  }
+}]

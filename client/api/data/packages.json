@@ -1,0 +1,22 @@
+[
+  {
+    "id": 10,
+    "name": "Premium Buyer",
+    "lifeTime": "180",
+    "type": "Buyer",
+    "price": "49",
+    "sellPrice": "45",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  },
+  {
+    "id": 11,
+    "name": "Broker",
+    "lifeTime": "30",
+    "type": "Broker",
+    "price": "5",
+    "sellPrice": "3",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "userID": 10000,
+    "firstName": "Ahmet",
+    "lastName": "Koyun",
+    "userName": "hmtkyn",
+    "password": "pass",
+    "email": "ahmetkoyun90@gmail.com",
+    "phone": "5079410781",
+    "role": "Admin",
+    "isOnline": false,
+    "lastLoginTime": "2020-11-30T15:02:41.000+00:00",
+    "lastLogoutTime": "2020-11-30T15:02:41.000+00:00",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  },
+  {
+    "userID": 10001,
+    "firstName": "Ömer",
+    "lastName": "Bilgin",
+    "userName": "mrblgn",
+    "password": "pass",
+    "email": "omerbilgin@gmail.com",
+    "phone": "5079876500",
+    "role": "Admin",
+    "isOnline": false,
+    "lastLoginTime": "2020-11-30T15:02:41.000+00:00",
+    "lastLogoutTime": "2020-11-30T15:02:41.000+00:00",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  },
+  {
+    "userID": 10002,
+    "firstName": "Mark",
+    "lastName": "Zuckerberg",
+    "userName": "markz",
+    "password": "pass",
+    "email": "markzuck@gmail.com",
+    "phone": "5079876599",
+    "role": "Editor",
+    "isOnline": false,
+    "lastLoginTime": "2020-11-30T15:02:41.000+00:00",
+    "lastLogoutTime": "2020-11-30T15:02:41.000+00:00",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  }
+]

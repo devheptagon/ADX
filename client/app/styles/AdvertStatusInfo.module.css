@@ -1,0 +1,22 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.header{
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.description{
+  color: royalblue;
+}

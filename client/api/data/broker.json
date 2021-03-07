@@ -1,0 +1,140 @@
+[
+  {
+    "brokerID": 10000,
+    "email": "erwood@rosamond.me",
+    "password": "pass",
+    "fullName": "Patricia Lebsack",
+    "phone": "5778907688",
+    "company": {
+      "name": "Buyerbiz",
+      "webSite": "buyerbiz.com",
+      "phone": "4567893456",
+      "email": "info@buyerbiz.com",
+      "social": {
+        "facebook": "facebook",
+        "linkedIn": "linkedin",
+        "twitter": "twitter"
+      },
+      "address": {
+        "line01": "adress line 1",
+        "line02": "adress line 2",
+        "city": "City",
+        "county": "County",
+        "regionName": "Region",
+        "postCode": "s36"
+      }
+    },
+    "agents": [
+      {
+        "firstName": "Glenna",
+        "lastName": "Reichert",
+        "email": "glenna@buyerbiz.com",
+        "phone": "5670984355",
+        "adverts": [
+          100000004,
+          100000007
+        ]
+      },
+      {
+        "firstName": "Kurtis",
+        "lastName": "Weissnat",
+        "email": "kurtis@buyerbiz.com",
+        "phone": "6670984545",
+        "adverts": [
+          100000002,
+          100000005
+        ]
+      }
+    ],
+    "adverts": [
+      100000002,
+      100000005,
+      100000004,
+      100000007
+    ],
+    "role": "Basic",
+    "package": {
+      "id": null,
+      "lifeTime": null,
+      "buyDate": null,
+      "endDate": null,
+      "price": null,
+      "sellPrice": null,
+      "receivedPrice": null
+    },
+    "isOnline": false,
+    "lastLoginTime": "2020-11-30T15:02:41.000+00:00",
+    "lastLogoutTime": "2020-11-30T15:02:41.000+00:00",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  },
+  {
+    "brokerID": 10001,
+    "email": "ervin@rosamond.me",
+    "password": "pass",
+    "fullName": "Ervin Howell",
+    "phone": "9778907688",
+    "company": {
+      "name": "Intelligent Business Partners",
+      "webSite": "intelligent.com",
+      "phone": "9967893456",
+      "email": "info@intelligent.com",
+      "social": {
+        "facebook": "facebook",
+        "linkedIn": "linkedin",
+        "twitter": "twitter"
+      },
+      "address": {
+        "line01": "adress line 1",
+        "line02": "adress line 2",
+        "city": "City",
+        "county": "County",
+        "regionName": "Region",
+        "postCode": "s36"
+      }
+    },
+    "agents": [
+      {
+        "firstName": "Glenna",
+        "lastName": "Reichert",
+        "email": "glenna@buyerbiz.com",
+        "phone": "5670984355",
+        "adverts": [
+          100000004,
+          100000007
+        ]
+      },
+      {
+        "firstName": "Kurtis",
+        "lastName": "Weissnat",
+        "email": "kurtis@buyerbiz.com",
+        "phone": "6670984545",
+        "adverts": [
+          100000002,
+          100000005
+        ]
+      }
+    ],
+    "adverts": [
+      100000002,
+      100000005,
+      100000004,
+      100000007
+    ],
+    "role": "Premium",
+    "package": {
+      "id": 10,
+      "lifeTime": "90",
+      "buyDate": "2020-11-30T15:02:41.000+00:00",
+      "endDate": "2020-11-30T15:02:41.000+00:00",
+      "price": "49",
+      "sellPrice": "39",
+      "receivedPrice": "35"
+    },
+    "isOnline": false,
+    "lastLoginTime": "2020-11-30T15:02:41.000+00:00",
+    "lastLogoutTime": "2020-11-30T15:02:41.000+00:00",
+    "updatedTime": "2020-11-30T15:02:41.000+00:00",
+    "createdTime": "2020-11-30T15:02:41.000+00:00"
+  }
+]
