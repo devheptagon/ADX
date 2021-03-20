@@ -1,0 +1,47 @@
+.app {
+  nav {
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      li {
+        padding: 0;
+        list-style-type: none;
+        display: inline;
+      }
+    }
+    &:first-child {
+      padding: 20px 0;
+      ul {
+        color: #096dba;
+        li {
+          margin: 0 10px 0 0;
+          font-size: 1.2em;
+          &:first-child {
+            font-size: 2.5em;
+          }
+          &:nth-child(2) {
+            font-size: 1em;
+            margin: 0 20px;
+          }
+        }
+      }
+    }
+    &:nth-child(2) {
+      background-color: #096dba;
+      ul {
+        color: white;
+        li {
+          font-size: 0.8em;
+          font-weight: bold;
+          padding: 10px 0;
+          width: 100px;
+          text-align: center;
+          border-left: 1px solid rgba(255, 255, 255, 0.5);
+          border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+}
