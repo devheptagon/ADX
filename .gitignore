@@ -1,4 +1,2 @@
 temp
-data
-client/node_modules
-server/public/uploads
+*/**/node_modules
