@@ -4,7 +4,7 @@ import styles from "../styles/home.module.scss";
 export default function Home() {
   return (
     <div className={styles.app}>
-      <nav className="navbar navbar-light bg-light" aria-label="social media">
+      <nav className="navbar navbar-light" aria-label="social media">
         <div className="container">
           <a className="navbar-brand" href="#">
             <img src="./logo.png" alt="logo" />
@@ -47,6 +47,40 @@ export default function Home() {
           </ul>
         </div>
       </nav>
+      <div className="main">
+        <div className={styles.mainbg}>
+          <div className={styles.slogan}>
+            <h1>
+              Your New Business For Sale <br />
+              Marketplace!
+            </h1>
+            <h2>Find the right commercial place with Linxbiz</h2>
+          </div>
+          <div className={styles.searchbox}>
+            <div>
+              <label>LOOKING FOR</label>
+              <br />
+              <input type="text" />
+            </div>
+            <div>
+              <label>LOCATION</label>
+              <br />
+              <input type="text" />
+            </div>
+            <div>
+              <input type="button" title="search" value="search" />
+            </div>
+          </div>
+        </div>
+        <div style={{ backgroundColor: "red" }}>
+          asdf
+          <br />
+          asdf
+        </div>
+      </div>
+      <footer className="container-fluid">
+        <div className="container">footer here</div>
+      </footer>
     </div>
   );
 }
