@@ -6,9 +6,9 @@ import { Carousel } from "react-responsive-carousel";
 export default function Home() {
   return (
     <div className={styles.app}>
-      <nav className="navbar navbar-light" aria-label="social media">
-        <div className="container">
-          <a className="navbar-brand" href="#">
+      <nav className={styles.outer}>
+        <div className={styles.inner}>
+          <a href="#">
             <img src="./logo.png" alt="logo" />
           </a>
           <div className={styles.contact}>
@@ -39,8 +39,8 @@ export default function Home() {
           </div>
         </div>
       </nav>
-      <nav className="container-fluid">
-        <div className="container">
+      <nav className={styles.outer}>
+        <div className={styles.inner}>
           <ul>
             <li>HOME</li>
             <li>BUSINESS</li>
@@ -74,41 +74,43 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="container-fluid">
-          <div className={styles.slide}>
-            <h1>Discover Our Featured Listings </h1>
-            <h2>Our featured suggestions can save you time</h2>
-            <Carousel className={styles.carousel} showArrows={true} swipeable>
-              <div>
-                <img src="./1.jpg" />
-                <p className="legend">
-                  Pizza Restaurant
-                  <br />
-                  £180.000
-                </p>
-              </div>
-              <div>
-                <img src="./2.jpg" />
-                <p className="legend">
-                  Fast food Restaurant
-                  <br />
-                  £120.000
-                </p>
-              </div>
-              <div>
-                <img src="./3.jpg" />
-                <p className="legend">
-                  Pizza Restaurant
-                  <br />
-                  £390.000
-                </p>
-              </div>
-            </Carousel>
+        <div className={styles.outer} id="slide-bg">
+          <div className={styles.inner}>
+            <div className={styles.slide}>
+              <h1>Discover Our Featured Listings </h1>
+              <h2>Our featured suggestions can save you time</h2>
+              <Carousel className={styles.carousel} showArrows={true} swipeable>
+                <div>
+                  <img src="./1.jpg" />
+                  <p className="legend">
+                    Pizza Restaurant
+                    <br />
+                    £180.000
+                  </p>
+                </div>
+                <div>
+                  <img src="./2.jpg" />
+                  <p className="legend">
+                    Fast food Restaurant
+                    <br />
+                    £120.000
+                  </p>
+                </div>
+                <div>
+                  <img src="./3.jpg" />
+                  <p className="legend">
+                    Pizza Restaurant
+                    <br />
+                    £390.000
+                  </p>
+                </div>
+              </Carousel>
+            </div>
           </div>
         </div>
       </div>
-      <footer className="container-fluid">
-        <div className="container">footer here</div>
+      <footer className={styles.outer}>
+        <div className={styles.inner}>footer here</div>
       </footer>
     </div>
   );
