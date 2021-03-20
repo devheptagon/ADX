@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import "../styles/globals.css";
 import "../styles/font-awesome-4.7.0/css/font-awesome.min.css";
 
