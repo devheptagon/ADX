@@ -1,50 +1,11 @@
 @media screen and (min-width: 800px) {
   .app {
-    .outer {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
     .inner {
       width: 60%;
     }
-    img {
-      outline: 0;
-    }
     nav {
-      display: flex;
-      ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-
-        li {
-          padding: 0;
-          list-style-type: none;
-          display: inline;
-          cursor: pointer;
-        }
-      }
       &:first-child {
-        padding: 30px 0;
-        ul {
-          color: #096dba;
-          li {
-            margin: 0 10px 0 0;
-            font-size: 1.2em;
-            &:first-child {
-              font-size: 2.5em;
-              cursor: inherit;
-            }
-            &:nth-child(2) {
-              font-size: 1em;
-              margin: 0 20px;
-            }
-          }
-        }
         .brand {
-          display: flex;
           justify-content: space-between;
           img {
             width: 118px;
@@ -52,69 +13,26 @@
           }
         }
       }
-      &:nth-child(2) {
-        background-color: #096dba;
-        ul {
-          color: white;
-          li {
-            font-size: 0.8em;
-            padding: 20px 0;
-            width: 100px;
-            text-align: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            &:hover {
-              background-color: #3f94d5;
-            }
-          }
-        }
-      }
     }
-
     .mainbg {
       height: 600px;
-      background: linear-gradient(rgba(0, 46, 81, 0.4), rgba(0, 46, 81, 0.9)),
-        url(../public/linxbiz-header-bg.jpg);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       .slogan {
-        font-family: "Roboto", Sans-serif;
-        color: white;
-
         h1 {
           font-size: 42px;
-          font-weight: 200;
         }
         h2 {
           font-size: 20px;
-          font-weight: 300;
         }
       }
       .searchbox {
-        position: absolute;
         bottom: -20px;
-        display: flex;
         align-items: flex-end;
-        background-color: white;
-        border-radius: 4px 4px 4px 4px;
-        box-shadow: 0px 20px 40px 0px rgb(0 0 0 / 10%);
-        text-align: left;
         width: 70%;
         max-width: 1000px;
         padding: 50px;
         div {
           margin-right: 20px;
-          align-items: center;
-          label {
-            font-size: 0.8em;
-            margin-bottom: 5px;
-          }
+
           input {
             width: 100%;
             height: 40px;
@@ -129,35 +47,6 @@
             width: 20%;
           }
         }
-      }
-    }
-
-    #slide-bg {
-      background-color: #f7f8f9;
-    }
-
-    .slide {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 500px;
-
-      padding-top: 70px;
-      h1 {
-        font-size: 25px;
-        font-weight: 300;
-      }
-      h2 {
-        color: #7a7a7a;
-        font-size: 16px;
-        font-weight: 300;
-      }
-      .carousel {
-        max-width: 100%;
-        margin: 40px 0;
-        border: 10px solid white;
-        background-color: white;
       }
     }
   }
