@@ -9,9 +9,7 @@ export default function Home() {
       <nav className={styles.outer}>
         <div className={styles.inner}>
           <div className={styles.brand}>
-            <a href="#">
-              <img src="./logo.png" alt="logo" />
-            </a>
+            <img src="./logo.png" alt="logo" />
             <div className={styles.contact}>
               <ul>
                 <li>
@@ -72,7 +70,7 @@ export default function Home() {
               <input type="text" />
             </div>
             <div>
-              <input type="button" title="search" value="search" />
+              <input type="button" title="SEARCH" value="SEARCH" />
             </div>
           </div>
         </div>
