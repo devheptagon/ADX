@@ -60,5 +60,11 @@
         }
       }
     }
+
+    .testimonials-bg {
+      .people {
+        flex-direction: column;
+      }
+    }
   }
 }

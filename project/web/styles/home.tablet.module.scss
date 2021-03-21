@@ -1,4 +1,4 @@
-@media screen and (min-width: 571px) and (max-width: 799px) {
+@media screen and (min-width: 571px) and (max-width: 1023px) {
   .app {
     .inner {
       width: 80%;
@@ -51,6 +51,12 @@
           padding: 20px;
           width: 50%;
         }
+      }
+    }
+
+    .testimonials-bg {
+      .people {
+        flex-direction: column;
       }
     }
   }
