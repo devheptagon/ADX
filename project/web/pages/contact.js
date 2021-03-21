@@ -1,10 +1,10 @@
 import Layout from "./layout";
-import Home from "pages/home/home";
+import Contact from "pages/contact/contact";
 
 export default function Index() {
   return (
     <Layout>
-      <Home />
+      <Contact />
     </Layout>
   );
 }
