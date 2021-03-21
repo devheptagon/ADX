@@ -4,7 +4,7 @@ import styles from "styles/home.module.scss";
 
 export default function Home() {
   return (
-    <div className={styles.outer} id="slide-bg">
+    <div className={`${styles.outer} ${styles["slide-bg"]}`}>
       <div className={styles.inner}>
         <div className={styles.slide}>
           <h1>Discover Our Featured Listings </h1>

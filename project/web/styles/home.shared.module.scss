@@ -91,7 +91,16 @@
       border-radius: 4px 4px 4px 4px;
       box-shadow: 0px 20px 40px 0px rgb(0 0 0 / 10%);
       text-align: left;
-
+      input {
+        outline: 0;
+        padding: 4px;
+      }
+      input[type="button"] {
+        border: 0;
+        background-color: #00aeff;
+        color: white;
+        cursor: pointer;
+      }
       div {
         align-items: center;
         label {
@@ -102,7 +111,7 @@
     }
   }
 
-  #slide-bg {
+  .slide-bg {
     background-color: #f7f8f9;
   }
 
@@ -189,6 +198,77 @@
         padding: 40px;
         background-color: white;
         margin: 50px 0;
+        .row {
+          display: flex;
+        }
+        fieldset {
+          padding: 0;
+          border: 0;
+          margin-bottom: 20px;
+          width: 100%;
+        }
+        input:not([type="checkbox"]),
+        button,
+        select {
+          outline: 0;
+          width: 100%;
+          border: 2px solid #eee;
+          height: 40px;
+          padding: 4px;
+        }
+        button {
+          border: 0;
+          background-color: #00aeff;
+          color: white;
+          font-size: 1.2em;
+        }
+        h2 {
+          line-height: 1em;
+        }
+        h3 {
+          line-height: 1em;
+          font-weight: 300;
+        }
+        label {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+
+  .testimonials-bg {
+    text-align: center;
+    h1 {
+      font-size: 25px;
+      font-weight: 300;
+      margin-top: 40px;
+    }
+    .people {
+      display: flex;
+      flex-direction: row;
+      div {
+        font-size: 15px;
+        font-weight: 300;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        background-color: #edf9ff;
+        padding: 30px;
+        margin: 10px;
+        text-align: left;
+        span {
+          padding-top: 10px;
+        }
+        .row {
+          display: flex;
+          flex-direction: row;
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            margin-right: 10px;
+          }
+        }
       }
     }
   }

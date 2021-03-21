@@ -15,7 +15,7 @@ export default function QueryForm() {
       >
         <div>
           <fieldset>
-            <label for="form-field-ba6c34c">Business Type</label>
+            <label htmlFor="form-field-ba6c34c">Business Type</label>
             <div>
               <select
                 name="enquiry_type"
@@ -35,7 +35,7 @@ export default function QueryForm() {
           </fieldset>
 
           <fieldset>
-            <label for="form-field-b7fe77d">Information</label>
+            <label htmlFor="form-field-b7fe77d">Information</label>
             <div>
               <select
                 name="user_type"
@@ -84,111 +84,117 @@ export default function QueryForm() {
             />
           </fieldset>
 
-          <fieldset>
-            <label for="form-field-2eaf20d">Location</label>
-            <select
-              name="e_meta[city]"
-              id="form-field-2eaf20d"
-              required="required"
-              title="* Location"
-            >
-              <option value="">Select</option>
-              <option
-                data-ref="birmingham"
-                data-belong="california"
-                value="birmingham"
+          <div className={styles.row}>
+            <fieldset>
+              <label htmlFor="form-field-2eaf20d">Location</label>
+              <select
+                name="e_meta[city]"
+                id="form-field-2eaf20d"
+                required="required"
+                title="* Location"
               >
-                Birmingham
-              </option>
-              <option data-ref="bolsover" data-belong="" value="bolsover">
-                Bolsover
-              </option>
-              <option data-ref="bradford" data-belong="" value="bradford">
-                Bradford
-              </option>
-              <option data-ref="cambridge‎" data-belong="" value="cambridge‎">
-                Cambridge‎
-              </option>
-              <option data-ref="cardiff" data-belong="" value="cardiff">
-                Cardiff
-              </option>
-              <option
-                data-ref="edinburgh"
-                data-belong="california"
-                value="edinburgh"
-              >
-                Edinburgh
-              </option>
-              <option
-                data-ref="glasgow"
-                data-belong="california"
-                value="glasgow"
-              >
-                Glasgow
-              </option>
-              <option
-                data-ref="lambeth"
-                data-belong="greater-london"
-                value="lambeth"
-              >
-                Lambeth
-              </option>
-              <option data-ref="liverpool" data-belong="" value="liverpool">
-                Liverpool
-              </option>
-              <option data-ref="london" data-belong="" value="london">
-                London
-              </option>
-              <option data-ref="manchester" data-belong="" value="manchester">
-                Manchester
-              </option>
-              <option
-                data-ref="newcastle"
-                data-belong="california"
-                value="newcastle"
-              >
-                Newcastle
-              </option>
-              <option data-ref="plymouth" data-belong="" value="plymouth">
-                Plymouth
-              </option>
-              <option data-ref="southampton" data-belong="" value="southampton">
-                Southampton
-              </option>
-              <option
-                data-ref="stratford"
-                data-belong="greater-london"
-                value="stratford"
-              >
-                Stratford
-              </option>
-              <option data-ref="sunderland" data-belong="" value="sunderland">
-                Sunderland
-              </option>
-              <option
-                data-ref="wembley"
-                data-belong="greater-london"
-                value="wembley"
-              >
-                Wembley
-              </option>
-            </select>
-          </fieldset>
+                <option value="">Select</option>
+                <option
+                  data-ref="birmingham"
+                  data-belong="california"
+                  value="birmingham"
+                >
+                  Birmingham
+                </option>
+                <option data-ref="bolsover" data-belong="" value="bolsover">
+                  Bolsover
+                </option>
+                <option data-ref="bradford" data-belong="" value="bradford">
+                  Bradford
+                </option>
+                <option data-ref="cambridge‎" data-belong="" value="cambridge‎">
+                  Cambridge‎
+                </option>
+                <option data-ref="cardiff" data-belong="" value="cardiff">
+                  Cardiff
+                </option>
+                <option
+                  data-ref="edinburgh"
+                  data-belong="california"
+                  value="edinburgh"
+                >
+                  Edinburgh
+                </option>
+                <option
+                  data-ref="glasgow"
+                  data-belong="california"
+                  value="glasgow"
+                >
+                  Glasgow
+                </option>
+                <option
+                  data-ref="lambeth"
+                  data-belong="greater-london"
+                  value="lambeth"
+                >
+                  Lambeth
+                </option>
+                <option data-ref="liverpool" data-belong="" value="liverpool">
+                  Liverpool
+                </option>
+                <option data-ref="london" data-belong="" value="london">
+                  London
+                </option>
+                <option data-ref="manchester" data-belong="" value="manchester">
+                  Manchester
+                </option>
+                <option
+                  data-ref="newcastle"
+                  data-belong="california"
+                  value="newcastle"
+                >
+                  Newcastle
+                </option>
+                <option data-ref="plymouth" data-belong="" value="plymouth">
+                  Plymouth
+                </option>
+                <option
+                  data-ref="southampton"
+                  data-belong=""
+                  value="southampton"
+                >
+                  Southampton
+                </option>
+                <option
+                  data-ref="stratford"
+                  data-belong="greater-london"
+                  value="stratford"
+                >
+                  Stratford
+                </option>
+                <option data-ref="sunderland" data-belong="" value="sunderland">
+                  Sunderland
+                </option>
+                <option
+                  data-ref="wembley"
+                  data-belong="greater-london"
+                  value="wembley"
+                >
+                  Wembley
+                </option>
+              </select>
+            </fieldset>
+
+            <fieldset>
+              <label htmlFor="form-field-f0ee6fc">&nbsp;</label>
+              <input
+                type="text"
+                name="e_meta[zipcode]"
+                id="form-field-f0ee6fc"
+                placeholder="Zip Code"
+                title="* Zip Code"
+                required="required"
+              />
+            </fieldset>
+          </div>
 
           <fieldset>
-            <label for="form-field-f0ee6fc">&nbsp;</label>
-            <input
-              type="text"
-              name="e_meta[zipcode]"
-              id="form-field-f0ee6fc"
-              placeholder="Zip Code"
-              title="* Zip Code"
-              required="required"
-            />
-          </fieldset>
-
-          <fieldset>
-            <label for="form-field-3180222">Business</label>
+            <label htmlFor="form-field-3180222">Business</label>
             <select
               name="e_meta[property_type]"
               id="form-field-3180222"
@@ -212,30 +218,32 @@ export default function QueryForm() {
             </select>
           </fieldset>
 
-          <fieldset>
-            <input
-              type="number"
-              name="e_meta[price]"
-              id="form-field-c549d17"
-              placeholder="Max price"
-              title="* Max price"
-              required="required"
-            />
-          </fieldset>
+          <div className={styles.row}>
+            <fieldset>
+              <input
+                type="number"
+                name="e_meta[price]"
+                id="form-field-c549d17"
+                placeholder="Max price"
+                title="* Max price"
+                required="required"
+              />
+            </fieldset>
+
+            <fieldset>
+              <input
+                type="number"
+                name="e_meta[area-size]"
+                id="form-field-e08cbcb"
+                placeholder="Minimum size (Sq Ft)"
+                title="* Minimum size (Sq Ft)"
+                required="required"
+              />
+            </fieldset>
+          </div>
 
           <fieldset>
-            <input
-              type="number"
-              name="e_meta[area-size]"
-              id="form-field-e08cbcb"
-              placeholder="Minimum size (Sq Ft)"
-              title="* Minimum size (Sq Ft)"
-              required="required"
-            />
-          </fieldset>
-
-          <fieldset>
-            <label for="gdpr_agreement">GDPR Agreement</label>
+            <label htmlFor="gdpr_agreement">GDPR Agreement</label>
             <br />
             <input
               required=""
