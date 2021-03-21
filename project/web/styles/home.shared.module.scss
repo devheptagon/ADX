@@ -136,13 +136,12 @@
     transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
     background-image: linear-gradient(
         rgba(6, 32, 60, 0.9),
-        rgba(29, 54, 135, 0.7)
+        rgba(6, 32, 60, 0.7)
       ),
       url(../public/querybg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 800px;
     width: 100%;
     .query {
       display: flex;
@@ -150,6 +149,7 @@
         display: flex;
         flex: 3;
         justify-content: flex-start;
+
         hr {
           margin: inherit;
           width: 50%;
@@ -159,12 +159,17 @@
           display: flex;
           flex: 1;
           flex-direction: column;
-          padding: 50px 20px;
           justify-content: space-between;
           color: white;
           font-size: 30px;
           font-weight: 300;
           line-height: 1.3em;
+          &:last-child {
+            justify-content: center;
+            hr {
+              margin: 50px 0;
+            }
+          }
           span {
             span:first-child {
               font-family: "Noto Serif JP", Sans-serif;
@@ -178,7 +183,12 @@
         }
       }
       .queryform {
+        display: flex;
+        flex-direction: column;
         flex: 2;
+        padding: 40px;
+        background-color: white;
+        margin: 50px 0;
       }
     }
   }

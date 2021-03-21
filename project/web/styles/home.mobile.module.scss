@@ -50,5 +50,15 @@
         }
       }
     }
+
+    .query {
+      flex-direction: column;
+      .queryinfo {
+        div {
+          padding: 20px;
+          width: 50%;
+        }
+      }
+    }
   }
 }

@@ -14,6 +14,7 @@
         }
       }
     }
+
     .mainbg {
       height: 600px;
       .slogan {
@@ -39,6 +40,16 @@
             height: 30px;
             margin-bottom: 10px;
           }
+        }
+      }
+    }
+
+    .query {
+      flex-direction: column;
+      .queryinfo {
+        div {
+          padding: 20px;
+          width: 50%;
         }
       }
     }
