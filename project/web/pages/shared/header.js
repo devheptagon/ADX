@@ -41,12 +41,12 @@ export default function Header() {
         <div className={styles.inner}>
           <ul>
             <li>
-              <Link href=".">HOME</Link>
+              <Link href="/">HOME</Link>
             </li>
             <li>BUSINESS</li>
             <li>ABOUT</li>
             <li>
-              <Link href="contact">CONTACT</Link>
+              <Link href="/contact">CONTACT</Link>
             </li>
           </ul>
         </div>
