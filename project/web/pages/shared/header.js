@@ -1,5 +1,6 @@
 import styles from "styles/home.module.scss";
 import Link from "next/link";
+import SocialMediaIcons from "./socialmedialist";
 
 export default function Header() {
   return (
@@ -17,21 +18,7 @@ export default function Header() {
                   <div>01633-216899</div>
                   <div>info@linxbiz.com</div>
                 </li>
-                <li>
-                  <i className="fa fa-facebook" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i className="fa fa-twitter" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i className="fa fa-linkedin" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i className="fa fa-instagram" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i className="fa fa-youtube-play" aria-hidden="true"></i>
-                </li>
+                <SocialMediaIcons />
               </ul>
             </div>
           </div>
