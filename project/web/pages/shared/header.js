@@ -30,8 +30,12 @@ export default function Header() {
             <li>
               <Link href="/">HOME</Link>
             </li>
-            <li>BUSINESS</li>
-            <li>ABOUT</li>
+            <li>
+              <Link href="/business">BUSINESS</Link>
+            </li>
+            <li>
+              <Link href="/about">ABOUT</Link>
+            </li>
             <li>
               <Link href="/contact">CONTACT</Link>
             </li>
