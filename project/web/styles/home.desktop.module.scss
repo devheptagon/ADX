@@ -67,5 +67,33 @@
         }
       }
     }
+
+    .footer {
+      .firstrow {
+        .inner {
+          display: flex;
+          div:nth-child(2) {
+            display: flex;
+            flex: 1;
+          }
+          line-height: 2em;
+        }
+        .discover {
+          display: flex;
+          flex: 3;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          div {
+            width: 50%;
+            text-align: left;
+          }
+        }
+        .contactus {
+          flex: 3;
+          flex-direction: column;
+        }
+      }
+    }
   }
 }

@@ -59,5 +59,33 @@
         flex-direction: column;
       }
     }
+
+    .footer {
+      .firstrow {
+        .inner {
+          display: flex;
+          div:nth-child(2) {
+            display: flex;
+            flex: 1;
+          }
+        }
+        .discover {
+          display: flex;
+          flex: 3;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+
+          div {
+            width: 50%;
+            text-align: left;
+          }
+        }
+        .contactus {
+          flex: 3;
+          flex-direction: column;
+        }
+      }
+    }
   }
 }
