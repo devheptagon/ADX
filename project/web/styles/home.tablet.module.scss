@@ -64,18 +64,17 @@
       .firstrow {
         .inner {
           display: flex;
-          div:nth-child(2) {
+          .seperator {
             display: flex;
             flex: 1;
           }
+          line-height: 2em;
         }
         .discover {
           display: flex;
           flex: 3;
           flex-direction: column;
-          justify-content: center;
           align-items: flex-end;
-
           div {
             width: 50%;
             text-align: left;

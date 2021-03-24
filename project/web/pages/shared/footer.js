@@ -15,7 +15,7 @@ export default function Contact() {
               <div>&gt; Terms & Privacy</div>
               <div>&gt; About</div>
             </div>
-            <div />
+            <div className={styles.seperator} />
             <div className={styles.contactus}>
               <div>
                 <h2>Contact Us</h2>
