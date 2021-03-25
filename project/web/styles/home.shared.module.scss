@@ -1,4 +1,7 @@
 .app {
+  .layout {
+    min-height: 50vh;
+  }
   .outer {
     width: 100%;
     display: flex;

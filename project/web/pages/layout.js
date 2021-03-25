@@ -8,7 +8,7 @@ export default function Layout(props) {
     <div className={styles.app}>
       <Head />
       <Header />
-      {props.children}
+      <div className={styles.layout}>{props.children}</div>
       <Footer />
     </div>
   );
