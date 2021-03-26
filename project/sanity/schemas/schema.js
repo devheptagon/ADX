@@ -5,8 +5,16 @@ import sector from "./types/sector";
 import tag from "./types/tag";
 import blockContent from "./types/blockContent";
 import advert from "./types/advert";
+import seller from "./types/seller";
 
 export default createSchema({
   name: "default",
-  types: schemaTypes.concat([location, sector, tag, blockContent, advert]),
+  types: schemaTypes.concat([
+    location,
+    sector,
+    tag,
+    blockContent,
+    advert,
+    seller,
+  ]),
 });

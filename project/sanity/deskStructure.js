@@ -20,4 +20,7 @@ export default () =>
       S.listItem()
         .title("Adverts")
         .child(createSuperPane("advert", S, ["tenure", "tags"])),
+      S.listItem()
+        .title("Sellers")
+        .child(createSuperPane("seller", S, ["email", "phone"])),
     ]);
