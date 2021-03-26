@@ -6,6 +6,7 @@ import tag from "./types/tag";
 import blockContent from "./types/blockContent";
 import advert from "./types/advert";
 import seller from "./types/seller";
+import message from "./types/message";
 
 export default createSchema({
   name: "default",
@@ -16,5 +17,6 @@ export default createSchema({
     blockContent,
     advert,
     seller,
+    message,
   ]),
 });

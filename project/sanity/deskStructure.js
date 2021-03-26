@@ -4,6 +4,7 @@ import { createSuperPane } from "sanity-super-pane";
 //S.listItem().title("Normal List").child(createSuperPane("advert", S)),
 import {
   getDocumentsMenu,
+  getDocumentMenuItem,
   getSettingsMenu,
   hideTopMenu,
 } from "./helpers/appHelper";
@@ -23,4 +24,5 @@ export default () =>
       S.listItem()
         .title("Sellers")
         .child(createSuperPane("seller", S, ["email", "phone"])),
+      getDocumentMenuItem("message"),
     ]);

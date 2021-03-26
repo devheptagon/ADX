@@ -1,8 +1,8 @@
 import React from "react";
 
 export default {
-  name: "seller",
-  title: "Sellers",
+  name: "guest",
+  title: "Guests",
   type: "document",
   fields: [
     {

@@ -4,23 +4,28 @@ export default {
   type: "object",
   fields: [
     {
-      title: "postcode",
+      title: "Postcode",
       name: "postcode",
       type: "string",
     },
     {
-      title: "city",
+      title: "City",
       name: "city",
       type: "string",
     },
     {
-      title: "county",
+      title: "County",
       name: "county",
       type: "string",
     },
     {
-      title: "region",
+      title: "Region",
       name: "region",
+      type: "string",
+    },
+    {
+      title: "Country",
+      name: "country",
       type: "string",
     },
   ],

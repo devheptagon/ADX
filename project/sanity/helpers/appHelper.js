@@ -28,7 +28,12 @@ export const getSettingsMenu = () => {
 };
 
 export const getDocumentsMenu = () => {
-  return S.documentTypeListItems().filter(
-    (item) => !settingsMenuItems.includes(item.getSchemaType().name)
-  );
+  const filter = (item) =>
+    !settingsMenuItems.includes(item.getSchemaType().name);
+  return S.documentTypeListItems().filter(filter);
+};
+
+export const getDocumentMenuItem = (typeName) => {
+  const filter = (item) => item.getSchemaType().name === typeName;
+  return S.documentTypeListItems().filter(filter)[0];
 };
