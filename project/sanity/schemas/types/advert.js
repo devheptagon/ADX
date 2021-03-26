@@ -1,3 +1,12 @@
+import React from "react";
+
+class PreComp extends React.Component {
+  render() {
+    console.log(this.props);
+    return <h1>hi</h1>;
+  }
+}
+
 export default {
   name: "advert",
   title: "Adverts",
@@ -107,15 +116,23 @@ export default {
     },
   ],
 
-  initialValue: () => ({
-    reviewCount: 0,
-  }),
-
   preview: {
     select: {
       title: "title",
-      reviews: "reviewCount",
-      custom: "something",
+      tenure: "tenure",
+      reviewCount: "reviewCount",
+      image: "images.0.asset.url",
     },
+    prepare(selection) {
+      return {
+        title: selection.title,
+        subtitle: selection.tenure,
+        media: <img src={selection.image} alt="" />,
+      };
+    },
+    component: PreComp,
   },
+  initialValue: () => ({
+    reviewCount: 0,
+  }),
 };

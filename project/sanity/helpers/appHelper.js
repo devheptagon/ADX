@@ -3,7 +3,7 @@ import S from "@sanity/desk-tool/structure-builder";
 
 const settingsMenuItems = ["tag", "sector"];
 
-export const hideTopMenu = () => {
+/* export const hideTopMenu = () => {
   const timer = setInterval(() => {
     const element = document.querySelector("div[class*='Navbar_root']");
     if (element) {
@@ -11,7 +11,7 @@ export const hideTopMenu = () => {
       clearInterval(timer);
     }
   }, 5000);
-};
+}; */
 
 export const getSettingsMenu = () => {
   return S.listItem()
