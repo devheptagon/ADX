@@ -7,6 +7,7 @@ import blockContent from "./types/blockContent";
 import advert from "./types/advert";
 import seller from "./types/seller";
 import message from "./types/message";
+import guest from "./types/guest";
 
 export default createSchema({
   name: "default",
@@ -18,5 +19,6 @@ export default createSchema({
     advert,
     seller,
     message,
+    guest,
   ]),
 });

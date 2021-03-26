@@ -2,12 +2,14 @@ import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 import { createSuperPane } from "sanity-super-pane";
 //S.listItem().title("Normal List").child(createSuperPane("advert", S)),
+import { getSettingsMenu, hideTopMenu } from "./helpers/appHelper";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  getDocumentsMenu,
-  getDocumentMenuItem,
-  getSettingsMenu,
-  hideTopMenu,
-} from "./helpers/appHelper";
+  faAd,
+  faComments,
+  faUsers,
+  faChalkboardTeacher,
+} from "@fortawesome/free-solid-svg-icons";
 
 //hideTopMenu();
 
@@ -15,14 +17,22 @@ export default () =>
   S.list()
     .title("Menu")
     .items([
-      getSettingsMenu(),
+      ...getSettingsMenu(),
       S.divider(),
-      //...getDocumentsMenu(),
       S.listItem()
         .title("Adverts")
+        .icon(() => <FontAwesomeIcon icon={faAd} />)
         .child(createSuperPane("advert", S, ["tenure", "tags"])),
       S.listItem()
         .title("Sellers")
+        .icon(() => <FontAwesomeIcon icon={faUsers} />)
         .child(createSuperPane("seller", S, ["email", "phone"])),
-      getDocumentMenuItem("message"),
+      S.listItem()
+        .title("Messages")
+        .icon(() => <FontAwesomeIcon icon={faComments} />)
+        .child(createSuperPane("message", S, ["text", "_createdAt"])),
+      S.listItem()
+        .title("Guests")
+        .icon(() => <FontAwesomeIcon icon={faChalkboardTeacher} />)
+        .child(createSuperPane("guest", S, ["text", "__createdAt"])),
     ]);
