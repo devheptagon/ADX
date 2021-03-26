@@ -28,16 +28,29 @@ export default function Header() {
         <div className={styles.inner}>
           <ul>
             <li>
-              <Link href="/">HOME</Link>
+              <Link href="/" as={"/"}>
+                HOME
+              </Link>
             </li>
             <li>
-              <Link href="/business">BUSINESS</Link>
+              <Link href="/business" as={"/business"}>
+                BUSINESS
+              </Link>
             </li>
             <li>
-              <Link href="/about">ABOUT</Link>
+              <Link href="/about" as={"/about"}>
+                ABOUT
+              </Link>
             </li>
             <li>
-              <Link href="/contact">CONTACT</Link>
+              <Link href="/contact" as={"/contact"}>
+                CONTACT
+              </Link>
+            </li>
+            <li>
+              <Link href="/[detail]" as={`/${Math.random()}`}>
+                detail
+              </Link>
             </li>
           </ul>
         </div>

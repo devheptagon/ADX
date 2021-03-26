@@ -1,12 +1,5 @@
 import React from "react";
 
-class PreComp extends React.Component {
-  render() {
-    console.log(this.props);
-    return <h1>hi</h1>;
-  }
-}
-
 export default {
   name: "advert",
   title: "Adverts",
@@ -83,7 +76,12 @@ export default {
     {
       name: "description",
       title: "Description",
-      type: "string",
+      type: "array",
+      of: [
+        {
+          type: "block",
+        },
+      ],
     },
     {
       name: "advertStatus",
@@ -130,7 +128,6 @@ export default {
         media: <img src={selection.image} alt="" />,
       };
     },
-    component: PreComp,
   },
   initialValue: () => ({
     reviewCount: 0,
