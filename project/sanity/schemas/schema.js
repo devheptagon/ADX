@@ -8,6 +8,9 @@ import advert from "./types/advert";
 import seller from "./types/seller";
 import message from "./types/message";
 import guest from "./types/guest";
+import admincontact from "./types/admincontact";
+import adminabout from "./types/adminabout";
+import adminterms from "./types/adminterms";
 
 export default createSchema({
   name: "default",
@@ -20,5 +23,8 @@ export default createSchema({
     seller,
     message,
     guest,
+    admincontact,
+    adminabout,
+    adminterms,
   ]),
 });

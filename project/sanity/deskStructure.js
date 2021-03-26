@@ -1,8 +1,7 @@
 import React from "react";
 import S from "@sanity/desk-tool/structure-builder";
 import { createSuperPane } from "sanity-super-pane";
-//S.listItem().title("Normal List").child(createSuperPane("advert", S)),
-import { getSettingsMenu, hideTopMenu } from "./helpers/appHelper";
+import { getSettingsMenu } from "./helpers/appHelper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAd,
@@ -11,13 +10,10 @@ import {
   faChalkboardTeacher,
 } from "@fortawesome/free-solid-svg-icons";
 
-//hideTopMenu();
-
 export default () =>
   S.list()
     .title("Menu")
     .items([
-      ...getSettingsMenu(),
       S.divider(),
       S.listItem()
         .title("Adverts")
@@ -31,8 +27,12 @@ export default () =>
         .title("Messages")
         .icon(() => <FontAwesomeIcon icon={faComments} />)
         .child(createSuperPane("message", S, ["text", "_createdAt"])),
+
       S.listItem()
         .title("Guests")
         .icon(() => <FontAwesomeIcon icon={faChalkboardTeacher} />)
         .child(createSuperPane("guest", S, ["text", "__createdAt"])),
+      S.divider(),
+
+      ...getSettingsMenu(),
     ]);
