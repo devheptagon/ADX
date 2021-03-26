@@ -17,5 +17,7 @@ export default () =>
       getSettingsMenu(),
       S.divider(),
       //...getDocumentsMenu(),
-      S.listItem().title("Adverts").child(createSuperPane("advert", S)),
+      S.listItem()
+        .title("Adverts")
+        .child(createSuperPane("advert", S, ["tenure", "tags"])),
     ]);
