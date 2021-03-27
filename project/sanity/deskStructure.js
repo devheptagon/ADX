@@ -18,7 +18,7 @@ export default () =>
       S.listItem()
         .title("Adverts")
         .icon(() => <FontAwesomeIcon icon={faAd} />)
-        .child(createSuperPane("advert", S, ["tenure", "tags"])),
+        .child(createSuperPane("advert", S, ["seller", "location"])),
       S.listItem()
         .title("Sellers")
         .icon(() => <FontAwesomeIcon icon={faUsers} />)
@@ -26,12 +26,12 @@ export default () =>
       S.listItem()
         .title("Messages")
         .icon(() => <FontAwesomeIcon icon={faComments} />)
-        .child(createSuperPane("message", S, ["text", "_createdAt"])),
+        .child(createSuperPane("message", S, ["text", "_updatedAt"])),
 
       S.listItem()
         .title("Guests")
         .icon(() => <FontAwesomeIcon icon={faChalkboardTeacher} />)
-        .child(createSuperPane("guest", S, ["text", "__createdAt"])),
+        .child(createSuperPane("guest", S, ["text", "_updatedAt"])),
       S.divider(),
 
       ...getSettingsMenu(),

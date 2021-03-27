@@ -15,6 +15,19 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "advertStatus",
+      title: "Status",
+      type: "string",
+      options: {
+        list: [
+          { title: "For sale", value: "For sale" },
+          { title: "Sell in progress", value: "Sell in progress" },
+          { title: "Sold", value: "Sold" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
@@ -27,8 +40,8 @@ export default {
       of: [{ type: "string" }],
       options: {
         list: [
-          { title: "Freehold", value: "freehold" },
-          { title: "Leasehold", value: "leasehold" },
+          { title: "Freehold", value: "Freehold" },
+          { title: "Leasehold", value: "Leasehold" },
         ],
       },
     },
@@ -99,12 +112,7 @@ export default {
           type: "block",
         },
       ],
-      validation: (Rule) => Rule.required().min(10),
-    },
-    {
-      name: "advertStatus",
-      title: "Status",
-      type: "string",
+      validation: (Rule) => Rule.required(),
     },
 
     {
@@ -127,14 +135,17 @@ export default {
       title: "title",
       tenure: "tenure",
       image: "images.0.asset.url",
+      advertStatus: "advertStatus",
     },
     prepare(selection) {
       return {
         title: selection.title,
-        subtitle: selection.tenure,
+        subtitle: selection.advertStatus,
         media: <img src={selection.image} alt="photo" />,
       };
     },
   },
-  //initialValue: () => ({}),
+  initialValue: () => ({
+    advertStatus: "forsale",
+  }),
 };
