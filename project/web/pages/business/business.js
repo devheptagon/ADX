@@ -1,6 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import { getAdverts } from "api/api";
 import styles from "styles/home.module.scss";
+import { slugify } from "../../helpers/genericHelper";
 
 export default function Business() {
   const [data, setData] = React.useState([]);
@@ -15,13 +17,19 @@ export default function Business() {
       <div className={styles.inner}>
         <h1>BUSINESS</h1>
         {data.map((d) => (
-          <div key={d._id}>
-            <h3>{d.title}</h3>
-            <h5>Sectors: {d.sectors.map((s) => s.title).join(",")}</h5>
-            <h5>Keywords: {d.tags.map((t) => t.title).join(", ")}</h5>
-            <img src={d.cover} style={{ maxWidth: "100%" }} />
-            <hr />
-          </div>
+          <Link
+            key={d._id}
+            href={`/[detail]`}
+            as={`/${d._id}?t=${slugify(d.title)}`}
+          >
+            <div>
+              <h3>{d.title}</h3>
+              <h5>Sectors: {d.sectors.map((s) => s.title).join(",")}</h5>
+              <h5>Keywords: {d.tags.map((t) => t.title).join(", ")}</h5>
+              <img src={d.cover} style={{ maxWidth: "100%" }} />
+              <hr />
+            </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -47,11 +47,6 @@ export default function Header() {
                 CONTACT
               </Link>
             </li>
-            <li>
-              <Link href="/[detail]" as={`/${12345}`}>
-                detail
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>
