@@ -1,4 +1,5 @@
 import React from "react";
+import { validPhone } from "../../helpers/genericHelper";
 
 export default {
   name: "seller",
@@ -9,11 +10,13 @@ export default {
       title: "Full name",
       name: "fullname",
       type: "string",
+      validation: (Rule) => Rule.required().min(5).max(50),
     },
     {
       title: "Email",
       name: "email",
       type: "string",
+      validation: (Rule) => Rule.email(),
     },
     {
       name: "Password",
@@ -25,6 +28,10 @@ export default {
       title: "Phone",
       name: "phone",
       type: "string",
+      validation: (Rule) =>
+        Rule.optional()
+          .custom((val) => (validPhone(val) ? true : "invalid phone"))
+          .error(),
     },
     {
       title: "Address",

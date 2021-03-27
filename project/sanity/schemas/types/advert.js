@@ -6,15 +6,31 @@ export default {
   type: "document",
   fields: [
     {
+      name: "seller",
+      title: "Seller",
+      type: "reference",
+      to: {
+        type: "seller",
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required().min(5).max(200),
+      validation: (Rule) => Rule.required().min(5).max(500),
     },
     {
       name: "tenure",
       title: "Tenure",
-      type: "string",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          { title: "Freehold", value: "freehold" },
+          { title: "Leasehold", value: "leasehold" },
+        ],
+      },
     },
     {
       name: "freeHoldPrice",
@@ -90,14 +106,7 @@ export default {
       title: "Status",
       type: "string",
     },
-    {
-      name: "seller",
-      title: "Seller",
-      type: "reference",
-      to: {
-        type: "seller",
-      },
-    },
+
     {
       name: "images",
       title: "Photos",
