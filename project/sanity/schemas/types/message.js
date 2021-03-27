@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   name: "message",
@@ -39,11 +41,13 @@ export default {
   preview: {
     select: {
       text: "text",
+      time: "_updatedAt",
     },
     prepare(selection) {
       return {
         title: selection.text,
-        //subtitle: selection.email + "/" + selection.phone,
+        subtitle: selection.time,
+        media: <FontAwesomeIcon icon={faComment} />,
       };
     },
   },

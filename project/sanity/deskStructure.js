@@ -26,7 +26,7 @@ export default () =>
       S.listItem()
         .title("Messages")
         .icon(() => <FontAwesomeIcon icon={faComments} />)
-        .child(createSuperPane("message", S, ["text", "_updatedAt"])),
+        .child(createSuperPane("message", S, [])),
 
       S.listItem()
         .title("Guests")
