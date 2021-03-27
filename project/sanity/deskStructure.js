@@ -8,6 +8,7 @@ import {
   faComments,
   faUsers,
   faChalkboardTeacher,
+  faChartBar,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default () =>
@@ -33,6 +34,9 @@ export default () =>
         .icon(() => <FontAwesomeIcon icon={faChalkboardTeacher} />)
         .child(createSuperPane("guest", S, ["text", "_updatedAt"])),
       S.divider(),
-
       ...getSettingsMenu(),
+      S.divider(),
+      S.listItem()
+        .title("Reports")
+        .icon(() => <FontAwesomeIcon icon={faChartBar} />),
     ]);
