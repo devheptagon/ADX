@@ -4,8 +4,11 @@ export const getAdverts = async () => {
   const fields = `
     _id,_createdAt,
     title,
-    tags,
-    'tagList': tags[]._ref
+    freeHoldPrice,
+    'tags': tags[]->{title}, 
+    'sectors': sectors[]->{title}, 
+    'cover': images[0].asset->url,
+    'images': images[].asset->url
   `;
   return await client.fetch(`*[_type == 'advert']{${fields}}`);
 };

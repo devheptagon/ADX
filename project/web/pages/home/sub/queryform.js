@@ -354,7 +354,6 @@ export default function QueryForm() {
                   </button>
                 </div>
               </div>
-              <DisplayFormikState {...props} />
             </form>
           );
         }}
@@ -362,18 +361,3 @@ export default function QueryForm() {
     </div>
   );
 }
-
-export const DisplayFormikState = (props) => (
-  <div style={{ margin: "1rem 0" }}>
-    <h3 style={{ fontFamily: "monospace" }} />
-    <pre
-      style={{
-        background: "#f6f8fa",
-        fontSize: ".65rem",
-        padding: ".5rem",
-      }}
-    >
-      <strong>props</strong> = {JSON.stringify(props, null, 2)}
-    </pre>
-  </div>
-);
