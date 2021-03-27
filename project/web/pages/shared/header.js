@@ -48,7 +48,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/[detail]" as={`/${Math.random()}`}>
+              <Link href="/[detail]" as={`/${12345}`}>
                 detail
               </Link>
             </li>
