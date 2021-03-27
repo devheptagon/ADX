@@ -56,7 +56,5 @@ export default {
       };
     },
   },
-  initialValue: () => ({
-    //reviewCount: 0,
-  }),
+  //initialValue: () => ({}),
 };

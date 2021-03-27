@@ -47,7 +47,4 @@ export default {
       };
     },
   },
-  initialValue: () => ({
-    //reviewCount: 0,
-  }),
 };

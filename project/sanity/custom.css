@@ -9,3 +9,11 @@
 /* div[class*="Navbar_root"] {
   display: none;
 } */
+
+a[title="Vision"],
+div[class*="Navbar_loginStatus"],
+div[class*="Navbar_presenceStatus"],
+div[class*="Navbar_sanityStatus"],
+div[class*="Navbar_hamburger"] {
+  display: none !important;
+}

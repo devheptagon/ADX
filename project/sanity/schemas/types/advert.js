@@ -9,6 +9,7 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required().min(5).max(200),
     },
     {
       name: "tenure",
@@ -42,7 +43,7 @@ export default {
     },
     {
       name: "location",
-      title: "Location",
+      title: "Address",
       type: "location",
     },
     {
@@ -82,6 +83,7 @@ export default {
           type: "block",
         },
       ],
+      validation: (Rule) => Rule.required().min(10),
     },
     {
       name: "advertStatus",
@@ -89,19 +91,16 @@ export default {
       type: "string",
     },
     {
-      name: "agentId",
-      title: "AgentId",
-      type: "string",
-    },
-    {
-      name: "reviewCount",
-      title: "Review Count",
-      type: "number",
-      readOnly: "true",
+      name: "seller",
+      title: "Seller",
+      type: "reference",
+      to: {
+        type: "seller",
+      },
     },
     {
       name: "images",
-      title: "Images",
+      title: "Photos",
       type: "array",
       of: [
         {
@@ -118,18 +117,15 @@ export default {
     select: {
       title: "title",
       tenure: "tenure",
-      reviewCount: "reviewCount",
       image: "images.0.asset.url",
     },
     prepare(selection) {
       return {
         title: selection.title,
         subtitle: selection.tenure,
-        media: <img src={selection.image} alt="" />,
+        media: <img src={selection.image} alt="photo" />,
       };
     },
   },
-  initialValue: () => ({
-    reviewCount: 0,
-  }),
+  //initialValue: () => ({}),
 };

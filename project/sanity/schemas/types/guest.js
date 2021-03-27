@@ -16,7 +16,7 @@ export default {
       type: "string",
     },
     {
-      name: "Password",
+      name: "password",
       title: "password",
       type: "string",
       hidden: true,
@@ -56,7 +56,4 @@ export default {
       };
     },
   },
-  initialValue: () => ({
-    //reviewCount: 0,
-  }),
 };
