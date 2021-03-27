@@ -12,3 +12,10 @@ export const getAdverts = async () => {
   `;
   return await client.fetch(`*[_type == 'advert']{${fields}}`);
 };
+
+export const getAbout = async () => {
+  const response = await client.fetch(
+    `*[_type == 'adminabout' && _id =='adminabout1']{about}`
+  );
+  return response[0].about[0].children[0].text;
+};

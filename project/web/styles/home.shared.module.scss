@@ -275,6 +275,16 @@
     }
   }
 
+  .about {
+    .abouttext {
+      display: flex;
+      p {
+        display: flex;
+        padding: 30px;
+      }
+    }
+  }
+
   .footer {
     font-weight: 300;
     display: flex;

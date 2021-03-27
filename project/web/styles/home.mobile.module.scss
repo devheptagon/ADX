@@ -68,6 +68,15 @@
     }
   }
 
+  .about {
+    .abouttext {
+      flex-direction: column;
+      p {
+        width: 100%;
+      }
+    }
+  }
+
   .footer {
     .firstrow {
       .inner {
