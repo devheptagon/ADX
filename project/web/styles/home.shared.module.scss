@@ -44,6 +44,9 @@
       }
       .brand {
         display: flex;
+        img {
+          cursor: pointer;
+        }
       }
     }
     &:nth-child(2) {

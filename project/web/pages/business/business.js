@@ -19,6 +19,7 @@ export default function Business() {
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {data.map((d) => (
             <div
+              key={d._id}
               style={{
                 display: "flex",
                 width: "50%",

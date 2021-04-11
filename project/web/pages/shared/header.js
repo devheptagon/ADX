@@ -8,7 +8,9 @@ export default function Header() {
       <nav className={styles.outer}>
         <div className={styles.inner}>
           <div className={styles.brand}>
-            <img src="./logo.png" alt="logo" />
+            <Link href="/" as={"/"}>
+              <img src="./logo.png" alt="logo" />
+            </Link>
             <div className={styles.contact}>
               <ul>
                 <li>

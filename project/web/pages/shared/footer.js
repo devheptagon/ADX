@@ -1,4 +1,5 @@
 import styles from "styles/home.module.scss";
+import Link from "next/link";
 import SocialMediaIcons from "./socialmedialist";
 
 export default function Contact() {
@@ -11,9 +12,24 @@ export default function Contact() {
               <div>
                 <h2>Discover</h2>
               </div>
-              <div>&gt; Home</div>
-              <div>&gt; Terms & Privacy</div>
-              <div>&gt; About</div>
+              <div>
+                &gt;{" "}
+                <Link href="/" as={"/"}>
+                  Home
+                </Link>
+              </div>
+              <div>
+                &gt;{" "}
+                <Link href="/privacy" as={"/privacy"}>
+                  Terms & Privacy
+                </Link>
+              </div>
+              <div>
+                &gt;{" "}
+                <Link href="/about" as={"/about"}>
+                  About
+                </Link>
+              </div>
             </div>
             <div className={styles.seperator} />
             <div className={styles.contactus}>
@@ -50,9 +66,7 @@ export default function Contact() {
               <ul>
                 <SocialMediaIcons />
               </ul>
-              <div>
-                © Linxbiz - All rights reserved - Created by Colourful Planets
-              </div>
+              <div>© Linxbiz - All rights reserved</div>
             </div>
           </div>
         </div>
