@@ -48,10 +48,12 @@ export default function Contact() {
                 </span>
               </div>
               <div>
-                <span>
-                  <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                  info@linxbiz.com
-                </span>
+                <a href="mailto:info@linxbiz.com">
+                  <span>
+                    <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                    info@linxbiz.com
+                  </span>
+                </a>
               </div>
               <br />
             </div>
