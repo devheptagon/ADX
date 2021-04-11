@@ -26,3 +26,10 @@ export const getContact = async () => {
   );
   return response[0];
 };
+
+export const getPrivacy = async () => {
+  const response = await client.fetch(
+    `*[_type == 'adminterms' && _id =='adminterms']`
+  );
+  return response[0].terms;
+};

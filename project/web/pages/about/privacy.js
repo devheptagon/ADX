@@ -1,24 +1,27 @@
 import React from "react";
-import { getAbout } from "api/api";
+import { getPrivacy } from "api/api";
 import styles from "styles/home.module.scss";
+import BlockContent from "@sanity/block-content-to-react";
 
 export default function About() {
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState({});
   React.useEffect(() => {
-    /* getAbout().then((res) => {
-      console.log({ res });
+    getPrivacy().then((res) => {
       setData(res);
-    }); */
+    });
   }, []);
+
+  const serializers = {
+    types: {
+      undefined: (props) => null,
+    },
+  };
+
   return (
     <div className={styles.outer}>
       <div className={styles.inner}>
         <div className={styles.about}>
-          <div
-            className={styles.abouttext}
-            dangerouslySetInnerHTML={{ __html: data }}
-          />
-          privacy
+          <BlockContent blocks={data} serializers={serializers} />
         </div>
       </div>
     </div>
