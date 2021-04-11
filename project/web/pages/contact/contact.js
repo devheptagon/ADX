@@ -4,7 +4,8 @@ export default function Contact() {
   return (
     <div className={styles.outer}>
       <div className={styles.inner}>
-        here is the contact
+        <br />
+        <br />
         <iframe
           frameBorder="0"
           scrolling="no"
@@ -16,6 +17,8 @@ export default function Contact() {
           title="68 Bridge Street, Newport, NP20 4AQ"
           aria-label="68 Bridge Street, Newport, NP20 4AQ"
         ></iframe>
+        <br />
+        <br />
       </div>
     </div>
   );

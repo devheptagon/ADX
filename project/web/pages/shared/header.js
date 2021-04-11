@@ -18,7 +18,9 @@ export default function Header() {
                 </li>
                 <li>
                   <div>01633-216899</div>
-                  <div>info@linxbiz.com</div>
+                  <div>
+                    <a href="mailto:info@linxbiz.com">info@linxbiz.com</a>
+                  </div>
                 </li>
                 <SocialMediaIcons />
               </ul>

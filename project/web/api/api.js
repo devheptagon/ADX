@@ -19,3 +19,10 @@ export const getAbout = async () => {
   );
   return response[0].about[0].children[0].text;
 };
+
+export const getContact = async () => {
+  const response = await client.fetch(
+    `*[_type == 'admincontact' && _id =='admincontact1']`
+  );
+  return response[0];
+};
