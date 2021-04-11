@@ -276,6 +276,11 @@
   }
 
   .about {
+    .testimonials-bg {
+      div {
+        width: 100%;
+      }
+    }
     .abouttext {
       display: flex;
       p {

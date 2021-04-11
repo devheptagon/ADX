@@ -1,6 +1,7 @@
 import React from "react";
 import { getAbout } from "api/api";
 import styles from "styles/home.module.scss";
+import Testimonials from "../home/sub/testimonials";
 
 export default function About() {
   const [data, setData] = React.useState([]);
@@ -18,6 +19,7 @@ export default function About() {
             className={styles.abouttext}
             dangerouslySetInnerHTML={{ __html: data }}
           />
+          <Testimonials />
         </div>
       </div>
     </div>

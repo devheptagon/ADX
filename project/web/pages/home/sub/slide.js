@@ -20,7 +20,7 @@ export default function Home() {
           <h2>Our featured suggestions can save you time</h2>
           <Carousel className={styles.carousel} showArrows={true} swipeable>
             {data.map((d) => (
-              <div>
+              <div key={d.title}>
                 <img src={d.cover} />
                 <p className="legend">
                   {d.title}
