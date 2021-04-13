@@ -26,26 +26,18 @@
       }
       .searchbox {
         bottom: -20px;
-        align-items: flex-end;
         width: 70%;
         max-width: 1000px;
         padding: 50px;
-        div {
-          margin-right: 20px;
+        align-items: flex-end;
 
-          input {
-            width: 100%;
-            height: 40px;
-          }
-          &:first-child {
-            width: 40%;
-          }
-          &:nth-child(2) {
-            width: 40%;
-          }
-          &:last-child {
-            width: 20%;
-          }
+        .businessType,
+        .location {
+          margin-right: 20px;
+          width: 40%;
+        }
+        input[type="button"] {
+          width: 20%;
         }
       }
     }

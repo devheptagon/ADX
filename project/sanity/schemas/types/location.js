@@ -36,6 +36,11 @@ export default {
       title: "Postcode",
       name: "postcode",
       type: "string",
+      validation: (Rule) =>
+        Rule.regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i, {
+          name: "postcode", // Error message is "Does not match postcode-pattern"
+          invert: false, // Boolean to allow any value that does NOT match pattern
+        }),
     },
   ],
   preview: {

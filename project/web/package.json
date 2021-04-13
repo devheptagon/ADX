@@ -14,6 +14,7 @@
     "next": "10.0.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-multi-select-component": "^4.0.1",
     "react-responsive-carousel": "^3.2.15",
     "sass": "^1.32.8",
     "yup": "^0.32.9"

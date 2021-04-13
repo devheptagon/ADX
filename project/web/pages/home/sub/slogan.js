@@ -1,4 +1,5 @@
 import styles from "styles/home.module.scss";
+import Search from "./search";
 
 export default function Slogan() {
   return (
@@ -10,21 +11,7 @@ export default function Slogan() {
         </h1>
         <h2>Find the right commercial place with Linxbiz</h2>
       </div>
-      <div className={styles.searchbox}>
-        <div>
-          <label>LOOKING FOR</label>
-          <br />
-          <input type="text" />
-        </div>
-        <div>
-          <label>LOCATION</label>
-          <br />
-          <input type="text" />
-        </div>
-        <div>
-          <input type="button" title="SEARCH" value="SEARCH" />
-        </div>
-      </div>
+      <Search />
     </div>
   );
 }

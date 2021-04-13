@@ -15,6 +15,9 @@ export const getSettingsMenu = () => {
       .filter((item) => item.getSchemaType().name === "sector")[0]
       .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />),
     S.documentTypeListItems()
+      .filter((item) => item.getSchemaType().name === "area")[0]
+      .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />),
+    S.documentTypeListItems()
       .filter((item) => item.getSchemaType().name === "tag")[0]
       .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />),
     S.listItem()

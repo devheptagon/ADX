@@ -2,6 +2,7 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 import location from "./types/location";
 import sector from "./types/sector";
+import area from "./types/area";
 import tag from "./types/tag";
 import blockContent from "./types/blockContent";
 import advert from "./types/advert";
@@ -17,6 +18,7 @@ export default createSchema({
   types: schemaTypes.concat([
     location,
     sector,
+    area,
     tag,
     blockContent,
     advert,

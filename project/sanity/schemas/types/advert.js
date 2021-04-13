@@ -90,6 +90,13 @@ export default {
       ],
     },
     {
+      name: "area",
+      title: "Area",
+      type: "reference",
+      to: [{ type: "area" }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "tags",
       title: "Tags",
       type: "array",
