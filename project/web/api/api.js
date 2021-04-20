@@ -1,16 +1,33 @@
 import client from "./sanity";
 
-export const getAdverts = async () => {
+export const getAdverts = async (sectors, areas) => {
   const fields = `
     _id,_createdAt,
     title,
     freeHoldPrice,
     'tags': tags[]->{title}, 
+    'area': area->title, 
     'sectors': sectors[]->{title}, 
     'cover': images[0].asset->url,
     'images': images[].asset->url
   `;
-  return await client.fetch(`*[_type == 'advert']{${fields}}`);
+  /*
+  TODO: asagidaki gibi filtrelemeli
+  const sectorFilter = sectors && sectors.length ? "" : "1==1";
+  const areaFilter = area && area.length ? "" : "1==1";
+  let filter = `*[_type == 'advert' && ${sectorFilter} && ${areaFilter}]{${fields}}`;
+  */
+  let filter = `*[_type == 'advert']{${fields}}`;
+  let results = await client.fetch(filter);
+  if (results && areas && areas.length) {
+    results = results.filter((f) => areas.includes(f.area));
+  }
+  if (results && sectors && sectors.length) {
+    results = results.filter((f) =>
+      f.sectors.some((r) => sectors.includes(r.title))
+    );
+  }
+  return results || [];
 };
 
 export const getAbout = async () => {
