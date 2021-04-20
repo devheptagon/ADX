@@ -1,21 +1,42 @@
 import React from "react";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
+import { getSectors, getAreas } from "api/api";
+import { useRouter } from "next/router";
 
 export default function Search() {
-  const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
-    { label: "Watermelon 🍉", value: "watermelon" },
-    { label: "Pear 🍐", value: "pear" },
-    { label: "Apple 🍎", value: "apple" },
-    { label: "Tangerine 🍊", value: "tangerine" },
-    { label: "Pineapple 🍍", value: "pineapple" },
-    { label: "Peach 🍑", value: "peach" },
-  ];
+  const router = useRouter();
 
-  const [selected, setSelected] = React.useState([]);
+  const [sectors, setSectors] = React.useState([]);
+  const [areas, setAreas] = React.useState([]);
+
+  React.useEffect(() => {
+    getSectors().then((res) => {
+      setSectors(res);
+    });
+    getAreas().then((res) => setAreas(res));
+  }, []);
+
+  const sectorOptions = sectors.map((s) => ({
+    label: s.title,
+    value: s.title,
+  }));
+  const areaOptions = areas.map((a) => ({ label: a.title, value: a.title }));
+
+  const [selectedSectors, setSelectedSectors] = React.useState([]);
+  const [selectedAreas, setSelectedAreas] = React.useState([]);
+
+  const selectSector = (selection) => {
+    setSelectedSectors(selection);
+  };
+
+  const selectArea = (selection) => {
+    setSelectedAreas(selection);
+  };
+
+  const search = (e) => {
+    router.push("/search");
+  };
 
   return (
     <div className={styles.searchbox}>
@@ -24,9 +45,9 @@ export default function Search() {
         <br />
         <section>
           <MultiSelect
-            options={options}
-            value={selected}
-            onChange={setSelected}
+            options={sectorOptions}
+            value={selectedSectors}
+            onChange={selectSector}
             labelledBy="Select"
           />
         </section>
@@ -35,13 +56,13 @@ export default function Search() {
         <label>LOCATION</label>
         <br />
         <MultiSelect
-          options={options}
-          value={selected}
-          onChange={setSelected}
+          options={areaOptions}
+          value={selectedAreas}
+          onChange={selectArea}
           labelledBy="Select"
         />
       </div>
-      <input type="button" title="SEARCH" value="SEARCH" />
+      <input type="button" title="SEARCH" value="SEARCH" onClick={search} />
     </div>
   );
 }

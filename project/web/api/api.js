@@ -50,3 +50,13 @@ export const getPrivacy = async () => {
   );
   return response[0].terms;
 };
+
+export const getSectors = async () => {
+  const response = await client.fetch(`*[_type == 'sector']{title}`);
+  return response;
+};
+
+export const getAreas = async () => {
+  const response = await client.fetch(`*[_type == 'area']{title}`);
+  return response;
+};
