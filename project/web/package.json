@@ -1,31 +1,54 @@
 {
-  "name": "web",
+  "name": "web3",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "test": "jest --watch",
-    "export": "next build && next export"
-  },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^2.7.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "formik": "^2.2.6",
-    "next": "10.0.9",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-multi-select-component": "^4.0.1",
+    "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.15",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
     "sass": "^1.32.8",
+    "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
-    "babel-jest": "^26.6.3",
-    "cross-env": "^7.0.3",
-    "jest": "^26.6.3"
+    "cross-env": "^7.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -1,4 +1,7 @@
 import styles from "styles/home.module.scss";
+import testimonial1 from 'assets/testimonial1.jpg'
+import testimonial2 from 'assets/testimonial2.jpg'
+import testimonial3 from 'assets/testimonial3.jpg'
 
 export default function Testimonials() {
   return (
@@ -20,7 +23,7 @@ export default function Testimonials() {
                 without thinking more.
               </span>
               <div className={styles.row}>
-                <img src="testimonial1.jpg" alt="testimonial1" />
+                <img src={testimonial1} alt="testimonial1" />
                 <span>
                   by Roy Bennett
                   <br />
@@ -42,7 +45,7 @@ export default function Testimonials() {
                 property to them. Thank you, Linxbiz team!
               </span>
               <div className={styles.row}>
-                <img src="testimonial2.jpg" alt="testimonial2" />
+                <img src={testimonial2} alt="testimonial2" />
                 <span>
                   by Kenya Soval
                   <br />
@@ -63,7 +66,7 @@ export default function Testimonials() {
                 "always stay like this.
               </span>
               <div className={styles.row}>
-                <img src="testimonial3.jpg" alt="testimonial3" />
+                <img src={testimonial3} alt="testimonial3" />
                 <span>
                   by Kathleen Peterson
                   <br />

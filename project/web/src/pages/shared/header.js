@@ -1,6 +1,7 @@
 import styles from "styles/home.module.scss";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
+import logo from "assets/logo.png";
 
 export default function Header() {
   return (
@@ -8,8 +9,8 @@ export default function Header() {
       <nav className={styles.outer}>
         <div className={styles.inner}>
           <div className={styles.brand}>
-            <Link href="/" as={"/"}>
-              <img src="./logo.png" alt="logo" />
+            <Link to="/" as={"/"}>
+              <img src={logo} alt="logo" />
             </Link>
             <div className={styles.contact}>
               <ul>
@@ -32,22 +33,22 @@ export default function Header() {
         <div className={styles.inner}>
           <ul>
             <li>
-              <Link href="/" as={"/"}>
+              <Link to="/" as={"/"}>
                 HOME
               </Link>
             </li>
             <li>
-              <Link href="/business" as={"/business"}>
+              <Link to="/business" as={"/business"}>
                 BUSINESS
               </Link>
             </li>
             <li>
-              <Link href="/about" as={"/about"}>
+              <Link to="/about" as={"/about"}>
                 ABOUT
               </Link>
             </li>
             <li>
-              <Link href="/contact" as={"/contact"}>
+              <Link to="/contact" as={"/contact"}>
                 CONTACT
               </Link>
             </li>

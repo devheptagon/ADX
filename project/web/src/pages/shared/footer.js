@@ -1,6 +1,7 @@
 import styles from "styles/home.module.scss";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
+import logo from "assets/logo.png";
 
 export default function Contact() {
   return (
@@ -14,19 +15,19 @@ export default function Contact() {
               </div>
               <div>
                 &gt;{" "}
-                <Link href="/" as={"/"}>
+                <Link to="/" as={"/"}>
                   Home
                 </Link>
               </div>
               <div>
                 &gt;{" "}
-                <Link href="/privacy" as={"/privacy"}>
+                <Link to="/privacy" as={"/privacy"}>
                   Terms & Privacy
                 </Link>
               </div>
               <div>
                 &gt;{" "}
-                <Link href="/about" as={"/about"}>
+                <Link to="/about" as={"/about"}>
                   About
                 </Link>
               </div>
@@ -64,7 +65,7 @@ export default function Contact() {
         <div className={styles.outer}>
           <div className={styles.inner}>
             <div>
-              <img src="./logo.png" alt="logo" />
+              <img src={logo} alt="logo" />
               <ul>
                 <SocialMediaIcons />
               </ul>

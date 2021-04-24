@@ -2,14 +2,10 @@ import React from "react";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
 import { getSectors, getAreas } from "api/api";
-import { useRouter } from "next/router";
-import AppContext from "store/context";
+import { useHistory } from "react-router-dom";
 
 export default function Search() {
-  const context = React.useContext(AppContext);
-  const { sectorList } = context;
-
-  const router = useRouter();
+  const history = useHistory();
 
   const [sectors, setSectors] = React.useState([]);
   const [areas, setAreas] = React.useState([]);
@@ -40,7 +36,7 @@ export default function Search() {
 
   const search = (e) => {
     //update(selectedSectors);
-    router.push("/business");
+    history.push("/business");
   };
 
   return (
