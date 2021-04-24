@@ -7,7 +7,6 @@ export default function About() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
     getAbout().then((res) => {
-      console.log({ res });
       setData(res);
     });
   }, []);
