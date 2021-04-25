@@ -12,6 +12,7 @@ import guest from "./types/guest";
 import admincontact from "./types/admincontact";
 import adminabout from "./types/adminabout";
 import adminterms from "./types/adminterms";
+import evaluation from "./types/evaluation";
 
 export default createSchema({
   name: "default",
@@ -28,5 +29,6 @@ export default createSchema({
     admincontact,
     adminabout,
     adminterms,
+    evaluation,
   ]),
 });

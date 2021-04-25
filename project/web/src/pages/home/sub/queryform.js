@@ -2,7 +2,7 @@ import React from "react";
 import styles from "styles/home.module.scss";
 import { Formik, dis } from "formik";
 import * as yup from "yup";
-import { getSectors, getAreas } from "api/api";
+import { getSectors, getAreas, postEvaluationRequest } from "api/api";
 
 export default function QueryForm() {
   const [sectors, setSectors] = React.useState([]);
@@ -42,9 +42,13 @@ export default function QueryForm() {
           area_size: yup.number().nullable().notRequired(),
           gdpr_agreement: yup.bool().required(),
         })}
-        onSubmit={async (values) => {
-          //TODO: SUBMIT FORM
-          await new Promise((resolve) => setTimeout(resolve, 500));
+        onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
+          setSubmitting(true);
+          await postEvaluationRequest(values);
+          setSubmitting(false);
+          resetForm({});
+          setStatus({ success: true });
+          alert("Request received, thanks");
           return false;
         }}
       >

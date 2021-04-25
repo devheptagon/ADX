@@ -60,3 +60,13 @@ export const getAreas = async () => {
   const response = await client.fetch(`*[_type == 'area']{title}`);
   return response;
 };
+
+export const postEvaluationRequest = async (values) => {
+  const doc = {
+    _type: "evaluation",
+    ...values,
+  };
+  delete doc.gdpr_agreement;
+  const response = await client.create(doc);
+  return response;
+};

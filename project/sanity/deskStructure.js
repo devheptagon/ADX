@@ -9,6 +9,7 @@ import {
   faUsers,
   faChalkboardTeacher,
   faChartBar,
+  faMeteor,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default () =>
@@ -25,6 +26,10 @@ export default () =>
         .icon(() => <FontAwesomeIcon icon={faUsers} />)
         .child(createSuperPane("seller", S, ["email", "phone"])),
       S.listItem()
+        .title("Evaluation requests")
+        .icon(() => <FontAwesomeIcon icon={faMeteor} />)
+        .child(createSuperPane("evaluation", S, ["property_type"])),
+      /*       S.listItem()
         .title("Messages")
         .icon(() => <FontAwesomeIcon icon={faComments} />)
         .child(createSuperPane("message", S, [])),
@@ -32,11 +37,12 @@ export default () =>
       S.listItem()
         .title("Guests")
         .icon(() => <FontAwesomeIcon icon={faChalkboardTeacher} />)
-        .child(createSuperPane("guest", S, ["text", "_updatedAt"])),
+        .child(createSuperPane("guest", S, ["text", "_updatedAt"])), */
+
       S.divider(),
       ...getSettingsMenu(),
       S.divider(),
-      S.listItem()
+      /*       S.listItem()
         .title("Reports")
-        .icon(() => <FontAwesomeIcon icon={faChartBar} />),
+        .icon(() => <FontAwesomeIcon icon={faChartBar} />), */
     ]);
