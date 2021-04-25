@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import styles from "styles/home.module.scss";
 import { getAdverts } from "api/api";
 
-export default function Home() {
+export default function Slide() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
     getAdverts().then((res) => {

@@ -6,3 +6,7 @@ export const slugify = (val) =>
     .toLowerCase()
     .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "");
+
+export function useQuery(location) {
+  return new URLSearchParams(location.search);
+}

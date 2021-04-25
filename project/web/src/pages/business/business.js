@@ -27,14 +27,14 @@ export default function Business() {
             >
               <Link
                 key={d._id}
-                href={`/[detail]`}
+                to={`/detail?id=${d._id}&title=${slugify(d.title)}`}
                 as={`/${d._id}?t=${slugify(d.title)}`}
               >
                 <div>
                   <h3>{d.title}</h3>
                   <h5>Sectors: {d.sectors.map((s) => s.title).join(",")}</h5>
                   <h5>Keywords: {d.tags.map((t) => t.title).join(", ")}</h5>
-                  <img src={d.cover} style={{ maxWidth: "90%" }} />
+                  <img alt="list" src={d.cover} style={{ maxWidth: "90%" }} />
                 </div>
               </Link>
             </div>

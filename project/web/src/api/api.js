@@ -1,23 +1,31 @@
 import client from "./sanity";
 
+const advertFields = `
+_id,_createdAt,
+title,
+freeHoldPrice,
+'tags': tags[]->{title}, 
+'area': area->title, 
+'sectors': sectors[]->{title}, 
+'cover': images[0].asset->url,
+'images': images[].asset->url,
+'seller': seller->fullname + '|' + seller->email + '|' + seller->phone,
+location,
+advertStatus,
+tenure,
+freeHoldPrice,
+leaseHoldPrice,
+annualRent
+`;
+
 export const getAdverts = async (sectors, areas) => {
-  const fields = `
-    _id,_createdAt,
-    title,
-    freeHoldPrice,
-    'tags': tags[]->{title}, 
-    'area': area->title, 
-    'sectors': sectors[]->{title}, 
-    'cover': images[0].asset->url,
-    'images': images[].asset->url
-  `;
   /*
   TODO: asagidaki gibi filtrelemeli
   const sectorFilter = sectors && sectors.length ? "" : "1==1";
   const areaFilter = area && area.length ? "" : "1==1";
   let filter = `*[_type == 'advert' && ${sectorFilter} && ${areaFilter}]{${fields}}`;
   */
-  let filter = `*[_type == 'advert']{${fields}}`;
+  let filter = `*[_type == 'advert']{${advertFields}}`;
   let results = await client.fetch(filter);
   if (results && areas && areas.length) {
     results = results.filter((f) => areas.includes(f.area));
@@ -69,4 +77,11 @@ export const postEvaluationRequest = async (values) => {
   delete doc.gdpr_agreement;
   const response = await client.create(doc);
   return response;
+};
+
+export const getAdvert = async (id) => {
+  const response = await client.fetch(
+    `*[_type == 'advert' && _id == '${id}']{${advertFields}}`
+  );
+  return response && response.length ? response[0] : {};
 };
