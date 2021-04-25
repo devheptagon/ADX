@@ -228,6 +228,9 @@
           background-color: #00aeff;
           color: white;
           font-size: 1.2em;
+          &:disabled {
+            background-color: gray;
+          }
         }
         h2 {
           line-height: 1em;

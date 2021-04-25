@@ -1,15 +1,22 @@
+import React from "react";
 import styles from "styles/home.module.scss";
 import { Formik, dis } from "formik";
 import * as yup from "yup";
+import { getSectors, getAreas } from "api/api";
 
 export default function QueryForm() {
+  const [sectors, setSectors] = React.useState([]);
+  const [areas, setAreas] = React.useState([]);
+  React.useEffect(() => {
+    getSectors().then((res) => {
+      setSectors(res);
+    });
+    getAreas().then((res) => setAreas(res));
+  }, []);
   return (
     <div className={styles.queryform}>
       <h2>Real Estate Inquiry Form</h2>
-      <h3>
-        You can get help from us by filling out the Linxbiz Real Estate Request
-        Form
-      </h3>
+      <h3>You can get help from us by filling out the form</h3>
       <Formik
         initialValues={{
           enquiry_type: "",
@@ -17,28 +24,28 @@ export default function QueryForm() {
           first_name: "",
           last_name: "",
           email: "",
-          city: "",
-          zipcode: "",
+          location: "",
           property_type: "",
           price: "",
           area_size: "",
           gdpr_agreement: "",
         }}
         validationSchema={yup.object().shape({
-          email: yup.string().email().required,
-          enquiry_type: yup.string(),
-          user_type: yup.string(),
-          first_name: yup.string().required,
-          last_name: yup.string().required,
-          city: yup.string(),
-          zipcode: yup.string(),
-          property_type: yup.string(),
-          price: yup.number(),
-          area_size: yup.number(),
-          gdpr_agreement: yup.bool,
+          email: yup.string().email().required(),
+          enquiry_type: yup.string().required(),
+          user_type: yup.string().nullable().notRequired(),
+          first_name: yup.string().required(),
+          last_name: yup.string().required(),
+          location: yup.string().nullable().notRequired(),
+          property_type: yup.string().required(),
+          price: yup.number().nullable().notRequired(),
+          area_size: yup.number().nullable().notRequired(),
+          gdpr_agreement: yup.bool().required(),
         })}
         onSubmit={async (values) => {
+          //TODO: SUBMIT FORM
           await new Promise((resolve) => setTimeout(resolve, 500));
+          return false;
         }}
       >
         {(props) => {
@@ -54,7 +61,7 @@ export default function QueryForm() {
             handleReset,
           } = props;
           return (
-            <form method="post" name="New Form">
+            <form onSubmit={handleSubmit}>
               <div>
                 <fieldset>
                   <label>Business Type</label>
@@ -71,20 +78,18 @@ export default function QueryForm() {
                       <option value="Purchase">Purchase</option>
                       <option value="Rent"> Rent</option>
                       <option value="Sell"> Sell</option>
-                      <option value="Miss"> Miss</option>
                       <option value="Evaluation"> Evaluation</option>
                       <option value="Mortgage"> Mortgage </option>
+                      <option value="Other"> Other </option>
                     </select>
                   </div>
                 </fieldset>
-
                 <fieldset>
-                  <label>Information</label>
+                  <label>* Seller or Buyer (Optional)</label>
                   <div>
                     <select
                       name="user_type"
                       id="user_type"
-                      required="required"
                       title="* Information"
                       value={values.user_type}
                       onChange={handleChange}
@@ -95,7 +100,6 @@ export default function QueryForm() {
                     </select>
                   </div>
                 </fieldset>
-
                 <div className={styles.row}>
                   <fieldset>
                     <input
@@ -122,7 +126,6 @@ export default function QueryForm() {
                     />
                   </fieldset>
                 </div>
-
                 <fieldset>
                   <input
                     type="email"
@@ -135,148 +138,30 @@ export default function QueryForm() {
                     onChange={handleChange}
                   />
                 </fieldset>
-
                 <div className={styles.row}>
                   <fieldset>
-                    <label>Location</label>
+                    <label>* Location (Optional)</label>
                     <select
-                      name="city"
-                      id="city"
-                      required="required"
+                      name="location"
+                      id="location"
                       title="* Location"
-                      value={values.city}
+                      value={values.location}
                       onChange={handleChange}
                     >
                       <option value="">Select</option>
-                      <option
-                        data-ref="birmingham"
-                        data-belong="california"
-                        value="birmingham"
-                      >
-                        Birmingham
-                      </option>
-                      <option
-                        data-ref="bolsover"
-                        data-belong=""
-                        value="bolsover"
-                      >
-                        Bolsover
-                      </option>
-                      <option
-                        data-ref="bradford"
-                        data-belong=""
-                        value="bradford"
-                      >
-                        Bradford
-                      </option>
-                      <option
-                        data-ref="cambridge‎"
-                        data-belong=""
-                        value="cambridge‎"
-                      >
-                        Cambridge‎
-                      </option>
-                      <option data-ref="cardiff" data-belong="" value="cardiff">
-                        Cardiff
-                      </option>
-                      <option
-                        data-ref="edinburgh"
-                        data-belong="california"
-                        value="edinburgh"
-                      >
-                        Edinburgh
-                      </option>
-                      <option
-                        data-ref="glasgow"
-                        data-belong="california"
-                        value="glasgow"
-                      >
-                        Glasgow
-                      </option>
-                      <option
-                        data-ref="lambeth"
-                        data-belong="greater-london"
-                        value="lambeth"
-                      >
-                        Lambeth
-                      </option>
-                      <option
-                        data-ref="liverpool"
-                        data-belong=""
-                        value="liverpool"
-                      >
-                        Liverpool
-                      </option>
-                      <option data-ref="london" data-belong="" value="london">
-                        London
-                      </option>
-                      <option
-                        data-ref="manchester"
-                        data-belong=""
-                        value="manchester"
-                      >
-                        Manchester
-                      </option>
-                      <option
-                        data-ref="newcastle"
-                        data-belong="california"
-                        value="newcastle"
-                      >
-                        Newcastle
-                      </option>
-                      <option
-                        data-ref="plymouth"
-                        data-belong=""
-                        value="plymouth"
-                      >
-                        Plymouth
-                      </option>
-                      <option
-                        data-ref="southampton"
-                        data-belong=""
-                        value="southampton"
-                      >
-                        Southampton
-                      </option>
-                      <option
-                        data-ref="stratford"
-                        data-belong="greater-london"
-                        value="stratford"
-                      >
-                        Stratford
-                      </option>
-                      <option
-                        data-ref="sunderland"
-                        data-belong=""
-                        value="sunderland"
-                      >
-                        Sunderland
-                      </option>
-                      <option
-                        data-ref="wembley"
-                        data-belong="greater-london"
-                        value="wembley"
-                      >
-                        Wembley
-                      </option>
+                      {areas.map(({ title }) => (
+                        <option
+                          key={title}
+                          data-ref={title}
+                          data-belong={title}
+                          value={title}
+                        >
+                          {title}
+                        </option>
+                      ))}
                     </select>
                   </fieldset>
-
-                  <fieldset>
-                    <label>&nbsp;</label>
-                    <input
-                      type="text"
-                      name="zipcode"
-                      id="zipcode"
-                      placeholder="Zip Code"
-                      title="* Zip Code"
-                      required="required"
-                      value={values.zipcode}
-                      onChange={handleChange}
-                    />
-                  </fieldset>
                 </div>
-
                 <fieldset>
                   <label>Business</label>
                   <select
@@ -287,50 +172,41 @@ export default function QueryForm() {
                     onChange={handleChange}
                   >
                     <option value="">Select type</option>
-                    <option value="beauty-salons"> Beauty Salons</option>
-                    <option value="commercial"> Commercial</option>
-                    <option value="office">- Office</option>
-                    <option value="shop">- Shop</option>
-                    <option value="restaurants-and-cafes">
-                      Restaurants &amp; Cafes
-                    </option>
-                    <option value="cafes">- Cafes</option>
-                    <option value="fast-food-restaurants">
-                      - Fast Food Restaurants
-                    </option>
-                    <option value="restaurants">- Restaurants</option>
-                    <option value="sweetshops">- Sweet Shops</option>
+                    {sectors.map(({ title }) => (
+                      <option key={title} value={title}>
+                        {" "}
+                        {title}
+                      </option>
+                    ))}
                   </select>
                 </fieldset>
-
                 <div className={styles.row}>
                   <fieldset>
+                    <label>* (Optional)</label>
                     <input
                       type="number"
                       name="price"
                       id="price"
                       placeholder="Max price"
                       title="* Max price"
-                      required="required"
                       value={values.price}
                       onChange={handleChange}
                     />
                   </fieldset>
 
                   <fieldset>
+                    <label>* (Optional)</label>
                     <input
                       type="number"
                       name="area_size"
                       id="area_size"
                       placeholder="Minimum size (Sq Ft)"
                       title="* Minimum size (Sq Ft)"
-                      required="required"
                       value={values.area_size}
                       onChange={handleChange}
                     />
                   </fieldset>
                 </div>
-
                 <fieldset>
                   <label htmlFor="gdpr_agreement">GDPR Agreement</label>
                   <br />
@@ -348,10 +224,16 @@ export default function QueryForm() {
                 </fieldset>
                 <br />
                 <div>
-                  <button type="submit" disabled={isSubmitting}>
+                  <button
+                    type="submit"
+                    disabled={
+                      isSubmitting || !dirty || Object.keys(errors).length
+                    }
+                  >
                     Submit
                   </button>
                 </div>
+                <br />
               </div>
             </form>
           );
