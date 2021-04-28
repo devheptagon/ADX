@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "formik": "^2.2.6",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
@@ -18,11 +19,11 @@
     "react-responsive-carousel": "^3.2.15",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-tooltip": "^4.2.18",
     "redux": "^4.1.0",
     "sass": "^1.32.8",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.9",
-    "react-tooltip": "^4.2.18"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.15",

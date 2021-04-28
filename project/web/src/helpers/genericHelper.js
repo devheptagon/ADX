@@ -10,3 +10,9 @@ export const slugify = (val) =>
 export function useQuery(location) {
   return new URLSearchParams(location.search);
 }
+
+export const formatter = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "GBP",
+  minimumFractionDigits: 0,
+});

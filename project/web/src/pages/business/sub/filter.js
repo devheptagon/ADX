@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
+import lodash from "lodash";
 import { getSectors, getAreas, getKeywords } from "api/api";
 import styles from "styles/home.module.scss";
 import {
@@ -11,8 +12,10 @@ import {
   setSectorFilterAction,
   setTenureFilterAction,
 } from "redux/app/appActions";
+import { formatter } from "helpers/genericHelper";
 
 export default function Business() {
+  const debouncer = React.useRef();
   const dispatch = useDispatch();
   const {
     sectorFilter: selectedSectors,
@@ -47,34 +50,50 @@ export default function Business() {
 
   const selectSector = (selection) => {
     dispatch(setSectorFilterAction(selection));
-    //search with value
+    search({ selectedSectors: selection });
   };
 
   const selectArea = (selection) => {
     dispatch(setAreaFilterAction(selection));
-    //search with value
+    search({ selectedAreas: selection });
   };
 
   const selectKeyword = (selection) => {
     dispatch(setKeywordFilterAction(selection));
-    //search with value
+    search({ selectedKeywords: selection });
   };
 
   const selectTenure = (selection) => {
     dispatch(setTenureFilterAction(selection));
-    //search with value
+    search({ selectedTenures: selection });
   };
 
   const selectMinPrice = (e) => {
     const min = e.target.value;
     dispatch(setMinPriceFilterAction(min));
-    //debounce search
+    debouncer.current?.cancel();
+    debouncer.current = lodash.debounce(search, 750);
+    debouncer.current();
   };
 
   const selectMaxPrice = (e) => {
     const max = e.target.value;
     dispatch(setMaxPriceFilterAction(max));
-    //debounce search
+    debouncer.current?.cancel();
+    debouncer.current = lodash.debounce(search, 750);
+    debouncer.current();
+  };
+
+  const search = (lastValue) => {
+    console.log("api call", {
+      selectedSectors,
+      selectedAreas,
+      selectedTenures,
+      selectedKeywords,
+      selectedMinPrice,
+      selectedMaxPrice,
+      ...lastValue,
+    });
   };
 
   return (
@@ -124,7 +143,9 @@ export default function Business() {
           <label>
             Min. Price:{" "}
             <b>
-              {selectedMinPrice === 0 ? "(No-min)" : `£${selectedMinPrice}`}
+              {selectedMinPrice === 0
+                ? "(No-min)"
+                : formatter.format(selectedMinPrice)}
             </b>
           </label>
           <div>
@@ -141,7 +162,9 @@ export default function Business() {
           <label>
             Max. Price:{" "}
             <b>
-              {selectedMaxPrice === 0 ? "(No-max)" : `£${selectedMaxPrice}`}
+              {selectedMaxPrice === 0
+                ? "(No-max)"
+                : formatter.format(selectedMaxPrice)}
             </b>
           </label>
           <div>
