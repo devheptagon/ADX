@@ -19,7 +19,8 @@ export const getSettingsMenu = () => {
       .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />),
     S.documentTypeListItems()
       .filter((item) => item.getSchemaType().name === "tag")[0]
-      .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />),
+      .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />)
+      .title("Keywords (Tags)"),
     S.listItem()
       .title("Website Contact")
       .icon(() => <FontAwesomeIcon icon={faArrowAltCircleRight} />)

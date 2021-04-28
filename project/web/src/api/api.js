@@ -69,6 +69,11 @@ export const getAreas = async () => {
   return response;
 };
 
+export const getKeywords = async () => {
+  const response = await client.fetch(`*[_type == 'tag']{title}`);
+  return response;
+};
+
 export const postEvaluationRequest = async (values) => {
   const doc = {
     _type: "evaluation",

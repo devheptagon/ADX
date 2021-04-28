@@ -41,8 +41,8 @@ export default function Search() {
   };
 
   const search = (e) => {
-    dispatch(setSectorFilterAction(selectedSectors.map((s) => s.value)));
-    dispatch(setAreaFilterAction(selectedAreas.map((a) => a.value)));
+    dispatch(setSectorFilterAction(selectedSectors));
+    dispatch(setAreaFilterAction(selectedAreas));
     setTimeout(() => {
       history.push("/business");
     }, 500);

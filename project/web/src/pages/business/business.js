@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import MultiSelect from "react-multi-select-component";
 import { getAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import { slugify } from "../../helpers/genericHelper";
 import Loading from "pages/shared/loading";
+import Filter from "./sub/filter";
 
 export default function Business() {
   const {
@@ -30,85 +30,7 @@ export default function Business() {
       <div className={styles.inner}>
         <div className={styles.business}>
           <h1>BUSINESS</h1>
-          <details>
-            <summary>Amend your search</summary>
-            <div className={styles.filters}>
-              <div className={styles.item}>
-                <label>Sector</label>
-                <MultiSelect
-                  options={[]}
-                  value={selectedSectors}
-                  onChange={null}
-                  labelledBy="Select"
-                />
-                {!!selectedSectors.length && (
-                  <span className={styles.clear}>Clear Selected Sectors</span>
-                )}
-              </div>
-              <div className={styles.item}>
-                <label>Area</label>
-                <MultiSelect
-                  options={[]}
-                  value={selectedAreas}
-                  onChange={null}
-                  labelledBy="Select"
-                />
-                {!!selectedAreas.length && (
-                  <span className={styles.clear}>Clear Selected Areas</span>
-                )}
-              </div>
-              <div className={styles.item}>
-                <label>Tenure</label>
-                <MultiSelect
-                  options={[]}
-                  value={selectedTenures}
-                  onChange={null}
-                  labelledBy="Select"
-                />
-                {!!selectedTenures.length && (
-                  <span className={styles.clear}>Clear Selected Tenures</span>
-                )}
-              </div>
-              <div className={styles.item}>
-                <label>Keywords</label>
-                <MultiSelect
-                  options={[]}
-                  value={selectedKeywords}
-                  onChange={null}
-                  labelledBy="Select"
-                />
-                {!!selectedKeywords.length && (
-                  <span className={styles.clear}>Clear Selected Keywords</span>
-                )}
-              </div>
-              <div className={styles.item}>
-                <label>
-                  Min. Price:{" "}
-                  <b>
-                    {selectedMinPrice === 0
-                      ? "(No-min)"
-                      : `£${selectedMinPrice}`}
-                  </b>
-                </label>
-                <div>
-                  <input type="range" min={0} max={100000000} step={5000} />
-                </div>
-              </div>
-              <div className={styles.item}>
-                <label>
-                  Max. Price:{" "}
-                  <b>
-                    {selectedMaxPrice === 0
-                      ? "(No-max)"
-                      : `£${selectedMaxPrice}`}
-                  </b>
-                </label>
-                <div>
-                  <input type="range" min={0} max={100000000} step={5000} />
-                </div>
-              </div>
-            </div>
-          </details>
+          <Filter />
           {loading ? (
             <Loading />
           ) : (
