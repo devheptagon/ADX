@@ -366,9 +366,16 @@
   }
 
   .business {
+    details {
+      background-color: hsla(0, 0%, 94%, 0.8);
+      padding: 10px;
+    }
     .filters {
       display: flex;
       flex-wrap: wrap;
+      background-color: hsla(0, 0%, 94%, 0.5);
+      padding: 20px;
+      border-radius: 10px;
       .item {
         label {
           font-size: 0.8em;
@@ -380,6 +387,9 @@
           &::before {
             content: "× ";
           }
+        }
+        input[type="range"] {
+          width: 100%;
         }
       }
     }
