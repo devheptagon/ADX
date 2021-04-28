@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
 import { getSectors, getAreas } from "api/api";
@@ -21,7 +21,9 @@ export default function Search() {
       setSectors(res);
     });
     getAreas().then((res) => setAreas(res));
-  }, []);
+    dispatch(setSectorFilterAction([]));
+    dispatch(setAreaFilterAction([]));
+  }, [dispatch]);
 
   const sectorOptions = sectors.map((s) => ({
     label: s.title,

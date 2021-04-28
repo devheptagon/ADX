@@ -12,18 +12,17 @@ export default function Business() {
     loading,
     sectorFilter: selectedSectors,
     areaFilter: selectedAreas,
-    tenureFilter: selectedTenures,
-    keywordFilter: selectedKeywords,
-    minPriceFilter: selectedMinPrice,
-    maxPriceFilter: selectedMaxPrice,
   } = useSelector((state) => state.appReducer);
+
+  const selectedSectorValues = selectedSectors.map((s) => s.value);
+  const selectedAreaValues = selectedAreas.map((a) => a.value);
 
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    getAdverts(selectedSectors, selectedAreas).then((res) => {
+    getAdverts(selectedSectorValues, selectedAreaValues).then((res) => {
       setData(res);
     });
-  }, [selectedSectors, selectedAreas]);
+  }, []); //*DEP. ARRAY BOS KALMALI, YOKSA OTOMATIK CALL YAPIYOR, PRICE SLIDERLARDA SORUN
 
   return (
     <div className={styles.outer}>

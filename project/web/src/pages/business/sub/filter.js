@@ -1,10 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
 import { getSectors, getAreas, getKeywords } from "api/api";
 import styles from "styles/home.module.scss";
+import {
+  setAreaFilterAction,
+  setKeywordFilterAction,
+  setMaxPriceFilterAction,
+  setMinPriceFilterAction,
+  setSectorFilterAction,
+  setTenureFilterAction,
+} from "redux/app/appActions";
 
 export default function Business() {
+  const dispatch = useDispatch();
   const {
     sectorFilter: selectedSectors,
     areaFilter: selectedAreas,
@@ -36,8 +45,40 @@ export default function Business() {
     value: a.title,
   }));
 
+  const selectSector = (selection) => {
+    dispatch(setSectorFilterAction(selection));
+    //search with value
+  };
+
+  const selectArea = (selection) => {
+    dispatch(setAreaFilterAction(selection));
+    //search with value
+  };
+
+  const selectKeyword = (selection) => {
+    dispatch(setKeywordFilterAction(selection));
+    //search with value
+  };
+
+  const selectTenure = (selection) => {
+    dispatch(setTenureFilterAction(selection));
+    //search with value
+  };
+
+  const selectMinPrice = (e) => {
+    const min = e.target.value;
+    dispatch(setMinPriceFilterAction(min));
+    //debounce search
+  };
+
+  const selectMaxPrice = (e) => {
+    const max = e.target.value;
+    dispatch(setMaxPriceFilterAction(max));
+    //debounce search
+  };
+
   return (
-    <details>
+    <details open>
       <summary>Amend your search</summary>
       <div className={styles.filters}>
         <div className={styles.item}>
@@ -45,7 +86,7 @@ export default function Business() {
           <MultiSelect
             options={sectorOptions}
             value={selectedSectors}
-            onChange={null}
+            onChange={selectSector}
             labelledBy="Select"
           />
         </div>
@@ -54,7 +95,7 @@ export default function Business() {
           <MultiSelect
             options={areaOptions}
             value={selectedAreas}
-            onChange={null}
+            onChange={selectArea}
             labelledBy="Select"
           />
         </div>
@@ -66,7 +107,7 @@ export default function Business() {
               { label: "Freehold", value: "Freehold" },
             ]}
             value={selectedTenures}
-            onChange={null}
+            onChange={selectTenure}
             labelledBy="Select"
           />
         </div>
@@ -75,7 +116,7 @@ export default function Business() {
           <MultiSelect
             options={keywordOptions}
             value={selectedKeywords}
-            onChange={null}
+            onChange={selectKeyword}
             labelledBy="Select"
           />
         </div>
@@ -87,7 +128,13 @@ export default function Business() {
             </b>
           </label>
           <div>
-            <input type="range" min={0} max={100000000} step={5000} />
+            <input
+              type="range"
+              min={0}
+              max={10000000}
+              step={5000}
+              onChange={selectMinPrice}
+            />
           </div>
         </div>
         <div className={styles.item}>
@@ -98,7 +145,13 @@ export default function Business() {
             </b>
           </label>
           <div>
-            <input type="range" min={0} max={100000000} step={5000} />
+            <input
+              type="range"
+              min={0}
+              max={10000000}
+              step={5000}
+              onChange={selectMaxPrice}
+            />
           </div>
         </div>
       </div>
