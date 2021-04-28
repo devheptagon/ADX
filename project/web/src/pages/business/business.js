@@ -1,25 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import { slugify } from "../../helpers/genericHelper";
 import Loading from "pages/shared/loading";
 import Filter from "./sub/filter";
 
 export default function Business() {
-  const {
-    loading,
-    sectorFilter: selectedSectors,
-    areaFilter: selectedAreas,
-  } = useSelector((state) => state.appReducer);
-
-  const [data, setData] = React.useState([]);
-  React.useEffect(() => {
-    getAdverts({ selectedSectors, selectedAreas }).then((res) => {
-      setData(res);
-    });
-  }, []); //*DEP. ARRAY BOS KALMALI, YOKSA OTOMATIK CALL YAPIYOR, PRICE SLIDERLARDA SORUN
+  const { loading, adverts: data } = useSelector((state) => state.appReducer);
 
   return (
     <div className={styles.outer}>

@@ -17,8 +17,8 @@ leaseHoldPrice,
 annualRent
 `;
 
-export const getAdverts = async (filters, recordCount = 10) => {
-  //console.log(filters, recordCount);
+export const fillAdverts = async (filters) => {
+  console.log(filters);
 
   /*
   TODO: asagidaki gibi filtrelemeli
@@ -29,7 +29,10 @@ export const getAdverts = async (filters, recordCount = 10) => {
   let sql = `*[_type == 'advert']{${advertFields}}`;
   let results = await client.fetch(sql);
 
-  if (!filters) return results.slice(0, recordCount);
+  if (!filters) {
+    //dispatch results
+    return;
+  }
 
   const {
     selectedSectors,
@@ -54,9 +57,7 @@ export const getAdverts = async (filters, recordCount = 10) => {
   }
   if (results && selectedTenures && selectedTenures.length) {
     results = results.filter((f) =>
-      f.tenures.some((r) =>
-        selectedSectors.map((s) => s.value).includes(r.title)
-      )
+      f.tenures.some((r) => selectedTenures.map((s) => s.value).includes(r))
     );
   }
   if (results && selectedKeywords && selectedKeywords.length) {
@@ -78,7 +79,8 @@ export const getAdverts = async (filters, recordCount = 10) => {
       return price <= selectedMaxPrice;
     });
   }
-  return results || [];
+
+  //dispatch results
 };
 
 export const getAbout = async () => {
@@ -132,4 +134,9 @@ export const getAdvert = async (id) => {
     `*[_type == 'advert' && _id == '${id}']{${advertFields}}`
   );
   return response && response.length ? response[0] : {};
+};
+
+export const getTopAdverts = async () => {
+  let sql = `*[_type == 'advert']{${advertFields}}[0...10]`;
+  return await client.fetch(sql);
 };

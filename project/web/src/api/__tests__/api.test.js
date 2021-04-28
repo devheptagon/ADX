@@ -1,8 +1,8 @@
 /* eslint-disable jest/valid-expect */
-import { getAdverts } from "../api";
+import { fillAdverts } from "../api";
 
 describe("api", () => {
-  test("getAdverts", async () => {
+  test("fillAdverts", async () => {
     expect(true);
   });
 });

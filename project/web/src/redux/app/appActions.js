@@ -6,6 +6,7 @@ import {
   SET_KEYWORDS_FILTER_TYPE,
   SET_MINPRICE_FILTER_TYPE,
   SET_MAXPRICE_FILTER_TYPE,
+  SET_ADVERTS_TYPE,
 } from "./actionTypes";
 
 export const setLoadingAction = (loading) => ({
@@ -41,4 +42,9 @@ export const setMinPriceFilterAction = (val) => ({
 export const setMaxPriceFilterAction = (val) => ({
   type: SET_MAXPRICE_FILTER_TYPE,
   payload: { maxPriceFilter: val },
+});
+
+export const setAdvertsAction = (val) => ({
+  type: SET_ADVERTS_TYPE,
+  payload: { adverts: val },
 });

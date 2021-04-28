@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
 import lodash from "lodash";
-import { getSectors, getAreas, getKeywords, getAdverts } from "api/api";
+import { getSectors, getAreas, getKeywords, fillAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import {
   setAreaFilterAction,
@@ -72,7 +72,10 @@ export default function Business() {
     const min = e.target.value;
     dispatch(setMinPriceFilterAction(min));
     debouncer.current?.cancel();
-    debouncer.current = lodash.debounce(search, 750);
+    debouncer.current = lodash.debounce(
+      () => search({ selectedMinPrice: min }),
+      750
+    );
     debouncer.current();
   };
 
@@ -80,12 +83,15 @@ export default function Business() {
     const max = e.target.value;
     dispatch(setMaxPriceFilterAction(max));
     debouncer.current?.cancel();
-    debouncer.current = lodash.debounce(search, 750);
+    debouncer.current = lodash.debounce(
+      () => search({ selectedMaxPrice: max }),
+      750
+    );
     debouncer.current();
   };
 
   const search = (lastValue) => {
-    getAdverts({
+    fillAdverts({
       selectedSectors,
       selectedAreas,
       selectedTenures,

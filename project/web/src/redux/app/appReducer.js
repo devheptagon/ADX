@@ -6,6 +6,7 @@ import {
   SET_KEYWORDS_FILTER_TYPE,
   SET_MINPRICE_FILTER_TYPE,
   SET_MAXPRICE_FILTER_TYPE,
+  SET_ADVERTS_TYPE,
 } from "./actionTypes";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   keywordFilter: [],
   minPriceFilter: 0,
   maxPriceFilter: 0,
+  adverts: [],
 };
 
 export function appReducer(state = initialState, action) {
@@ -34,6 +36,8 @@ export function appReducer(state = initialState, action) {
       return { ...state, minPriceFilter: action.payload.minPriceFilter };
     case SET_MAXPRICE_FILTER_TYPE:
       return { ...state, maxPriceFilter: action.payload.maxPriceFilter };
+    case SET_ADVERTS_TYPE:
+      return { ...state, adverts: action.payload.adverts };
     default:
       return state;
   }

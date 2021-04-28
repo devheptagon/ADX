@@ -2,12 +2,12 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import styles from "styles/home.module.scss";
-import { getAdverts } from "api/api";
+import { getTopAdverts } from "api/api";
 
 export default function Slide() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    getAdverts(null, 10).then((res) => {
+    getTopAdverts().then((res) => {
       setData(res);
     });
   }, []);

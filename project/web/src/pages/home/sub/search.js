@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
-import { getSectors, getAreas } from "api/api";
+import { getSectors, getAreas, fillAdverts } from "api/api";
 import { useHistory } from "react-router-dom";
 import {
   setAreaFilterAction,
@@ -46,6 +46,7 @@ export default function Search() {
     dispatch(setSectorFilterAction(selectedSectors));
     dispatch(setAreaFilterAction(selectedAreas));
     setTimeout(() => {
+      fillAdverts({ selectedSectors, selectedAreas });
       history.push("/business");
     }, 500);
   };
