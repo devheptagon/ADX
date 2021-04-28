@@ -91,15 +91,18 @@ export default function Business() {
   };
 
   const search = (lastValue) => {
-    fillAdverts({
-      selectedSectors,
-      selectedAreas,
-      selectedTenures,
-      selectedKeywords,
-      selectedMinPrice,
-      selectedMaxPrice,
-      ...lastValue,
-    });
+    fillAdverts(
+      {
+        selectedSectors,
+        selectedAreas,
+        selectedTenures,
+        selectedKeywords,
+        selectedMinPrice,
+        selectedMaxPrice,
+        ...lastValue,
+      },
+      dispatch
+    );
   };
 
   return (

@@ -46,7 +46,7 @@ export default function Search() {
     dispatch(setSectorFilterAction(selectedSectors));
     dispatch(setAreaFilterAction(selectedAreas));
     setTimeout(() => {
-      fillAdverts({ selectedSectors, selectedAreas });
+      fillAdverts({ selectedSectors, selectedAreas }, dispatch);
       history.push("/business");
     }, 500);
   };

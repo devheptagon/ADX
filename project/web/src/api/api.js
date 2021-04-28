@@ -1,3 +1,4 @@
+import { setAdvertsAction } from "redux/app/appActions";
 import client from "./sanity";
 
 const advertFields = `
@@ -17,7 +18,7 @@ leaseHoldPrice,
 annualRent
 `;
 
-export const fillAdverts = async (filters) => {
+export const fillAdverts = async (filters, dispatch) => {
   console.log(filters);
 
   /*
@@ -30,7 +31,7 @@ export const fillAdverts = async (filters) => {
   let results = await client.fetch(sql);
 
   if (!filters) {
-    //dispatch results
+    dispatch(setAdvertsAction(results));
     return;
   }
 
@@ -80,7 +81,7 @@ export const fillAdverts = async (filters) => {
     });
   }
 
-  //dispatch results
+  dispatch(setAdvertsAction(results));
 };
 
 export const getAbout = async () => {
