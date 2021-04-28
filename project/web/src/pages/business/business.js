@@ -11,10 +11,10 @@ export default function Business() {
 
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    getAdverts().then((res) => {
+    getAdverts(selectedSectors, selectedAreas).then((res) => {
       setData(res);
     });
-  }, []);
+  }, [selectedSectors, selectedAreas]);
 
   return (
     <div className={styles.outer}>
@@ -38,6 +38,7 @@ export default function Business() {
                   <h3>{d.title}</h3>
                   <h5>Sectors: {d.sectors.map((s) => s.title).join(",")}</h5>
                   <h5>Keywords: {d.tags.map((t) => t.title).join(", ")}</h5>
+                  <h5>Area: {d.area}</h5>
                   <img alt="list" src={d.cover} style={{ maxWidth: "90%" }} />
                 </div>
               </Link>
