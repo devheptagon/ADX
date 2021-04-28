@@ -1,10 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import { slugify } from "../../helpers/genericHelper";
 
 export default function Business() {
+  const selectedSectors = useSelector((state) => state.appReducer.sectorFilter);
+  const selectedAreas = useSelector((state) => state.appReducer.areaFilter);
+
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
     getAdverts().then((res) => {

@@ -1,11 +1,17 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
 import { getSectors, getAreas } from "api/api";
 import { useHistory } from "react-router-dom";
+import {
+  setAreaFilterAction,
+  setSectorFilterAction,
+} from "redux/app/appActions";
 
 export default function Search() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [sectors, setSectors] = React.useState([]);
   const [areas, setAreas] = React.useState([]);
@@ -35,8 +41,11 @@ export default function Search() {
   };
 
   const search = (e) => {
-    //update(selectedSectors);
-    history.push("/business");
+    dispatch(setSectorFilterAction(selectedSectors.map((s) => s.value)));
+    dispatch(setAreaFilterAction(selectedAreas.map((a) => a.value)));
+    setTimeout(() => {
+      history.push("/business");
+    }, 500);
   };
 
   return (
