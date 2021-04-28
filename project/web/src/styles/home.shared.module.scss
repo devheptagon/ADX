@@ -366,10 +366,26 @@
   }
 
   .business {
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        label {
+          font-size: 0.8em;
+          color: gray;
+        }
+        span.clear {
+          font-size: 0.6em;
+          color: red;
+          &::before {
+            content: "× ";
+          }
+        }
+      }
+    }
     .list {
       display: flex;
       flex-wrap: wrap;
-      background-color: red;
     }
   }
 }
