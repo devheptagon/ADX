@@ -14,12 +14,9 @@ export default function Business() {
     areaFilter: selectedAreas,
   } = useSelector((state) => state.appReducer);
 
-  const selectedSectorValues = selectedSectors.map((s) => s.value);
-  const selectedAreaValues = selectedAreas.map((a) => a.value);
-
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    getAdverts(selectedSectorValues, selectedAreaValues).then((res) => {
+    getAdverts({ selectedSectors, selectedAreas }).then((res) => {
       setData(res);
     });
   }, []); //*DEP. ARRAY BOS KALMALI, YOKSA OTOMATIK CALL YAPIYOR, PRICE SLIDERLARDA SORUN

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
 import lodash from "lodash";
-import { getSectors, getAreas, getKeywords } from "api/api";
+import { getSectors, getAreas, getKeywords, getAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import {
   setAreaFilterAction,
@@ -85,7 +85,7 @@ export default function Business() {
   };
 
   const search = (lastValue) => {
-    console.log("api call", {
+    getAdverts({
       selectedSectors,
       selectedAreas,
       selectedTenures,

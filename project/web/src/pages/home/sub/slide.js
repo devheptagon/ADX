@@ -7,7 +7,7 @@ import { getAdverts } from "api/api";
 export default function Slide() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    getAdverts().then((res) => {
+    getAdverts(null, 10).then((res) => {
       setData(res);
     });
   }, []);

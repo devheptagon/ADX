@@ -34,8 +34,8 @@ export default {
       validation: (Rule) => Rule.required().min(5).max(500),
     },
     {
-      name: "tenure",
-      title: "Tenure",
+      name: "tenures",
+      title: "Tenures",
       type: "array",
       of: [{ type: "string" }],
       options: {

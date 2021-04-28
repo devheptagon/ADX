@@ -3,7 +3,6 @@ import client from "./sanity";
 const advertFields = `
 _id,_createdAt,
 title,
-freeHoldPrice,
 'tags': tags[]->{title}, 
 'area': area->title, 
 'sectors': sectors[]->{title}, 
@@ -12,28 +11,72 @@ freeHoldPrice,
 'seller': seller->fullname + '|' + seller->email + '|' + seller->phone,
 location,
 advertStatus,
-tenure,
+tenures,
 freeHoldPrice,
 leaseHoldPrice,
 annualRent
 `;
 
-export const getAdverts = async (sectors, areas) => {
+export const getAdverts = async (filters, recordCount = 10) => {
+  //console.log(filters, recordCount);
+
   /*
   TODO: asagidaki gibi filtrelemeli
   const sectorFilter = sectors && sectors.length ? "" : "1==1";
   const areaFilter = area && area.length ? "" : "1==1";
   let filter = `*[_type == 'advert' && ${sectorFilter} && ${areaFilter}]{${fields}}`;
   */
-  let filter = `*[_type == 'advert']{${advertFields}}`;
-  let results = await client.fetch(filter);
-  if (results && areas && areas.length) {
-    results = results.filter((f) => areas.includes(f.area));
-  }
-  if (results && sectors && sectors.length) {
+  let sql = `*[_type == 'advert']{${advertFields}}`;
+  let results = await client.fetch(sql);
+
+  if (!filters) return results.slice(0, recordCount);
+
+  const {
+    selectedSectors,
+    selectedAreas,
+    selectedTenures,
+    selectedKeywords,
+    selectedMinPrice,
+    selectedMaxPrice,
+  } = filters;
+
+  if (results && selectedAreas && selectedAreas.length) {
     results = results.filter((f) =>
-      f.sectors.some((r) => sectors.includes(r.title))
+      selectedAreas.map((s) => s.value).includes(f.area)
     );
+  }
+  if (results && selectedSectors && selectedSectors.length) {
+    results = results.filter((f) =>
+      f.sectors.some((r) =>
+        selectedSectors.map((s) => s.value).includes(r.title)
+      )
+    );
+  }
+  if (results && selectedTenures && selectedTenures.length) {
+    results = results.filter((f) =>
+      f.tenures.some((r) =>
+        selectedSectors.map((s) => s.value).includes(r.title)
+      )
+    );
+  }
+  if (results && selectedKeywords && selectedKeywords.length) {
+    results = results.filter((f) =>
+      f.tags.some((r) => selectedKeywords.map((s) => s.value).includes(r.title))
+    );
+  }
+  if (results && selectedMinPrice) {
+    results = results.filter((r) => {
+      const price = r.freeHoldPrice || r.leaseHoldPrice;
+      if (!price) return r;
+      return price >= selectedMinPrice;
+    });
+  }
+  if (results && selectedMaxPrice) {
+    results = results.filter((r) => {
+      const price = r.freeHoldPrice || r.leaseHoldPrice;
+      if (!price) return r;
+      return price <= selectedMaxPrice;
+    });
   }
   return results || [];
 };
