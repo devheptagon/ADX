@@ -2,6 +2,7 @@ import styles from "styles/home.module.scss";
 import moment from "moment";
 import ReactTooltip from "react-tooltip";
 import Slide from "./sub/slide";
+import Loading from "pages/shared/loading";
 
 export default function Detail(props) {
   const { data } = props;
@@ -76,5 +77,7 @@ export default function Detail(props) {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <Loading />
+  );
 }
