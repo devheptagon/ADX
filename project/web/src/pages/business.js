@@ -1,8 +1,41 @@
 import React from "react";
 import Layout from "./layout";
 import Business from "pages/business/business";
+import { useLocation, useHistory } from "react-router-dom";
+import { useQuery } from "helpers/genericHelper";
+import { useDispatch } from "react-redux";
+import {
+  setAreaFilterAction,
+  setSectorFilterAction,
+} from "redux/app/appActions";
 
 export default function Index() {
+  const history = useHistory();
+  const query = useQuery(useLocation());
+  const hasParams = query.get("p") === "true";
+  const dispatch = useDispatch();
+
+  if (hasParams) {
+    const sectors = query.get("s");
+    if (sectors) {
+      const sectorFilter = decodeURIComponent(sectors)
+        .split(",")
+        .map((s) => ({ label: s, value: s }));
+      dispatch(setSectorFilterAction(sectorFilter));
+    }
+    const areas = query.get("a");
+    if (areas) {
+      const areaFilter = decodeURIComponent(areas)
+        .split(",")
+        .map((a) => ({ label: a, value: a }));
+      dispatch(setAreaFilterAction(areaFilter));
+    }
+
+    setTimeout(() => {
+      history.replace("/business");
+    }, 1000);
+  }
+
   return (
     <Layout>
       <Business />

@@ -1,14 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "styles/home.module.scss";
 import { slugify } from "../../helpers/genericHelper";
 import Loading from "pages/shared/loading";
 import Filter from "./sub/filter";
+import { fillAdverts } from "api/api";
 
 const Business = React.memo(() => {
-  const reduxState = useSelector((state) => state.appReducer);
-  const { loading, adverts: data } = reduxState;
+  const loading = useSelector((state) => state.appReducer.loading);
+  const data = useSelector((state) => state.appReducer.adverts);
+  const sf = useSelector((state) => state.appReducer.sectorFilter);
+  const af = useSelector((state) => state.appReducer.areaFilter);
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    //coming from home with sector and/or area filter
+    if (af.length || sf.length) {
+      console.log({ sf, af });
+      fillAdverts({ selectedSectors: sf, selectedAreas: af }, dispatch);
+    }
+  }, [sf, af, dispatch]); //KEEP DEP. ARRAY EMPTY
 
   return (
     <div className={styles.outer}>

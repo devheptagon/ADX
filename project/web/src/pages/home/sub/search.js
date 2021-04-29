@@ -1,16 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
 import { useHistory } from "react-router-dom";
-import {
-  setAreaFilterAction,
-  setSectorFilterAction,
-} from "redux/app/appActions";
+import {} from "redux/app/appActions";
 
 export default function Search() {
   const history = useHistory();
-  const dispatch = useDispatch();
   const sectors = useSelector((state) => state.appReducer.sectors);
   const areas = useSelector((state) => state.appReducer.areas);
 
@@ -32,11 +28,23 @@ export default function Search() {
   };
 
   const search = (e) => {
-    dispatch(setSectorFilterAction(selectedSectors));
-    dispatch(setAreaFilterAction(selectedAreas));
-    setTimeout(() => {
-      history.push("/business");
-    }, 500);
+    const sectorParam = selectedSectors.length
+      ? selectedSectors.map((s) => encodeURIComponent(s.value)).join(",")
+      : "";
+    const areaParam = selectedAreas.length
+      ? selectedAreas.map((a) => encodeURIComponent(a.value)).join(",")
+      : "";
+
+    let param = sectorParam || areaParam ? "?p=true" : "?p=false";
+
+    if (sectorParam) {
+      param = param + "&s=" + sectorParam;
+    }
+    if (areaParam) {
+      param = param + "&a=" + areaParam;
+    }
+
+    history.push("/business" + param);
   };
 
   return (
