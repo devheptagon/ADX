@@ -57,7 +57,15 @@ export function appReducer(state = { ...initialState }, action) {
     case SET_FIRSTLOAD_TYPE:
       return { ...state, firstLoad: false };
     case RESET_FILTERS_TYPE:
-      return { ...initialState, firstLoad: false };
+      return {
+        ...state,
+        sectorFilter: [],
+        areaFilter: [],
+        tenureFilter: [],
+        keywordFilter: [],
+        minPriceFilter: 0,
+        maxPriceFilter: 0,
+      };
     default:
       return state;
   }

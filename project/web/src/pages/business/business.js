@@ -6,8 +6,9 @@ import { slugify } from "../../helpers/genericHelper";
 import Loading from "pages/shared/loading";
 import Filter from "./sub/filter";
 
-export default function Business() {
-  const { loading, adverts: data } = useSelector((state) => state.appReducer);
+const Business = React.memo(() => {
+  const reduxState = useSelector((state) => state.appReducer);
+  const { loading, adverts: data } = reduxState;
 
   return (
     <div className={styles.outer}>
@@ -48,4 +49,6 @@ export default function Business() {
       </div>
     </div>
   );
-}
+});
+
+export default Business;

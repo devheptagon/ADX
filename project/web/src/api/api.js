@@ -108,17 +108,17 @@ export const getPrivacy = async () => {
 
 export const getSectors = async () => {
   const response = await client.fetch(`*[_type == 'sector']{title}`);
-  return response;
+  return response || [];
 };
 
 export const getAreas = async () => {
   const response = await client.fetch(`*[_type == 'area']{title}`);
-  return response;
+  return response || [];
 };
 
 export const getKeywords = async () => {
   const response = await client.fetch(`*[_type == 'tag']{title}`);
-  return response;
+  return response || [];
 };
 
 export const postEvaluationRequest = async (values) => {

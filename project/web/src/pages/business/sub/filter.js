@@ -17,18 +17,23 @@ import { formatter } from "helpers/genericHelper";
 export default function Business() {
   const debouncer = React.useRef();
   const dispatch = useDispatch();
-  const {
-    sectorFilter: selectedSectors,
-    areaFilter: selectedAreas,
-    tenureFilter: selectedTenures,
-    keywordFilter: selectedKeywords,
-    minPriceFilter: selectedMinPrice,
-    maxPriceFilter: selectedMaxPrice,
-    sectors,
-    areas,
-    keywords,
-    tenures,
-  } = useSelector((state) => state.appReducer);
+
+  const selectedSectors = useSelector((state) => state.appReducer.sectorFilter);
+  const selectedAreas = useSelector((state) => state.appReducer.areaFilter);
+  const selectedTenures = useSelector((state) => state.appReducer.tenureFilter);
+  const selectedKeywords = useSelector(
+    (state) => state.appReducer.keywordFilter
+  );
+  const selectedMinPrice = useSelector(
+    (state) => state.appReducer.minPriceFilter
+  );
+  const selectedMaxPrice = useSelector(
+    (state) => state.appReducer.maxPriceFilter
+  );
+  const sectors = useSelector((state) => state.appReducer.sectors);
+  const areas = useSelector((state) => state.appReducer.areas);
+  const keywords = useSelector((state) => state.appReducer.keywords);
+  const tenures = useSelector((state) => state.appReducer.tenures);
 
   const sectorOptions = sectors.map((s) => ({
     label: s.title,
