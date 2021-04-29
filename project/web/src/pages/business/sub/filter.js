@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
 import lodash from "lodash";
-import { getSectors, getAreas, getKeywords, fillAdverts } from "api/api";
+import { fillAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import {
   setAreaFilterAction,
@@ -24,19 +24,11 @@ export default function Business() {
     keywordFilter: selectedKeywords,
     minPriceFilter: selectedMinPrice,
     maxPriceFilter: selectedMaxPrice,
+    sectors,
+    areas,
+    keywords,
+    tenures,
   } = useSelector((state) => state.appReducer);
-
-  const [sectors, setSectors] = React.useState([]);
-  const [areas, setAreas] = React.useState([]);
-  const [keywords, setKeywords] = React.useState([]);
-
-  React.useEffect(() => {
-    getSectors().then((res) => {
-      setSectors(res);
-    });
-    getAreas().then((res) => setAreas(res));
-    getKeywords().then((res) => setKeywords(res));
-  }, []);
 
   const sectorOptions = sectors.map((s) => ({
     label: s.title,
@@ -44,6 +36,10 @@ export default function Business() {
   }));
   const areaOptions = areas.map((a) => ({ label: a.title, value: a.title }));
   const keywordOptions = keywords.map((a) => ({
+    label: a.title,
+    value: a.title,
+  }));
+  const tenureOptions = tenures.map((a) => ({
     label: a.title,
     value: a.title,
   }));
@@ -130,10 +126,7 @@ export default function Business() {
         <div className={styles.item}>
           <label>Tenure</label>
           <MultiSelect
-            options={[
-              { label: "Leasehold", value: "Leasehold" },
-              { label: "Freehold", value: "Freehold" },
-            ]}
+            options={tenureOptions}
             value={selectedTenures}
             onChange={selectTenure}
             labelledBy="Select"

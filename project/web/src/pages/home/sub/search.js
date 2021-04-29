@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
-import { getSectors, getAreas, fillAdverts } from "api/api";
 import { useHistory } from "react-router-dom";
 import {
   setAreaFilterAction,
@@ -12,18 +11,8 @@ import {
 export default function Search() {
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const [sectors, setSectors] = React.useState([]);
-  const [areas, setAreas] = React.useState([]);
-
-  React.useEffect(() => {
-    getSectors().then((res) => {
-      setSectors(res);
-    });
-    getAreas().then((res) => setAreas(res));
-    dispatch(setSectorFilterAction([]));
-    dispatch(setAreaFilterAction([]));
-  }, [dispatch]);
+  const sectors = useSelector((state) => state.appReducer.sectors);
+  const areas = useSelector((state) => state.appReducer.areas);
 
   const sectorOptions = sectors.map((s) => ({
     label: s.title,
@@ -46,7 +35,6 @@ export default function Search() {
     dispatch(setSectorFilterAction(selectedSectors));
     dispatch(setAreaFilterAction(selectedAreas));
     setTimeout(() => {
-      fillAdverts({ selectedSectors, selectedAreas }, dispatch);
       history.push("/business");
     }, 500);
   };

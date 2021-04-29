@@ -2,17 +2,13 @@ import React from "react";
 import styles from "styles/home.module.scss";
 import { Formik, dis } from "formik";
 import * as yup from "yup";
-import { getSectors, getAreas, postEvaluationRequest } from "api/api";
+import { postEvaluationRequest } from "api/api";
+import { useSelector } from "react-redux";
 
 export default function QueryForm() {
-  const [sectors, setSectors] = React.useState([]);
-  const [areas, setAreas] = React.useState([]);
-  React.useEffect(() => {
-    getSectors().then((res) => {
-      setSectors(res);
-    });
-    getAreas().then((res) => setAreas(res));
-  }, []);
+  const sectors = useSelector((state) => state.appReducer.sectors);
+  const areas = useSelector((state) => state.appReducer.areas);
+
   return (
     <div className={styles.queryform}>
       <h2>Real Estate Inquiry Form</h2>
@@ -55,14 +51,14 @@ export default function QueryForm() {
         {(props) => {
           const {
             values,
-            touched,
+            //touched,
             errors,
             dirty,
             isSubmitting,
             handleChange,
-            handleBlur,
+            //handleBlur,
             handleSubmit,
-            handleReset,
+            //handleReset,
           } = props;
           return (
             <form onSubmit={handleSubmit}>

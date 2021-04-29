@@ -2,15 +2,11 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import styles from "styles/home.module.scss";
-import { getTopAdverts } from "api/api";
+import { useSelector } from "react-redux";
 
 export default function Slide() {
-  const [data, setData] = React.useState([]);
-  React.useEffect(() => {
-    getTopAdverts().then((res) => {
-      setData(res);
-    });
-  }, []);
+  const adverts = useSelector((state) => state.appReducer.adverts);
+  const data = adverts ? adverts.slice(0, 10) : [];
 
   return (
     <div className={`${styles.outer} ${styles["slide-bg"]}`}>
@@ -21,7 +17,7 @@ export default function Slide() {
           <Carousel className={styles.carousel} showArrows={true} swipeable>
             {data.map((d) => (
               <div key={d.title}>
-                <img src={d.cover} />
+                <img src={d.cover} alt="cover" />
                 <p className="legend">
                   {d.title}
                   <br />£{d.freeHoldPrice}

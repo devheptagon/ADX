@@ -7,6 +7,11 @@ import {
   SET_MINPRICE_FILTER_TYPE,
   SET_MAXPRICE_FILTER_TYPE,
   SET_ADVERTS_TYPE,
+  SET_FIRSTLOAD_TYPE,
+  RESET_FILTERS_TYPE,
+  SET_SECTORS_TYPE,
+  SET_AREAS_TYPE,
+  SET_KEYWORDS_TYPE,
 } from "./actionTypes";
 
 export const setLoadingAction = (loading) => ({
@@ -47,4 +52,27 @@ export const setMaxPriceFilterAction = (val) => ({
 export const setAdvertsAction = (val) => ({
   type: SET_ADVERTS_TYPE,
   payload: { adverts: val },
+});
+
+export const setSectorsAction = (val) => ({
+  type: SET_SECTORS_TYPE,
+  payload: { sectors: val },
+});
+
+export const setAreasAction = (val) => ({
+  type: SET_AREAS_TYPE,
+  payload: { areas: val },
+});
+
+export const setKeywordsAction = (val) => ({
+  type: SET_KEYWORDS_TYPE,
+  payload: { keywords: val },
+});
+
+export const setFirstLoadAction = () => ({
+  type: SET_FIRSTLOAD_TYPE,
+});
+
+export const resetFiltersAction = () => ({
+  type: RESET_FILTERS_TYPE,
 });
