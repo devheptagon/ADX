@@ -6,7 +6,6 @@ import Loading from "pages/shared/loading";
 
 export default function Detail(props) {
   const { data } = props;
-  console.log(data);
   const sellerInfo = data?.seller?.split("|") || ["", "", ""];
   return data ? (
     <div className={styles.outer}>

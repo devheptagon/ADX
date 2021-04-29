@@ -1,4 +1,4 @@
-import { setAdvertsAction } from "redux/app/appActions";
+import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
 import client from "./sanity";
 
 const advertFields = `
@@ -19,16 +19,17 @@ annualRent
 `;
 
 export const fillAdverts = async (filters, dispatch) => {
-  console.log(filters);
-
   /*
   TODO: asagidaki gibi filtrelemeli
   const sectorFilter = sectors && sectors.length ? "" : "1==1";
   const areaFilter = area && area.length ? "" : "1==1";
   let filter = `*[_type == 'advert' && ${sectorFilter} && ${areaFilter}]{${fields}}`;
   */
+
+  dispatch(setLoadingAction(true));
   let sql = `*[_type == 'advert']{${advertFields}}`;
   let results = await client.fetch(sql);
+  dispatch(setLoadingAction(false));
 
   if (!filters) {
     dispatch(setAdvertsAction(results));
@@ -66,18 +67,18 @@ export const fillAdverts = async (filters, dispatch) => {
       f.tags.some((r) => selectedKeywords.map((s) => s.value).includes(r.title))
     );
   }
-  if (results && selectedMinPrice) {
+  if (results && +selectedMinPrice) {
     results = results.filter((r) => {
       const price = r.freeHoldPrice || r.leaseHoldPrice;
       if (!price) return r;
-      return price >= selectedMinPrice;
+      return +price >= +selectedMinPrice;
     });
   }
-  if (results && selectedMaxPrice) {
+  if (results && +selectedMaxPrice) {
     results = results.filter((r) => {
       const price = r.freeHoldPrice || r.leaseHoldPrice;
       if (!price) return r;
-      return price <= selectedMaxPrice;
+      return +price <= +selectedMaxPrice;
     });
   }
 

@@ -40,8 +40,8 @@ export default function Business() {
     value: a.title,
   }));
   const tenureOptions = tenures.map((a) => ({
-    label: a.title,
-    value: a.title,
+    label: a,
+    value: a,
   }));
 
   const selectSector = (selection) => {
@@ -145,7 +145,7 @@ export default function Business() {
           <label>
             Min. Price:{" "}
             <b>
-              {selectedMinPrice === 0
+              {selectedMinPrice == 0
                 ? "(No-min)"
                 : formatter.format(selectedMinPrice)}
             </b>
@@ -164,7 +164,7 @@ export default function Business() {
           <label>
             Max. Price:{" "}
             <b>
-              {selectedMaxPrice === 0
+              {selectedMaxPrice == 0
                 ? "(No-max)"
                 : formatter.format(selectedMaxPrice)}
             </b>
