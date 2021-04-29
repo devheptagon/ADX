@@ -81,6 +81,7 @@ export const fillAdverts = async (filters, dispatch) => {
       return +price <= +selectedMaxPrice;
     });
   }
+
   //TODO: PAGING
   dispatch(setAdvertsAction(results));
 };

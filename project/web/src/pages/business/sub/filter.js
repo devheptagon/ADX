@@ -14,7 +14,7 @@ import {
 } from "redux/app/appActions";
 import { formatter } from "helpers/genericHelper";
 
-export default function Business() {
+const Filter = React.memo(() => {
   const debouncer = React.useRef();
   const dispatch = useDispatch();
 
@@ -187,4 +187,6 @@ export default function Business() {
       </div>
     </details>
   );
-}
+});
+
+export default Filter;

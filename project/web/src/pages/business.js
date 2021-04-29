@@ -31,9 +31,7 @@ export default function Index() {
       dispatch(setAreaFilterAction(areaFilter));
     }
 
-    setTimeout(() => {
-      history.replace("/business");
-    }, 1000);
+    history.replace("/business");
   }
 
   return (
