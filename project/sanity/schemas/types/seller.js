@@ -16,7 +16,7 @@ export default {
       title: "Email",
       name: "email",
       type: "string",
-      validation: (Rule) => Rule.email(),
+      validation: (Rule) => Rule.required().email(),
     },
     {
       name: "Password",
@@ -29,7 +29,7 @@ export default {
       name: "phone",
       type: "string",
       validation: (Rule) =>
-        Rule.optional()
+        Rule.required()
           .custom((val) => (validPhone(val) ? true : "invalid phone"))
           .error(),
     },
