@@ -9,7 +9,8 @@
   "scripts": {
     "start": "sanity start",
     "build": "sanity build",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "patch": "patch-package sanity-super-pane"
   },
   "keywords": [
     "sanity"
@@ -18,19 +19,19 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@sanity/base": "^2.7.4",
+    "@sanity/base": "^2.10.0",
     "@sanity/components": "^2.2.6",
-    "@sanity/core": "^2.7.4",
-    "@sanity/default-layout": "^2.7.4",
-    "@sanity/default-login": "^2.7.0",
-    "@sanity/desk-tool": "^2.7.4",
-    "@sanity/vision": "^2.7.4",
+    "@sanity/core": "^2.10.0",
+    "@sanity/default-layout": "^2.10.0",
+    "@sanity/default-login": "^2.8.0",
+    "@sanity/desk-tool": "^2.10.1",
+    "@sanity/vision": "^2.10.0",
     "dotenv": "^8.2.0",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-barcode": "^1.3.2",
     "react-dom": "^17.0",
-    "sanity-super-pane": "1.0.0-alpha.2"
+    "sanity-super-pane": "^1.0.0-alpha.3"
   },
   "devDependencies": {
     "patch-package": "^6.4.7"

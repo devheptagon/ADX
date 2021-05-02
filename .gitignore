@@ -1,3 +1,4 @@
 temp
+!*/**/node_modules/sanity-super-pane/dist/index.esm.js
 */**/node_modules
 project/sanity/dist/index.html
