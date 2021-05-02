@@ -1,9 +1,16 @@
 import styles from "styles/home.module.scss";
 import moment from "moment";
 import ReactTooltip from "react-tooltip";
+import BlockContent from "@sanity/block-content-to-react";
 import Slide from "./sub/slide";
 import Loading from "pages/shared/loading";
 import { formatter } from "helpers/genericHelper";
+
+const serializers = {
+  types: {
+    undefined: (props) => null,
+  },
+};
 
 export default function Detail(props) {
   const { data } = props;
@@ -73,6 +80,15 @@ export default function Detail(props) {
               <tr>
                 <td colSpan="3">
                   <b>Tags:</b> {data.tags.map((s) => s.title).join(",")}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="3">
+                  {" "}
+                  <BlockContent
+                    blocks={data.description}
+                    serializers={serializers}
+                  />
                 </td>
               </tr>
             </tbody>

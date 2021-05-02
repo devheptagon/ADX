@@ -15,7 +15,8 @@ advertStatus,
 tenures,
 freeHoldPrice,
 leaseHoldPrice,
-annualRent
+annualRent,
+description
 `;
 
 export const fillAdverts = async (filters, dispatch) => {
