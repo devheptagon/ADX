@@ -45,6 +45,7 @@ export default function QueryForm() {
           resetForm({});
           setStatus({ success: true });
           alert("Request received, thanks");
+          window.location.href = window.location.href;
           return false;
         }}
       >
@@ -182,7 +183,7 @@ export default function QueryForm() {
                 </fieldset>
                 <div className={styles.row}>
                   <fieldset>
-                    <label>* (Optional)</label>
+                    <label>* (Optional Max Price) (£)</label>
                     <input
                       type="number"
                       name="price"
@@ -191,11 +192,12 @@ export default function QueryForm() {
                       title="* Max price"
                       value={values.price}
                       onChange={handleChange}
+                      min={0}
                     />
                   </fieldset>
 
                   <fieldset>
-                    <label>* (Optional)</label>
+                    <label>* (Optional Min Size)</label>
                     <input
                       type="number"
                       name="area_size"
@@ -204,6 +206,7 @@ export default function QueryForm() {
                       title="* Minimum size (Sq Ft)"
                       value={values.area_size}
                       onChange={handleChange}
+                      min={0}
                     />
                   </fieldset>
                 </div>

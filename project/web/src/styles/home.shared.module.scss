@@ -144,6 +144,10 @@
       margin: 40px 0;
       border: 10px solid white;
       background-color: white;
+      img {
+        max-height: 500px;
+        aspect-ratio: 1.5;
+      }
     }
   }
 

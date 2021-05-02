@@ -3,6 +3,7 @@ import moment from "moment";
 import ReactTooltip from "react-tooltip";
 import Slide from "./sub/slide";
 import Loading from "pages/shared/loading";
+import { formatter } from "helpers/genericHelper";
 
 export default function Detail(props) {
   const { data } = props;
@@ -12,6 +13,7 @@ export default function Detail(props) {
       <div className={styles.inner}>
         <div className={styles.detail}>
           <h1>{data.title}</h1>
+          <Slide data={data.images} />
           <table>
             <tbody>
               <tr>
@@ -42,13 +44,16 @@ export default function Detail(props) {
               </tr>
               <tr>
                 <td>
-                  <b>Freehold price </b>£{data.freeHoldPrice}
+                  <b>Freehold price </b>
+                  {data.freeHoldPrice && formatter.format(data.freeHoldPrice)}
                 </td>
                 <td>
-                  <b>Leashold price </b>£{data.leaseHoldPrice}
+                  <b>Leashold price </b>
+                  {data.leaseHoldPrice && formatter.format(data.leaseHoldPrice)}
                 </td>
                 <td>
-                  <b>Annual rent </b>£{data.annualRent}
+                  <b>Annual rent </b>
+                  {data.annualRent && formatter.format(data.annualRent)}
                 </td>
               </tr>
               <tr>
@@ -72,7 +77,6 @@ export default function Detail(props) {
               </tr>
             </tbody>
           </table>
-          <Slide data={data.images} />
         </div>
       </div>
     </div>
