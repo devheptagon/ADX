@@ -14,6 +14,13 @@ export default {
       validation: (Rule) => Rule.required(),
     },
   ],
+  /*   orderings: [
+    {
+      title: "Title, Alphabetic",
+      name: "titleAlphabetic",
+      by: [{ field: "title", direction: "asc" }],
+    },
+  ], */
   preview: {
     select: {
       title: "title",
