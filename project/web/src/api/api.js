@@ -28,7 +28,7 @@ export const fillAdverts = async (filters, dispatch) => {
   */
 
   dispatch(setLoadingAction(true));
-  let sql = `*[_type == 'advert']{${advertFields}}| order(_createdAt desc)`;
+  let sql = `*[_type == 'advert' && !(_id in path("drafts.**"))]{${advertFields}}| order(_createdAt desc)`;
   let results = await client.fetch(sql);
   dispatch(setLoadingAction(false));
 
@@ -91,41 +91,43 @@ export const fillAdverts = async (filters, dispatch) => {
 
 export const getAbout = async () => {
   const response = await client.fetch(
-    `*[_type == 'adminabout' && _id =='adminabout1']{about}`
+    `*[_type == 'adminabout' && !(_id in path("drafts.**")) && _id =='adminabout1']{about}`
   );
   return response[0].about[0].children[0].text;
 };
 
 export const getContact = async () => {
   const response = await client.fetch(
-    `*[_type == 'admincontact' && _id =='admincontact1']`
+    `*[_type == 'admincontact' && !(_id in path("drafts.**")) && _id =='admincontact1']`
   );
   return response[0];
 };
 
 export const getPrivacy = async () => {
   const response = await client.fetch(
-    `*[_type == 'adminterms' && _id =='adminterms']`
+    `*[_type == 'adminterms' && !(_id in path("drafts.**")) && _id =='adminterms']`
   );
   return response[0].terms;
 };
 
 export const getSectors = async () => {
   const response = await client.fetch(
-    `*[_type == 'sector']{title}| order(title asc)`
+    `*[_type == 'sector' && !(_id in path("drafts.**"))]{title}| order(title asc)`
   );
   return response || [];
 };
 
 export const getAreas = async () => {
   const response = await client.fetch(
-    `*[_type == 'area']{title}| order(title asc)`
+    `*[_type == 'area' && !(_id in path("drafts.**"))]{title}| order(title asc)`
   );
   return response || [];
 };
 
 export const getKeywords = async () => {
-  const response = await client.fetch(`*[_type == 'tag']{title}`);
+  const response = await client.fetch(
+    `*[_type == 'tag' && !(_id in path("drafts.**"))]{title}`
+  );
   return response || [];
 };
 
@@ -149,6 +151,6 @@ export const getAdvert = async (id) => {
 };
 
 export const getTopAdverts = async () => {
-  let sql = `*[_type == 'advert']{${advertFields}}[0...10]`;
+  let sql = `*[_type == 'advert' && !(_id in path("drafts.**"))]{${advertFields}}| order(_createdAt desc)[0...10]`;
   return await client.fetch(sql);
 };
