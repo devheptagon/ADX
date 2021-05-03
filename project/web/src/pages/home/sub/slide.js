@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import styles from "styles/home.module.scss";
 import { useSelector } from "react-redux";
+import { formatter, slugify } from "helpers/genericHelper";
 
 export default function Slide() {
   const adverts = useSelector((state) => state.appReducer.adverts);
@@ -16,13 +18,22 @@ export default function Slide() {
           <h2>Our featured suggestions can save you time</h2>
           <Carousel className={styles.carousel} showArrows={true} swipeable>
             {data.map((d) => (
-              <div key={d.title}>
-                <img src={d.cover} alt="cover" />
-                <p className="legend">
-                  {d.title}
-                  <br />£{d.freeHoldPrice}
-                </p>
-              </div>
+              <Link
+                key={d._id}
+                to={`/detail?id=${d._id}&title=${slugify(d.title)}`}
+                as={`/${d._id}?t=${slugify(d.title)}`}
+              >
+                <div>
+                  <img src={d.cover} alt="cover" />
+                  <p className="legend">
+                    {d.title}
+                    <br />
+                    {d.location?.postcode && d.location?.postcode.toUpperCase()}
+                    <br />
+                    {d.freeHoldPrice ? formatter.format(d.freeHoldPrice) : ""}
+                  </p>
+                </div>
+              </Link>
             ))}
           </Carousel>
         </div>

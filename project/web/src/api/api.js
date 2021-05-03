@@ -134,6 +134,8 @@ export const postEvaluationRequest = async (values) => {
     _type: "evaluation",
     ...values,
   };
+  if (doc.price) doc.price = doc.price.toString();
+  if (doc.area_size) doc.area_size = doc.area_size.toString();
   delete doc.gdpr_agreement;
   const response = await client.create(doc);
   return response;
