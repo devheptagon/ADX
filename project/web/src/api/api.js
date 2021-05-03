@@ -28,7 +28,7 @@ export const fillAdverts = async (filters, dispatch) => {
   */
 
   dispatch(setLoadingAction(true));
-  let sql = `*[_type == 'advert']{${advertFields}}`;
+  let sql = `*[_type == 'advert']{${advertFields}}| order(_createdAt desc)`;
   let results = await client.fetch(sql);
   dispatch(setLoadingAction(false));
 
@@ -48,24 +48,26 @@ export const fillAdverts = async (filters, dispatch) => {
 
   if (results && selectedAreas && selectedAreas.length) {
     results = results.filter((f) =>
-      selectedAreas.map((s) => s.value).includes(f.area)
+      selectedAreas?.map((s) => s.value).includes(f.area)
     );
   }
   if (results && selectedSectors && selectedSectors.length) {
     results = results.filter((f) =>
-      f.sectors.some((r) =>
-        selectedSectors.map((s) => s.value).includes(r.title)
+      f.sectors?.some((r) =>
+        selectedSectors?.map((s) => s.value).includes(r.title)
       )
     );
   }
   if (results && selectedTenures && selectedTenures.length) {
     results = results.filter((f) =>
-      f.tenures.some((r) => selectedTenures.map((s) => s.value).includes(r))
+      f.tenures?.some((r) => selectedTenures?.map((s) => s.value).includes(r))
     );
   }
   if (results && selectedKeywords && selectedKeywords.length) {
     results = results.filter((f) =>
-      f.tags.some((r) => selectedKeywords.map((s) => s.value).includes(r.title))
+      f.tags?.some((r) =>
+        selectedKeywords?.map((s) => s.value).includes(r.title)
+      )
     );
   }
   if (results && +selectedMinPrice) {
@@ -109,12 +111,16 @@ export const getPrivacy = async () => {
 };
 
 export const getSectors = async () => {
-  const response = await client.fetch(`*[_type == 'sector']{title}`);
+  const response = await client.fetch(
+    `*[_type == 'sector']{title}| order(title asc)`
+  );
   return response || [];
 };
 
 export const getAreas = async () => {
-  const response = await client.fetch(`*[_type == 'area']{title}`);
+  const response = await client.fetch(
+    `*[_type == 'area']{title}| order(title asc)`
+  );
   return response || [];
 };
 

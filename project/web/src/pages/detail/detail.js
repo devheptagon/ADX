@@ -42,7 +42,7 @@ export default function Detail(props) {
               </tr>
               <tr>
                 <td>
-                  <b>Sectors:</b> {data.sectors.map((s) => s.title).join(",")}
+                  <b>Sectors:</b> {data.sectors?.map((s) => s.title).join(",")}
                 </td>
                 <td>
                   <b>Area:</b> {data.area}
@@ -52,15 +52,17 @@ export default function Detail(props) {
               <tr>
                 <td>
                   <b>Freehold price </b>
-                  {data.freeHoldPrice && formatter.format(data.freeHoldPrice)}
+                  {data.freeHoldPrice &&
+                    formatter.format(data.freeHoldPrice || 0)}
                 </td>
                 <td>
                   <b>Leashold price </b>
-                  {data.leaseHoldPrice && formatter.format(data.leaseHoldPrice)}
+                  {data.leaseHoldPrice &&
+                    formatter.format(data.leaseHoldPrice || 0)}
                 </td>
                 <td>
                   <b>Annual rent </b>
-                  {data.annualRent && formatter.format(data.annualRent)}
+                  {data.annualRent && formatter.format(data.annualRent || 0)}
                 </td>
               </tr>
               <tr>
@@ -79,7 +81,7 @@ export default function Detail(props) {
               </tr>
               <tr>
                 <td colSpan="3">
-                  <b>Tags:</b> {data.tags.map((s) => s.title).join(",")}
+                  <b>Tags:</b> {data.tags?.map((s) => s.title).join(",")}
                 </td>
               </tr>
               <tr>

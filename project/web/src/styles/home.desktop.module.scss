@@ -111,6 +111,18 @@
       .list {
         .item {
           width: 50%;
+          img {
+            width: 100%;
+            @media screen and (min-width: 1000px) and (min-width: 1500px) {
+              height: 300px;
+            }
+            @media screen and (min-width: 1501px) and (min-width: 1800px) {
+              height: 400px;
+            }
+            @media screen and (min-width: 1800px) {
+              height: 500px;
+            }
+          }
         }
       }
     }
