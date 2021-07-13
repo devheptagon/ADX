@@ -62,4 +62,158 @@ public class SellerService
         return result;
     }
 
+    public static void DeleteSeller(string id)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(SellerSqlStrings.DeleteSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@seller_id"].Value = id;
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+    public static void AddSeller(SellerEntity entity)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(SellerSqlStrings.AddSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar));
+                sqlCommand.Parameters["@fullname"].Value = entity.fullname;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters["@email"].Value = entity.email;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar));
+                sqlCommand.Parameters["@phone"].Value = entity.phone;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@avatar", SqlDbType.VarChar));
+                sqlCommand.Parameters["@avatar"].Value = entity.avatar;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line1"].Value = entity.line1;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line2"].Value = entity.line2;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters["@city"].Value = entity.city;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@county", SqlDbType.VarChar));
+                sqlCommand.Parameters["@county"].Value = entity.county;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@region", SqlDbType.VarChar));
+                sqlCommand.Parameters["@region"].Value = entity.region;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters["@postcode"].Value = entity.postcode;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
+                    //{
+                    //    writer.Write(exp.Message);
+                    //    writer.Close();
+                    //}
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+    public static void UpdateSeller(SellerEntity entity)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(SellerSqlStrings.UpdateSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.UniqueIdentifier));
+                sqlCommand.Parameters["@id"].Value = entity.id;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar));
+                sqlCommand.Parameters["@fullname"].Value = entity.fullname;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters["@email"].Value = entity.email;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar));
+                sqlCommand.Parameters["@phone"].Value = entity.phone;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@avatar", SqlDbType.VarChar));
+                sqlCommand.Parameters["@avatar"].Value = entity.avatar;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line1"].Value = entity.line1;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line2"].Value = entity.line2;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters["@city"].Value = entity.city;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@county", SqlDbType.VarChar));
+                sqlCommand.Parameters["@county"].Value = entity.county;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@region", SqlDbType.VarChar));
+                sqlCommand.Parameters["@region"].Value = entity.region;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters["@postcode"].Value = entity.postcode;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
+                    //{
+                    //    writer.Write(exp.Message);
+                    //    writer.Close();
+                    //}
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+
 }

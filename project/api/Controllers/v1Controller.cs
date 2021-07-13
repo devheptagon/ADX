@@ -31,6 +31,15 @@ namespace adx
         [HttpGet("sellers")]
         [HttpGet("sellers/{id?}")]
         public SellerResponse GetSellers() { return SellerEndpoints.GetSellers(RouteData); }
+
+        [HttpPost("sellers")]
+        public void AddSellers([FromBody] SellerRequest request) { SellerEndpoints.AddSeller(request.Data); }
+
+        [HttpPatch("sellers")]
+        public void UpdateSellers([FromBody] SellerRequest request) { SellerEndpoints.UpdateSeller(request.Data); }
+
+        [HttpDelete("sellers/{id?}")]
+        public void DeleteSeller() { SellerEndpoints.DeleteSeller(RouteData); }
         #endregion
 
     }
