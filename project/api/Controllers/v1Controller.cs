@@ -57,6 +57,20 @@ namespace adx
         public void DeleteArea() { AreaEndpoints.DeleteArea(RouteData); }
         #endregion
 
+        #region Sector Endpoints
+        [HttpGet("sectors")]
+        [HttpGet("sectors/{id?}")]
+        public SectorResponse GetSectors() { return SectorEndpoints.GetSectors(RouteData); }
+
+        [HttpPost("sectors")]
+        public void AddSector([FromBody] SectorRequest request) { SectorEndpoints.AddSector(request.Data); }
+
+        [HttpPatch("sectors")]
+        public void UpdateSector([FromBody] SectorRequest request) { SectorEndpoints.UpdateSector(request.Data); }
+
+        [HttpDelete("sectors/{id?}")]
+        public void DeleteSector() { SectorEndpoints.DeleteSector(RouteData); }
+        #endregion
     }
 
 

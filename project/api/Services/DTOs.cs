@@ -65,4 +65,20 @@ namespace adx
         public List<AreaEntity> Data { get; set; }
     }
     #endregion
+
+    #region SectorRequest
+    public class SectorRequest
+    {
+        public SectorRequest() { }  //required for json serialisation        
+
+        public SectorEntity Data { get; set; }
+    }
+
+    public class SectorResponse
+    {
+        public SectorResponse() { } //required for json serialisation        
+
+        public List<SectorEntity> Data { get; set; }
+    }
+    #endregion
 }
