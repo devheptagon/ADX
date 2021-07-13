@@ -45,7 +45,7 @@ public class AdvertService
         {
             var item = new AdvertEntity();
             item.areas = row["areas"] == DBNull.Value ? "" : (string)row["areas"];
-            item.id = (int?)row["id"];
+            item.id = (System.Guid)row["id"];
             item.sectors = row["sectors"] == DBNull.Value ? "" : (string)row["sectors"];
             item.tags = row["tags"] == DBNull.Value ? "" : (string)row["tags"];
             item.title = row["title"] == DBNull.Value ? "" : (string)row["title"];
