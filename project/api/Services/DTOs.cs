@@ -18,4 +18,20 @@ namespace adx
     }
     #endregion
 
+    #region AdvertRequest
+    public class AdvertRequest
+    {
+        public AdvertRequest() { }  //required for json serialisation        
+
+        public AdvertEntity Data { get; set; }
+    }
+
+    public class AdvertResponse
+    {
+        public AdvertResponse() { } //required for json serialisation        
+
+        public List<AdvertEntity> Data { get; set; }
+    }
+    #endregion
+
 }

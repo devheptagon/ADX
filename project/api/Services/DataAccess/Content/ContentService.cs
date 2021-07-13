@@ -1,4 +1,5 @@
 
+using adx.Services;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,10 @@ using System.IO;
 
 public class ContentService
 {
-    public static IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-
-    public static string connStr = config.GetSection("ConnectionStrings")["adx"];
-
     public static List<ContentEntity> GetContents()
     {
         DataTable dataTable = new DataTable();
-        using (SqlConnection connection = new SqlConnection(connStr))
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
             using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.SelectSql, connection))
             {
@@ -53,6 +50,83 @@ public class ContentService
         }
         return result;
     }
+
+    public static void UpdateContent(ContentEntity entity)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.UpdateSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.Add(new SqlParameter("@about", SqlDbType.VarChar));
+                sqlCommand.Parameters["@about"].Value = entity.about;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@terms", SqlDbType.VarChar));
+                sqlCommand.Parameters["@terms"].Value = entity.terms;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar));
+                sqlCommand.Parameters["@address"].Value = entity.address;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar));
+                sqlCommand.Parameters["@phone"].Value = entity.phone;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters["@email"].Value = entity.email;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@facebook", SqlDbType.VarChar));
+                sqlCommand.Parameters["@facebook"].Value = entity.facebook;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@twitter", SqlDbType.VarChar));
+                sqlCommand.Parameters["@twitter"].Value = entity.twitter;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@linkedin", SqlDbType.VarChar));
+                sqlCommand.Parameters["@linkedin"].Value = entity.linkedin;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@instagram", SqlDbType.VarChar));
+                sqlCommand.Parameters["@instagram"].Value = entity.instagram;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@youtube", SqlDbType.VarChar));
+                sqlCommand.Parameters["@youtube"].Value = entity.youtube;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+    //public void DeleteMetaRequest(string connString, int id)
+    //{
+    //    using (SqlConnection connection = new SqlConnection(connString))
+    //    {
+    //        using (SqlCommand sqlCommand = new SqlCommand(ContentRequestSqlStrings.DeleteSql, connection))
+    //        {
+    //            sqlCommand.CommandType = CommandType.Text;
+    //            sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 50));
+    //            sqlCommand.Parameters["@id"].Value = id;
+    //            try
+    //            {
+    //                connection.Open();
+    //                sqlCommand.ExecuteNonQuery();
+    //            }
+    //            finally
+    //            {
+    //                connection.Close();
+    //            }
+    //        }
+    //    }
+    //}
+
 
     //public DataRow GetMetaRequestById(string connString, int id)
     //{
@@ -135,79 +209,4 @@ public class ContentService
     //    return id;
     //}
 
-    public static void UpdateContent(ContentEntity entity)
-    {
-        using (SqlConnection connection = new SqlConnection(connStr))
-        {
-            using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.UpdateSql, connection))
-            {
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@about", SqlDbType.VarChar));
-                sqlCommand.Parameters["@about"].Value = entity.about;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@terms", SqlDbType.VarChar));
-                sqlCommand.Parameters["@terms"].Value = entity.terms;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar));
-                sqlCommand.Parameters["@address"].Value = entity.address;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar));
-                sqlCommand.Parameters["@phone"].Value = entity.phone;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
-                sqlCommand.Parameters["@email"].Value = entity.email;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@facebook", SqlDbType.VarChar));
-                sqlCommand.Parameters["@facebook"].Value = entity.facebook;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@twitter", SqlDbType.VarChar));
-                sqlCommand.Parameters["@twitter"].Value = entity.twitter;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@linkedin", SqlDbType.VarChar));
-                sqlCommand.Parameters["@linkedin"].Value = entity.linkedin;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@instagram", SqlDbType.VarChar));
-                sqlCommand.Parameters["@instagram"].Value = entity.instagram;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@youtube", SqlDbType.VarChar));
-                sqlCommand.Parameters["@youtube"].Value = entity.youtube;
-
-                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
-                {
-                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
-                }
-                try
-                {
-                    connection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-    }
-
-    //public void DeleteMetaRequest(string connString, int id)
-    //{
-    //    using (SqlConnection connection = new SqlConnection(connString))
-    //    {
-    //        using (SqlCommand sqlCommand = new SqlCommand(ContentRequestSqlStrings.DeleteSql, connection))
-    //        {
-    //            sqlCommand.CommandType = CommandType.Text;
-    //            sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 50));
-    //            sqlCommand.Parameters["@id"].Value = id;
-    //            try
-    //            {
-    //                connection.Open();
-    //                sqlCommand.ExecuteNonQuery();
-    //            }
-    //            finally
-    //            {
-    //                connection.Close();
-    //            }
-    //        }
-    //    }
-    //}
 }
