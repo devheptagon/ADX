@@ -34,4 +34,20 @@ namespace adx
     }
     #endregion
 
+    #region SellerRequest
+    public class SellerRequest
+    {
+        public SellerRequest() { }  //required for json serialisation        
+
+        public SellerEntity Data { get; set; }
+    }
+
+    public class SellerResponse
+    {
+        public SellerResponse() { } //required for json serialisation        
+
+        public List<SellerEntity> Data { get; set; }
+    }
+    #endregion
+
 }

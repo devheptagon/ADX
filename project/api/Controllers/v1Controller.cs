@@ -27,6 +27,12 @@ namespace adx
         public AdvertResponse GetAdverts() { return AdvertEndpoints.GetAdverts(RouteData); }
         #endregion
 
+        #region Seller Endpoints
+        [HttpGet("sellers")]
+        [HttpGet("sellers/{id?}")]
+        public SellerResponse GetSellers() { return SellerEndpoints.GetSellers(RouteData); }
+        #endregion
+
     }
 
 
