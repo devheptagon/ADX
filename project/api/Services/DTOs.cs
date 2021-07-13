@@ -81,4 +81,20 @@ namespace adx
         public List<SectorEntity> Data { get; set; }
     }
     #endregion
+
+    #region TagRequest
+    public class TagRequest
+    {
+        public TagRequest() { }  //required for json serialisation        
+
+        public TagEntity Data { get; set; }
+    }
+
+    public class TagResponse
+    {
+        public TagResponse() { } //required for json serialisation        
+
+        public List<TagEntity> Data { get; set; }
+    }
+    #endregion
 }

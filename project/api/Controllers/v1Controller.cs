@@ -71,6 +71,21 @@ namespace adx
         [HttpDelete("sectors/{id?}")]
         public void DeleteSector() { SectorEndpoints.DeleteSector(RouteData); }
         #endregion
+
+        #region Tag Endpoints
+        [HttpGet("tags")]
+        [HttpGet("tags/{id?}")]
+        public TagResponse GetTags() { return TagEndpoints.GetTags(RouteData); }
+
+        [HttpPost("tags")]
+        public void AddTag([FromBody] TagRequest request) { TagEndpoints.AddTag(request.Data); }
+
+        [HttpPatch("tags")]
+        public void UpdateTag([FromBody] TagRequest request) { TagEndpoints.UpdateTag(request.Data); }
+
+        [HttpDelete("tags/{id?}")]
+        public void DeleteTag() { TagEndpoints.DeleteTag(RouteData); }
+        #endregion
     }
 
 
