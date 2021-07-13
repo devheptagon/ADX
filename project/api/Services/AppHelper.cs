@@ -13,9 +13,7 @@ namespace adx.Services
     public class AppHelper
     {
 
-        public static IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
-        public static string connStr = config.GetSection("ConnectionStrings")["adx"];
 
         //public static async Task SaveMetaRequestResponse(MetaRequest request, MetaResponse response)
         //{
@@ -24,11 +22,6 @@ namespace adx.Services
         //        // do somethign
         //    });
         //}
-
-        public static string GetActiveCustomAds()
-        {
-            return "test ads";
-        }
 
 
     }

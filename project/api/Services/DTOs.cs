@@ -1,24 +1,20 @@
-﻿namespace adx
-{
-    #region Meta
-    public class MetaRequest
-    {
-        public MetaRequest() { }  //required for json serialisation
+﻿using System.Collections.Generic;
 
-        #region Props
-        public string app_name { get; set; }
-        #endregion
+namespace adx
+{
+    #region ContentRequest
+    public class ContentRequest
+    {
+        public ContentRequest() { }  //required for json serialisation        
+
+        public ContentEntity Data { get; set; }
     }
 
-    public class MetaResponse
+    public class ContentResponse
     {
-        public MetaResponse() { } //required for json serialisation        
+        public ContentResponse() { } //required for json serialisation        
 
-        #region Props
-
-        public string result { get; set; }
-        #endregion
-
+        public List<ContentEntity> Data { get; set; }
     }
     #endregion
 

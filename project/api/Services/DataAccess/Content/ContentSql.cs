@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-class ContentRequestSqlStrings
+class ContentSqlStrings
 {
     public static string SelectSql = "Select TOP 1 * From [Content]";
     //public static string SelectByIdSql = "Select [unique_id],[app_name],[app_version],[ip],[language],[client_date],[server_date] From [MetaRequest] Where id = @id";
@@ -20,7 +20,7 @@ class ContentRequestSqlStrings
             [linkedin] = @linkedin,
             [instagram] = @instagram,
             [youtube] = @youtube 
-    WHERE id = (SELECT TOP 1 id FROM [@Content])
+    WHERE id = (SELECT TOP 1 id FROM [Content])
 ";
     //public static string DeleteSql = "Delete From [MetaRequest] Where id = @id";
 }

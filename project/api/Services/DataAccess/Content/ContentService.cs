@@ -1,17 +1,23 @@
 
+using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-public class ContentRequestService
+public class ContentService
 {
-    public DataTable GetContentRequest(string connString)
+    public static IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+
+    public static string connStr = config.GetSection("ConnectionStrings")["adx"];
+
+    public static List<ContentEntity> GetContents()
     {
         DataTable dataTable = new DataTable();
-        using (SqlConnection connection = new SqlConnection(connString))
+        using (SqlConnection connection = new SqlConnection(connStr))
         {
-            using (SqlCommand sqlCommand = new SqlCommand(ContentRequestSqlStrings.SelectSql, connection))
+            using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.SelectSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
                 try
@@ -29,7 +35,23 @@ public class ContentRequestService
                 }
             }
         }
-        return dataTable;
+        var result = new List<ContentEntity>();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            var item = new ContentEntity();
+            item.about = (String)row["about"];
+            item.address = (String)row["address"];
+            item.email = (String)row["email"];
+            item.facebook = (String)row["facebook"];
+            item.instagram = (String)row["instagram"];
+            item.linkedin = (String)row["linkedin"];
+            item.phone = (String)row["phone"];
+            item.terms = (String)row["terms"];
+            item.twitter = (String)row["twitter"];
+            item.youtube = (String)row["youtube"];
+            result.Add(item);
+        }
+        return result;
     }
 
     //public DataRow GetMetaRequestById(string connString, int id)
@@ -113,11 +135,11 @@ public class ContentRequestService
     //    return id;
     //}
 
-    public void UpdateMetaRequest(string connString, ContentRequestEntity entity, int id)
+    public static void UpdateContent(ContentEntity entity)
     {
-        using (SqlConnection connection = new SqlConnection(connString))
+        using (SqlConnection connection = new SqlConnection(connStr))
         {
-            using (SqlCommand sqlCommand = new SqlCommand(ContentRequestSqlStrings.UpdateSql + id, connection))
+            using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.UpdateSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Parameters.Add(new SqlParameter("@about", SqlDbType.VarChar));
