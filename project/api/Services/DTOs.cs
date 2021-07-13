@@ -50,4 +50,19 @@ namespace adx
     }
     #endregion
 
+    #region AreaRequest
+    public class AreaRequest
+    {
+        public AreaRequest() { }  //required for json serialisation        
+
+        public AreaEntity Data { get; set; }
+    }
+
+    public class AreaResponse
+    {
+        public AreaResponse() { } //required for json serialisation        
+
+        public List<AreaEntity> Data { get; set; }
+    }
+    #endregion
 }
