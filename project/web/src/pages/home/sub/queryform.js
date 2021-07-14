@@ -2,7 +2,7 @@ import React from "react";
 import styles from "styles/home.module.scss";
 import { Formik, dis } from "formik";
 import * as yup from "yup";
-import { postEvaluationRequest } from "api/api";
+import { postEvaluationRequest } from "api/api2";
 import { useSelector } from "react-redux";
 
 export default function QueryForm() {

@@ -2,7 +2,7 @@ import styles from "styles/home.module.scss";
 import Header from "pages/shared/header";
 import Footer from "pages/shared/footer";
 import React from "react";
-import { getKeywords, getSectors, getTopAdverts } from "api/api";
+import { getKeywords, getSectors, getTopAdverts } from "api/api2";
 import { useDispatch, useSelector } from "react-redux";
 import {
   resetFiltersAction,

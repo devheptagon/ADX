@@ -1,5 +1,5 @@
 import React from "react";
-import { getPrivacy } from "api/api";
+import { getPrivacy } from "api/api2";
 import styles from "styles/home.module.scss";
 import BlockContent from "@sanity/block-content-to-react";
 

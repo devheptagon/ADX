@@ -1,4 +1,4 @@
-import { getAdvert } from "api/api";
+import { getAdvert } from "api/api2";
 import { useQuery } from "helpers/genericHelper";
 import React from "react";
 import { useLocation } from "react-router-dom";

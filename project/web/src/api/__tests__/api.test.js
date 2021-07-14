@@ -1,8 +1,9 @@
 /* eslint-disable jest/valid-expect */
-import { fillAdverts } from "../api";
+import { getAbout } from "../api";
 
 describe("api", () => {
-  test("fillAdverts", async () => {
-    expect(true);
+  test("getAbout testing", async () => {
+    const response = await getAbout();
+    expect(response).toBe("this is about");
   });
 });
