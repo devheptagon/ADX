@@ -6,10 +6,10 @@ import { getKeywords, getSectors, getTopAdverts, getContents } from "api/api";
 import { useDispatch, useSelector } from "react-redux";
 import {
   resetFiltersAction,
-  setAdvertsAction,
   setContentsAction,
   setKeywordsAction,
   setSectorsAction,
+  setTopAdvertsAction,
 } from "redux/app/appActions";
 
 export default function Layout(props) {
@@ -18,7 +18,7 @@ export default function Layout(props) {
 
   React.useEffect(() => {
     if (firstLoad) {
-      getTopAdverts().then((d) => dispatch(setAdvertsAction(d)));
+      getTopAdverts().then((d) => dispatch(setTopAdvertsAction(d)));
       getKeywords().then((d) => dispatch(setKeywordsAction(d)));
       getSectors().then((d) => dispatch(setSectorsAction(d)));
       getContents().then((d) => dispatch(setContentsAction(d)));

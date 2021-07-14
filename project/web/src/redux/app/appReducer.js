@@ -13,6 +13,7 @@ import {
   SET_AREAS_TYPE,
   SET_KEYWORDS_TYPE,
   SET_CONTENTS_TYPE,
+  SET_TOP_ADVERTS_TYPE,
 } from "./actionTypes";
 import cities from "../../data/city.json";
 
@@ -25,6 +26,7 @@ const initialState = {
   minPriceFilter: 0,
   maxPriceFilter: 0,
   adverts: [],
+  topAdverts: [],
   keywords: [],
   sectors: [],
   contents: {},
@@ -53,6 +55,8 @@ export function appReducer(state = { ...initialState }, action) {
       return { ...state, maxPriceFilter: action.payload.maxPriceFilter };
     case SET_ADVERTS_TYPE:
       return { ...state, adverts: action.payload.adverts };
+    case SET_TOP_ADVERTS_TYPE:
+      return { ...state, topAdverts: action.payload.topAdverts };
     case SET_SECTORS_TYPE:
       return { ...state, sectors: action.payload.sectors };
     case SET_AREAS_TYPE:

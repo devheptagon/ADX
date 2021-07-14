@@ -23,6 +23,15 @@ namespace adx
             return AppHelper.Upload(file);
         }
 
+        [HttpGet("images/{id?}")]
+        public IActionResult GetImage()
+        {
+            var filename = (string)RouteData.Values["id"];
+            if (string.IsNullOrEmpty(filename)) return null;
+            var image = System.IO.File.OpenRead(AppHelper.uploadPath + filename);
+            return File(image, "image/jpeg");
+        }
+
         #region Content Endpoints
         [HttpGet("contents")]
         public ContentResponse GetContents() { return ContentEndpoints.GetContents(); }

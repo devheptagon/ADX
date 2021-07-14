@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
 
-const apiUrl = "https://localhost:44307/v1/";
+export const apiUrl = "https://localhost:44307/v1/";
 
 export const fillAdverts = async (filters, dispatch) => {
   dispatch(setLoadingAction(true));
@@ -33,7 +33,10 @@ export const getAdvert = async (id) => {
   return response.data?.data;
 };
 
-export const getTopAdverts = async () => {};
+export const getTopAdverts = async () => {
+  const response = await axios.get(apiUrl + "adverts/1");
+  return response.data?.data;
+};
 
 export const postEvaluationRequest = async (values) => {
   /*   const doc = {

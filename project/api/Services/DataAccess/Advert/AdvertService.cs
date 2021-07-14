@@ -144,6 +144,8 @@ public class AdvertService
             item.areas = row["areas"] == DBNull.Value ? "" : (string)row["areas"];
             item.sectors = row["sectors"] == DBNull.Value ? "" : (string)row["sectors"];
             item.tags = row["tags"] == DBNull.Value ? "" : (string)row["tags"];
+            item.images = row["images"] == DBNull.Value ? "" : (string)row["images"];
+            item.tenures = row["tenures"] == DBNull.Value ? "" : (string)row["tenures"];
 
             if (row["seller"] != DBNull.Value)
             {

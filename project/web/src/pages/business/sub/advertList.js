@@ -10,11 +10,11 @@ const AdvertList = React.memo(() => {
   return (
     <div className={styles.list}>
       {data?.map((d) => (
-        <div key={d._id} className={styles.item}>
+        <div key={d.id} className={styles.item}>
           <Link
-            key={d._id}
-            to={`/detail?id=${d._id}&title=${slugify(d.title)}`}
-            as={`/${d._id}?t=${slugify(d.title)}`}
+            key={d.id}
+            to={`/detail?id=${d.id}&title=${slugify(d.title)}`}
+            as={`/${d.id}?t=${slugify(d.title)}`}
           >
             <div>
               <h3

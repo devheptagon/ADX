@@ -13,6 +13,7 @@ import {
   SET_AREAS_TYPE,
   SET_KEYWORDS_TYPE,
   SET_CONTENTS_TYPE,
+  SET_TOP_ADVERTS_TYPE,
 } from "./actionTypes";
 
 export const setLoadingAction = (loading) => ({
@@ -58,6 +59,11 @@ export const setMaxPriceFilterAction = (val) => ({
 export const setAdvertsAction = (val) => ({
   type: SET_ADVERTS_TYPE,
   payload: { adverts: val },
+});
+
+export const setTopAdvertsAction = (val) => ({
+  type: SET_TOP_ADVERTS_TYPE,
+  payload: { topAdverts: val },
 });
 
 export const setSectorsAction = (val) => ({
