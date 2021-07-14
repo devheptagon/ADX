@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
 
@@ -47,24 +48,40 @@ public class AdvertService
         DataTable dataTable = new DataTable();
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectSql + AdvertSqlStrings.SelectFilterSql, connection))
+            var sql = AdvertSqlStrings.SelectSql + AdvertSqlStrings.SelectFilterSql;
+            using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@min_price", SqlDbType.Int));
-                sqlCommand.Parameters["@min_price"].Value = filter.SelectedMinPrice == null ? null : filter.SelectedMinPrice;
+                sqlCommand.Parameters.Add(new SqlParameter("@MIN_PRICE", SqlDbType.Int));
+                if (filter?.SelectedMinPrice == null)
+                    sqlCommand.Parameters["@MIN_PRICE"].Value = SqlInt32.Null;
+                else
+                    sqlCommand.Parameters["@MIN_PRICE"].Value = filter.SelectedMinPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@max_price", SqlDbType.Int));
-                sqlCommand.Parameters["@max_price"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedMaxPrice;
+                sqlCommand.Parameters.Add(new SqlParameter("@MAX_PRICE", SqlDbType.Int));
+                if (filter?.SelectedMaxPrice == null)
+                    sqlCommand.Parameters["@MAX_PRICE"].Value = SqlInt32.Null;
+                else
+                    sqlCommand.Parameters["@MAX_PRICE"].Value = filter.SelectedMaxPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@areas", SqlDbType.Int));
-                sqlCommand.Parameters["@areas"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedAreas;
+                sqlCommand.Parameters.Add(new SqlParameter("@AREAS", SqlDbType.VarChar, 1000));
+                if (filter?.SelectedAreas == null)
+                    sqlCommand.Parameters["@AREAS"].Value = SqlString.Null;
+                else
+                    sqlCommand.Parameters["@AREAS"].Value = filter.SelectedAreas;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@sectors", SqlDbType.Int));
-                sqlCommand.Parameters["@sectors"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedSectors;
+                sqlCommand.Parameters.Add(new SqlParameter("@SECTORS", SqlDbType.VarChar, 1000));
+                if (filter?.SelectedSectors == null)
+                    sqlCommand.Parameters["@SECTORS"].Value = SqlString.Null;
+                else
+                    sqlCommand.Parameters["@SECTORS"].Value = filter.SelectedSectors;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@tags", SqlDbType.Int));
-                sqlCommand.Parameters["@tags"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedKeywords;
+                sqlCommand.Parameters.Add(new SqlParameter("@TAGS", SqlDbType.VarChar, 1000));
+                if (filter?.SelectedKeywords == null)
+                    sqlCommand.Parameters["@TAGS"].Value = SqlString.Null;
+                else
+                    sqlCommand.Parameters["@TAGS"].Value = filter.SelectedKeywords;
 
                 try
                 {
@@ -83,7 +100,7 @@ public class AdvertService
         }
         List<AdvertEntity> result = CreateAdvertListFromDatatable(dataTable);
         //TODO: SQL E TASI
-        if (filter.SelectedTenures != null)
+        if (filter?.SelectedTenures != null)
         {
             var tenures = filter.SelectedTenures.Split(',').ToList();
             var temp = new List<AdvertEntity>();

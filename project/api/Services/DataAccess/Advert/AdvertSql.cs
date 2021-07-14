@@ -33,7 +33,7 @@ class AdvertSqlStrings
 
         FROM [ADVERT] AS ADV";
 
-    public static string SelectFilterSql = SelectSql +
+    public static string SelectFilterSql =
         @"
 		WHERE 
 			(@MIN_PRICE IS NULL OR (ADV.leaseHoldPrice IS NOT NULL AND ADV.leaseHoldPrice >= @MIN_PRICE) OR (ADV.freeHoldPrice IS NOT NULL AND ADV.freeHoldPrice >= @MIN_PRICE)) AND

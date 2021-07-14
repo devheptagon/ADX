@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using adx.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace adx
@@ -11,6 +13,14 @@ namespace adx
         public v1Controller()
         {
 
+        }
+
+        [HttpPost("upload")]
+        [Consumes("multipart/form-data")]
+        [RequestFormLimits(ValueLengthLimit = int.MaxValue, MultipartBodyLengthLimit = long.MaxValue)]
+        public string UploadFile([FromForm(Name = "file")] IFormFile file)
+        {
+            return AppHelper.Upload(file);
         }
 
         #region Content Endpoints
