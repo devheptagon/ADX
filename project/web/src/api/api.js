@@ -117,12 +117,12 @@ export const getSectors = async () => {
   return response || [];
 };
 
-export const getAreas = async () => {
+/* export const getAreas = async () => {
   const response = await client.fetch(
     `*[_type == 'area' && !(_id in path("drafts.**"))]{title}| order(title asc)`
   );
   return response || [];
-};
+}; */
 
 export const getKeywords = async () => {
   const response = await client.fetch(

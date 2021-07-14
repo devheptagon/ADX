@@ -39,7 +39,7 @@ const Filter = React.memo(() => {
     label: s.title,
     value: s.title,
   }));
-  const areaOptions = areas.map((a) => ({ label: a.title, value: a.title }));
+  const areaOptions = areas.map((a) => ({ label: a, value: a }));
   const keywordOptions = keywords.map((a) => ({
     label: a.title,
     value: a.title,

@@ -150,7 +150,7 @@ export default function QueryForm() {
                       onChange={handleChange}
                     >
                       <option value="">Select</option>
-                      {areas.map(({ title }) => (
+                      {areas.map((title) => (
                         <option
                           key={title}
                           data-ref={title}

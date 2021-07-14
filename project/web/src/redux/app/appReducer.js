@@ -13,6 +13,7 @@ import {
   SET_AREAS_TYPE,
   SET_KEYWORDS_TYPE,
 } from "./actionTypes";
+import cities from "../../data/city.json";
 
 const initialState = {
   loading: false,
@@ -25,7 +26,7 @@ const initialState = {
   adverts: [],
   keywords: [],
   sectors: [],
-  areas: [],
+  areas: cities,
   tenures: ["Freehold", "Leasehold"],
   firstLoad: true,
 };

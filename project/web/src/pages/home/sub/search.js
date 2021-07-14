@@ -14,7 +14,7 @@ export default function Search() {
     label: s.title,
     value: s.title,
   }));
-  const areaOptions = areas?.map((a) => ({ label: a.title, value: a.title }));
+  const areaOptions = areas?.map((a) => ({ label: a, value: a }));
 
   const [selectedSectors, setSelectedSectors] = React.useState([]);
   const [selectedAreas, setSelectedAreas] = React.useState([]);
