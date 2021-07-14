@@ -12,11 +12,17 @@ import {
   SET_SECTORS_TYPE,
   SET_AREAS_TYPE,
   SET_KEYWORDS_TYPE,
+  SET_CONTENTS_TYPE,
 } from "./actionTypes";
 
 export const setLoadingAction = (loading) => ({
   type: SET_LOADING_TYPE,
   payload: { loading },
+});
+
+export const setContentsAction = (val) => ({
+  type: SET_CONTENTS_TYPE,
+  payload: { contents: val },
 });
 
 export const setSectorFilterAction = (val) => ({

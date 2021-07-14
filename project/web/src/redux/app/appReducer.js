@@ -12,6 +12,7 @@ import {
   SET_SECTORS_TYPE,
   SET_AREAS_TYPE,
   SET_KEYWORDS_TYPE,
+  SET_CONTENTS_TYPE,
 } from "./actionTypes";
 import cities from "../../data/city.json";
 
@@ -26,6 +27,7 @@ const initialState = {
   adverts: [],
   keywords: [],
   sectors: [],
+  contents: {},
   areas: cities,
   tenures: ["Freehold", "Leasehold"],
   firstLoad: true,
@@ -35,6 +37,8 @@ export function appReducer(state = { ...initialState }, action) {
   switch (action.type) {
     case SET_LOADING_TYPE:
       return { ...state, loading: action.payload.loading };
+    case SET_CONTENTS_TYPE:
+      return { ...state, contents: action.payload.contents };
     case SET_SECTOR_FILTER_TYPE:
       return { ...state, sectorFilter: action.payload.sectorFilter };
     case SET_AREA_FILTER_TYPE:

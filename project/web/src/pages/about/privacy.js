@@ -1,28 +1,17 @@
 import React from "react";
-import { getPrivacy } from "api/api2";
+import { useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
-import BlockContent from "@sanity/block-content-to-react";
 
 export default function About() {
-  const [data, setData] = React.useState({});
-  React.useEffect(() => {
-    getPrivacy().then((res) => {
-      setData(res);
-    });
-  }, []);
-
-  const serializers = {
-    types: {
-      undefined: (props) => null,
-    },
-  };
+  const contents = useSelector((state) => state.appReducer.contents);
 
   return (
     <div className={styles.outer}>
       <div className={styles.inner}>
-        <div className={styles.about}>
-          <BlockContent blocks={data} serializers={serializers} />
-        </div>
+        <div
+          className={styles.about}
+          dangerouslySetInnerHTML={{ __html: contents.terms }}
+        />
       </div>
     </div>
   );

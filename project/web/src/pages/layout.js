@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   resetFiltersAction,
   setAdvertsAction,
+  setContentsAction,
   setKeywordsAction,
   setSectorsAction,
 } from "redux/app/appActions";
+import { getContents } from "api/api";
 
 export default function Layout(props) {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export default function Layout(props) {
       getTopAdverts().then((d) => dispatch(setAdvertsAction(d)));
       getKeywords().then((d) => dispatch(setKeywordsAction(d)));
       getSectors().then((d) => dispatch(setSectorsAction(d)));
+      getContents().then((d) => dispatch(setContentsAction(d)));
     }
     if (window.location.href.toLowerCase().indexOf("/business") === -1) {
       dispatch(resetFiltersAction());

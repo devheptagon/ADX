@@ -13,19 +13,9 @@ export const fillAdverts = async (filters, dispatch) => {
   dispatch(setAdvertsAction(results));
 };
 
-export const getAbout = async () => {
-  const response = await axios.get(apiUrl + "contents");
-  return response.data?.data[0].about;
-};
-
-export const getContact = async () => {
+export const getContents = async () => {
   const response = await axios.get(apiUrl + "contents");
   return response.data?.data[0];
-};
-
-export const getPrivacy = async () => {
-  const response = await axios.get(apiUrl + "contents");
-  return response.data?.data[0].terms;
 };
 
 export const getSectors = async () => {};

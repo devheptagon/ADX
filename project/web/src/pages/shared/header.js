@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
 import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
 import logo from "assets/logo.png";
 
 export default function Header() {
+  const contents = useSelector((state) => state.appReducer.contents);
   return (
     <>
       <nav className={styles.outer}>
@@ -20,7 +22,7 @@ export default function Header() {
                 <li>
                   <div>01633-216899</div>
                   <div>
-                    <a href="mailto:info@linxbiz.com">info@linxbiz.com</a>
+                    <a href={`mailto:${contents.email}`}>{contents.email}</a>
                   </div>
                 </li>
                 <SocialMediaIcons />

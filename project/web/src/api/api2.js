@@ -89,7 +89,7 @@ export const fillAdverts = async (filters, dispatch) => {
   dispatch(setAdvertsAction(results));
 };
 
-export const getAbout = async () => {
+/* export const getAbout = async () => {
   const response = await client.fetch(
     `*[_type == 'adminabout' && !(_id in path("drafts.**")) && _id =='adminabout1']{about}`
   );
@@ -108,7 +108,7 @@ export const getPrivacy = async () => {
     `*[_type == 'adminterms' && !(_id in path("drafts.**")) && _id =='adminterms']`
   );
   return response[0].terms;
-};
+}; */
 
 export const getSectors = async () => {
   const response = await client.fetch(

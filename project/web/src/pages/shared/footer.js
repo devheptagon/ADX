@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
 import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
 import logo from "assets/logo.png";
 
 export default function Contact() {
+  const contents = useSelector((state) => state.appReducer.contents);
   return (
     <footer className={styles.footer}>
       <div className={styles.firstrow}>
@@ -40,19 +42,20 @@ export default function Contact() {
               <div>
                 <span>
                   <i className="fa fa-map-marker" aria-hidden="true"></i>68
-                  Bridge Street, Newport, NP20 4AQ
+                  {contents.address}
                 </span>
               </div>
               <div>
                 <span>
-                  <i className="fa fa-phone" aria-hidden="true"></i>01633-216899
+                  <i className="fa fa-phone" aria-hidden="true"></i>
+                  {contents.phone}
                 </span>
               </div>
               <div>
-                <a href="mailto:info@linxbiz.com">
+                <a href={`mailto:${contents.email}`}>
                   <span>
                     <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                    info@linxbiz.com
+                    {contents.email}
                   </span>
                 </a>
               </div>
