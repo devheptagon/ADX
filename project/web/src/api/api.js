@@ -18,11 +18,20 @@ export const getContents = async () => {
   return response.data?.data[0];
 };
 
-export const getSectors = async () => {};
+export const getSectors = async () => {
+  const response = await axios.get(apiUrl + "sectors");
+  return response.data?.data;
+};
 
-export const getKeywords = async () => {};
+export const getKeywords = async () => {
+  const response = await axios.get(apiUrl + "tags");
+  return response.data?.data;
+};
 
-export const getAdvert = async (id) => {};
+export const getAdvert = async (id) => {
+  const response = await axios.get(apiUrl + "sector/" + id);
+  return response.data?.data;
+};
 
 export const getTopAdverts = async () => {};
 

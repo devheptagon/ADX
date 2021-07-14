@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "styles/home.module.scss";
 import Loading from "pages/shared/loading";
 import Filter from "./sub/filter";
-import { fillAdverts } from "api/api2";
+import { fillAdverts } from "api/api";
 import AdvertList from "./sub/advertList";
 
 const Business = () => {

@@ -1,4 +1,4 @@
-import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
+/* import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
 import client from "./sanity";
 
 const advertFields = `
@@ -20,12 +20,7 @@ description
 `;
 
 export const fillAdverts = async (filters, dispatch) => {
-  /*
-  TODO: asagidaki gibi filtrelemeli
-  const sectorFilter = sectors && sectors.length ? "" : "1==1";
-  const areaFilter = area && area.length ? "" : "1==1";
-  let filter = `*[_type == 'advert' && ${sectorFilter} && ${areaFilter}]{${fields}}`;
-  */
+  
 
   dispatch(setLoadingAction(true));
   let sql = `*[_type == 'advert' && !(_id in path("drafts.**"))]{${advertFields}}| order(_createdAt desc)`;
@@ -89,7 +84,7 @@ export const fillAdverts = async (filters, dispatch) => {
   dispatch(setAdvertsAction(results));
 };
 
-/* export const getAbout = async () => {
+export const getAbout = async () => {
   const response = await client.fetch(
     `*[_type == 'adminabout' && !(_id in path("drafts.**")) && _id =='adminabout1']{about}`
   );
@@ -108,7 +103,7 @@ export const getPrivacy = async () => {
     `*[_type == 'adminterms' && !(_id in path("drafts.**")) && _id =='adminterms']`
   );
   return response[0].terms;
-}; */
+};
 
 export const getSectors = async () => {
   const response = await client.fetch(
@@ -117,12 +112,12 @@ export const getSectors = async () => {
   return response || [];
 };
 
-/* export const getAreas = async () => {
+export const getAreas = async () => {
   const response = await client.fetch(
     `*[_type == 'area' && !(_id in path("drafts.**"))]{title}| order(title asc)`
   );
   return response || [];
-}; */
+};
 
 export const getKeywords = async () => {
   const response = await client.fetch(
@@ -154,3 +149,4 @@ export const getTopAdverts = async () => {
   let sql = `*[_type == 'advert' && !(_id in path("drafts.**"))]{${advertFields}}| order(_createdAt desc)[0...10]`;
   return await client.fetch(sql);
 };
+ */

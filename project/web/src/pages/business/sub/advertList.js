@@ -9,7 +9,7 @@ const AdvertList = React.memo(() => {
 
   return (
     <div className={styles.list}>
-      {data.map((d) => (
+      {data?.map((d) => (
         <div key={d._id} className={styles.item}>
           <Link
             key={d._id}

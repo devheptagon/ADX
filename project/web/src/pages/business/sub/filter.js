@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
 import lodash from "lodash";
-import { fillAdverts } from "api/api2";
+import { fillAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import {
   setAreaFilterAction,

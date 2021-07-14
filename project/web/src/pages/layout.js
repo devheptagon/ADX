@@ -2,7 +2,7 @@ import styles from "styles/home.module.scss";
 import Header from "pages/shared/header";
 import Footer from "pages/shared/footer";
 import React from "react";
-import { getKeywords, getSectors, getTopAdverts } from "api/api2";
+import { getKeywords, getSectors, getTopAdverts, getContents } from "api/api";
 import { useDispatch, useSelector } from "react-redux";
 import {
   resetFiltersAction,
@@ -11,7 +11,6 @@ import {
   setKeywordsAction,
   setSectorsAction,
 } from "redux/app/appActions";
-import { getContents } from "api/api";
 
 export default function Layout(props) {
   const dispatch = useDispatch();
