@@ -2,6 +2,17 @@
 
 namespace adx
 {
+
+    public class AdvertFilter
+    {
+        public string SelectedSectors { get; set; }
+        public string SelectedAreas { get; set; }
+        public string SelectedTenures { get; set; }
+        public string SelectedKeywords { get; set; }
+        public string SelectedMinPrice { get; set; }
+        public string SelectedMaxPrice { get; set; }
+    }
+
     #region ContentRequest
     public class ContentRequest
     {

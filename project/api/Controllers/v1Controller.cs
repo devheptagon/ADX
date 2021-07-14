@@ -23,8 +23,11 @@ namespace adx
 
         #region Advert Endpoints
         [HttpGet("adverts")]
-        [HttpGet("adverts/{id?}")]
+        [HttpGet("adverts/{page?}")]
         public AdvertResponse GetAdverts() { return AdvertEndpoints.GetAdverts(RouteData); }
+
+        [HttpGet("advert/{id?}")]
+        public AdvertResponse GetAdvert() { return AdvertEndpoints.GetAdvert(RouteData); }
         #endregion
 
         #region Seller Endpoints

@@ -1,4 +1,5 @@
 
+using adx;
 using adx.Services;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -6,24 +7,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 
 public class AdvertService
 {
 
-    public static List<AdvertEntity> GetAdverts(string id)
+    public static List<AdvertEntity> GetAdvert(string id)
     {
         DataTable dataTable = new DataTable();
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            var sql = id != null ? AdvertSqlStrings.SelectByIdSql : AdvertSqlStrings.SelectSql;
-            using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectByIdSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
-                if (id != null)
-                {
-                    sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
-                    sqlCommand.Parameters["@advert_id"].Value = id;
-                }
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@advert_id"].Value = id;
 
                 try
                 {
@@ -40,6 +38,67 @@ public class AdvertService
                 }
             }
         }
+        var result = CreateAdvertListFromDatatable(dataTable);
+        return result;
+    }
+
+    public static List<AdvertEntity> GetAdverts(AdvertFilter filter, string page)
+    {
+        DataTable dataTable = new DataTable();
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectSql + AdvertSqlStrings.SelectFilterSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@min_price", SqlDbType.Int));
+                sqlCommand.Parameters["@min_price"].Value = filter.SelectedMinPrice == null ? null : filter.SelectedMinPrice;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@max_price", SqlDbType.Int));
+                sqlCommand.Parameters["@max_price"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedMaxPrice;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@areas", SqlDbType.Int));
+                sqlCommand.Parameters["@areas"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedAreas;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@sectors", SqlDbType.Int));
+                sqlCommand.Parameters["@sectors"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedSectors;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@tags", SqlDbType.Int));
+                sqlCommand.Parameters["@tags"].Value = filter.SelectedMaxPrice == null ? null : filter.SelectedKeywords;
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+                    {
+                        dataTable.Load(dataReader);
+                        dataReader.Close();
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        List<AdvertEntity> result = CreateAdvertListFromDatatable(dataTable);
+        //TODO: SQL E TASI
+        if (filter.SelectedTenures != null)
+        {
+            var tenures = filter.SelectedTenures.Split(',').ToList();
+            var temp = new List<AdvertEntity>();
+            tenures.ForEach(t =>
+            {
+                temp.AddRange(result.Where(adv => adv.tenures.Contains(t)));
+            });
+            result = temp.Distinct().ToList();
+        }
+
+        return result;
+    }
+
+    private static List<AdvertEntity> CreateAdvertListFromDatatable(DataTable dataTable)
+    {
         var result = new List<AdvertEntity>();
         foreach (DataRow row in dataTable.Rows)
         {
@@ -89,6 +148,7 @@ public class AdvertService
 
             result.Add(item);
         }
+
         return result;
     }
 
