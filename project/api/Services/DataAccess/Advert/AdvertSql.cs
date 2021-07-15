@@ -38,9 +38,11 @@ class AdvertSqlStrings
 		WHERE 
 			(@MIN_PRICE IS NULL OR (ADV.leaseHoldPrice IS NOT NULL AND ADV.leaseHoldPrice >= @MIN_PRICE) OR (ADV.freeHoldPrice IS NOT NULL AND ADV.freeHoldPrice >= @MIN_PRICE)) AND
 			(@MAX_PRICE IS NULL OR (ADV.leaseHoldPrice IS NOT NULL AND ADV.leaseHoldPrice <= @MAX_PRICE) OR (ADV.freeHoldPrice IS NOT NULL AND ADV.freeHoldPrice <= @MAX_PRICE)) AND
-			(@AREAS IS NULL OR (SELECT COUNT(0) FROM AdvertArea AS AA WHERE AA.advert_id = ADV.id AND AA.area_id IN (@AREAS)) > 0) AND
-			(@SECTORS IS NULL OR (SELECT COUNT(0) FROM AdvertSector AS ASE WHERE ASE.advert_id = ADV.id AND ASE.sector_id IN (@SECTORS)) > 0) AND
-			(@TAGS IS NULL OR (SELECT COUNT(0) FROM AdvertTag AS ATA WHERE ATA.advert_id = ADV.id AND ATA.tag_id IN (@TAGS)) > 0)
+			(@AREAS IS NULL OR (SELECT COUNT(0) FROM AdvertArea AS AA INNER JOIN Area AS A ON A.id = AA.area_id AND AA.advert_id = ADV.id AND A.title IN (@AREAS)) > 0) AND
+			(@SECTORS IS NULL OR (SELECT COUNT(0) FROM AdvertSector AS ASE INNER JOIN Sector AS S ON S.id = ASE.sector_id AND ASE.advert_id = ADV.id AND S.title IN (@SECTORS)) > 0) AND
+			(@TAGS IS NULL OR (SELECT COUNT(0) FROM AdvertTag AS ATA INNER JOIN Tag AS T ON T.id = ATA.tag_id AND ATA.advert_id = ADV.id AND T.title IN (@TAGS)) > 0)
+        ORDER BY ADV.create_date
+        OFFSET (@Page-1) * 10 ROWS FETCH NEXT 10 ROWS ONLY
         ";
 
     public static string SelectByIdSql = SelectSql + " WHERE CAST(ADV.id AS VARCHAR(50)) = @advert_id";

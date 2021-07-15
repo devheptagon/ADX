@@ -3,16 +3,34 @@ import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
 import { apiUrl } from "../config";
 
 export const fillAdverts = async (filters, dispatch) => {
+  filters = {
+    page: filters.page.toString(),
+    selectedSectors: filters.selectedSectors
+      ? filters.selectedSectors.join(",")
+      : null,
+    selectedAreas: filters.selectedAreas
+      ? filters.selectedAreas.join(",")
+      : null,
+    selectedTenures: filters.selectedTenures
+      ? filters.selectedTenures.join(",")
+      : null,
+    selectedKeywords: filters.selectedKeywords
+      ? filters.selectedKeywords.join(",")
+      : null,
+    selectedMinPrice: filters.selectedMinPrice?.toString(),
+    selectedMaxPrice: filters.selectedMaxPrice?.toString(),
+  };
   dispatch(setLoadingAction(true));
-  const response = await axios.get(apiUrl + "adverts");
+  const response = await axios.post(apiUrl + "adverts", filters);
   const results = response.data?.data;
-  //TODO: PAGING
   dispatch(setAdvertsAction(results));
   dispatch(setLoadingAction(false));
 };
 
 export const getContents = async () => {
-  const response = await axios.get(apiUrl + "contents");
+  const response = await axios
+    .get(apiUrl + "contents")
+    .catch((exp) => console.log(exp));
   return response.data?.data[0];
 };
 
@@ -32,7 +50,7 @@ export const getAdvert = async (id) => {
 };
 
 export const getTopAdverts = async () => {
-  const response = await axios.get(apiUrl + "adverts/1");
+  const response = await axios.post(apiUrl + "adverts", { page: "1" });
   return response.data?.data;
 };
 

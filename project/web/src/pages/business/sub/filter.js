@@ -18,6 +18,7 @@ const Filter = React.memo(() => {
   const debouncer = React.useRef();
   const dispatch = useDispatch();
 
+  const page = useSelector((state) => state.appReducer.page);
   const selectedSectors = useSelector((state) => state.appReducer.sectorFilter);
   const selectedAreas = useSelector((state) => state.appReducer.areaFilter);
   const selectedTenures = useSelector((state) => state.appReducer.tenureFilter);
@@ -94,6 +95,7 @@ const Filter = React.memo(() => {
   const search = (lastValue) => {
     fillAdverts(
       {
+        page,
         selectedSectors,
         selectedAreas,
         selectedTenures,

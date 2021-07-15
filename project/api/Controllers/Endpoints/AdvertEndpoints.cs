@@ -6,10 +6,9 @@ namespace adx
 {
     public class AdvertEndpoints
     {
-        public static AdvertResponse GetAdverts(RouteData routeData)
+        public static AdvertResponse GetAdverts(AdvertFilter filter)
         {
-            var page = routeData.Values.ContainsKey("page") ? routeData.Values["page"].ToString() : "1";
-            var result = new AdvertResponse() { Data = AdvertService.GetAdverts(null, page) };
+            var result = new AdvertResponse() { Data = AdvertService.GetAdverts(filter) };
             return result;
         }
 

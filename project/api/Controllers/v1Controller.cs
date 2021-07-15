@@ -47,9 +47,10 @@ namespace adx
         #endregion
 
         #region Advert Endpoints
-        [HttpGet("adverts")]
-        [HttpGet("adverts/{page?}")]
-        public AdvertResponse GetAdverts() { return AdvertEndpoints.GetAdverts(RouteData); }
+        [HttpPost("adverts")]
+        public AdvertResponse GetAdverts([FromBody] AdvertFilter request) { 
+            return AdvertEndpoints.GetAdverts(request); 
+        }
 
         [HttpGet("advert/{id?}")]
         public AdvertResponse GetAdvert() { return AdvertEndpoints.GetAdvert(RouteData); }

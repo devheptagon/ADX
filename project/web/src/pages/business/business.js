@@ -15,7 +15,10 @@ const Business = () => {
     //coming from home with sector and/or area filter
     if (af.length || sf.length) {
       setTimeout(() => {
-        fillAdverts({ selectedSectors: sf, selectedAreas: af }, dispatch);
+        fillAdverts(
+          { selectedSectors: sf, selectedAreas: af, page: 1 },
+          dispatch
+        );
       }, 1000);
     }
   }, [dispatch, af, sf]);

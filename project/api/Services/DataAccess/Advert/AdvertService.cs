@@ -43,7 +43,7 @@ public class AdvertService
         return result;
     }
 
-    public static List<AdvertEntity> GetAdverts(AdvertFilter filter, string page)
+    public static List<AdvertEntity> GetAdverts(AdvertFilter filter)
     {
         DataTable dataTable = new DataTable();
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
@@ -83,6 +83,12 @@ public class AdvertService
                 else
                     sqlCommand.Parameters["@TAGS"].Value = filter.SelectedKeywords;
 
+                sqlCommand.Parameters.Add(new SqlParameter("@Page", SqlDbType.Int));
+                if (filter?.Page == null)
+                    sqlCommand.Parameters["@Page"].Value = SqlInt32.Null;
+                else
+                    sqlCommand.Parameters["@Page"].Value = filter.Page;
+
                 try
                 {
                     connection.Open();
@@ -98,6 +104,7 @@ public class AdvertService
                 }
             }
         }
+
         List<AdvertEntity> result = CreateAdvertListFromDatatable(dataTable);
         //TODO: SQL E TASI
         if (filter?.SelectedTenures != null)

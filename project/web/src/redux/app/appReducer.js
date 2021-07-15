@@ -56,7 +56,10 @@ export function appReducer(state = { ...initialState }, action) {
     case SET_MAXPRICE_FILTER_TYPE:
       return { ...state, maxPriceFilter: action.payload.maxPriceFilter };
     case SET_ADVERTS_TYPE:
-      return { ...state, adverts: action.payload.adverts };
+      return {
+        ...state,
+        adverts: [...state.adverts, ...action.payload.adverts],
+      };
     case SET_TOP_ADVERTS_TYPE:
       return {
         ...state,
