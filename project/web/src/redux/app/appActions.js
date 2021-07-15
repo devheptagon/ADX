@@ -14,6 +14,7 @@ import {
   SET_KEYWORDS_TYPE,
   SET_CONTENTS_TYPE,
   SET_TOP_ADVERTS_TYPE,
+  SET_PAGE_TYPE,
 } from "./actionTypes";
 
 export const setLoadingAction = (loading) => ({
@@ -87,4 +88,9 @@ export const setFirstLoadAction = () => ({
 
 export const resetFiltersAction = () => ({
   type: RESET_FILTERS_TYPE,
+});
+
+export const setPageAction = (val) => ({
+  type: SET_PAGE_TYPE,
+  payload: { page: val },
 });
