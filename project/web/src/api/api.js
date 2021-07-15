@@ -1,7 +1,6 @@
 import axios from "axios";
 import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
-
-export const apiUrl = "https://localhost:44307/v1/";
+import { apiUrl } from "../config";
 
 export const fillAdverts = async (filters, dispatch) => {
   dispatch(setLoadingAction(true));
