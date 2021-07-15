@@ -56,7 +56,11 @@ export function appReducer(state = { ...initialState }, action) {
     case SET_ADVERTS_TYPE:
       return { ...state, adverts: action.payload.adverts };
     case SET_TOP_ADVERTS_TYPE:
-      return { ...state, topAdverts: action.payload.topAdverts };
+      return {
+        ...state,
+        topAdverts: action.payload.topAdverts,
+        adverts: action.payload.topAdverts,
+      };
     case SET_SECTORS_TYPE:
       return { ...state, sectors: action.payload.sectors };
     case SET_AREAS_TYPE:

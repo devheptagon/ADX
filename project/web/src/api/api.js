@@ -4,12 +4,11 @@ import { apiUrl } from "../config";
 
 export const fillAdverts = async (filters, dispatch) => {
   dispatch(setLoadingAction(true));
-  //fetch
-  const results = null;
-  dispatch(setLoadingAction(false));
-
+  const response = await axios.get(apiUrl + "adverts");
+  const results = response.data?.data;
   //TODO: PAGING
   dispatch(setAdvertsAction(results));
+  dispatch(setLoadingAction(false));
 };
 
 export const getContents = async () => {

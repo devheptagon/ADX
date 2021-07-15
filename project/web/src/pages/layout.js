@@ -23,6 +23,7 @@ export default function Layout(props) {
       getSectors().then((d) => dispatch(setSectorsAction(d)));
       getContents().then((d) => dispatch(setContentsAction(d)));
     }
+
     if (window.location.href.toLowerCase().indexOf("/business") === -1) {
       dispatch(resetFiltersAction());
     }
