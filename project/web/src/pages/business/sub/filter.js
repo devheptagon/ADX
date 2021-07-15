@@ -52,22 +52,22 @@ const Filter = React.memo(() => {
 
   const selectSector = (selection) => {
     dispatch(setSectorFilterAction(selection));
-    search({ selectedSectors: selection });
+    search({ selectedSectors: selection }, page);
   };
 
   const selectArea = (selection) => {
     dispatch(setAreaFilterAction(selection));
-    search({ selectedAreas: selection });
+    search({ selectedAreas: selection }, page);
   };
 
   const selectKeyword = (selection) => {
     dispatch(setKeywordFilterAction(selection));
-    search({ selectedKeywords: selection });
+    search({ selectedKeywords: selection }, page);
   };
 
   const selectTenure = (selection) => {
     dispatch(setTenureFilterAction(selection));
-    search({ selectedTenures: selection });
+    search({ selectedTenures: selection }, page);
   };
 
   const selectMinPrice = (e) => {
@@ -75,7 +75,7 @@ const Filter = React.memo(() => {
     dispatch(setMinPriceFilterAction(min));
     debouncer.current?.cancel();
     debouncer.current = lodash.debounce(
-      () => search({ selectedMinPrice: min }),
+      () => search({ selectedMinPrice: min }, page),
       750
     );
     debouncer.current();
@@ -86,16 +86,16 @@ const Filter = React.memo(() => {
     dispatch(setMaxPriceFilterAction(max));
     debouncer.current?.cancel();
     debouncer.current = lodash.debounce(
-      () => search({ selectedMaxPrice: max }),
+      () => search({ selectedMaxPrice: max }, page),
       750
     );
     debouncer.current();
   };
 
-  const search = (lastValue) => {
+  const search = (lastValue, selectedPage) => {
     fillAdverts(
       {
-        page,
+        page: selectedPage,
         selectedSectors,
         selectedAreas,
         selectedTenures,

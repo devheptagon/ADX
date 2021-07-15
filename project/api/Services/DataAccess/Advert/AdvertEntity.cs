@@ -26,12 +26,12 @@ public struct AdvertEntity
     public string create_date { get; set; }
 
     public string images { get; set; }
-    public string tenures { get; set; }
 
     //non-table fields
     public string areas { get; set; }
     public string sectors { get; set; }
     public string tags { get; set; }
+    public string tenures { get; set; }
     public SellerEntity seller { get; set; }
 
 }

@@ -83,6 +83,12 @@ public class AdvertService
                 else
                     sqlCommand.Parameters["@TAGS"].Value = filter.SelectedKeywords;
 
+                sqlCommand.Parameters.Add(new SqlParameter("@TENURES", SqlDbType.VarChar, 1000));
+                if (filter?.SelectedTenures == null)
+                    sqlCommand.Parameters["@TENURES"].Value = SqlString.Null;
+                else
+                    sqlCommand.Parameters["@TENURES"].Value = filter.SelectedTenures;
+
                 sqlCommand.Parameters.Add(new SqlParameter("@Page", SqlDbType.Int));
                 if (filter?.Page == null)
                     sqlCommand.Parameters["@Page"].Value = SqlInt32.Null;
@@ -106,18 +112,6 @@ public class AdvertService
         }
 
         List<AdvertEntity> result = CreateAdvertListFromDatatable(dataTable);
-        //TODO: SQL E TASI
-        if (filter?.SelectedTenures != null)
-        {
-            var tenures = filter.SelectedTenures.Split(',').ToList();
-            var temp = new List<AdvertEntity>();
-            tenures.ForEach(t =>
-            {
-                temp.AddRange(result.Where(adv => adv.tenures.Contains(t)));
-            });
-            result = temp.Distinct().ToList();
-        }
-
         return result;
     }
 
