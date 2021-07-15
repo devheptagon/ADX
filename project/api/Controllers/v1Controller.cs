@@ -32,6 +32,12 @@ namespace adx
             return File(image, "image/jpeg");
         }
 
+        [HttpPost("eval")]
+        public void SaveEvaluationRequest([FromBody] EvaluationRequest request)
+        {
+            //todo: evaluationrequesti html olarak mail at
+        }
+
         #region Content Endpoints
         [HttpGet("contents")]
         public ContentResponse GetContents() { return ContentEndpoints.GetContents(); }
@@ -107,6 +113,7 @@ namespace adx
 
         [HttpDelete("tags/{id?}")]
         public void DeleteTag() { TagEndpoints.DeleteTag(RouteData); }
+
         #endregion
     }
 

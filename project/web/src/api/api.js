@@ -38,13 +38,8 @@ export const getTopAdverts = async () => {
 };
 
 export const postEvaluationRequest = async (values) => {
-  /*   const doc = {
-    _type: "evaluation",
-    ...values,
-  };
-  if (doc.price) doc.price = doc.price.toString();
-  if (doc.area_size) doc.area_size = doc.area_size.toString();
-  delete doc.gdpr_agreement;
-  const response = await client.create(doc);
-  return response; */
+  if (values.price) values.price = values.price.toString();
+  if (values.area_size) values.area_size = values.area_size.toString();
+  delete values.gdpr_agreement;
+  await axios.post(apiUrl + "eval", values);
 };
