@@ -10,6 +10,7 @@ import Business from "pages/business";
 import Contact from "pages/contact";
 import Privacy from "pages/privacy";
 import Detail from "pages/detail";
+import AdminFrame from "pages/adminframe";
 
 function App() {
   const [store, setStore] = React.useState(null);
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/detail">
             <Detail />
+          </Route>
+          <Route path="/admin">
+            <AdminFrame />
           </Route>
           <Route path="/">
             <Home />
