@@ -7,13 +7,13 @@ import { formatter } from "helpers/genericHelper";
 
 export default function Detail(props) {
   const { data } = props;
-  const sellerInfo = data?.seller?.split("|") || ["", "", ""];
+  const seller = data?.seller || {};
   return data ? (
     <div className={styles.outer}>
       <div className={styles.inner}>
         <div className={styles.detail}>
           <h1>{data.title}</h1>
-          <Slide data={data.images} />
+          <Slide data={data.images ? data.images.split(",") : []} />
           <table>
             <tbody>
               <tr>
@@ -25,17 +25,17 @@ export default function Detail(props) {
                 </td>
                 <td>
                   <div
-                    tooltip={sellerInfo[1]}
-                    data-tip={`${sellerInfo[1]} / ${sellerInfo[2]}`}
+                    tooltip={seller.fullname}
+                    data-tip={`${seller.email} / ${seller.phone}`}
                   >
-                    <b>Seller:</b> {sellerInfo[0]}
+                    <b>Seller:</b> {seller.fullname}
                   </div>
                   <ReactTooltip />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <b>Sectors:</b> {data.sectors?.map((s) => s.title).join(",")}
+                  <b>Sectors:</b> {data.sectors}
                 </td>
                 <td>
                   <b>Area:</b> {data.area}
@@ -74,7 +74,7 @@ export default function Detail(props) {
               </tr>
               <tr>
                 <td colSpan="3">
-                  <b>Tags:</b> {data.tags?.map((s) => s.title).join(",")}
+                  <b>Tags:</b> {data.tags}
                 </td>
               </tr>
               <tr>

@@ -15,7 +15,7 @@ export default function Index() {
   }, [id]);
   return (
     <Layout>
-      <Detail data={data} />
+      <Detail data={data && data.length ? data[0] : null} />
     </Layout>
   );
 }

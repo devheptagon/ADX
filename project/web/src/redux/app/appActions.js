@@ -1,12 +1,10 @@
 import {
-  SET_LOADING_TYPE,
   SET_SECTOR_FILTER_TYPE,
   SET_AREA_FILTER_TYPE,
   SET_TENURE_FILTER_TYPE,
   SET_KEYWORDS_FILTER_TYPE,
   SET_MINPRICE_FILTER_TYPE,
   SET_MAXPRICE_FILTER_TYPE,
-  SET_ADVERTS_TYPE,
   SET_FIRSTLOAD_TYPE,
   RESET_FILTERS_TYPE,
   SET_SECTORS_TYPE,
@@ -16,11 +14,6 @@ import {
   SET_TOP_ADVERTS_TYPE,
   SET_PAGE_TYPE,
 } from "./actionTypes";
-
-export const setLoadingAction = (loading) => ({
-  type: SET_LOADING_TYPE,
-  payload: { loading },
-});
 
 export const setContentsAction = (val) => ({
   type: SET_CONTENTS_TYPE,
@@ -56,11 +49,6 @@ export const setMaxPriceFilterAction = (val) => ({
   type: SET_MAXPRICE_FILTER_TYPE,
   payload: { maxPriceFilter: val },
 });
-
-/* export const setAdvertsAction = (val) => ({
-  type: SET_ADVERTS_TYPE,
-  payload: { adverts: val },
-}); */
 
 export const setTopAdvertsAction = (val) => ({
   type: SET_TOP_ADVERTS_TYPE,

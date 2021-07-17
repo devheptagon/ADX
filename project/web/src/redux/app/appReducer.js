@@ -1,12 +1,10 @@
 import {
-  SET_LOADING_TYPE,
   SET_SECTOR_FILTER_TYPE,
   SET_AREA_FILTER_TYPE,
   SET_TENURE_FILTER_TYPE,
   SET_KEYWORDS_FILTER_TYPE,
   SET_MINPRICE_FILTER_TYPE,
   SET_MAXPRICE_FILTER_TYPE,
-  //SET_ADVERTS_TYPE,
   SET_FIRSTLOAD_TYPE,
   RESET_FILTERS_TYPE,
   SET_SECTORS_TYPE,
@@ -19,14 +17,12 @@ import {
 import cities from "../../data/city.json";
 
 const initialState = {
-  loading: false,
   sectorFilter: [],
   areaFilter: [],
   tenureFilter: [],
   keywordFilter: [],
   minPriceFilter: 0,
   maxPriceFilter: 0,
-  //adverts: [],
   topAdverts: [],
   keywords: [],
   sectors: [],
@@ -39,8 +35,6 @@ const initialState = {
 
 export function appReducer(state = { ...initialState }, action) {
   switch (action.type) {
-    case SET_LOADING_TYPE:
-      return { ...state, loading: action.payload.loading };
     case SET_CONTENTS_TYPE:
       return { ...state, contents: action.payload.contents };
     case SET_SECTOR_FILTER_TYPE:
@@ -55,14 +49,6 @@ export function appReducer(state = { ...initialState }, action) {
       return { ...state, minPriceFilter: action.payload.minPriceFilter };
     case SET_MAXPRICE_FILTER_TYPE:
       return { ...state, maxPriceFilter: action.payload.maxPriceFilter };
-    /* case SET_ADVERTS_TYPE:
-      return {
-        ...state,
-        adverts:
-          state.page === 1
-            ? [...action.payload.adverts]
-            : [...state.adverts, ...action.payload.adverts],
-      }; */
     case SET_TOP_ADVERTS_TYPE:
       return {
         ...state,
