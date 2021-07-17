@@ -3,18 +3,15 @@ import styles from "styles/home.module.scss";
 
 export default function AdminFrame() {
   return (
-    <div style={{ backgroundColor: "pink" }}>
-      this is admin
-      <iframe
-        frameBorder="0"
-        scrolling="no"
-        marginHeight="0"
-        marginWidth="0"
-        height="500"
-        width="100%"
-        src={adminUrl + "login"}
-        title="panel"
-      ></iframe>
-    </div>
+    <iframe
+      frameBorder="0"
+      scrolling="no"
+      marginHeight="0"
+      marginWidth="0"
+      height="500"
+      width="100%"
+      src={adminUrl + "login"}
+      title="panel"
+    ></iframe>
   );
 }

@@ -1,8 +1,40 @@
+import React from "react";
+//import "styles/globals.css";
+import "styles/font-awesome-4.7.0/css/font-awesome.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Layout from "./Layout";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { initStore } from "redux/store";
+
+import Home from "pages/home";
+import Login from "pages/login";
+import Logout from "pages/logout";
 
 function App() {
-  return <Layout />;
+  const [store, setStore] = React.useState(null);
+  React.useEffect(() => {
+    initStore().then((s) => {
+      setStore(s);
+    });
+  }, []);
+
+  return store ? (
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/logout">
+            <Logout />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
+  ) : null;
 }
 
 export default App;

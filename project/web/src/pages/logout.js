@@ -1,10 +1,10 @@
 import Layout from "./layout";
-import Logout from "./logout/logout";
+import AdminFrame from "./adminframe/adminframe";
 
 export default function Index() {
   return (
     <Layout>
-      <Logout />
+      <AdminFrame />
     </Layout>
   );
 }

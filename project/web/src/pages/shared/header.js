@@ -6,6 +6,9 @@ import logo from "assets/logo.png";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
+  const isAdminFrame =
+    window.location.href.toLowerCase().indexOf("/manage") > -1;
+
   return (
     <>
       <nav className={styles.outer}>
@@ -53,6 +56,17 @@ export default function Header() {
               <Link to="/contact" as={"/contact"}>
                 CONTACT
               </Link>
+            </li>
+            <li>
+              {isAdminFrame ? (
+                <Link to="/logout" as={"/logout"}>
+                  ✘ Logout
+                </Link>
+              ) : (
+                <Link to="/manage" as={"/manage"}>
+                  👨 Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

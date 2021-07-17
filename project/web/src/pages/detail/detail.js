@@ -112,12 +112,7 @@ export default function Detail(props) {
                 <td colSpan={3}>
                   <b>Seller:</b> {seller.fullname} (
                   {`${seller.email} / ${seller.phone}`}){" "}
-                  <a
-                    href={adminUrl + "contact"}
-                    rel="noreferrer"
-                    target="_blank"
-                    className="link"
-                  >
+                  <a href="/manage" rel="noreferrer" className="link">
                     Contact Seller
                   </a>
                 </td>
