@@ -11,6 +11,7 @@ import Contact from "pages/contact";
 import Privacy from "pages/privacy";
 import Detail from "pages/detail";
 import AdminFrame from "pages/adminframe";
+import Logout from "pages/logout";
 
 function App() {
   const [store, setStore] = React.useState(null);
@@ -39,8 +40,11 @@ function App() {
           <Route path="/detail">
             <Detail />
           </Route>
-          <Route path="/admin">
+          <Route path="/manage">
             <AdminFrame />
+          </Route>
+          <Route path="/logout">
+            <Logout />
           </Route>
           <Route path="/">
             <Home />

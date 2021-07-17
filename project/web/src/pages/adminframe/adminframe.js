@@ -1,3 +1,4 @@
+import { adminUrl } from "config";
 import styles from "styles/home.module.scss";
 
 export default function AdminFrame() {
@@ -9,9 +10,9 @@ export default function AdminFrame() {
         scrolling="no"
         marginHeight="0"
         marginWidth="0"
-        minHeight="100%"
+        height="500"
         width="100%"
-        src="http://localhost:3000"
+        src={adminUrl + "login"}
         title="panel"
       ></iframe>
     </div>
