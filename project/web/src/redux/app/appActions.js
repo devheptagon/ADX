@@ -57,10 +57,10 @@ export const setMaxPriceFilterAction = (val) => ({
   payload: { maxPriceFilter: val },
 });
 
-export const setAdvertsAction = (val) => ({
+/* export const setAdvertsAction = (val) => ({
   type: SET_ADVERTS_TYPE,
   payload: { adverts: val },
-});
+}); */
 
 export const setTopAdvertsAction = (val) => ({
   type: SET_TOP_ADVERTS_TYPE,

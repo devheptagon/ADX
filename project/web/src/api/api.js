@@ -3,28 +3,33 @@ import { setAdvertsAction, setLoadingAction } from "redux/app/appActions";
 import { apiUrl } from "../config";
 
 export const fillAdverts = async (filters, dispatch) => {
-  filters = {
+  const payload = {
     page: filters.page.toString(),
-    selectedSectors: filters.selectedSectors
-      ? filters.selectedSectors.join(",")
-      : null,
-    selectedAreas: filters.selectedAreas
-      ? filters.selectedAreas.join(",")
-      : null,
-    selectedTenures: filters.selectedTenures
-      ? filters.selectedTenures.join(",")
-      : null,
-    selectedKeywords: filters.selectedKeywords
-      ? filters.selectedKeywords.join(",")
-      : null,
+    selectedSectors:
+      filters.selectedSectors && filters.selectedSectors.length
+        ? filters.selectedSectors.map((s) => s.value).join(",")
+        : null,
+    selectedAreas:
+      filters.selectedAreas && filters.selectedAreas.length
+        ? filters.selectedAreas.map((s) => s.value).join(",")
+        : null,
+    selectedTenures:
+      filters.selectedTenures && filters.selectedTenures.length
+        ? filters.selectedTenures.map((s) => s.value).join(",")
+        : null,
+    selectedKeywords:
+      filters.selectedKeywords && filters.selectedKeywords.length
+        ? filters.selectedKeywords.map((s) => s.value).join(",")
+        : null,
     selectedMinPrice: filters.selectedMinPrice?.toString(),
     selectedMaxPrice: filters.selectedMaxPrice?.toString(),
   };
-  dispatch(setLoadingAction(true));
-  const response = await axios.post(apiUrl + "adverts", filters);
+  //dispatch(setLoadingAction(true));
+  const response = await axios.post(apiUrl + "adverts", payload);
   const results = response.data?.data;
-  dispatch(setAdvertsAction(results));
-  dispatch(setLoadingAction(false));
+  return results;
+  //dispatch(setAdvertsAction(results));
+  //dispatch(setLoadingAction(false));
 };
 
 export const getContents = async () => {

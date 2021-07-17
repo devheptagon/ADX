@@ -1,13 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "styles/home.module.scss";
 import { slugify } from "helpers/genericHelper";
 import { apiUrl } from "../../../config";
 
-const AdvertList = React.memo(() => {
-  const data = useSelector((state) => state.appReducer.adverts);
-
+const AdvertList = React.memo((props) => {
+  const { data } = props;
   return (
     <div className={styles.list}>
       {data?.map((d) => {

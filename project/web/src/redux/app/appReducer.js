@@ -6,7 +6,7 @@ import {
   SET_KEYWORDS_FILTER_TYPE,
   SET_MINPRICE_FILTER_TYPE,
   SET_MAXPRICE_FILTER_TYPE,
-  SET_ADVERTS_TYPE,
+  //SET_ADVERTS_TYPE,
   SET_FIRSTLOAD_TYPE,
   RESET_FILTERS_TYPE,
   SET_SECTORS_TYPE,
@@ -26,7 +26,7 @@ const initialState = {
   keywordFilter: [],
   minPriceFilter: 0,
   maxPriceFilter: 0,
-  adverts: [],
+  //adverts: [],
   topAdverts: [],
   keywords: [],
   sectors: [],
@@ -55,14 +55,14 @@ export function appReducer(state = { ...initialState }, action) {
       return { ...state, minPriceFilter: action.payload.minPriceFilter };
     case SET_MAXPRICE_FILTER_TYPE:
       return { ...state, maxPriceFilter: action.payload.maxPriceFilter };
-    case SET_ADVERTS_TYPE:
+    /* case SET_ADVERTS_TYPE:
       return {
         ...state,
         adverts:
           state.page === 1
             ? [...action.payload.adverts]
             : [...state.adverts, ...action.payload.adverts],
-      };
+      }; */
     case SET_TOP_ADVERTS_TYPE:
       return {
         ...state,

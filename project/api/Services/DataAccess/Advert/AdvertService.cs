@@ -54,30 +54,30 @@ public class AdvertService
                 sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@MIN_PRICE", SqlDbType.Int));
-                if (filter?.SelectedMinPrice == null)
+                if (filter?.SelectedMinPrice == null || filter?.SelectedMinPrice == "0")
                     sqlCommand.Parameters["@MIN_PRICE"].Value = SqlInt32.Null;
                 else
                     sqlCommand.Parameters["@MIN_PRICE"].Value = filter.SelectedMinPrice;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@MAX_PRICE", SqlDbType.Int));
-                if (filter?.SelectedMaxPrice == null)
+                if (filter?.SelectedMaxPrice == null || filter?.SelectedMaxPrice == "0")
                     sqlCommand.Parameters["@MAX_PRICE"].Value = SqlInt32.Null;
                 else
                     sqlCommand.Parameters["@MAX_PRICE"].Value = filter.SelectedMaxPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@AREAS", SqlDbType.VarChar, 1000));
+                sqlCommand.Parameters.Add(new SqlParameter("@AREAS", SqlDbType.VarChar, -1)); //-1 = varchar(max)
                 if (filter?.SelectedAreas == null)
                     sqlCommand.Parameters["@AREAS"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@AREAS"].Value = filter.SelectedAreas;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@SECTORS", SqlDbType.VarChar, 1000));
+                sqlCommand.Parameters.Add(new SqlParameter("@SECTORS", SqlDbType.VarChar, -1));
                 if (filter?.SelectedSectors == null)
                     sqlCommand.Parameters["@SECTORS"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@SECTORS"].Value = filter.SelectedSectors;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@TAGS", SqlDbType.VarChar, 1000));
+                sqlCommand.Parameters.Add(new SqlParameter("@TAGS", SqlDbType.VarChar, -1));
                 if (filter?.SelectedKeywords == null)
                     sqlCommand.Parameters["@TAGS"].Value = SqlString.Null;
                 else
