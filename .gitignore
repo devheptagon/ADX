@@ -7,4 +7,6 @@ project/api/appsettings.json
 project/api/appsettings.Development.json
 project/api/.vs/adx/DesignTimeBuild/.dtbcache.v2
 project/api/.vs/adx/v16/.suo
-project/api/obj/Debug/netcoreapp3.1/adx.csprojAssemblyReference.cache
+project/api/obj
+project/api/bin
+client/api/.env
