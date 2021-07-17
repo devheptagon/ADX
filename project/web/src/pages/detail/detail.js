@@ -1,45 +1,14 @@
 import styles from "styles/home.module.scss";
 import moment from "moment";
-/* import ReactTooltip from "react-tooltip"; */
 import Slide from "./sub/slide";
 import Loading from "pages/shared/loading";
 import { formatter } from "helpers/genericHelper";
-
-/* 
-annualProfit: ""
-annualTurnover: ""
-monthlyProfit: ""
-monthlyTurnover: ""
-weeklyProfit: ""
-weeklyTurnover: "" 
-
-areas: "Aberdare"
-city: ""
-county: ""
-create_date: "13/07/2021 18:48:01"
-description: ""
-freeHoldPrice: "50"
-id: "f90023fa-8410-424b-8cc4-e35c9380e03f"
-images: "20210714154426.jpg"
-leaseHoldPrice: ""
-line1: ""
-line2: ""
-
-postcode: ""
-region: ""
-sectors: "sector1,sector2"
-seller: {id: null, fullname: "top seller2", email: "", phone: "", avatar: "", …}
-seller_id: "89c47282-8432-46aa-a2e0-cee5029c7f0f"
-status: ""
-tags: "tag3"
-tenures: "Freehold"
-title: "test1"
-
-*/
+import { adminUrl } from "../../config";
 
 export default function Detail(props) {
   const { data } = props;
   const seller = data?.seller || {};
+
   return data ? (
     <div className={styles.outer}>
       <div className={styles.inner}>
@@ -70,7 +39,6 @@ export default function Detail(props) {
                   <b>Keywords:</b> {data.tags || "N/A"}
                 </td>
               </tr>
-
               <tr>
                 <td colSpan={3}>
                   <b>Address:</b>{" "}
@@ -143,7 +111,15 @@ export default function Detail(props) {
               <tr>
                 <td colSpan={3}>
                   <b>Seller:</b> {seller.fullname} (
-                  {`${seller.email} / ${seller.phone}`})
+                  {`${seller.email} / ${seller.phone}`}){" "}
+                  <a
+                    href={adminUrl + "contact"}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="link"
+                  >
+                    Contact Seller
+                  </a>
                 </td>
               </tr>
               <tr>
