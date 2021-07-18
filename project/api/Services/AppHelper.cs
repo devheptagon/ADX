@@ -58,7 +58,7 @@ namespace adx.Services
             var token = new JwtSecurityToken(config["Jwt:Issuer"],
               config["Jwt:Issuer"],
               claims,
-              expires: DateTime.Now.AddSeconds(30),
+              expires: DateTime.Now.AddMinutes(double.Parse(config["Jwt:ValidInMinutes"])),
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -82,7 +82,12 @@ namespace adx.Services
 
         public static bool IsAdmin(HttpContext context)
         {
-            return context.User.Claims.FirstOrDefault(c => c.Type == "Role").Value == UserRole.Admin;
+            var user = context.User;
+            if (user == null) return false;
+
+            var id = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var selectedUser = UserService.GetUsers(id);
+            return selectedUser?.FirstOrDefault().role == UserRole.Admin;
         }
 
         public static string CreateMD5(string input)
