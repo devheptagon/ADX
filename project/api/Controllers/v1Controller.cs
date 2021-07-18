@@ -1,7 +1,13 @@
 ﻿using adx.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace adx
 {
@@ -10,11 +16,23 @@ namespace adx
     [ApiController]
     public class v1Controller : ControllerBase
     {
-        public v1Controller()
-        {
+        public v1Controller() { }
 
+        [Authorize]
+        [HttpPost("validate")]
+        public void ValidateToken([FromBody] ValidationRequest request)
+        {
+            //returns 4xx if not valid token, else do nothing
         }
 
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public User Login([FromBody] User login)
+        {
+            return AuthEndpoints.Login(login);
+        }
+
+        [Authorize]
         [HttpPost("upload")]
         [Consumes("multipart/form-data")]
         [RequestFormLimits(ValueLengthLimit = int.MaxValue, MultipartBodyLengthLimit = long.MaxValue)]
@@ -23,6 +41,7 @@ namespace adx
             return AppHelper.Upload(file);
         }
 
+        [AllowAnonymous]
         [HttpGet("images/{id?}")]
         public IActionResult GetImage()
         {
@@ -32,6 +51,7 @@ namespace adx
             return File(image, "image/jpeg");
         }
 
+        [AllowAnonymous]
         [HttpPost("eval")]
         public void SaveEvaluationRequest([FromBody] EvaluationRequest request)
         {
@@ -39,81 +59,154 @@ namespace adx
         }
 
         #region Content Endpoints
+        [AllowAnonymous]
         [HttpGet("contents")]
         public ContentResponse GetContents() { return ContentEndpoints.GetContents(); }
 
+        [Authorize]
         [HttpPost("contents")]
-        public string UpdateContents([FromBody] ContentRequest request) { return ContentEndpoints.UpdateContents(request); }
+        public string UpdateContents([FromBody] ContentRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return null;
+            return ContentEndpoints.UpdateContents(request);
+        }
         #endregion
 
         #region Advert Endpoints
+        [AllowAnonymous]
         [HttpPost("adverts")]
-        public AdvertResponse GetAdverts([FromBody] AdvertFilter request) { 
-            return AdvertEndpoints.GetAdverts(request); 
+        public AdvertResponse GetAdverts([FromBody] AdvertFilter request)
+        {
+            return AdvertEndpoints.GetAdverts(request);
         }
 
+        [AllowAnonymous]
         [HttpGet("advert/{id?}")]
         public AdvertResponse GetAdvert() { return AdvertEndpoints.GetAdvert(RouteData); }
         #endregion
 
         #region Seller Endpoints
+        [AllowAnonymous]
         [HttpGet("sellers")]
         [HttpGet("sellers/{id?}")]
         public SellerResponse GetSellers() { return SellerEndpoints.GetSellers(RouteData); }
 
+        [Authorize]
         [HttpPost("sellers")]
-        public void AddSeller([FromBody] SellerRequest request) { SellerEndpoints.AddSeller(request.Data); }
+        public void AddSeller([FromBody] SellerRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            SellerEndpoints.AddSeller(request.Data);
+        }
 
+        [Authorize]
         [HttpPatch("sellers")]
-        public void UpdateSeller([FromBody] SellerRequest request) { SellerEndpoints.UpdateSeller(request.Data); }
+        public void UpdateSeller([FromBody] SellerRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            SellerEndpoints.UpdateSeller(request.Data);
+        }
 
+        [Authorize]
         [HttpDelete("sellers/{id?}")]
-        public void DeleteSeller() { SellerEndpoints.DeleteSeller(RouteData); }
+        public void DeleteSeller()
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            SellerEndpoints.DeleteSeller(RouteData);
+        }
         #endregion
 
         #region Area Endpoints
+        [AllowAnonymous]
         [HttpGet("areas")]
         [HttpGet("areas/{id?}")]
         public AreaResponse GetAreas() { return AreaEndpoints.GetAreas(RouteData); }
 
+        [Authorize]
         [HttpPost("areas")]
-        public void AddArea([FromBody] AreaRequest request) { AreaEndpoints.AddArea(request.Data); }
+        public void AddArea([FromBody] AreaRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            AreaEndpoints.AddArea(request.Data);
+        }
 
+        [Authorize]
         [HttpPatch("areas")]
-        public void UpdateArea([FromBody] AreaRequest request) { AreaEndpoints.UpdateArea(request.Data); }
+        public void UpdateArea([FromBody] AreaRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            AreaEndpoints.UpdateArea(request.Data);
+        }
 
+        [Authorize]
         [HttpDelete("areas/{id?}")]
-        public void DeleteArea() { AreaEndpoints.DeleteArea(RouteData); }
+        public void DeleteArea()
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            AreaEndpoints.DeleteArea(RouteData);
+        }
         #endregion
 
         #region Sector Endpoints
+        [AllowAnonymous]
         [HttpGet("sectors")]
         [HttpGet("sectors/{id?}")]
         public SectorResponse GetSectors() { return SectorEndpoints.GetSectors(RouteData); }
 
+        [Authorize]
         [HttpPost("sectors")]
-        public void AddSector([FromBody] SectorRequest request) { SectorEndpoints.AddSector(request.Data); }
+        public void AddSector([FromBody] SectorRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            SectorEndpoints.AddSector(request.Data);
+        }
 
+        [Authorize]
         [HttpPatch("sectors")]
-        public void UpdateSector([FromBody] SectorRequest request) { SectorEndpoints.UpdateSector(request.Data); }
+        public void UpdateSector([FromBody] SectorRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            SectorEndpoints.UpdateSector(request.Data);
+        }
 
+        [Authorize]
         [HttpDelete("sectors/{id?}")]
-        public void DeleteSector() { SectorEndpoints.DeleteSector(RouteData); }
+        public void DeleteSector()
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            SectorEndpoints.DeleteSector(RouteData);
+        }
         #endregion
 
         #region Tag Endpoints
+        [AllowAnonymous]
         [HttpGet("tags")]
         [HttpGet("tags/{id?}")]
         public TagResponse GetTags() { return TagEndpoints.GetTags(RouteData); }
 
+        [Authorize]
         [HttpPost("tags")]
-        public void AddTag([FromBody] TagRequest request) { TagEndpoints.AddTag(request.Data); }
+        public void AddTag([FromBody] TagRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            TagEndpoints.AddTag(request.Data);
+        }
 
+        [Authorize]
         [HttpPatch("tags")]
-        public void UpdateTag([FromBody] TagRequest request) { TagEndpoints.UpdateTag(request.Data); }
+        public void UpdateTag([FromBody] TagRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            TagEndpoints.UpdateTag(request.Data);
+        }
 
+        [Authorize]
         [HttpDelete("tags/{id?}")]
-        public void DeleteTag() { TagEndpoints.DeleteTag(RouteData); }
+        public void DeleteTag()
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            TagEndpoints.DeleteTag(RouteData);
+        }
 
         #endregion
     }

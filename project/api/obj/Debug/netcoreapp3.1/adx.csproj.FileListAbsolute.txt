@@ -48,4 +48,5 @@ C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.dll
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.pdb
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.genruntimeconfig.cache
+C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.csprojAssemblyReference.cache

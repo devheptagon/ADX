@@ -1,7 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace adx
 {
+    public class UserRole
+    {
+        public const string Admin = "admin";
+        public const string Seller = "seller";
+        public const string Guest = "guest";
+    }
 
     public class AdvertFilter
     {
@@ -130,6 +137,17 @@ namespace adx
         public string Price { get; set; }
 
         public string Area_Size { get; set; }
+    }
 
+    public class ValidationRequest { }
+
+    public class User
+    {
+        public string Id { get; set; }
+        public string Fullname { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
+        public string Token { get; set; }
     }
 }

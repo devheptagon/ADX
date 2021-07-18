@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,6 +41,66 @@ namespace adx.Services
             }
 
             return newFileName;
+        }
+
+        public static string GenerateJSONWebToken(User userInfo)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[] {
+                new Claim("Id", userInfo.Id),
+                new Claim("Fullname", userInfo.Fullname),
+                new Claim("Role", userInfo.Role),
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
+            };
+
+            var token = new JwtSecurityToken(config["Jwt:Issuer"],
+              config["Jwt:Issuer"],
+              claims,
+              expires: DateTime.Now.AddSeconds(30),
+              signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public static User AuthenticateUser(User login)
+        {
+            var passhash = CreateMD5(login.Password);
+            var result = UserService.GetUserByCreds(login.Email, passhash);
+            if (result == null) return null;
+
+            var user = new User();
+            user.Fullname = result.fullname;
+            user.Email = result.email;
+            user.Id = result.id.ToString();
+            user.Role = result.role;
+            user.Token = GenerateJSONWebToken(user);
+
+            return user;
+        }
+
+        public static bool IsAdmin(HttpContext context)
+        {
+            return context.User.Claims.FirstOrDefault(c => c.Type == "Role").Value == UserRole.Admin;
+        }
+
+        public static string CreateMD5(string input)
+        {
+            // Use input string to calculate MD5 hash
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
         }
 
         //public static async Task SaveMetaRequestResponse(MetaRequest request, MetaResponse response)
