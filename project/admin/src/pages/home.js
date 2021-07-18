@@ -1,3 +1,5 @@
+import Layout from "Layout";
+
 export default function Home() {
-  return "home";
+  return <Layout>home</Layout>;
 }

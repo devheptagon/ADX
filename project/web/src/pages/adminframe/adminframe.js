@@ -10,7 +10,7 @@ export default function AdminFrame() {
       marginWidth="0"
       height="500"
       width="100%"
-      src={adminUrl + "login"}
+      src={adminUrl + "home"}
       title="panel"
     ></iframe>
   );

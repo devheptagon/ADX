@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
 import MultiSelect from "react-multi-select-component";
 import { useHistory } from "react-router-dom";
-import {} from "redux/app/appActions";
 
 export default function Search() {
   const history = useHistory();
