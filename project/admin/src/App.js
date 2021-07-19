@@ -1,5 +1,4 @@
 import React from "react";
-//import "styles/globals.css";
 import "styles/font-awesome-4.7.0/css/font-awesome.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
