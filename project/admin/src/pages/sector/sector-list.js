@@ -1,26 +1,35 @@
 import { useState } from "react";
 import SectorForm from "./sector-form";
 import Modal from "react-modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteSectorEP, getSectorsEP } from "integration/endpoints/sector";
+import { setSectorsAction } from "redux/app/appActions";
 
 export default function SectorList() {
+  const dispatch = useDispatch();
   const sectors = useSelector((state) => state.appReducer.sectors);
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(null);
   const closeModal = () => {
     setModalOpen(false);
   };
 
   const edit = (e) => {
     const id = e.currentTarget.dataset.id;
-    setSelectedItemId(id);
+    const item = sectors.filter((s) => s.id === id)[0];
+    setSelectedItem(item);
     setModalOpen(true);
   };
 
-  const remove = (e) => {
+  const remove = async (e) => {
     const id = e.currentTarget.dataset.id;
     const label = e.currentTarget.dataset.label;
-    const value = window.confirm("Are you sure to delete " + label);
+    const ok = window.confirm("Are you sure to delete " + label);
+    if (ok) {
+      await deleteSectorEP(id);
+      const newList = await getSectorsEP();
+      dispatch(setSectorsAction(newList));
+    }
   };
 
   return (
@@ -57,7 +66,7 @@ export default function SectorList() {
         </tbody>
       </table>
       <Modal ariaHideApp={false} isOpen={modalOpen}>
-        <SectorForm id={selectedItemId} onClose={closeModal} />
+        <SectorForm item={selectedItem} onClose={closeModal} />
       </Modal>
     </div>
   );
