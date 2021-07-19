@@ -9,6 +9,7 @@ import { store } from "redux/store";
 import Home from "pages/home";
 import Login from "pages/login";
 import Logout from "pages/logout";
+import SectorPage from "pages/sector/sector-page";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/logout">
             <Logout />
+          </Route>
+          <Route path="/sectors">
+            <SectorPage />
           </Route>
           <Route path="/">
             <Home />

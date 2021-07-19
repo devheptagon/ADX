@@ -8,6 +8,7 @@ import {
   validateToken,
   clearLocalToken,
 } from "utils/appHelper";
+import styles from "styles/app.module.scss";
 
 function Layout(props) {
   const dispatch = useDispatch();
@@ -44,12 +45,17 @@ function Layout(props) {
     <Container>
       <Row>
         <Col xs={12} md={2}>
-          <Link to="/logout">logout</Link>
-          <br />
-          MESSAGES
-          <br />
-          ADVERTS
-          <br />
+          <ul className={styles.left_menu}>
+            <li>
+              <Link to="/logout">LOG OUT</Link>
+            </li>
+            <li>
+              <Link to="/sectors">Sectors</Link>
+            </li>
+            <li>
+              <Link to="/tags">Keywords</Link>
+            </li>
+          </ul>
         </Col>
         <Col xs={12} md={10}>
           {props.children}
