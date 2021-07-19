@@ -3,6 +3,7 @@ import {
   writeLocalStorage,
   clearLocalStorage,
 } from "./genericHelper";
+import { validateTokenEP } from "integration/endpoints/auth";
 
 const storageKey = "token";
 
@@ -14,9 +15,8 @@ export const setLocalToken = (token) => {
   writeLocalStorage(storageKey, token);
 };
 
-export const validateToken = (token) => {
-  //api call here
-  return true;
+export const validateToken = async (token) => {
+  return validateTokenEP(token);
 };
 
 export const clearLocalToken = () => {

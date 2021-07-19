@@ -2,14 +2,14 @@ import axios from "axios";
 import { apiUrl } from "../config";
 import { store } from "../redux/store";
 
-const verbs = {
+export const verbs = {
   get: "get",
   post: "post",
   patch: "patch",
   delete: "delete",
 };
 
-const call = async (verb, path, params, data) => {
+export const call = async (verb, path, params, data, dontCheckAuth = false) => {
   const token = store.getState().appReducer.token;
   if (token) {
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
@@ -17,23 +17,26 @@ const call = async (verb, path, params, data) => {
 
   const response =
     verb === verbs.get
-      ? await axios.get(apiUrl + path + (params ? "?" + params : ""))
+      ? await axios
+          .get(apiUrl + path + (params ? "?" + params : ""))
+          .catch((exp) => checkAuthError(exp, dontCheckAuth))
       : verb === verbs.post
-      ? await axios.post(apiUrl + path, data)
+      ? await axios
+          .post(apiUrl + path, data)
+          .catch((exp) => checkAuthError(exp, dontCheckAuth))
       : verb === verbs.patch
-      ? await axios.patch(apiUrl + path, data)
-      : await axios.delete(apiUrl + path);
+      ? await axios
+          .patch(apiUrl + path, data)
+          .catch((exp) => checkAuthError(exp, dontCheckAuth))
+      : await axios
+          .delete(apiUrl + path)
+          .catch((exp) => checkAuthError(exp, dontCheckAuth));
 
-  checkAuthError(response.status);
-  return response.data;
+  return response?.data;
 };
 
-const checkAuthError = (status) => {
-  if (status > 400 && status < 500) {
-    //logout
+const checkAuthError = (exception, dontCheckAuth) => {
+  if (!dontCheckAuth && exception.indexOf("401")) {
+    //todo: logout
   }
-};
-
-export const validateToken = async (token) => {
-  return call(verbs.post, "validate", null, { token });
 };

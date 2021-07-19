@@ -29,13 +29,14 @@ function Layout(props) {
       return null;
     }
   } else {
-    const isTokenValid = validateToken(reduxToken);
-    if (!isTokenValid) {
-      dispatch(setTokenAction(null));
-      clearLocalToken();
-      history.push("/login");
-      return null;
-    }
+    validateToken(reduxToken).then((isTokenValid) => {
+      if (!isTokenValid) {
+        dispatch(setTokenAction(null));
+        clearLocalToken();
+        history.push("/login");
+        return null;
+      }
+    });
   }
 
   return (
