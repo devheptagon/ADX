@@ -1,19 +1,33 @@
+import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { setTokenAction } from "redux/app/appActions";
+import {
+  setTokenAction,
+  setSectorsAction,
+  setFirstLoadAction,
+} from "redux/app/appActions";
 import {
   checkLocalToken,
   validateToken,
   clearLocalToken,
 } from "utils/appHelper";
 import styles from "styles/app.module.scss";
+import { getSectorsEP } from "integration/endpoints/sector";
 
 function Layout(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const reduxToken = useSelector((state) => state.appReducer.token);
+  const firstLoad = useSelector((state) => state.appReducer.firstLoad);
+
+  useEffect(() => {
+    if (firstLoad) {
+      dispatch(setFirstLoadAction(false));
+      getSectorsEP().then((d) => dispatch(setSectorsAction(d)));
+    }
+  }, [dispatch, firstLoad]);
 
   if (!reduxToken) {
     const localToken = checkLocalToken();

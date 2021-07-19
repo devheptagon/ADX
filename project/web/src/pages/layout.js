@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   resetFiltersAction,
   setContentsAction,
+  setFirstLoadAction,
   setKeywordsAction,
   setSectorsAction,
   setTopAdvertsAction,
@@ -18,6 +19,7 @@ export default function Layout(props) {
 
   React.useEffect(() => {
     if (firstLoad) {
+      dispatch(setFirstLoadAction(false));
       getTopAdverts().then((d) => dispatch(setTopAdvertsAction(d)));
       getKeywords().then((d) => dispatch(setKeywordsAction(d)));
       getSectors().then((d) => dispatch(setSectorsAction(d)));

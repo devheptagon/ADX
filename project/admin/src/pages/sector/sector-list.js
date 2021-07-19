@@ -1,8 +1,10 @@
 import { useState } from "react";
 import SectorForm from "./sector-form";
 import Modal from "react-modal";
+import { useSelector } from "react-redux";
 
 export default function SectorList() {
+  const sectors = useSelector((state) => state.appReducer.sectors);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(0);
   const closeModal = () => {
@@ -32,24 +34,26 @@ export default function SectorList() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <span
-                data-id="1"
-                data-label="sector1"
-                onClick={remove}
-                title="delete"
-              >
-                <i className="fa fa-trash-o"></i>
-              </span>
-            </td>
-            <td>
-              <span data-id="1" onClick={edit} title="edit">
-                <i className="fa fa-pencil-square-o"></i>
-              </span>
-            </td>
-            <td>sector1</td>
-          </tr>
+          {sectors.map((item, index) => (
+            <tr key={item.id}>
+              <td>
+                <span
+                  data-id={item.id}
+                  data-label={item.title}
+                  onClick={remove}
+                  title="delete"
+                >
+                  <i className="fa fa-trash-o"></i>
+                </span>
+              </td>
+              <td>
+                <span data-id={item.id} onClick={edit} title="edit">
+                  <i className="fa fa-pencil-square-o"></i>
+                </span>
+              </td>
+              <td>{item.title}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <Modal ariaHideApp={false} isOpen={modalOpen}>
