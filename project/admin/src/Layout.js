@@ -13,6 +13,7 @@ function Layout(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const reduxToken = useSelector((state) => state.appReducer.token);
+
   if (!reduxToken) {
     const localToken = checkLocalToken();
     if (localToken) {

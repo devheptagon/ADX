@@ -20,9 +20,10 @@ namespace adx
 
         [Authorize]
         [HttpPost("validate")]
-        public void ValidateToken([FromBody] ValidationRequest request)
+        public IActionResult ValidateToken([FromBody] ValidationRequest request)
         {
-            //returns 4xx if not valid token, else do nothing
+            //if token is invalid, it will throw 401 beforehand
+            return Ok("valid");
         }
 
         [AllowAnonymous]
