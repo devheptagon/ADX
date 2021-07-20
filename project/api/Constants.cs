@@ -7,6 +7,6 @@ namespace adx
 {
     public class Constants
     {
-        public const int PAGE_SIZE = 5;
+        public const int PAGE_SIZE = 2;
     }
 }

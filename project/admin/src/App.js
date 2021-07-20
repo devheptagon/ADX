@@ -9,6 +9,7 @@ import Home from "pages/home";
 import Login from "pages/login";
 import Logout from "pages/logout";
 import SectorPage from "pages/sector/sector-page";
+import AdvertPage from "pages/advert/advert-page";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/sectors">
             <SectorPage />
+          </Route>
+          <Route path="/adverts">
+            <AdvertPage />
           </Route>
           <Route path="/">
             <Home />
