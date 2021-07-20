@@ -7,7 +7,7 @@ using adx;
 
 class AdvertSqlStrings
 {
-    public static string SelectSql =
+    private static string SelectBaseSql =
         @"SELECT ADV.*, 
 
         (SELECT STRING_AGG(T3.TITLE, ',') FROM [ADVERT] AS T1
@@ -40,7 +40,7 @@ class AdvertSqlStrings
 
         FROM [ADVERT] AS ADV";
 
-    public static string SelectFilterSql =
+    public static string SelectSql = SelectBaseSql +
         @"
 		WHERE 
 			(@MIN_PRICE IS NULL OR (ADV.LEASEHOLDPRICE IS NOT NULL AND ADV.LEASEHOLDPRICE >= @MIN_PRICE) OR (ADV.FREEHOLDPRICE IS NOT NULL AND ADV.FREEHOLDPRICE >= @MIN_PRICE)) AND
@@ -58,10 +58,17 @@ class AdvertSqlStrings
 				(SELECT COUNT(0) FROM TENURE AS T1 INNER JOIN ADVERTTENURE AS T2 ON T1.ID = T2.TENURE_ID AND T2.ADVERT_ID = ADV.ID 
 				INNER JOIN (SELECT VALUE AS VALUE2 FROM STRING_SPLIT(@TENURES, ',')) AS V2 ON T1.TITLE = V2.VALUE2) > 0)
 
-        ORDER BY ADV.CREATE_DATE
-		OFFSET (@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
+        ORDER BY ADV.CREATE_DATE ";
 
-    public static string SelectByIdSql = SelectSql + " WHERE CAST(ADV.id AS VARCHAR(50)) = @advert_id";
+    public static string SelectByPageSql = SelectSql + @"OFFSET(@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
+
+    public static string SelectByIdSql = SelectBaseSql + " WHERE CAST(ADV.id AS VARCHAR(50)) = @advert_id";
+
+    //public static string AddSql = @"Insert Into [Advert] () VALUES(@); select CONVERT(varchar(50),scope_identity())";
+
+    //public static string DeleteSql = "Delete From [Advert] Where id = @advert_id";
+
+    //public static string UpdateSql = @"Update [Advert] Set title=@title WHERE id = @id";
 
 }
 

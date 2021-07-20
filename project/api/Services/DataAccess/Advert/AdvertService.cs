@@ -48,49 +48,49 @@ public class AdvertService
         DataTable dataTable = new DataTable();
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            var sql = AdvertSqlStrings.SelectSql + AdvertSqlStrings.SelectFilterSql;
+            var sql = string.IsNullOrEmpty(filter.Page) ? AdvertSqlStrings.SelectSql : AdvertSqlStrings.SelectByPageSql;
             using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@MIN_PRICE", SqlDbType.Int));
-                if (filter?.SelectedMinPrice == null || filter?.SelectedMinPrice == "0")
+                if (string.IsNullOrEmpty(filter.SelectedMinPrice) || filter?.SelectedMinPrice == "0")
                     sqlCommand.Parameters["@MIN_PRICE"].Value = SqlInt32.Null;
                 else
                     sqlCommand.Parameters["@MIN_PRICE"].Value = filter.SelectedMinPrice;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@MAX_PRICE", SqlDbType.Int));
-                if (filter?.SelectedMaxPrice == null || filter?.SelectedMaxPrice == "0")
+                if (string.IsNullOrEmpty(filter.SelectedMaxPrice) || filter?.SelectedMaxPrice == "0")
                     sqlCommand.Parameters["@MAX_PRICE"].Value = SqlInt32.Null;
                 else
                     sqlCommand.Parameters["@MAX_PRICE"].Value = filter.SelectedMaxPrice;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@AREAS", SqlDbType.VarChar, -1)); //-1 = varchar(max)
-                if (filter?.SelectedAreas == null)
+                if (string.IsNullOrEmpty(filter.SelectedAreas))
                     sqlCommand.Parameters["@AREAS"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@AREAS"].Value = filter.SelectedAreas;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@SECTORS", SqlDbType.VarChar, -1));
-                if (filter?.SelectedSectors == null)
+                if (string.IsNullOrEmpty(filter.SelectedSectors))
                     sqlCommand.Parameters["@SECTORS"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@SECTORS"].Value = filter.SelectedSectors;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@TAGS", SqlDbType.VarChar, -1));
-                if (filter?.SelectedKeywords == null)
+                if (string.IsNullOrEmpty(filter.SelectedKeywords))
                     sqlCommand.Parameters["@TAGS"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@TAGS"].Value = filter.SelectedKeywords;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@TENURES", SqlDbType.VarChar, 1000));
-                if (filter?.SelectedTenures == null)
+                if (string.IsNullOrEmpty(filter.SelectedTenures))
                     sqlCommand.Parameters["@TENURES"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@TENURES"].Value = filter.SelectedTenures;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@Page", SqlDbType.Int));
-                if (filter?.Page == null)
+                if (string.IsNullOrEmpty(filter.Page))
                     sqlCommand.Parameters["@Page"].Value = SqlInt32.Null;
                 else
                     sqlCommand.Parameters["@Page"].Value = filter.Page;

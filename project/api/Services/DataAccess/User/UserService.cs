@@ -9,14 +9,56 @@ using System.IO;
 
 public class UserService
 {
-
-    public static List<UserEntity> GetUsers(string id)
+    public static List<UserEntity> GetUsers(string page)
     {
         DataTable dataTable = new DataTable();
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            var sql = id != null ? UserSqlStrings.SelectByIdSql : UserSqlStrings.SelectSql;
+            var sql = page != null ? UserSqlStrings.SelectByPageSql : UserSqlStrings.SelectSql;
             using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+                if (page != null)
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar));
+                    sqlCommand.Parameters["@page"].Value = page;
+                }
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+                    {
+                        dataTable.Load(dataReader);
+                        dataReader.Close();
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        var result = new List<UserEntity>();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            var item = new UserEntity();
+            item.id = (System.Guid)row["id"];
+            item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
+            item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
+            item.passhash = row["passhash"] == DBNull.Value ? "" : (string)row["passhash"];
+            item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
+            result.Add(item);
+        }
+        return result;
+    }
+
+    public static List<UserEntity> GetUser(string id)
+    {
+        DataTable dataTable = new DataTable();
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.SelectByIdSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
                 if (id != null)
