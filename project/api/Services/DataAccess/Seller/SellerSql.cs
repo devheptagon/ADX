@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using adx;
 
 class SellerSqlStrings
 {
-    public static string SelectSql = @"SELECT * FROM [Seller] AS S";
+    public static string SelectSql = @"SELECT * FROM [Seller] AS T ORDER BY T.fullname";
 
-    public static string SelectByIdSql = SelectSql + " WHERE CAST(S.id AS VARCHAR(50)) = @seller_id";
+    public static string SelectByPageSql = @"SELECT * FROM [Seller] AS T ORDER BY T.fullname OFFSET(@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
+
+    public static string SelectByIdSql = "SELECT * FROM [Seller] AS T WHERE CAST(T.id AS VARCHAR(50)) = @seller_id";
 
     public static string AddSql = @"Insert Into [Seller] (fullname, email, phone, avatar, line1, line2, city, county, region, postcode) 
                 VALUES(@fullname, @email, @phone, @avatar, @line1, @line2, @city, @county, @region, @postcode); select CONVERT(varchar(50),scope_identity())";
@@ -29,4 +32,3 @@ class SellerSqlStrings
     WHERE id = @id";
 
 }
-

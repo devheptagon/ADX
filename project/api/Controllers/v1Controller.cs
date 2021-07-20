@@ -89,8 +89,12 @@ namespace adx
         #region Seller Endpoints
         [AllowAnonymous]
         [HttpGet("sellers")]
-        [HttpGet("sellers/{id?}")]
+        [HttpGet("sellers/{page?}")]
         public SellerResponse GetSellers() { return SellerEndpoints.GetSellers(RouteData); }
+
+        [AllowAnonymous]
+        [HttpGet("seller/{id?}")]
+        public SellerResponse GetSeller() { return SellerEndpoints.GetSeller(RouteData); }
 
         [Authorize]
         [HttpPost("sellers")]
