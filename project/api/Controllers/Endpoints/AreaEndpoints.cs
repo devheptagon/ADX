@@ -8,8 +8,24 @@ namespace adx
     {
         public static AreaResponse GetAreas(RouteData routeData)
         {
+            var page = routeData.Values.ContainsKey("page") ? routeData.Values["page"].ToString() : null;
+            if (page == null)
+            {
+                var data = AreaService.GetAreas(null);
+                return new AreaResponse() { Data = data, Count = data.Count, Page = -1 };
+            }
+            else
+            {
+                var data = AreaService.GetAreas(page);
+                var count = AreaService.GetAreas(null).Count;
+                return new AreaResponse() { Data = data, Count = count, Page = int.Parse(page) };
+            }
+        }
+
+        public static AreaResponse GetArea(RouteData routeData)
+        {
             var id = routeData.Values.ContainsKey("id") ? routeData.Values["id"].ToString() : null;
-            var result = new AreaResponse() { Data = AreaService.GetAreas(id) };
+            var result = new AreaResponse() { Data = AreaService.GetArea(id) };
             return result;
         }
 

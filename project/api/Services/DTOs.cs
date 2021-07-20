@@ -50,6 +50,10 @@ namespace adx
         public AdvertResponse() { } //required for json serialisation        
 
         public List<AdvertEntity> Data { get; set; }
+
+        public int Count { get; set; }
+
+        public int Page { get; set; }
     }
     #endregion
 
@@ -66,6 +70,10 @@ namespace adx
         public SellerResponse() { } //required for json serialisation        
 
         public List<SellerEntity> Data { get; set; }
+
+        public int Count { get; set; }
+
+        public int Page { get; set; }
     }
     #endregion
 
@@ -82,6 +90,10 @@ namespace adx
         public AreaResponse() { } //required for json serialisation        
 
         public List<AreaEntity> Data { get; set; }
+
+        public int Count { get; set; }
+
+        public int Page { get; set; }
     }
     #endregion
 
@@ -98,6 +110,10 @@ namespace adx
         public SectorResponse() { } //required for json serialisation        
 
         public List<SectorEntity> Data { get; set; }
+
+        public int Count { get; set; }
+
+        public int Page { get; set; }
     }
     #endregion
 
@@ -114,6 +130,10 @@ namespace adx
         public TagResponse() { } //required for json serialisation        
 
         public List<TagEntity> Data { get; set; }
+
+        public int Count { get; set; }
+
+        public int Page { get; set; }
     }
     #endregion
 

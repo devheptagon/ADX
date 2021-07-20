@@ -120,8 +120,12 @@ namespace adx
         #region Area Endpoints
         [AllowAnonymous]
         [HttpGet("areas")]
-        [HttpGet("areas/{id?}")]
+        [HttpGet("areas/{page?}")]
         public AreaResponse GetAreas() { return AreaEndpoints.GetAreas(RouteData); }
+
+        [AllowAnonymous]
+        [HttpGet("area/{id?}")]
+        public AreaResponse GetArea() { return AreaEndpoints.GetArea(RouteData); }
 
         [Authorize]
         [HttpPost("areas")]
@@ -151,8 +155,12 @@ namespace adx
         #region Sector Endpoints
         [AllowAnonymous]
         [HttpGet("sectors")]
-        [HttpGet("sectors/{id?}")]
+        [HttpGet("sectors/{page?}")]
         public SectorResponse GetSectors() { return SectorEndpoints.GetSectors(RouteData); }
+
+        [AllowAnonymous]
+        [HttpGet("sector/{id?}")]
+        public SectorResponse GetSector() { return SectorEndpoints.GetSector(RouteData); }
 
         [Authorize]
         [HttpPost("sectors")]
@@ -182,8 +190,12 @@ namespace adx
         #region Tag Endpoints
         [AllowAnonymous]
         [HttpGet("tags")]
-        [HttpGet("tags/{id?}")]
+        [HttpGet("tags/{page?}")]
         public TagResponse GetTags() { return TagEndpoints.GetTags(RouteData); }
+
+        [AllowAnonymous]
+        [HttpGet("tag/{id?}")]
+        public TagResponse GetTag() { return TagEndpoints.GetTag(RouteData); }
 
         [Authorize]
         [HttpPost("tags")]

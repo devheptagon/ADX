@@ -10,13 +10,53 @@ using System.IO;
 public class TagService
 {
 
-    public static List<TagEntity> GetTags(string id)
+    public static List<TagEntity> GetTags(string page)
     {
         DataTable dataTable = new DataTable();
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            var sql = id != null ? TagSqlStrings.SelectByIdSql : TagSqlStrings.SelectSql;
+            var sql = page != null ? TagSqlStrings.SelectByPageSql : TagSqlStrings.SelectSql;
             using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+                if (page != null)
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar));
+                    sqlCommand.Parameters["@page"].Value = page;
+                }
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+                    {
+                        dataTable.Load(dataReader);
+                        dataReader.Close();
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        var result = new List<TagEntity>();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            var item = new TagEntity();
+            item.id = (System.Guid)row["id"];
+            item.title = row["title"] == DBNull.Value ? "" : (string)row["title"];
+            result.Add(item);
+        }
+        return result;
+    }
+
+    public static List<TagEntity> GetTag(string id)
+    {
+        DataTable dataTable = new DataTable();
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.SelectByIdSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
                 if (id != null)

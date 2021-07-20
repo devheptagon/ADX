@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using adx;
 
 class AdvertSqlStrings
 {
@@ -58,8 +59,7 @@ class AdvertSqlStrings
 				INNER JOIN (SELECT VALUE AS VALUE2 FROM STRING_SPLIT(@TENURES, ',')) AS V2 ON T1.TITLE = V2.VALUE2) > 0)
 
         ORDER BY ADV.CREATE_DATE
-		OFFSET (@PAGE-1) * 10 ROWS FETCH NEXT 10 ROWS ONLY
-        ";
+		OFFSET (@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
 
     public static string SelectByIdSql = SelectSql + " WHERE CAST(ADV.id AS VARCHAR(50)) = @advert_id";
 
