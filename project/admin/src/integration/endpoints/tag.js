@@ -15,3 +15,10 @@ export const updateTagsEP = async (data) => {
 export const deleteTagEP = async (id) => {
   await call(verbs.delete, `tags/${id}`);
 };
+
+export const addTagEP = async (data) => {
+  const response = await call(verbs.post, "tags", null, {
+    data: { ...data },
+  });
+  return response?.data;
+};

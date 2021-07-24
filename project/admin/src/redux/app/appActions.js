@@ -4,6 +4,7 @@ import {
   SET_SECTORS_TYPE,
   SET_FIRSTLOAD_TYPE,
   SET_TAGS_TYPE,
+  SET_SELLERS_TYPE,
 } from "./actionTypes";
 
 export const setTokenAction = (val) => ({
@@ -28,4 +29,9 @@ export const setFirstLoadAction = () => ({
 export const setTagsAction = (val) => ({
   type: SET_TAGS_TYPE,
   payload: { tags: val },
+});
+
+export const setSellersAction = (val) => ({
+  type: SET_SELLERS_TYPE,
+  payload: { sellers: val },
 });

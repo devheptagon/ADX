@@ -4,6 +4,7 @@ import {
   SET_FIRSTLOAD_TYPE,
   SET_SECTORS_TYPE,
   SET_TAGS_TYPE,
+  SET_SELLERS_TYPE,
 } from "./actionTypes";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   sectors: [],
   tags: [],
   firstLoad: true,
+  sellers: [],
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -37,6 +39,8 @@ export function appReducer(state = { ...initialState }, action) {
       };
     case SET_FIRSTLOAD_TYPE:
       return { ...state, firstLoad: false };
+    case SET_SELLERS_TYPE:
+      return { ...state, sellers: action.payload.sellers };
     default:
       return state;
   }

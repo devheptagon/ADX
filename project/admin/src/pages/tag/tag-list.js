@@ -34,7 +34,9 @@ export default function TagList() {
 
   return (
     <div>
-      <button id="addbutton">ADD NEW KEYWORD</button>
+      <button id="addbutton" onClick={() => setModalOpen(true)}>
+        ADD NEW KEYWORD
+      </button>
       <table id="datatable">
         <thead>
           <tr>
@@ -71,7 +73,7 @@ export default function TagList() {
         </tbody>
       </table>
       <Modal ariaHideApp={false} isOpen={modalOpen}>
-        <TagForm item={selectedItem} onClose={closeModal} />
+        <TagForm item={selectedItem || {}} onClose={closeModal} />
       </Modal>
     </div>
   );

@@ -1,4 +1,4 @@
-import { getTagsEP, updateTagsEP } from "integration/endpoints/tag";
+import { getTagsEP, updateTagsEP, addTagEP } from "integration/endpoints/tag";
 import { useDispatch } from "react-redux";
 import { setTagsAction } from "redux/app/appActions";
 import { Formik } from "formik";
@@ -21,7 +21,12 @@ export default function TagForm(props) {
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
-        await updateTagsEP({ id: props.item.id, title: values.title });
+        if (props.item.id) {
+          await updateTagsEP({ id: props.item.id, title: values.title });
+        } else {
+          await addTagEP({ id: props.item.id, title: values.title });
+        }
+
         const newList = await getTagsEP();
         dispatch(setTagsAction(newList));
         setSubmitting(false);

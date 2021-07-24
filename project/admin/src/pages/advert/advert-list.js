@@ -54,7 +54,9 @@ export default function AdvertList() {
 
   return (
     <div>
-      <button id="addbutton">ADD NEW ADVERT</button>
+      <button id="addbutton" onClick={() => setModalOpen(true)}>
+        ADD NEW ADVERT
+      </button>
       <table id="datatable">
         <thead>
           <tr>
@@ -130,7 +132,7 @@ export default function AdvertList() {
         </tbody>
       </table>
       <Modal ariaHideApp={false} isOpen={modalOpen}>
-        <AdvertForm item={selectedItem} onClose={closeModal} />
+        <AdvertForm item={selectedItem || {}} onClose={closeModal} />
       </Modal>
     </div>
   );
