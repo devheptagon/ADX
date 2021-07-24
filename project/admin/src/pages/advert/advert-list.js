@@ -1,13 +1,44 @@
 import React, { useState } from "react";
-import { getAdvertsEP } from "integration/endpoints/advert";
+import Modal from "react-modal";
+import { getAdvertsEP, deleteAdvertEP } from "integration/endpoints/advert";
 import { getPagerList } from "utils/appHelper";
 import { ROW_COUNT_PER_PAGE } from "config";
+import AdvertForm from "./advert-form";
 
 export default function AdvertList() {
   const [adverts, setAdverts] = useState([]);
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState([1]);
   const [lastPageNo, setLastPageNo] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const closeModal = async (fetch) => {
+    if (fetch) {
+      const newList = await getAdvertsEP();
+      setAdverts(newList);
+    }
+
+    setModalOpen(false);
+  };
+
+  const edit = (e) => {
+    const id = e.currentTarget.dataset.id;
+    const item = adverts.filter((s) => s.id === id)[0];
+    setSelectedItem(item);
+    setModalOpen(true);
+  };
+
+  const remove = async (e) => {
+    const id = e.currentTarget.dataset.id;
+    const label = e.currentTarget.dataset.label;
+    const ok = window.confirm("Are you sure to delete " + label);
+    if (ok) {
+      await deleteAdvertEP(id);
+      const newList = await getAdvertsEP();
+      setAdverts(newList);
+    }
+  };
 
   React.useEffect(() => {
     loadPage(page);
@@ -28,7 +59,11 @@ export default function AdvertList() {
         <thead>
           <tr>
             <th colSpan="2"></th>
+            <th></th>
             <th>Title</th>
+            <th>Seller</th>
+            <th>Area</th>
+            <th>Created</th>
           </tr>
         </thead>
         <tbody>
@@ -38,26 +73,26 @@ export default function AdvertList() {
                 <span
                   data-id={item.id}
                   data-label={item.title}
-                  // onClick={remove}
+                  onClick={remove}
                   title="delete"
                 >
                   <i className="fa fa-trash-o"></i>
                 </span>
               </td>
               <td>
-                <span
-                  data-id={item.id}
-                  //onClick={edit}
-                  title="edit"
-                >
+                <span data-id={item.id} onClick={edit} title="edit">
                   <i className="fa fa-pencil-square-o"></i>
                 </span>
               </td>
+              <td>img</td>
               <td>{item.title}</td>
+              <td>{item.seller?.fullname}</td>
+              <td>{item.areas}</td>
+              <td>{item.create_date.split(" ")[0]}</td>
             </tr>
           ))}
           <tr id="pager">
-            <td colSpan={3} align="right">
+            <td colSpan={7} align="right">
               <span onClick={() => loadPage(1)} title="1">
                 <i className="fa fa-fast-backward"></i>
               </span>
@@ -94,6 +129,9 @@ export default function AdvertList() {
           </tr>
         </tbody>
       </table>
+      <Modal ariaHideApp={false} isOpen={modalOpen}>
+        <AdvertForm item={selectedItem} onClose={closeModal} />
+      </Modal>
     </div>
   );
 }

@@ -1,3 +1,89 @@
+import { updateAdvertsEP } from "integration/endpoints/advert";
+import { Formik } from "formik";
+import * as yup from "yup";
+
 export default function AdvertForm(props) {
-  return "advert form";
+  const cancel = () => {
+    props.onClose(false);
+  };
+
+  return (
+    <Formik
+      initialValues={{
+        title: props.item.title,
+      }}
+      validationSchema={yup.object().shape({
+        title: yup.string().required(),
+      })}
+      onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
+        setSubmitting(true);
+        await updateAdvertsEP({ id: props.item.id, title: values.title });
+        setSubmitting(false);
+        setStatus({ success: true });
+        props.onClose(true);
+      }}
+    >
+      {(props) => {
+        const {
+          values,
+          //touched,
+          errors,
+          dirty,
+          isSubmitting,
+          handleChange,
+          handleSubmit,
+        } = props;
+        return (
+          <form onSubmit={handleSubmit}>
+            <table id="dataform">
+              <tbody>
+                <tr>
+                  <td>
+                    <label htmlFor="Title">Title: &nbsp;</label>
+                  </td>
+                  <td>
+                    {" "}
+                    <fieldset>
+                      <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        placeholder="Title"
+                        title="* Title"
+                        required="required"
+                        value={values.title}
+                        onChange={handleChange}
+                      />
+                    </fieldset>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan={2}>
+                    <button
+                      data-id="save"
+                      type="submit"
+                      disabled={
+                        isSubmitting || !dirty || Object.keys(errors).length
+                      }
+                    >
+                      Save
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2}>
+                    <button data-id="cancel" onClick={cancel}>
+                      Cancel
+                    </button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </form>
+        );
+      }}
+    </Formik>
+  );
 }

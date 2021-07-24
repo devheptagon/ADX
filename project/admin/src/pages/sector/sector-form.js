@@ -1,20 +1,15 @@
-import { getSectorsEP, updateSectorsEP } from "integration/endpoints/sector";
-import { useState } from "react";
+import {
+  getSectorsEP,
+  updateSectorsEP,
+  addSectorEP,
+} from "integration/endpoints/sector";
 import { useDispatch } from "react-redux";
 import { setSectorsAction } from "redux/app/appActions";
-import { Formik, dis } from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
 
 export default function SectorForm(props) {
   const dispatch = useDispatch();
-  // const [title, setTitle] = useState(props.item.title);
-
-  /*   const update = async () => {
-    await updateSectorsEP({ id: props.item.id, title });
-    const newList = await getSectorsEP();
-    dispatch(setSectorsAction(newList));
-    props.onClose();
-  }; */
 
   const cancel = () => {
     props.onClose();
@@ -30,7 +25,12 @@ export default function SectorForm(props) {
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
-        await updateSectorsEP({ id: props.item.id, title: values.title });
+        if (props.item.id) {
+          await updateSectorsEP({ id: props.item.id, title: values.title });
+        } else {
+          await addSectorEP({ id: props.item.id, title: values.title });
+        }
+
         const newList = await getSectorsEP();
         dispatch(setSectorsAction(newList));
         setSubmitting(false);

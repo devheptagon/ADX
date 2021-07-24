@@ -15,3 +15,10 @@ export const updateSectorsEP = async (data) => {
 export const deleteSectorEP = async (id) => {
   await call(verbs.delete, `sectors/${id}`);
 };
+
+export const addSectorEP = async (data) => {
+  const response = await call(verbs.post, "sectors", null, {
+    data: { ...data },
+  });
+  return response?.data;
+};

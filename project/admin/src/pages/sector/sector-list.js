@@ -34,7 +34,9 @@ export default function SectorList() {
 
   return (
     <div>
-      <button id="addbutton">ADD NEW SECTOR</button>
+      <button id="addbutton" onClick={() => setModalOpen(true)}>
+        ADD NEW SECTOR
+      </button>
       <table id="datatable">
         <thead>
           <tr>
@@ -71,7 +73,7 @@ export default function SectorList() {
         </tbody>
       </table>
       <Modal ariaHideApp={false} isOpen={modalOpen}>
-        <SectorForm item={selectedItem} onClose={closeModal} />
+        <SectorForm item={selectedItem || {}} onClose={closeModal} />
       </Modal>
     </div>
   );
