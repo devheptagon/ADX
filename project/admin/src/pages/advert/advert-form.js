@@ -15,7 +15,9 @@ export default function AdvertForm(props) {
   const [selectedSellers, setSelectedSellers] = useState([]);
 
   const selectSeller = (selection) => {
-    setSelectedSellers(selection);
+    setSelectedSellers(
+      selection.length ? [selection[selection.length - 1]] : [] //disables multi selection
+    );
   };
 
   const cancel = () => {
@@ -46,6 +48,7 @@ export default function AdvertForm(props) {
       }}
       validationSchema={yup.object().shape({
         title: yup.string().required(),
+        seller_id: yup.string().required("Seller is required field"),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
@@ -85,9 +88,18 @@ export default function AdvertForm(props) {
                         value={selectedSellers}
                         labelledBy="Select Seller"
                         hasSelectAll={false}
-                        onChange={selectSeller}
+                        onChange={(selection) => {
+                          selectSeller(selection);
+                          handleChange({
+                            target: {
+                              name: "seller_id",
+                              value: selection.length ? selection[0].value : "",
+                            },
+                          });
+                        }}
                       />
                     </fieldset>
+                    <span data-id="error">{errors.seller_id}</span>
                   </td>
                 </tr>
                 <tr>
@@ -107,6 +119,7 @@ export default function AdvertForm(props) {
                         onChange={handleChange}
                       />
                     </fieldset>
+                    <span data-id="error">{errors.title}</span>
                   </td>
                 </tr>
               </tbody>
