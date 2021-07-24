@@ -11,6 +11,7 @@ import Logout from "pages/logout";
 import TagPage from "pages/tag/tag-page";
 import SectorPage from "pages/sector/sector-page";
 import AdvertPage from "pages/advert/advert-page";
+import ContentsPage from "pages/contents/contents-page";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/adverts">
             <AdvertPage />
+          </Route>
+          <Route path="/contents">
+            <ContentsPage />
           </Route>
           <Route path="/">
             <Home />

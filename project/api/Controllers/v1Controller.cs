@@ -65,7 +65,7 @@ namespace adx
         public ContentResponse GetContents() { return ContentEndpoints.GetContents(); }
 
         [Authorize]
-        [HttpPost("contents")]
+        [HttpPatch("contents")]
         public string UpdateContents([FromBody] ContentRequest request)
         {
             if (!AppHelper.IsAdmin(this.HttpContext)) return null;

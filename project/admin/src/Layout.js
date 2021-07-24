@@ -75,6 +75,9 @@ function Layout(props) {
             <li>
               <Link to="/tags">Keywords</Link>
             </li>
+            <li>
+              <Link to="/contents">Contents</Link>
+            </li>
           </ul>
         </Col>
         <Col xs={12} md={10}>
