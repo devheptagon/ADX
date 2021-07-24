@@ -6,6 +6,7 @@ import {
   updateContentsEP,
 } from "integration/endpoints/contents";
 import { useEffect, useState } from "react";
+import RichText from "components/richtext";
 
 export default function ContentList() {
   const [contents, setContents] = useState(null);
@@ -80,16 +81,11 @@ export default function ContentList() {
                     <label htmlFor="Title">About Us:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
-                      <input
-                        type="text"
-                        name="about"
-                        id="about"
-                        placeholder="About us text here..."
-                        title="* About us"
-                        value={values.about}
-                        onChange={handleChange}
+                      <RichText
+                        field="about"
+                        initialValue={values.about}
+                        handleChange={handleChange}
                       />
                     </fieldset>
                   </td>
@@ -99,16 +95,11 @@ export default function ContentList() {
                     <label htmlFor="Title">Terms & Privacy:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
-                      <input
-                        type="text"
-                        name="terms"
-                        id="terms"
-                        placeholder="Terms and privacy text here..."
-                        title="* Terms"
-                        value={values.terms}
-                        onChange={handleChange}
+                      <RichText
+                        field="terms"
+                        initialValue={values.terms}
+                        handleChange={handleChange}
                       />
                     </fieldset>
                   </td>
@@ -118,7 +109,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Address:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -137,7 +127,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Phone:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -156,7 +145,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Email:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -176,7 +164,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Facebook:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -196,7 +183,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Twitter:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -216,7 +202,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Linkedin:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -236,7 +221,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Instagram:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
@@ -256,7 +240,6 @@ export default function ContentList() {
                     <label htmlFor="Title">Youtube:</label>
                   </td>
                   <td>
-                    {" "}
                     <fieldset>
                       <input
                         type="text"
