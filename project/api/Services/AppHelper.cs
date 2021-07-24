@@ -87,7 +87,7 @@ namespace adx.Services
 
             //check role from db for security, not from claims
             var id = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
-            var selectedUser = UserService.GetUsers(id);
+            var selectedUser = UserService.GetUser(id);
             return selectedUser?.FirstOrDefault().role == UserRole.Admin;
         }
 

@@ -56,3 +56,47 @@ table[id="datatable"] {
     }
   }
 }
+
+table[id="dataform"] {
+  width: 100%;
+  border-collapse: separate !important;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  border: 1;
+  tbody {
+    tr {
+      &:nth-child(2n) {
+        background-color: #efefef;
+      }
+      td {
+        padding: 10px;
+        input {
+          width: 100%;
+          border: 1px solid #ccc;
+          padding: 5px;
+        }
+        &:nth-child(1) {
+          width: 100px;
+          max-width: 100px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  tfoot {
+    td {
+      padding: 5px;
+    }
+    background-color: white;
+    button {
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+    button[data-id="save"] {
+      background-color: #009cdf;
+      color: white;
+    }
+  }
+}
