@@ -7,6 +7,7 @@ import {
   setTokenAction,
   setSectorsAction,
   setFirstLoadAction,
+  setTagsAction,
 } from "redux/app/appActions";
 import {
   checkLocalToken,
@@ -15,6 +16,7 @@ import {
 } from "utils/appHelper";
 import styles from "styles/app.module.scss";
 import { getSectorsEP } from "integration/endpoints/sector";
+import { getTagsEP } from "integration/endpoints/tag";
 
 function Layout(props) {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ function Layout(props) {
     if (firstLoad) {
       dispatch(setFirstLoadAction(false));
       getSectorsEP().then((d) => dispatch(setSectorsAction(d)));
+      getTagsEP().then((d) => dispatch(setTagsAction(d)));
     }
   }, [dispatch, firstLoad]);
 
@@ -66,7 +69,6 @@ function Layout(props) {
             <li>
               <Link to="/adverts">Adverts</Link>
             </li>
-
             <li>
               <Link to="/sectors">Sectors</Link>
             </li>

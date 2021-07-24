@@ -8,6 +8,7 @@ import { store } from "redux/store";
 import Home from "pages/home";
 import Login from "pages/login";
 import Logout from "pages/logout";
+import TagPage from "pages/tag/tag-page";
 import SectorPage from "pages/sector/sector-page";
 import AdvertPage from "pages/advert/advert-page";
 
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/sectors">
             <SectorPage />
+          </Route>
+          <Route path="/tags">
+            <TagPage />
           </Route>
           <Route path="/adverts">
             <AdvertPage />

@@ -3,6 +3,7 @@ import {
   SET_USER_TYPE,
   SET_FIRSTLOAD_TYPE,
   SET_SECTORS_TYPE,
+  SET_TAGS_TYPE,
 } from "./actionTypes";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   role: null,
   fullname: "",
   sectors: [],
+  tags: [],
   firstLoad: true,
 };
 
@@ -19,6 +21,8 @@ export function appReducer(state = { ...initialState }, action) {
   switch (action.type) {
     case SET_SECTORS_TYPE:
       return { ...state, sectors: action.payload.sectors };
+    case SET_TAGS_TYPE:
+      return { ...state, tags: action.payload.tags };
     case SET_TOKEN_TYPE:
       return { ...state, token: action.payload.token };
     case SET_USER_TYPE:

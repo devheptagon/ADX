@@ -3,6 +3,7 @@ import {
   SET_USER_TYPE,
   SET_SECTORS_TYPE,
   SET_FIRSTLOAD_TYPE,
+  SET_TAGS_TYPE,
 } from "./actionTypes";
 
 export const setTokenAction = (val) => ({
@@ -22,4 +23,9 @@ export const setSectorsAction = (val) => ({
 
 export const setFirstLoadAction = () => ({
   type: SET_FIRSTLOAD_TYPE,
+});
+
+export const setTagsAction = (val) => ({
+  type: SET_TAGS_TYPE,
+  payload: { tags: val },
 });
