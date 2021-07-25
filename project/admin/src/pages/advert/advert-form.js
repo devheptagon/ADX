@@ -4,6 +4,7 @@ import * as yup from "yup";
 import MultiSelect from "react-multi-select-component";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import RichText from "components/richtext";
 import statuses from "../../data/status.json";
 import tenures from "../../data/tenure.json";
 
@@ -50,6 +51,18 @@ export default function AdvertForm(props) {
     setSelectedTenures(selection);
   };
 
+  const sectors = useSelector((state) => state.appReducer.sectors);
+  const sectorOptions = sectors?.map((s) => ({
+    label: s.title,
+    value: s.id,
+  }));
+
+  const [selectedSectors, setSelectedSectors] = useState([]);
+
+  const selectSector = (selection) => {
+    setSelectedSectors(selection);
+  };
+
   const cancel = () => {
     props.onClose(false);
   };
@@ -72,14 +85,13 @@ export default function AdvertForm(props) {
         city: props.item.city,
         postcode: props.item.postcode,
         description: props.item.description,
+        sectors: props.item.sectors,
         status: props.item.status,
-        tenures: [],
+        tenures: props.item.tenures,
       }}
       validationSchema={yup.object().shape({
         title: yup.string().required(),
         seller_id: yup.string().required("Seller is required field"),
-        status: yup.array(),
-        tenures: yup.array(),
         freeHoldPrice: yup.number(),
         leaseHoldPrice: yup.number(),
         weeklyProfit: yup.number(),
@@ -88,6 +100,14 @@ export default function AdvertForm(props) {
         weeklyTurnover: yup.number(),
         monthlyTurnover: yup.number(),
         annualTurnover: yup.number(),
+        line1: yup.string(),
+        line2: yup.string(),
+        city: yup.string(),
+        postcode: yup.string(),
+        description: yup.string(),
+        sectors: yup.string(),
+        status: yup.string(),
+        tenures: yup.string(),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
@@ -112,7 +132,7 @@ export default function AdvertForm(props) {
       }) => {
         return (
           <form onSubmit={handleSubmit}>
-            <table id="dataform" border="1">
+            <table id="dataform" border="0">
               <tbody>
                 <tr>
                   <td>
@@ -175,9 +195,7 @@ export default function AdvertForm(props) {
                           handleChange({
                             target: {
                               name: "status",
-                              value: selection.length
-                                ? selection.map((s) => s.value)
-                                : [],
+                              value: selection.map((s) => s.value).join(","),
                             },
                           });
                         }}
@@ -199,9 +217,7 @@ export default function AdvertForm(props) {
                           handleChange({
                             target: {
                               name: "tenures",
-                              value: selection.length
-                                ? selection.map((s) => s.value)
-                                : [],
+                              value: selection.map((s) => s.value).join(","),
                             },
                           });
                         }}
@@ -377,16 +393,14 @@ export default function AdvertForm(props) {
                   </td>
                   <td>
                     <fieldset>
-                      £
                       <input
-                        type="number"
+                        type="text"
                         name="line1"
                         id="line1"
                         placeholder="Line1"
                         title="* Line1"
                         value={values.line1}
                         onChange={handleChange}
-                        min={0}
                       />
                     </fieldset>
                   </td>
@@ -395,16 +409,14 @@ export default function AdvertForm(props) {
                   </td>
                   <td>
                     <fieldset>
-                      £
                       <input
-                        type="number"
+                        type="text"
                         name="line2"
                         id="line2"
                         placeholder="Line2"
                         title="* Line2"
                         value={values.line2}
                         onChange={handleChange}
-                        min={0}
                       />
                     </fieldset>
                   </td>
@@ -439,6 +451,40 @@ export default function AdvertForm(props) {
                         title="* Postcode"
                         value={values.postcode}
                         onChange={handleChange}
+                      />
+                    </fieldset>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={4}>
+                    <h6>Description</h6>
+                    <RichText
+                      field="description"
+                      initialValue={values.description}
+                      handleChange={handleChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Sectors: &nbsp;</label>
+                  </td>
+                  <td colSpan={3}>
+                    <fieldset>
+                      <MultiSelect
+                        options={sectorOptions}
+                        value={selectedSectors}
+                        labelledBy="Select Sector"
+                        hasSelectAll={false}
+                        onChange={(selection) => {
+                          selectSector(selection);
+                          handleChange({
+                            target: {
+                              name: "sectors",
+                              value: selection.map((s) => s.value).join(","),
+                            },
+                          });
+                        }}
                       />
                     </fieldset>
                   </td>
