@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Security.Claims;
 using System.Text;
 
@@ -48,7 +49,16 @@ namespace adx
         {
             var filename = (string)RouteData.Values["id"];
             if (string.IsNullOrEmpty(filename)) return null;
-            var image = System.IO.File.OpenRead(AppHelper.uploadPath + filename);
+            FileStream image = null;
+            try
+            {
+                image = System.IO.File.OpenRead(AppHelper.uploadPath + filename);
+            }
+            catch
+            {
+                image = System.IO.File.OpenRead(AppHelper.uploadPath + "na.jpg");
+            }
+
             return File(image, "image/jpeg");
         }
 

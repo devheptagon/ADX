@@ -13,6 +13,7 @@ import CityAndPostcodeRow from "./sub/form/city-and-postcode-row";
 import SectorsRow from "./sub/form/sectors-row";
 import TagsRow from "./sub/form/tags-row";
 import FooterRow from "./sub/form/footer-row";
+import PhotosRow from "./sub/form/photos-row";
 import yupSchema from "./sub/form/yup-schema";
 import SellerParams from "./sub/form/params/seller-params";
 import StatusParams from "./sub/form/params/status-params";
@@ -20,6 +21,7 @@ import CityParams from "./sub/form/params/city-params";
 import TenureParams from "./sub/form/params/tenure-params";
 import SectorParams from "./sub/form/params/sector-params";
 import TagParams from "./sub/form/params/tag-params";
+import PhotoParams from "./sub/form/params/photo-params";
 
 export default function AdvertForm(props) {
   const { sellerOptions, selectedSellers, selectSeller } = SellerParams(props);
@@ -28,6 +30,7 @@ export default function AdvertForm(props) {
   const { tenureOptions, selectedTenures, selectTenures } = TenureParams(props);
   const { sectorOptions, selectedSectors, selectSector } = SectorParams(props);
   const { tagOptions, selectedTags, selectTag } = TagParams(props);
+  const { photos, uploading, selectFile } = PhotoParams(props);
 
   const cancel = () => {
     props.onClose(false);
@@ -129,6 +132,7 @@ export default function AdvertForm(props) {
                 <TagsRow
                   {...{ tagOptions, selectedTags, selectTag, handleChange }}
                 />
+                <PhotosRow {...{ photos, uploading, selectFile }} />
               </tbody>
               <tfoot>
                 <FooterRow {...{ isSubmitting, dirty, errors, cancel }} />
