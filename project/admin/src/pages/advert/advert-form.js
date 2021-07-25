@@ -106,6 +106,24 @@ export default function AdvertForm(props) {
     setSelectedSectors(selection);
   };
 
+  /** TAGS BEGIN */
+
+  const tags = useSelector((state) => state.appReducer.tags);
+  const tagOptions = tags?.map((s) => ({
+    label: s.title,
+    value: s.id,
+  }));
+
+  const [selectedTags, setSelectedTags] = useState(
+    props.item?.tags
+      ? tagOptions.filter((s) => props.item.tags.split(",").includes(s.label))
+      : []
+  );
+
+  const selectTag = (selection) => {
+    setSelectedTags(selection);
+  };
+
   /** SHARED */
   const cancel = () => {
     props.onClose(false);
@@ -132,6 +150,7 @@ export default function AdvertForm(props) {
         sectors: props.item.sectors,
         status: props.item.status,
         tenures: props.item.tenures,
+        tags: props.item.tags,
       }}
       validationSchema={yup.object().shape({
         title: yup.string().required(),
@@ -152,6 +171,7 @@ export default function AdvertForm(props) {
         sectors: yup.string(),
         status: yup.string(),
         tenures: yup.string(),
+        tags: yup.string(),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
@@ -536,6 +556,30 @@ export default function AdvertForm(props) {
                           handleChange({
                             target: {
                               name: "sectors",
+                              value: selection.map((s) => s.value).join(","),
+                            },
+                          });
+                        }}
+                      />
+                    </fieldset>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Tags: &nbsp;</label>
+                  </td>
+                  <td colSpan={3}>
+                    <fieldset>
+                      <MultiSelect
+                        options={tagOptions}
+                        value={selectedTags}
+                        labelledBy="Select Tag"
+                        hasSelectAll={false}
+                        onChange={(selection) => {
+                          selectTag(selection);
+                          handleChange({
+                            target: {
+                              name: "tags",
                               value: selection.map((s) => s.value).join(","),
                             },
                           });
