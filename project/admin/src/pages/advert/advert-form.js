@@ -4,6 +4,7 @@ import * as yup from "yup";
 import MultiSelect from "react-multi-select-component";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import statuses from "../../data/status.json";
 
 export default function AdvertForm(props) {
   const sellers = useSelector((state) => state.appReducer.sellers);
@@ -16,6 +17,19 @@ export default function AdvertForm(props) {
 
   const selectSeller = (selection) => {
     setSelectedSellers(
+      selection.length ? [selection[selection.length - 1]] : [] //disables multi selection
+    );
+  };
+
+  const statusOptions = statuses?.map((s) => ({
+    label: s,
+    value: s,
+  }));
+
+  const [selectedStatutes, setSelectedStatutes] = useState([]);
+
+  const selectStatus = (selection) => {
+    setSelectedStatutes(
       selection.length ? [selection[selection.length - 1]] : [] //disables multi selection
     );
   };
@@ -45,10 +59,12 @@ export default function AdvertForm(props) {
         region: props.item.region,
         postcode: props.item.postcode,
         description: props.item.description,
+        tenures: [],
       }}
       validationSchema={yup.object().shape({
         title: yup.string().required(),
         seller_id: yup.string().required("Seller is required field"),
+        status: yup.array(),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
@@ -100,6 +116,32 @@ export default function AdvertForm(props) {
                       />
                     </fieldset>
                     <span data-id="error">{errors.seller_id}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="Title">Status: &nbsp;</label>
+                  </td>
+                  <td>
+                    <fieldset>
+                      <MultiSelect
+                        options={statusOptions}
+                        value={selectedStatutes}
+                        labelledBy="Select Status"
+                        hasSelectAll={false}
+                        onChange={(selection) => {
+                          selectStatus(selection);
+                          handleChange({
+                            target: {
+                              name: "status",
+                              value: selection.length
+                                ? selection.map((s) => s.value)
+                                : [],
+                            },
+                          });
+                        }}
+                      />
+                    </fieldset>
                   </td>
                 </tr>
                 <tr>
