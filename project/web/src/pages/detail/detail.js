@@ -48,8 +48,6 @@ export default function Detail(props) {
                     " " +
                     (data.location?.city || "") +
                     " " +
-                    (data.location?.county || "") +
-                    " " +
                     (data.location?.postcode || "")}
                 </td>
               </tr>

@@ -53,8 +53,6 @@ public class SellerService
             item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
             item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
             item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
-            item.county = row["county"] == DBNull.Value ? "" : (string)row["county"];
-            item.region = row["region"] == DBNull.Value ? "" : (string)row["region"];
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
 
             result.Add(item);
@@ -104,8 +102,6 @@ public class SellerService
             item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
             item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
             item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
-            item.county = row["county"] == DBNull.Value ? "" : (string)row["county"];
-            item.region = row["region"] == DBNull.Value ? "" : (string)row["region"];
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
 
             result.Add(item);
@@ -163,12 +159,6 @@ public class SellerService
 
                 sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
                 sqlCommand.Parameters["@city"].Value = entity.city;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@county", SqlDbType.VarChar));
-                sqlCommand.Parameters["@county"].Value = entity.county;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@region", SqlDbType.VarChar));
-                sqlCommand.Parameters["@region"].Value = entity.region;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;
@@ -230,12 +220,6 @@ public class SellerService
 
                 sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
                 sqlCommand.Parameters["@city"].Value = entity.city;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@county", SqlDbType.VarChar));
-                sqlCommand.Parameters["@county"].Value = entity.county;
-
-                sqlCommand.Parameters.Add(new SqlParameter("@region", SqlDbType.VarChar));
-                sqlCommand.Parameters["@region"].Value = entity.region;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;

@@ -35,7 +35,7 @@ class AdvertSqlStrings
         ) AS TENURES,
 
 		(SELECT ISNULL(S.FULLNAME,'') + '|' + ISNULL(S.EMAIL,'')+ '|' + ISNULL(S.PHONE,'') + '|' + ISNULL(S.AVATAR,'') + '|' + 
-		ISNULL(S.LINE1,'') + '|' + ISNULL(S.LINE2,'') + '|' + ISNULL(S.CITY,'') + '|' + ISNULL(S.COUNTY,'') + '|' + ISNULL(S.REGION,'') + '|' + ISNULL(S.POSTCODE,'') FROM [SELLER] AS S 
+		ISNULL(S.LINE1,'') + '|' + ISNULL(S.LINE2,'') + '|' + ISNULL(S.CITY,'') + '|' + ISNULL(S.POSTCODE,'') FROM [SELLER] AS S 
 		INNER JOIN [ADVERT] AS A ON S.ID = A.SELLER_ID AND A.ID = ADV.ID) AS SELLER
 
         FROM [ADVERT] AS ADV";

@@ -137,8 +137,6 @@ public class AdvertService
             item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
             item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
             item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
-            item.county = row["county"] == DBNull.Value ? "" : (string)row["county"];
-            item.region = row["region"] == DBNull.Value ? "" : (string)row["region"];
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
             item.create_date = row["create_date"] == DBNull.Value ? "" : row["create_date"].ToString();
 
@@ -160,9 +158,7 @@ public class AdvertService
                     line1 = sellerInfo[4],
                     line2 = sellerInfo[5],
                     city = sellerInfo[6],
-                    county = sellerInfo[7],
-                    region = sellerInfo[8],
-                    postcode = sellerInfo[9]
+                    postcode = sellerInfo[7]
                 };
             }
 

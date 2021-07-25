@@ -13,8 +13,8 @@ class SellerSqlStrings
 
     public static string SelectByIdSql = "SELECT * FROM [Seller] AS T WHERE CAST(T.id AS VARCHAR(50)) = @seller_id";
 
-    public static string AddSql = @"Insert Into [Seller] (fullname, email, phone, avatar, line1, line2, city, county, region, postcode) 
-                VALUES(@fullname, @email, @phone, @avatar, @line1, @line2, @city, @county, @region, @postcode); select CONVERT(varchar(50),scope_identity())";
+    public static string AddSql = @"Insert Into [Seller] (fullname, email, phone, avatar, line1, line2, city, postcode) 
+                VALUES(@fullname, @email, @phone, @avatar, @line1, @line2, @city, @postcode); select CONVERT(varchar(50),scope_identity())";
 
     public static string DeleteSql = "Delete From [Seller] Where id = @seller_id";
 
@@ -26,8 +26,6 @@ class SellerSqlStrings
             line1=@line1, 
             line2=@line2, 
             city=@city, 
-            county=@county, 
-            region=@region, 
             postcode=@postcode
     WHERE id = @id";
 
