@@ -7,8 +7,10 @@ import { useState } from "react";
 import RichText from "components/richtext";
 import statuses from "../../data/status.json";
 import tenures from "../../data/tenure.json";
+import cities from "../../data/city.json";
 
 export default function AdvertForm(props) {
+  /** SELLER BEGIN */
   const sellers = useSelector((state) => state.appReducer.sellers);
   const sellerOptions = sellers?.map((s) => ({
     label: s.fullname,
@@ -27,12 +29,18 @@ export default function AdvertForm(props) {
     );
   };
 
+  /** STATUS BEGIN */
+
   const statusOptions = statuses?.map((s) => ({
     label: s,
     value: s,
   }));
 
-  const [selectedStatutes, setSelectedStatutes] = useState([]);
+  const [selectedStatutes, setSelectedStatutes] = useState(
+    props.item?.status
+      ? [statusOptions.find((s) => s.value === props.item.status)]
+      : []
+  );
 
   const selectStatus = (selection) => {
     setSelectedStatutes(
@@ -40,16 +48,45 @@ export default function AdvertForm(props) {
     );
   };
 
+  /** CITY BEGIN */
+
+  const cityOptions = cities?.map((s) => ({
+    label: s,
+    value: s,
+  }));
+
+  const [selectedCities, setSelectedCities] = useState(
+    props.item?.city
+      ? [cityOptions.find((s) => s.value === props.item.city)]
+      : []
+  );
+
+  const selectCity = (selection) => {
+    setSelectedCities(
+      selection.length ? [selection[selection.length - 1]] : [] //disables multi selection
+    );
+  };
+
+  /** TENURES BEGIN */
+
   const tenureOptions = tenures?.map((s) => ({
     label: s,
     value: s,
   }));
 
-  const [selectedTenures, setSelectedTenures] = useState([]);
+  const [selectedTenures, setSelectedTenures] = useState(
+    props.item?.tenures
+      ? tenureOptions.filter((s) =>
+          props.item.tenures.split(",").includes(s.value)
+        )
+      : []
+  );
 
   const selectTenures = (selection) => {
     setSelectedTenures(selection);
   };
+
+  /** SECTORS BEGIN */
 
   const sectors = useSelector((state) => state.appReducer.sectors);
   const sectorOptions = sectors?.map((s) => ({
@@ -57,12 +94,19 @@ export default function AdvertForm(props) {
     value: s.id,
   }));
 
-  const [selectedSectors, setSelectedSectors] = useState([]);
+  const [selectedSectors, setSelectedSectors] = useState(
+    props.item?.sectors
+      ? sectorOptions.filter((s) =>
+          props.item.sectors.split(",").includes(s.label)
+        )
+      : []
+  );
 
   const selectSector = (selection) => {
     setSelectedSectors(selection);
   };
 
+  /** SHARED */
   const cancel = () => {
     props.onClose(false);
   };
@@ -116,7 +160,6 @@ export default function AdvertForm(props) {
         } else {
           await addAdvertsEP({ id: props.item.id, title: values.title });
         }
-
         setSubmitting(false);
         setStatus({ success: true });
         props.onClose(true);
@@ -150,7 +193,9 @@ export default function AdvertForm(props) {
                           handleChange({
                             target: {
                               name: "seller_id",
-                              value: selection.length ? selection[0].value : "",
+                              value: selection.length
+                                ? selection[selection.length - 1].value
+                                : "",
                             },
                           });
                         }}
@@ -195,7 +240,9 @@ export default function AdvertForm(props) {
                           handleChange({
                             target: {
                               name: "status",
-                              value: selection.map((s) => s.value).join(","),
+                              value: selection.length
+                                ? selection[selection.length - 1].value
+                                : "",
                             },
                           });
                         }}
@@ -427,14 +474,22 @@ export default function AdvertForm(props) {
                   </td>
                   <td>
                     <fieldset>
-                      <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        placeholder="City"
-                        title="* City"
-                        value={values.city}
-                        onChange={handleChange}
+                      <MultiSelect
+                        options={cityOptions}
+                        value={selectedCities}
+                        labelledBy="Select City"
+                        hasSelectAll={false}
+                        onChange={(selection) => {
+                          selectCity(selection);
+                          handleChange({
+                            target: {
+                              name: "city",
+                              value: selection.length
+                                ? selection[selection.length - 1].value
+                                : "",
+                            },
+                          });
+                        }}
                       />
                     </fieldset>
                   </td>
