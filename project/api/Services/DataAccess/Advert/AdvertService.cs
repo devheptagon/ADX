@@ -65,13 +65,13 @@ public class AdvertService
                 else
                     sqlCommand.Parameters["@MAX_PRICE"].Value = filter.SelectedMaxPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@AREAS", SqlDbType.VarChar, -1)); //-1 = varchar(max)
-                if (string.IsNullOrEmpty(filter.SelectedAreas))
-                    sqlCommand.Parameters["@AREAS"].Value = SqlString.Null;
+                sqlCommand.Parameters.Add(new SqlParameter("@CITIES", SqlDbType.VarChar, -1)); //-1 = varchar(max)
+                if (string.IsNullOrEmpty(filter.SelectedCities))
+                    sqlCommand.Parameters["@CITIES"].Value = SqlString.Null;
                 else
-                    sqlCommand.Parameters["@AREAS"].Value = filter.SelectedAreas;
+                    sqlCommand.Parameters["@CITIES"].Value = filter.SelectedCities;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@SECTORS", SqlDbType.VarChar, -1));
+                sqlCommand.Parameters.Add(new SqlParameter("@SECTORS", SqlDbType.VarChar, -1)); //-1 = varchar(max)
                 if (string.IsNullOrEmpty(filter.SelectedSectors))
                     sqlCommand.Parameters["@SECTORS"].Value = SqlString.Null;
                 else
@@ -140,7 +140,6 @@ public class AdvertService
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
             item.create_date = row["create_date"] == DBNull.Value ? "" : row["create_date"].ToString();
 
-            item.areas = row["areas"] == DBNull.Value ? "" : (string)row["areas"];
             item.sectors = row["sectors"] == DBNull.Value ? "" : (string)row["sectors"];
             item.tags = row["tags"] == DBNull.Value ? "" : (string)row["tags"];
             item.images = row["images"] == DBNull.Value ? "" : (string)row["images"];

@@ -119,42 +119,7 @@ namespace adx
             if (!AppHelper.IsAdmin(this.HttpContext)) return;
             SellerEndpoints.DeleteSeller(RouteData);
         }
-        #endregion
-
-        #region Area Endpoints
-        [AllowAnonymous]
-        [HttpGet("areas")]
-        [HttpGet("areas/{page?}")]
-        public AreaResponse GetAreas() { return AreaEndpoints.GetAreas(RouteData); }
-
-        [AllowAnonymous]
-        [HttpGet("area/{id?}")]
-        public AreaResponse GetArea() { return AreaEndpoints.GetArea(RouteData); }
-
-        [Authorize]
-        [HttpPost("areas")]
-        public void AddArea([FromBody] AreaRequest request)
-        {
-            if (!AppHelper.IsAdmin(this.HttpContext)) return;
-            AreaEndpoints.AddArea(request.Data);
-        }
-
-        [Authorize]
-        [HttpPatch("areas")]
-        public void UpdateArea([FromBody] AreaRequest request)
-        {
-            if (!AppHelper.IsAdmin(this.HttpContext)) return;
-            AreaEndpoints.UpdateArea(request.Data);
-        }
-
-        [Authorize]
-        [HttpDelete("areas/{id?}")]
-        public void DeleteArea()
-        {
-            if (!AppHelper.IsAdmin(this.HttpContext)) return;
-            AreaEndpoints.DeleteArea(RouteData);
-        }
-        #endregion
+        #endregion        
 
         #region Sector Endpoints
         [AllowAnonymous]

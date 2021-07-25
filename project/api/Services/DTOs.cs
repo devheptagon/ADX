@@ -13,7 +13,7 @@ namespace adx
     public class AdvertFilter
     {
         public string SelectedSectors { get; set; }
-        public string SelectedAreas { get; set; }
+        public string SelectedCities { get; set; }
         public string SelectedTenures { get; set; }
         public string SelectedKeywords { get; set; }
         public string SelectedMinPrice { get; set; }
@@ -70,26 +70,6 @@ namespace adx
         public SellerResponse() { } //required for json serialisation        
 
         public List<SellerEntity> Data { get; set; }
-
-        public int Count { get; set; }
-
-        public int Page { get; set; }
-    }
-    #endregion
-
-    #region AreaRequest
-    public class AreaRequest
-    {
-        public AreaRequest() { }  //required for json serialisation        
-
-        public AreaEntity Data { get; set; }
-    }
-
-    public class AreaResponse
-    {
-        public AreaResponse() { } //required for json serialisation        
-
-        public List<AreaEntity> Data { get; set; }
 
         public int Count { get; set; }
 
