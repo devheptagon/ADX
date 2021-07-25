@@ -18,7 +18,7 @@ export default function AdvertList() {
       const newList = await getAdvertsEP();
       setAdverts(newList);
     }
-
+    setSelectedItem(null);
     setModalOpen(false);
   };
 

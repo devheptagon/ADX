@@ -5,6 +5,7 @@ import MultiSelect from "react-multi-select-component";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import statuses from "../../data/status.json";
+import tenures from "../../data/tenure.json";
 
 export default function AdvertForm(props) {
   const sellers = useSelector((state) => state.appReducer.sellers);
@@ -13,7 +14,11 @@ export default function AdvertForm(props) {
     value: s.id,
   }));
 
-  const [selectedSellers, setSelectedSellers] = useState([]);
+  const [selectedSellers, setSelectedSellers] = useState(
+    props.item?.seller_id
+      ? [sellerOptions.find((s) => s.value === props.item.seller_id)]
+      : []
+  );
 
   const selectSeller = (selection) => {
     setSelectedSellers(
@@ -34,6 +39,17 @@ export default function AdvertForm(props) {
     );
   };
 
+  const tenureOptions = tenures?.map((s) => ({
+    label: s,
+    value: s,
+  }));
+
+  const [selectedTenures, setSelectedTenures] = useState([]);
+
+  const selectTenures = (selection) => {
+    setSelectedTenures(selection);
+  };
+
   const cancel = () => {
     props.onClose(false);
   };
@@ -42,7 +58,6 @@ export default function AdvertForm(props) {
     <Formik
       initialValues={{
         seller_id: props.item.seller_id,
-        status: props.item.status,
         title: props.item.title,
         freeHoldPrice: props.item.freeHoldPrice,
         leaseHoldPrice: props.item.leaseHoldPrice,
@@ -59,12 +74,14 @@ export default function AdvertForm(props) {
         region: props.item.region,
         postcode: props.item.postcode,
         description: props.item.description,
+        status: props.item.status,
         tenures: [],
       }}
       validationSchema={yup.object().shape({
         title: yup.string().required(),
         seller_id: yup.string().required("Seller is required field"),
         status: yup.array(),
+        tenures: yup.array(),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
@@ -95,7 +112,7 @@ export default function AdvertForm(props) {
               <tbody>
                 <tr>
                   <td>
-                    <label htmlFor="Title">Seller: &nbsp;</label>
+                    <label>Seller: &nbsp;</label>
                   </td>
                   <td>
                     <fieldset>
@@ -120,7 +137,7 @@ export default function AdvertForm(props) {
                 </tr>
                 <tr>
                   <td>
-                    <label htmlFor="Title">Status: &nbsp;</label>
+                    <label>Status: &nbsp;</label>
                   </td>
                   <td>
                     <fieldset>
@@ -146,7 +163,7 @@ export default function AdvertForm(props) {
                 </tr>
                 <tr>
                   <td>
-                    <label htmlFor="Title">Title: &nbsp;</label>
+                    <label>Title: &nbsp;</label>
                   </td>
                   <td>
                     <fieldset>
@@ -162,6 +179,32 @@ export default function AdvertForm(props) {
                       />
                     </fieldset>
                     <span data-id="error">{errors.title}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Tenures: &nbsp;</label>
+                  </td>
+                  <td>
+                    <fieldset>
+                      <MultiSelect
+                        options={tenureOptions}
+                        value={selectedTenures}
+                        labelledBy="Select Tenures"
+                        hasSelectAll={false}
+                        onChange={(selection) => {
+                          selectTenures(selection);
+                          handleChange({
+                            target: {
+                              name: "tenures",
+                              value: selection.length
+                                ? selection.map((s) => s.value)
+                                : [],
+                            },
+                          });
+                        }}
+                      />
+                    </fieldset>
                   </td>
                 </tr>
               </tbody>
