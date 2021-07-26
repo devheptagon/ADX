@@ -1,4 +1,4 @@
-export default function TitleInput(props) {
+export default function TitleRow(props) {
   const { values, handleChange, errors } = props;
   return (
     <tr>

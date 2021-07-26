@@ -1,4 +1,4 @@
-export default function LeaseholdAndFreeholdInput(props) {
+export default function LeaseholdAndFreeholdRow(props) {
   const { values, handleChange } = props;
   return (
     <tr>

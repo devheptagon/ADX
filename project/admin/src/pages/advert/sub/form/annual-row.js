@@ -1,4 +1,4 @@
-export default function AnnualInput(props) {
+export default function AnnualRow(props) {
   const { values, handleChange } = props;
   return (
     <tr>

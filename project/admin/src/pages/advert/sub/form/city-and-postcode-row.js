@@ -1,6 +1,6 @@
 import MultiSelect from "react-multi-select-component";
 
-export default function CityAndPostcodeInput(props) {
+export default function CityAndPostcodeRow(props) {
   const { cityOptions, selectedCities, selectCity, handleChange, values } =
     props;
   return (

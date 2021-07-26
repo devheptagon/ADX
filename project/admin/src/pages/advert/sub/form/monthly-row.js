@@ -1,4 +1,4 @@
-export default function MonthlyInput(props) {
+export default function MonthlyRow(props) {
   const { values, handleChange } = props;
   return (
     <tr>

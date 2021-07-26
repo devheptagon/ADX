@@ -20,4 +20,5 @@ export default yup.object().shape({
   status: yup.string(),
   tenures: yup.string(),
   tags: yup.string(),
+  images: yup.string(),
 });

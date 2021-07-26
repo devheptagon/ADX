@@ -15,8 +15,8 @@ export default function AdvertList() {
 
   const closeModal = async (fetch) => {
     if (fetch) {
-      const newList = await getAdvertsEP();
-      setAdverts(newList);
+      const response = await getAdvertsEP(page);
+      setAdverts(response?.data || []);
     }
     setSelectedItem(null);
     setModalOpen(false);
@@ -35,8 +35,8 @@ export default function AdvertList() {
     const ok = window.confirm("Are you sure to delete " + label);
     if (ok) {
       await deleteAdvertEP(id);
-      const newList = await getAdvertsEP();
-      setAdverts(newList);
+      const response = await getAdvertsEP(page);
+      setAdverts(response?.data || []);
     }
   };
 

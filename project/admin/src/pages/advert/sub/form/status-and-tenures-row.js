@@ -1,6 +1,6 @@
 import MultiSelect from "react-multi-select-component";
 
-export default function StatusAndTenuresInput(props) {
+export default function StatusAndTenuresRow(props) {
   const {
     handleChange,
     statusOptions,

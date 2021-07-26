@@ -1,6 +1,6 @@
 import MultiSelect from "react-multi-select-component";
 
-export default function SectorsInput(props) {
+export default function SectorsRow(props) {
   const { sectorOptions, selectedSectors, selectSector, handleChange } = props;
   return (
     <tr>

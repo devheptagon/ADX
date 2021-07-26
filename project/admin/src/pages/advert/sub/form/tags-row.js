@@ -1,6 +1,6 @@
 import MultiSelect from "react-multi-select-component";
 
-export default function TagsInput(props) {
+export default function TagsRow(props) {
   const { tagOptions, selectedTags, selectTag, handleChange } = props;
   return (
     <tr>

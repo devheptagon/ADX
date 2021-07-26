@@ -1,4 +1,4 @@
-export default function WeeklyInput(props) {
+export default function WeeklyRow(props) {
   const { values, handleChange } = props;
   return (
     <tr>

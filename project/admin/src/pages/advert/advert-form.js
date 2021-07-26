@@ -21,7 +21,6 @@ import CityParams from "./sub/form/params/city-params";
 import TenureParams from "./sub/form/params/tenure-params";
 import SectorParams from "./sub/form/params/sector-params";
 import TagParams from "./sub/form/params/tag-params";
-import PhotoParams from "./sub/form/params/photo-params";
 
 export default function AdvertForm(props) {
   const { sellerOptions, selectedSellers, selectSeller } = SellerParams(props);
@@ -30,21 +29,20 @@ export default function AdvertForm(props) {
   const { tenureOptions, selectedTenures, selectTenures } = TenureParams(props);
   const { sectorOptions, selectedSectors, selectSector } = SectorParams(props);
   const { tagOptions, selectedTags, selectTag } = TagParams(props);
-  const { photos, uploading, selectFile } = PhotoParams(props);
 
   const cancel = () => {
     props.onClose(false);
   };
 
   const submit = async (values, { setSubmitting, setStatus, resetForm }) => {
-    setSubmitting(true);
+    /* setSubmitting(true);
     if (props.item.id) {
       await updateAdvertsEP({ id: props.item.id, title: values.title });
     } else {
       await addAdvertsEP({ id: props.item.id, title: values.title });
     }
     setSubmitting(false);
-    setStatus({ success: true });
+    setStatus({ success: true }); */
     props.onClose(true);
   };
 
@@ -132,7 +130,12 @@ export default function AdvertForm(props) {
                 <TagsRow
                   {...{ tagOptions, selectedTags, selectTag, handleChange }}
                 />
-                <PhotosRow {...{ photos, uploading, selectFile }} />
+                <PhotosRow
+                  {...{
+                    item: props.item,
+                    handleChange,
+                  }}
+                />
               </tbody>
               <tfoot>
                 <FooterRow {...{ isSubmitting, dirty, errors, cancel }} />

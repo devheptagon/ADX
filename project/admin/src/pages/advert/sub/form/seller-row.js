@@ -1,6 +1,6 @@
 import MultiSelect from "react-multi-select-component";
 
-export default function SellerInput(props) {
+export default function SellerRow(props) {
   const { sellerOptions, selectedSellers, selectSeller, handleChange, errors } =
     props;
   return (
