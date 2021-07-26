@@ -21,3 +21,8 @@ export const addAdvertsEP = async (data) => {
   });
   return response?.data;
 };
+
+export const uploadEP = async (data) => {
+  const response = await call(verbs.post, "upload", null, data, false, true);
+  return response || "";
+};

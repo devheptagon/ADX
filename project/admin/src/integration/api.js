@@ -9,10 +9,25 @@ export const verbs = {
   delete: "delete",
 };
 
-export const call = async (verb, path, params, data, dontCheckAuth = false) => {
+export const call = async (
+  verb,
+  path,
+  params,
+  data,
+  dontCheckAuth = false,
+  multipart = false
+) => {
   const token = store.getState().appReducer.token;
   if (token) {
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  }
+  let config = undefined;
+  if (multipart) {
+    config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
   }
 
   const response =
@@ -22,7 +37,7 @@ export const call = async (verb, path, params, data, dontCheckAuth = false) => {
           .catch((exp) => checkAuthError(exp, dontCheckAuth))
       : verb === verbs.post
       ? await axios
-          .post(apiUrl + path, data)
+          .post(apiUrl + path, data, config)
           .catch((exp) => checkAuthError(exp, dontCheckAuth))
       : verb === verbs.patch
       ? await axios

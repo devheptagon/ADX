@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { apiUrl } from "config";
 import styles from "styles/app.module.scss";
+import { uploadEP } from "integration/endpoints/advert";
 
 export default function PhotosRow(props) {
   const [photos, setPhotos] = useState(props.item?.images?.split(",") || []);
   const [uploading, setUploading] = useState(false);
 
-  const selectFile = (e) => {
+  const selectFile = async (e) => {
     e.preventDefault();
 
     let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("file", file);
     setUploading(true);
-    setTimeout(() => {
-      setUploading(false);
-      const list = [...photos, Math.random().toString()];
-      setPhotos(list);
-      props.handleChange({
-        target: {
-          name: "images",
-          value: list.join(","),
-        },
-      });
-    }, 2000);
+    const response = await uploadEP(formData);
+    setUploading(false);
+    const list = response ? [...photos, response] : [...photos];
+    setPhotos(list);
+    props.handleChange({
+      target: {
+        name: "images",
+        value: list.join(","),
+      },
+    });
   };
 
   const removePhoto = (e) => {
