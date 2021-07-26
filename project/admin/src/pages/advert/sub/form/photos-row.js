@@ -4,7 +4,9 @@ import styles from "styles/app.module.scss";
 import { uploadEP } from "integration/endpoints/advert";
 
 export default function PhotosRow(props) {
-  const [photos, setPhotos] = useState(props.item?.images?.split(",") || []);
+  const [photos, setPhotos] = useState(
+    props.item?.images ? props.item?.images.split(",") : []
+  );
   const [uploading, setUploading] = useState(false);
 
   const selectFile = async (e) => {

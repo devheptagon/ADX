@@ -9,4 +9,6 @@ project/api/.vs/adx/DesignTimeBuild/.dtbcache.v2
 project/api/.vs/adx/v16/.suo
 project/api/obj
 project/api/bin
+project/api/Uploads
+!project/api/Uploads/Images/na.jpg
 client/api/.env

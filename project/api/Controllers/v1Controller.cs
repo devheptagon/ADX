@@ -94,6 +94,23 @@ namespace adx
         [AllowAnonymous]
         [HttpGet("advert/{id?}")]
         public AdvertResponse GetAdvert() { return AdvertEndpoints.GetAdvert(RouteData); }
+
+        [Authorize]
+        [HttpPost("advert")]
+        public AdvertResponse AddAdvert([FromBody] AdvertEntity request)
+        {
+            //return AdvertEndpoints.GetAdverts(request);
+            return null;
+        }
+
+        [Authorize]
+        [HttpPatch("advert")]
+        public AdvertResponse UpdateAdvert([FromBody] AdvertEntity request)
+        {
+            //return AdvertEndpoints.GetAdverts(request);
+            return null;
+        }
+
         #endregion
 
         #region Seller Endpoints

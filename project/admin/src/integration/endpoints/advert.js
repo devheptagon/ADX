@@ -9,16 +9,12 @@ export const deleteAdvertEP = async (id) => {
 };
 
 export const updateAdvertsEP = async (data) => {
-  const response = await call(verbs.patch, "adverts", null, {
-    data: { ...data },
-  });
+  const response = await call(verbs.patch, "advert", null, data);
   return response?.data;
 };
 
 export const addAdvertsEP = async (data) => {
-  const response = await call(verbs.post, "adverts", null, {
-    data: { ...data },
-  });
+  const response = await call(verbs.post, "advert", null, data);
   return response?.data;
 };
 

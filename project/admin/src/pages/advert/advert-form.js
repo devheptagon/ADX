@@ -35,14 +35,14 @@ export default function AdvertForm(props) {
   };
 
   const submit = async (values, { setSubmitting, setStatus, resetForm }) => {
-    /* setSubmitting(true);
+    setSubmitting(true);
     if (props.item.id) {
-      await updateAdvertsEP({ id: props.item.id, title: values.title });
+      await updateAdvertsEP({ id: props.item.id, ...values });
     } else {
-      await addAdvertsEP({ id: props.item.id, title: values.title });
+      await addAdvertsEP({ ...values });
     }
     setSubmitting(false);
-    setStatus({ success: true }); */
+    setStatus({ success: true });
     props.onClose(true);
   };
 
