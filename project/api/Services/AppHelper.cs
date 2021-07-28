@@ -91,6 +91,27 @@ namespace adx.Services
             return selectedUser?.FirstOrDefault().role == UserRole.Admin;
         }
 
+        public static bool IsSeller(HttpContext context)
+        {
+            var user = context.User;
+            if (user == null) return false;
+
+            //check role from db for security, not from claims
+            var id = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var selectedUser = UserService.GetUser(id);
+            return selectedUser?.FirstOrDefault().role == UserRole.Seller;
+        }
+
+        public static bool IsAdvertOwner(HttpContext context, string advertId)
+        {
+            var user = context.User;
+            if (user == null) return false;
+
+            //check role from db for security, not from claims
+            var userId = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            return AdvertService.IsAdvertOwner(userId, advertId);
+        }
+
         public static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash
@@ -108,14 +129,6 @@ namespace adx.Services
                 return sb.ToString();
             }
         }
-
-        //public static async Task SaveMetaRequestResponse(MetaRequest request, MetaResponse response)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        // do somethign
-        //    });
-        //}
 
 
     }

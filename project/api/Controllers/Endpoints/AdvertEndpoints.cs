@@ -29,6 +29,21 @@ namespace adx
             var result = new AdvertResponse() { Data = AdvertService.GetAdvert(id) };
             return result;
         }
+
+        public static void AddAdvert(AdvertEntity advert)
+        {
+            AdvertService.AddAdvert(advert);
+        }
+
+        public static void UpdateAdvert(AdvertEntity advert)
+        {
+            AdvertService.UpdateAdvert(advert);
+        }
+
+        public static void DeleteAdvert(string id)
+        {
+            AdvertService.DeleteAdvert(id);
+        }
     }
 }
 

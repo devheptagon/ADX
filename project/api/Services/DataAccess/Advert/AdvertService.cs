@@ -115,6 +115,37 @@ public class AdvertService
         return result;
     }
 
+    public static bool IsAdvertOwner(string userId, string advertId)
+    {
+        var count = 0;
+
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectCountByUserIdAndAdvertIdSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@user_id"].Value = userId;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@advert_id"].Value = advertId;
+
+                try
+                {
+                    connection.Open();
+                    count = (int)sqlCommand.ExecuteScalar();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        ;
+        return count > 0;
+    }
+
     private static List<AdvertEntity> CreateAdvertListFromDatatable(DataTable dataTable)
     {
         var result = new List<AdvertEntity>();
@@ -166,5 +197,192 @@ public class AdvertService
 
         return result;
     }
+
+    public static void DeleteAdvert(string id)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.DeleteSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@advert_id"].Value = id;
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+    public static void AddAdvert(AdvertEntity entity)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.AddSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@seller_id"].Value = entity.seller_id?.ToString();
+
+                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar));
+                sqlCommand.Parameters["@title"].Value = entity.title;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar));
+                sqlCommand.Parameters["@description"].Value = entity.description;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@status", SqlDbType.VarChar));
+                sqlCommand.Parameters["@status"].Value = entity.status;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@freeHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters["@freeHoldPrice"].Value = entity.freeHoldPrice;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@leaseHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters["@leaseHoldPrice"].Value = entity.leaseHoldPrice;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters["@weeklyProfit"].Value = entity.weeklyProfit;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters["@monthlyProfit"].Value = entity.monthlyProfit;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@annualProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters["@annualProfit"].Value = entity.annualProfit;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters["@weeklyTurnover"].Value = entity.weeklyTurnover;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters["@monthlyTurnover"].Value = entity.monthlyTurnover;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@annualTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters["@annualTurnover"].Value = entity.annualTurnover;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line1"].Value = entity.line1;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line2"].Value = entity.line2;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters["@city"].Value = entity.city;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters["@postcode"].Value = entity.postcode;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar));
+                sqlCommand.Parameters["@images"].Value = entity.images;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+    public static void UpdateAdvert(AdvertEntity entity)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.UpdateSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
+
+                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@seller_id"].Value = entity.seller_id?.ToString();
+
+                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar));
+                sqlCommand.Parameters["@title"].Value = entity.title;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar));
+                sqlCommand.Parameters["@description"].Value = entity.description;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@status", SqlDbType.VarChar));
+                sqlCommand.Parameters["@status"].Value = entity.status;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@freeHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters["@freeHoldPrice"].Value = entity.freeHoldPrice;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@leaseHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters["@leaseHoldPrice"].Value = entity.leaseHoldPrice;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters["@weeklyProfit"].Value = entity.weeklyProfit;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters["@monthlyProfit"].Value = entity.monthlyProfit;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@annualProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters["@annualProfit"].Value = entity.annualProfit;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters["@weeklyTurnover"].Value = entity.weeklyTurnover;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters["@monthlyTurnover"].Value = entity.monthlyTurnover;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@annualTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters["@annualTurnover"].Value = entity.annualTurnover;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line1"].Value = entity.line1;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters["@line2"].Value = entity.line2;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters["@city"].Value = entity.city;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters["@postcode"].Value = entity.postcode;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar));
+                sqlCommand.Parameters["@images"].Value = entity.images;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
 
 }

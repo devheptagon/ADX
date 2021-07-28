@@ -97,18 +97,31 @@ namespace adx
 
         [Authorize]
         [HttpPost("advert")]
-        public AdvertResponse AddAdvert([FromBody] AdvertEntity request)
+        public void AddAdvert([FromBody] AdvertEntity request)
         {
-            //return AdvertEndpoints.GetAdverts(request);
-            return null;
+            if (!AppHelper.IsAdmin(this.HttpContext) && !AppHelper.IsSeller(this.HttpContext)) return;
+            AdvertEndpoints.AddAdvert(request);
         }
 
         [Authorize]
         [HttpPatch("advert")]
-        public AdvertResponse UpdateAdvert([FromBody] AdvertEntity request)
+        public void UpdateAdvert([FromBody] AdvertEntity request)
         {
-            //return AdvertEndpoints.GetAdverts(request);
-            return null;
+            var isAdmin = AppHelper.IsAdmin(this.HttpContext);
+            var isOwner = AppHelper.IsAdvertOwner(this.HttpContext, request.id?.ToString());
+            if (!isAdmin && !isOwner) return;
+            AdvertEndpoints.UpdateAdvert(request);
+        }
+
+        [Authorize]
+        [HttpDelete("adverts/{id?}")]
+        public void DeleteAdvert()
+        {
+            var id = RouteData.Values.ContainsKey("id") ? RouteData.Values["id"].ToString() : null;
+            var isAdmin = AppHelper.IsAdmin(this.HttpContext);
+            var isOwner = AppHelper.IsAdvertOwner(this.HttpContext, id);
+            if (!isAdmin && !isOwner) return;
+            AdvertEndpoints.DeleteAdvert(id);
         }
 
         #endregion
