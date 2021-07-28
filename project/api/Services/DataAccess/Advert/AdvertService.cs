@@ -21,7 +21,7 @@ public class AdvertService
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectByIdSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@advert_id"].Value = id;
 
                 try
@@ -125,10 +125,10 @@ public class AdvertService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@user_id"].Value = userId;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@advert_id"].Value = advertId;
 
                 try
@@ -205,7 +205,7 @@ public class AdvertService
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.DeleteSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@advert_id"].Value = id;
                 try
                 {
@@ -220,63 +220,64 @@ public class AdvertService
         }
     }
 
-    public static void AddAdvert(AdvertEntity entity)
+    public static System.Guid AddAdvert(AdvertEntity entity)
     {
+        Guid id = Guid.Empty;
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.AddSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@seller_id"].Value = entity.seller_id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar, 500));
                 sqlCommand.Parameters["@title"].Value = entity.title;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@description"].Value = entity.description;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@status", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@status", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@status"].Value = entity.status;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@freeHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@freeHoldPrice", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@freeHoldPrice"].Value = entity.freeHoldPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@leaseHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@leaseHoldPrice", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@leaseHoldPrice"].Value = entity.leaseHoldPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@weeklyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyProfit", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@weeklyProfit"].Value = entity.weeklyProfit;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@monthlyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyProfit", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@monthlyProfit"].Value = entity.monthlyProfit;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@annualProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@annualProfit", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@annualProfit"].Value = entity.annualProfit;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@weeklyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyTurnover", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@weeklyTurnover"].Value = entity.weeklyTurnover;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@monthlyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyTurnover", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@monthlyTurnover"].Value = entity.monthlyTurnover;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@annualTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@annualTurnover", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@annualTurnover"].Value = entity.annualTurnover;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line1"].Value = entity.line1;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line2"].Value = entity.line2;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@city"].Value = entity.city;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@images"].Value = entity.images;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
@@ -287,7 +288,7 @@ public class AdvertService
                 try
                 {
                     connection.Open();
-                    sqlCommand.ExecuteScalar();
+                    id = (System.Guid)sqlCommand.ExecuteScalar();
                 }
                 catch (Exception exp)
                 {
@@ -299,6 +300,7 @@ public class AdvertService
                 }
             }
         }
+        return id;
     }
 
     public static void UpdateAdvert(AdvertEntity entity)
@@ -309,58 +311,58 @@ public class AdvertService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@seller_id"].Value = entity.seller_id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar, 500));
                 sqlCommand.Parameters["@title"].Value = entity.title;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@description"].Value = entity.description;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@status", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@status", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@status"].Value = entity.status;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@freeHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@freeHoldPrice", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@freeHoldPrice"].Value = entity.freeHoldPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@leaseHoldPrice", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@leaseHoldPrice", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@leaseHoldPrice"].Value = entity.leaseHoldPrice;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@weeklyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyProfit", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@weeklyProfit"].Value = entity.weeklyProfit;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@monthlyProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyProfit", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@monthlyProfit"].Value = entity.monthlyProfit;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@annualProfit", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@annualProfit", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@annualProfit"].Value = entity.annualProfit;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@weeklyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@weeklyTurnover", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@weeklyTurnover"].Value = entity.weeklyTurnover;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@monthlyTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@monthlyTurnover", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@monthlyTurnover"].Value = entity.monthlyTurnover;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@annualTurnover", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@annualTurnover", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@annualTurnover"].Value = entity.annualTurnover;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line1"].Value = entity.line1;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line2"].Value = entity.line2;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@city"].Value = entity.city;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@images"].Value = entity.images;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
@@ -384,5 +386,41 @@ public class AdvertService
         }
     }
 
+    public static void RefreshDependencies(string advertId, string sectors, string tags, string tenures)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.RefreshDependenciesSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@advert_id"].Value = advertId;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@sectors", SqlDbType.VarChar, -1));
+                sqlCommand.Parameters["@sectors"].Value = sectors;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@tags", SqlDbType.VarChar, -1));
+                sqlCommand.Parameters["@tags"].Value = tags;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@tenures", SqlDbType.VarChar, -1));
+                sqlCommand.Parameters["@tenures"].Value = tenures;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
 
 }

@@ -122,5 +122,19 @@ class AdvertSqlStrings
           [images] = @images
       WHERE id = @id";
 
+    public static string RefreshDependenciesSql = @"
+        delete from advertsector where advert_id = @advert_id;
+        delete from adverttag where advert_id = @advert_id;
+        delete from adverttenure where advert_id = @advert_id;
+
+        insert into advertsector(advert_id, sector_id) 
+        SELECT @advert_id, value FROM STRING_SPLIT(@sectors, ',')
+
+        insert into adverttag(advert_id, tag_id) 
+        SELECT @advert_id, value FROM STRING_SPLIT(@tags, ',')
+
+        insert into AdvertTenure(advert_id, tenure_id) 
+        SELECT @advert_id, T2.id FROM STRING_SPLIT(@tenures, ',') AS T1
+        INNER JOIN Tenure AS T2 ON T1.value = T2.title;";
 }
 

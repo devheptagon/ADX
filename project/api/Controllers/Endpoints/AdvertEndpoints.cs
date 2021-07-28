@@ -32,12 +32,14 @@ namespace adx
 
         public static void AddAdvert(AdvertEntity advert)
         {
-            AdvertService.AddAdvert(advert);
+            System.Guid id = AdvertService.AddAdvert(advert);
+            AdvertService.RefreshDependencies(id.ToString(), advert.sectors, advert.tags, advert.tenures);
         }
 
         public static void UpdateAdvert(AdvertEntity advert)
         {
             AdvertService.UpdateAdvert(advert);
+            AdvertService.RefreshDependencies(advert.id?.ToString(), advert.sectors, advert.tags, advert.tenures);
         }
 
         public static void DeleteAdvert(string id)

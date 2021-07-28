@@ -20,7 +20,7 @@ public class UserService
                 sqlCommand.CommandType = CommandType.Text;
                 if (page != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar));
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar, 100));
                     sqlCommand.Parameters["@page"].Value = page;
                 }
 
@@ -63,7 +63,7 @@ public class UserService
                 sqlCommand.CommandType = CommandType.Text;
                 if (id != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar));
+                    sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
                     sqlCommand.Parameters["@user_id"].Value = id;
                 }
 
@@ -105,10 +105,10 @@ public class UserService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@email"].Value = email;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@passhash"].Value = passhash;
 
                 try
@@ -145,7 +145,7 @@ public class UserService
             using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.DeleteSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@user_id"].Value = id;
                 try
                 {
@@ -168,16 +168,16 @@ public class UserService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@email"].Value = entity.email;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@role", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@role", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@role"].Value = entity.role;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@passhash"].Value = entity.passhash;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
@@ -214,19 +214,19 @@ public class UserService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.UniqueIdentifier));
-                sqlCommand.Parameters["@id"].Value = entity.id;
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@email"].Value = entity.email;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@role", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@role", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@role"].Value = entity.role;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@passhash"].Value = entity.passhash;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)

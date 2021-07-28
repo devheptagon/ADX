@@ -21,7 +21,7 @@ public class SellerService
                 sqlCommand.CommandType = CommandType.Text;
                 if (page != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar));
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar, 10));
                     sqlCommand.Parameters["@page"].Value = page;
                 }
 
@@ -70,7 +70,7 @@ public class SellerService
                 sqlCommand.CommandType = CommandType.Text;
                 if (id != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                    sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
                     sqlCommand.Parameters["@seller_id"].Value = id;
                 }
 
@@ -116,7 +116,7 @@ public class SellerService
             using (SqlCommand sqlCommand = new SqlCommand(SellerSqlStrings.DeleteSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@seller_id"].Value = id;
                 try
                 {
@@ -139,28 +139,28 @@ public class SellerService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@email"].Value = entity.email;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@phone"].Value = entity.phone;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@avatar", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@avatar", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@avatar"].Value = entity.avatar;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line1"].Value = entity.line1;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line2"].Value = entity.line2;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@city"].Value = entity.city;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
@@ -197,31 +197,31 @@ public class SellerService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.UniqueIdentifier));
-                sqlCommand.Parameters["@id"].Value = entity.id;
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@email"].Value = entity.email;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@phone"].Value = entity.phone;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@avatar", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@avatar", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@avatar"].Value = entity.avatar;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line1", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line1"].Value = entity.line1;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@line2", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@line2"].Value = entity.line2;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@city"].Value = entity.city;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)

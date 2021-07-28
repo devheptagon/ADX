@@ -21,7 +21,7 @@ public class TagService
                 sqlCommand.CommandType = CommandType.Text;
                 if (page != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar));
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar, 100));
                     sqlCommand.Parameters["@page"].Value = page;
                 }
 
@@ -61,7 +61,7 @@ public class TagService
                 sqlCommand.CommandType = CommandType.Text;
                 if (id != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@tag_id", SqlDbType.VarChar));
+                    sqlCommand.Parameters.Add(new SqlParameter("@tag_id", SqlDbType.VarChar, 100));
                     sqlCommand.Parameters["@tag_id"].Value = id;
                 }
 
@@ -98,7 +98,7 @@ public class TagService
             using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.DeleteSql, connection))
             {
                 sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@tag_id", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@tag_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@tag_id"].Value = id;
                 try
                 {
@@ -121,7 +121,7 @@ public class TagService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@title"].Value = entity.title;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
@@ -158,10 +158,10 @@ public class TagService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.UniqueIdentifier));
-                sqlCommand.Parameters["@id"].Value = entity.id;
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar));
+                sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@title"].Value = entity.title;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
