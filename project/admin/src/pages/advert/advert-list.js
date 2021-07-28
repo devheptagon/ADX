@@ -4,6 +4,7 @@ import { getAdvertsEP, deleteAdvertEP } from "integration/endpoints/advert";
 import { getPagerList } from "utils/appHelper";
 import { ROW_COUNT_PER_PAGE } from "config";
 import AdvertForm from "./advert-form";
+import { useSelector } from "react-redux";
 
 export default function AdvertList() {
   const [adverts, setAdverts] = useState([]);
@@ -12,10 +13,11 @@ export default function AdvertList() {
   const [lastPageNo, setLastPageNo] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const userId = useSelector((state) => state.appReducer.id);
 
   const closeModal = async (fetch) => {
     if (fetch) {
-      const response = await getAdvertsEP(page);
+      const response = await getAdvertsEP(page, userId);
       setAdverts(response?.data || []);
     }
     setSelectedItem(null);
@@ -35,7 +37,7 @@ export default function AdvertList() {
     const ok = window.confirm("Are you sure to delete " + label);
     if (ok) {
       await deleteAdvertEP(id);
-      const response = await getAdvertsEP(page);
+      const response = await getAdvertsEP(page, userId);
       setAdverts(response?.data || []);
     }
   };
@@ -45,7 +47,7 @@ export default function AdvertList() {
   }, [page]);
 
   const loadPage = async (nextPage) => {
-    const response = await getAdvertsEP(nextPage);
+    const response = await getAdvertsEP(nextPage, userId);
     setPage(nextPage);
     setPagination(getPagerList(nextPage, response.count || 0));
     setLastPageNo(Math.ceil(response.count / ROW_COUNT_PER_PAGE));

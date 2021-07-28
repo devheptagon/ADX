@@ -18,6 +18,7 @@ namespace adx
         public string SelectedKeywords { get; set; }
         public string SelectedMinPrice { get; set; }
         public string SelectedMaxPrice { get; set; }
+        public string UserId { get; set; }
         public string Page { get; set; }
     }
 

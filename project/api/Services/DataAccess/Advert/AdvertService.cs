@@ -95,6 +95,12 @@ public class AdvertService
                 else
                     sqlCommand.Parameters["@Page"].Value = filter.Page;
 
+                sqlCommand.Parameters.Add(new SqlParameter("@USER_ID", SqlDbType.VarChar, 100));
+                if (string.IsNullOrEmpty(filter.UserId))
+                    sqlCommand.Parameters["@USER_ID"].Value = SqlInt32.Null;
+                else
+                    sqlCommand.Parameters["@USER_ID"].Value = filter.UserId;
+
                 try
                 {
                     connection.Open();

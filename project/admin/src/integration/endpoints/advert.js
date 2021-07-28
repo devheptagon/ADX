@@ -1,7 +1,7 @@
 import { call, verbs } from "../api";
 
-export const getAdvertsEP = async (page) => {
-  return call(verbs.post, "adverts", null, { page: page.toString() });
+export const getAdvertsEP = async (page, userId) => {
+  return call(verbs.post, "adverts", null, { page: page.toString(), userId });
 };
 
 export const deleteAdvertEP = async (id) => {
