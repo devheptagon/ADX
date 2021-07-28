@@ -192,11 +192,7 @@ public class UserService
                 }
                 catch (Exception exp)
                 {
-                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
-                    //{
-                    //    writer.Write(exp.Message);
-                    //    writer.Close();
-                    //}
+                    Logger.LogError(exp.Message);
                 }
                 finally
                 {
@@ -241,11 +237,7 @@ public class UserService
                 }
                 catch (Exception exp)
                 {
-                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
-                    //{
-                    //    writer.Write(exp.Message);
-                    //    writer.Close();
-                    //}
+                    Logger.LogError(exp.Message);
                 }
                 finally
                 {

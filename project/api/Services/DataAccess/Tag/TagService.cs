@@ -136,11 +136,7 @@ public class TagService
                 }
                 catch (Exception exp)
                 {
-                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
-                    //{
-                    //    writer.Write(exp.Message);
-                    //    writer.Close();
-                    //}
+                    Logger.LogError(exp.Message);
                 }
                 finally
                 {
@@ -176,11 +172,7 @@ public class TagService
                 }
                 catch (Exception exp)
                 {
-                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
-                    //{
-                    //    writer.Write(exp.Message);
-                    //    writer.Close();
-                    //}
+                    Logger.LogError(exp.Message);
                 }
                 finally
                 {

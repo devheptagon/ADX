@@ -1,4 +1,3 @@
-C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.csprojAssemblyReference.cache
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.AssemblyInfoInputs.cache
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.AssemblyInfo.cs
 C:\Users\uaw\Desktop\DEV\AdvertisementX\project\api\obj\Debug\netcoreapp3.1\adx.csproj.CoreCompileInputs.cache

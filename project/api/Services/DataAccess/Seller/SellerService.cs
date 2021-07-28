@@ -175,11 +175,7 @@ public class SellerService
                 }
                 catch (Exception exp)
                 {
-                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
-                    //{
-                    //    writer.Write(exp.Message);
-                    //    writer.Close();
-                    //}
+                    Logger.LogError(exp.Message);
                 }
                 finally
                 {
@@ -236,11 +232,7 @@ public class SellerService
                 }
                 catch (Exception exp)
                 {
-                    //using (StreamWriter writer = new StreamWriter("log.txt", true))
-                    //{
-                    //    writer.Write(exp.Message);
-                    //    writer.Close();
-                    //}
+                    Logger.LogError(exp.Message);
                 }
                 finally
                 {
