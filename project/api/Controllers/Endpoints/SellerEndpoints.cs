@@ -41,14 +41,14 @@ namespace adx
             SellerService.UpdateSeller(entity);
         }
 
-        public static void DeleteSeller(RouteData routeData)
-        {
-            var id = routeData.Values.ContainsKey("id") ? routeData.Values["id"].ToString() : null;
-            if (id != null)
-            {
-                SellerService.DeleteSeller(id);
-            }
-        }
+        //public static void DeleteSeller(RouteData routeData)
+        //{
+        //    var id = routeData.Values.ContainsKey("id") ? routeData.Values["id"].ToString() : null;
+        //    if (id != null)
+        //    {
+        //        SellerService.DeleteSeller(id);
+        //    }
+        //}
     }
 }
 

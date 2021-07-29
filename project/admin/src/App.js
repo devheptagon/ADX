@@ -13,6 +13,7 @@ import SectorPage from "pages/sector/sector-page";
 import AdvertPage from "pages/advert/advert-page";
 import ContentsPage from "pages/contents/contents-page";
 import SellerPage from "pages/seller/seller-page";
+import ProfilePage from "pages/profile/profile-page";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/sellers">
             <SellerPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
           </Route>
           <Route path="/">
             <Home />

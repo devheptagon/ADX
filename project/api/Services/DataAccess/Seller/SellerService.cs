@@ -45,7 +45,7 @@ public class SellerService
         {
             var item = new SellerEntity();
             item.id = (System.Guid)row["id"];
-            item.user_id = (System.Guid)row["user_id"];
+            //item.user_id = (System.Guid)row["user_id"]; //dont return this to client
             item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
             item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
             item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
@@ -110,27 +110,27 @@ public class SellerService
         return result;
     }
 
-    public static void DeleteSeller(string id)
-    {
-        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
-        {
-            using (SqlCommand sqlCommand = new SqlCommand(SellerSqlStrings.DeleteSql, connection))
-            {
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@seller_id"].Value = id;
-                try
-                {
-                    connection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-    }
+    //public static void DeleteSeller(string id)
+    //{
+    //    using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+    //    {
+    //        using (SqlCommand sqlCommand = new SqlCommand(SellerSqlStrings.DeleteSql, connection))
+    //        {
+    //            sqlCommand.CommandType = CommandType.Text;
+    //            sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
+    //            sqlCommand.Parameters["@seller_id"].Value = id;
+    //            try
+    //            {
+    //                connection.Open();
+    //                sqlCommand.ExecuteNonQuery();
+    //            }
+    //            finally
+    //            {
+    //                connection.Close();
+    //            }
+    //        }
+    //    }
+    //}
 
     public static void AddSeller(SellerEntity entity)
     {

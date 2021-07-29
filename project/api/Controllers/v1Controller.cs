@@ -152,13 +152,13 @@ namespace adx
             SellerEndpoints.UpdateSeller(request.Data);
         }
 
-        [Authorize]
-        [HttpDelete("sellers/{id?}")]
-        public void DeleteSeller()
-        {
-            if (!AppHelper.IsAdmin(this.HttpContext)) return;
-            SellerEndpoints.DeleteSeller(RouteData);
-        }
+        //[Authorize]
+        //[HttpDelete("sellers/{id?}")]
+        //public void DeleteSeller()
+        //{
+        //    if (!AppHelper.IsAdmin(this.HttpContext)) return;
+        //    SellerEndpoints.DeleteSeller(RouteData);
+        //}
         #endregion        
 
         #region Sector Endpoints

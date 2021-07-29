@@ -70,6 +70,9 @@ function Layout(props) {
               <Link to="/logout">LOG OUT</Link>
             </li>
             <li>
+              <Link to="/profile">My Profile</Link>
+            </li>
+            <li>
               <Link to="/adverts">Adverts</Link>
             </li>
             <li>

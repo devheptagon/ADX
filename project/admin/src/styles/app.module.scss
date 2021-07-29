@@ -6,25 +6,9 @@
   }
 }
 
-.tag {
-  table[id="datatable"] {
-    td {
-      padding: 10px;
-      @extend %actions-col;
-    }
-  }
-}
-
+.tag,
+.seller,
 .sector {
-  table[id="datatable"] {
-    td {
-      padding: 10px;
-      @extend %actions-col;
-    }
-  }
-}
-
-.seller {
   table[id="datatable"] {
     td {
       padding: 10px;
