@@ -1,17 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using adx.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.IO;
+using System.Security.Claims;
+using System.Text;
 
 namespace adx
 {
-    public class ContentEndpoints
-    {
-        public static ContentResponse GetContents()
-        {
-            return new ContentResponse() { Data = ContentService.GetContents() };
-        }
 
-        public static string UpdateContents(ContentRequest request)
+    public partial class v1Controller : ControllerBase
+    {
+        [AllowAnonymous]
+        [HttpGet("contents")]
+        public ContentResponse GetContents() { return new ContentResponse() { Data = ContentService.GetContents() }; }
+
+        [Authorize]
+        [HttpPatch("contents")]
+        public string UpdateContents([FromBody] ContentRequest request)
         {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return null;
+
             var content = ContentService.GetContents()[0];
             content.about = request.Data.about == null ? content.about : request.Data.about;
             content.address = request.Data.address == null ? content.address : request.Data.address;
@@ -27,5 +40,8 @@ namespace adx
             ContentService.UpdateContent(content);
             return "OK";
         }
+
     }
+
+
 }
