@@ -29,7 +29,7 @@ namespace adx
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public User Login([FromBody] User login)
+        public UserEntity Login([FromBody] UserEntity login)
         {
             return AuthEndpoints.Login(login);
         }
@@ -126,39 +126,31 @@ namespace adx
 
         #endregion
 
-        #region Seller Endpoints
+        #region User Endpoints
         [AllowAnonymous]
-        [HttpGet("sellers")]
-        [HttpGet("sellers/{page?}")]
-        public SellerResponse GetSellers() { return SellerEndpoints.GetSellers(RouteData); }
+        [HttpGet("users")]
+        [HttpGet("users/{page?}")]
+        public UserResponse GetUsers() { return UserEndpoints.GetUsers(RouteData); }
 
         [AllowAnonymous]
-        [HttpGet("seller/{id?}")] //id = seller_id or user_id
-        public SellerResponse GetSeller() { return SellerEndpoints.GetSeller(RouteData); }
+        [HttpGet("user/{id?}")] //id = user_id or user_id
+        public UserResponse GetUser() { return UserEndpoints.GetUser(RouteData); }
 
         [Authorize]
-        [HttpPost("sellers")]
-        public void AddSeller([FromBody] SellerRequest request)
+        [HttpPost("users")]
+        public void AddUser([FromBody] UserRequest request)
         {
             if (!AppHelper.IsAdmin(this.HttpContext)) return;
-            SellerEndpoints.AddSeller(request.Data);
+            UserEndpoints.AddUser(request.Data);
         }
 
         [Authorize]
-        [HttpPatch("sellers")]
-        public void UpdateSeller([FromBody] SellerRequest request)
+        [HttpPatch("users")]
+        public void UpdateUser([FromBody] UserRequest request)
         {
             if (!AppHelper.IsAdmin(this.HttpContext)) return;
-            SellerEndpoints.UpdateSeller(request.Data);
+            UserEndpoints.UpdateUser(request.Data);
         }
-
-        //[Authorize]
-        //[HttpDelete("sellers/{id?}")]
-        //public void DeleteSeller()
-        //{
-        //    if (!AppHelper.IsAdmin(this.HttpContext)) return;
-        //    SellerEndpoints.DeleteSeller(RouteData);
-        //}
         #endregion        
 
         #region Sector Endpoints

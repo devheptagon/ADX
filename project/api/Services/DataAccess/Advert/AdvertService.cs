@@ -185,7 +185,7 @@ public class AdvertService
             if (row["seller"] != DBNull.Value)
             {
                 var sellerInfo = row["seller"].ToString().Split('|');
-                item.seller = new SellerEntity()
+                item.seller = new UserEntity()
                 {
                     fullname = sellerInfo[0],
                     email = sellerInfo[1],

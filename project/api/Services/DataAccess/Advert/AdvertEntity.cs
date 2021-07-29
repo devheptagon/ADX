@@ -29,6 +29,6 @@ public struct AdvertEntity
     public string sectors { get; set; }
     public string tags { get; set; }
     public string tenures { get; set; }
-    public SellerEntity seller { get; set; }
+    public UserEntity seller { get; set; }
 
 }

@@ -7,7 +7,7 @@ namespace adx
 {
     public class AuthEndpoints
     {
-        public static User Login(User login)
+        public static UserEntity Login(UserEntity login)
         {
             return AppHelper.AuthenticateUser(login);
         }

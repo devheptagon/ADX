@@ -59,18 +59,18 @@ namespace adx
     #endregion
 
     #region SellerRequest
-    public class SellerRequest
+    public class UserRequest
     {
-        public SellerRequest() { }  //required for json serialisation        
+        public UserRequest() { }  //required for json serialisation        
 
-        public SellerEntity Data { get; set; }
+        public UserEntity Data { get; set; }
     }
 
-    public class SellerResponse
+    public class UserResponse
     {
-        public SellerResponse() { } //required for json serialisation        
+        public UserResponse() { } //required for json serialisation        
 
-        public List<SellerEntity> Data { get; set; }
+        public List<UserEntity> Data { get; set; }
 
         public int Count { get; set; }
 
@@ -142,13 +142,5 @@ namespace adx
 
     public class ValidationRequest { }
 
-    public class User
-    {
-        public string Id { get; set; }
-        public string Fullname { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
-        public string Token { get; set; }
-    }
+
 }

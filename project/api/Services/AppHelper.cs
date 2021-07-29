@@ -43,16 +43,16 @@ namespace adx.Services
             return newFileName;
         }
 
-        public static string GenerateJSONWebToken(User userInfo)
+        public static string GenerateJSONWebToken(UserEntity userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
-                new Claim("Id", userInfo.Id),
-                new Claim("Fullname", userInfo.Fullname),
-                new Claim("Role", userInfo.Role),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
+                new Claim("Id", userInfo.id.ToString()),
+                new Claim("Fullname", userInfo.fullname),
+                new Claim("Role", userInfo.role),
+                new Claim("Email", userInfo.email),
             };
 
             var token = new JwtSecurityToken(config["Jwt:Issuer"],
@@ -64,18 +64,18 @@ namespace adx.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public static User AuthenticateUser(User login)
+        public static UserEntity AuthenticateUser(UserEntity login)
         {
-            var passhash = CreateMD5(login.Password);
-            var result = UserService.GetUserByCreds(login.Email, passhash);
+            var passhash = CreateMD5(login.password);
+            var result = UserService.GetUserByCreds(login.email, passhash);
             if (result == null) return null;
 
-            var user = new User();
-            user.Fullname = result.fullname;
-            user.Email = result.email;
-            user.Id = result.id.ToString();
-            user.Role = result.role;
-            user.Token = GenerateJSONWebToken(user);
+            var user = new UserEntity();
+            user.fullname = result.fullname;
+            user.email = result.email;
+            user.id = result.id;
+            user.role = result.role;
+            user.token = GenerateJSONWebToken(user);
 
             return user;
         }
