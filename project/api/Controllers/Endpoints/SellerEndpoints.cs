@@ -24,7 +24,9 @@ namespace adx
 
         public static SellerResponse GetSeller(RouteData routeData)
         {
+            //id = seller_id or user_id
             var id = routeData.Values.ContainsKey("id") ? routeData.Values["id"].ToString() : null;
+
             var result = new SellerResponse() { Data = SellerService.GetSeller(id) };
             return result;
         }

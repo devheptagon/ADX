@@ -24,6 +24,15 @@
   }
 }
 
+.seller {
+  table[id="datatable"] {
+    td {
+      padding: 10px;
+      @extend %actions-col;
+    }
+  }
+}
+
 .advert {
   table[id="datatable"] {
     tbody tr {

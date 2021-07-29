@@ -45,7 +45,7 @@ public class SellerService
         {
             var item = new SellerEntity();
             item.id = (System.Guid)row["id"];
-
+            item.user_id = (System.Guid)row["user_id"];
             item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
             item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
             item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
@@ -70,8 +70,9 @@ public class SellerService
                 sqlCommand.CommandType = CommandType.Text;
                 if (id != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
-                    sqlCommand.Parameters["@seller_id"].Value = id;
+                    //id = seller_id or user_id
+                    sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 100));
+                    sqlCommand.Parameters["@id"].Value = id;
                 }
 
                 try
@@ -139,6 +140,9 @@ public class SellerService
             {
                 sqlCommand.CommandType = CommandType.Text;
 
+                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@user_id"].Value = entity.user_id;
+
                 sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
@@ -195,6 +199,9 @@ public class SellerService
 
                 sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
+
+                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@user_id"].Value = entity.id?.ToString();
 
                 sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;

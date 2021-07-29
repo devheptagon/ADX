@@ -12,6 +12,7 @@ import TagPage from "pages/tag/tag-page";
 import SectorPage from "pages/sector/sector-page";
 import AdvertPage from "pages/advert/advert-page";
 import ContentsPage from "pages/contents/contents-page";
+import SellerPage from "pages/seller/seller-page";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/contents">
             <ContentsPage />
+          </Route>
+          <Route path="/sellers">
+            <SellerPage />
           </Route>
           <Route path="/">
             <Home />

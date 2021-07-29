@@ -9,7 +9,7 @@ class SectorSqlStrings
 {
     public static string SelectSql = @"SELECT * FROM [Sector] AS T ORDER BY T.title";
 
-    public static string SelectByPageSql = @"SELECT * FROM [Sector] AS T ORDER BY T.title OFFSET(@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
+    public static string SelectByPageSql = SelectSql; //@"SELECT * FROM [Sector] AS T ORDER BY T.title OFFSET(@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
 
     public static string SelectByIdSql = "SELECT * FROM [Sector] AS T WHERE CAST(T.id AS VARCHAR(50)) = @sector_id";
 

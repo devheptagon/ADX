@@ -133,7 +133,7 @@ namespace adx
         public SellerResponse GetSellers() { return SellerEndpoints.GetSellers(RouteData); }
 
         [AllowAnonymous]
-        [HttpGet("seller/{id?}")]
+        [HttpGet("seller/{id?}")] //id = seller_id or user_id
         public SellerResponse GetSeller() { return SellerEndpoints.GetSeller(RouteData); }
 
         [Authorize]

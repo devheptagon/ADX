@@ -2,6 +2,7 @@
 public struct SellerEntity
 {
     public System.Guid? id { get; set; }
+    public System.Guid? user_id { get; set; }
 
     public string fullname { get; set; }
     public string email { get; set; }
