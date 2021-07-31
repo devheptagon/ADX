@@ -78,34 +78,6 @@ export default function ContentList() {
               <tbody>
                 <tr>
                   <td>
-                    <label htmlFor="Title">About Us:</label>
-                  </td>
-                  <td>
-                    <fieldset>
-                      <RichText
-                        field="about"
-                        initialValue={values.about}
-                        handleChange={handleChange}
-                      />
-                    </fieldset>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="Title">Terms & Privacy:</label>
-                  </td>
-                  <td>
-                    <fieldset>
-                      <RichText
-                        field="terms"
-                        initialValue={values.terms}
-                        handleChange={handleChange}
-                      />
-                    </fieldset>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
                     <label htmlFor="Title">Address:</label>
                   </td>
                   <td>
@@ -252,6 +224,34 @@ export default function ContentList() {
                       />
                     </fieldset>
                     <span data-id="error">{errors.youtube}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="Title">About Us:</label>
+                  </td>
+                  <td>
+                    <fieldset>
+                      <RichText
+                        field="about"
+                        initialValue={values.about}
+                        handleChange={handleChange}
+                      />
+                    </fieldset>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="Title">Terms & Privacy:</label>
+                  </td>
+                  <td>
+                    <fieldset>
+                      <RichText
+                        field="terms"
+                        initialValue={values.terms}
+                        handleChange={handleChange}
+                      />
+                    </fieldset>
                   </td>
                 </tr>
               </tbody>

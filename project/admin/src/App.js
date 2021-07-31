@@ -45,9 +45,9 @@ function App() {
           <Route path="/enquiries">
             <EnquiryPage />
           </Route>
-          {/*           <Route path="/profile">
+          <Route path="/profile">
             <ProfilePage />
-          </Route> */}
+          </Route>
           <Route path="/">
             <Home />
           </Route>

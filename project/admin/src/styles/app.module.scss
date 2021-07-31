@@ -21,6 +21,9 @@
 .enquiry {
   table[id="datatable"] {
     td {
+      &:nth-child(1) {
+        width: 20px !important;
+      }
       &:nth-child(2),
       &:nth-child(3) {
         b {
@@ -61,6 +64,17 @@
 }
 
 .content {
+}
+
+.seller {
+  td {
+    &:nth-child(1) {
+      width: 100px !important;
+    }
+    &:nth-child(2) {
+      width: 200px !important;
+    }
+  }
 }
 
 %actions-col {

@@ -1,18 +1,14 @@
-/* import { Formik } from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
-
+import { useDispatch, useSelector } from "react-redux";
 import { getProfileEP, updateProfileEP } from "integration/endpoints/user";
-import { useEffect, useState } from "react";
+import { setUserAction } from "redux/app/appActions";
 
 export default function ContentList() {
-  const [profile, setProfile] = useState(null);
-  useEffect(() => {
-    getProfileEP().then((res) => setProfile(res));
-  }, []);
-
-  if (!profile) return null;
+  const dispatch = useDispatch();
   const { fullname, email, phone, line1, line2, postcode, avatar, id } =
-    profile;
+    useSelector((state) => state.appReducer);
+
   return (
     <Formik
       initialValues={{
@@ -39,11 +35,11 @@ export default function ContentList() {
           id,
         });
 
-        const newProfile = await getProfileEP();
-        setProfile(newProfile);
+        const newProfile = await getProfileEP(id);
+        dispatch(setUserAction(newProfile));
         setSubmitting(false);
-        resetForm({});
         setStatus({ success: true });
+        alert("Saved");
       }}
     >
       {(props) => {
@@ -194,4 +190,3 @@ export default function ContentList() {
     </Formik>
   );
 }
- */

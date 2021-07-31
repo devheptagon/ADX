@@ -12,6 +12,16 @@ using System.Linq;
 public class UserService
 {
 
+    public static List<UserEntity> GetSellers()
+    {
+        var users = GetUsers(null);
+        var result = new List<UserEntity>();
+        result.AddRange(users.Where(u => u.role == UserRole.Admin));
+        result.AddRange(users.Where(u => u.role == UserRole.Seller));
+
+        return result;
+    }
+
     public static List<UserEntity> GetUsers(string page)
     {
         DataTable dataTable = new DataTable();
@@ -45,24 +55,8 @@ public class UserService
                 }
             }
         }
-        var result = new List<UserEntity>();
-        foreach (DataRow row in dataTable.Rows)
-        {
-            var item = new UserEntity();
-            item.id = (System.Guid)row["id"];
-            item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
-            item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
-            item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
-            item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
-            item.avatar = row["avatar"] == DBNull.Value ? "" : (string)row["avatar"];
-            item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
-            item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
-            item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
-            item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
-            item.active = row["active"] == DBNull.Value ? false : (bool)row["active"];
 
-            result.Add(item);
-        }
+        var result = CreateUserListFromDatatable(dataTable);
         return result;
     }
 
@@ -96,24 +90,8 @@ public class UserService
                 }
             }
         }
-        var result = new List<UserEntity>();
-        foreach (DataRow row in dataTable.Rows)
-        {
-            var item = new UserEntity();
-            item.id = (System.Guid)row["id"];
-            item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
-            item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
-            item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
-            item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
-            item.avatar = row["avatar"] == DBNull.Value ? "" : (string)row["avatar"];
-            item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
-            item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
-            item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
-            item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
-            item.active = row["active"] == DBNull.Value ? false : (bool)row["active"];
+        var result = CreateUserListFromDatatable(dataTable);
 
-            result.Add(item);
-        }
         return result;
     }
 
@@ -150,13 +128,9 @@ public class UserService
 
         if (dataTable.Rows.Count == 0) return null;
 
-        var item = new UserEntity();
-        var row = dataTable.Rows[0];
-        item.id = (System.Guid)row["id"];
-        item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
-        item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
-        item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
-        return item;
+        var result = CreateUserListFromDatatable(dataTable);
+
+        return result.First();
     }
 
     public static void AddUser(UserEntity entity)
@@ -270,17 +244,6 @@ public class UserService
         }
     }
 
-    public static List<UserEntity> GetSellers()
-    {
-        var users = GetUsers(null);
-        var result = new List<UserEntity>();
-        result.AddRange(users.Where(u => u.role == UserRole.Admin));
-        result.AddRange(users.Where(u => u.role == UserRole.Seller));
-
-        return result;
-
-    }
-
     public static void UpdateUserActivity(UserEntity entity)
     {
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
@@ -317,4 +280,29 @@ public class UserService
         }
     }
 
+
+    private static List<UserEntity> CreateUserListFromDatatable(DataTable dataTable)
+    {
+        var result = new List<UserEntity>();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            var item = new UserEntity();
+            item.id = (System.Guid)row["id"];
+            item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
+            item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
+            item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
+            item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
+            item.avatar = row["avatar"] == DBNull.Value ? "" : (string)row["avatar"];
+            item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
+            item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
+            item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
+            item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
+            item.active = row["active"] == DBNull.Value ? false : (bool)row["active"];
+            //TODO: seller until
+
+            result.Add(item);
+        }
+
+        return result;
+    }
 }

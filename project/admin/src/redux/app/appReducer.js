@@ -8,15 +8,23 @@ import {
 } from "./actionTypes";
 
 const initialState = {
-  token: null,
-  email: null,
-  id: null,
-  role: null,
-  fullname: "",
   sectors: [],
   tags: [],
   firstLoad: true,
   sellers: [],
+  //user info
+  id: null,
+  token: null,
+  email: null,
+  role: null,
+  fullname: null,
+  phone: null,
+  avatar: null,
+  line1: null,
+  line2: null,
+  city: null,
+  postcode: null,
+  seller_until: null,
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -31,11 +39,10 @@ export function appReducer(state = { ...initialState }, action) {
       const user = action.payload.user;
       return {
         ...state,
-        token: user.token,
-        email: user.email,
-        id: user.id,
-        role: user.role,
-        fullname: user.fullname,
+        ...user,
+        id: state.id || user.id,
+        token: state.token || user.token,
+        role: state.role || user.role,
       };
     case SET_FIRSTLOAD_TYPE:
       return { ...state, firstLoad: false };

@@ -26,13 +26,14 @@ namespace adx
         }
 
         [AllowAnonymous]
-        [HttpGet("user/{id?}")] //id = user_id or user_id
+        [HttpGet("user/{id?}")]
         public UserResponse GetUser()
         {
-            //id = seller_id or user_id
             var id = RouteData.Values.ContainsKey("id") ? RouteData.Values["id"].ToString() : null;
+            var userList = UserService.GetUser(id);
+            if (userList.Count == 0) return null;
 
-            var result = new UserResponse() { Data = UserService.GetUser(id) };
+            var result = new UserResponse() { Data = userList };
             return result;
         }
 
