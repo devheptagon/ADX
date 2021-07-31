@@ -7,16 +7,16 @@ using adx;
 
 class SectorSqlStrings
 {
-    public static string SelectSql = @"SELECT * FROM [Sector] AS T ORDER BY T.title";
+    public static string SelectSql = "sp_select_sectors";
 
-    public static string SelectByPageSql = SelectSql; //@"SELECT * FROM [Sector] AS T ORDER BY T.title OFFSET(@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
+    public static string SelectByPageSql = "sp_select_sectors_by_page";
 
-    public static string SelectByIdSql = "SELECT * FROM [Sector] AS T WHERE CAST(T.id AS VARCHAR(50)) = @sector_id";
+    public static string SelectByIdSql = "sp_select_sectors_by_id";
 
-    public static string AddSql = @"Insert Into [Sector] (title) VALUES(@title); select CONVERT(varchar(50),scope_identity())";
+    public static string AddSql = "sp_add_sector";
 
-    public static string DeleteSql = "Delete From [Sector] Where id = @sector_id";
+    public static string DeleteSql = "sp_delete_sector";
 
-    public static string UpdateSql = @"Update [Sector] Set title=@title WHERE id = @id";
+    public static string UpdateSql = "sp_update_sector";
 }
 

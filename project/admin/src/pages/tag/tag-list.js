@@ -12,6 +12,7 @@ export default function TagList() {
   const [selectedItem, setSelectedItem] = useState(null);
   const closeModal = () => {
     setModalOpen(false);
+    setSelectedItem(null);
   };
 
   const edit = (e) => {

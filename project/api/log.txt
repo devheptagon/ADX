@@ -1,0 +1,5 @@
+31/07/2021 15:22:08
+Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.31/07/2021 15:22:17
+Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.31/07/2021 15:23:28
+Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.31/07/2021 15:23:36
+Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.

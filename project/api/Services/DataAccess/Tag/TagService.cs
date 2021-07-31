@@ -1,4 +1,5 @@
 
+using adx;
 using adx.Services;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -18,11 +19,14 @@ public class TagService
             var sql = page != null ? TagSqlStrings.SelectByPageSql : TagSqlStrings.SelectSql;
             using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
                 if (page != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar, 100));
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.TinyInt));
                     sqlCommand.Parameters["@page"].Value = page;
+
+                    sqlCommand.Parameters.Add(new SqlParameter("@page_size", SqlDbType.TinyInt));
+                    sqlCommand.Parameters["@page_size"].Value = Constants.PAGE_SIZE;
                 }
 
                 try
@@ -58,7 +62,7 @@ public class TagService
         {
             using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.SelectByIdSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
                 if (id != null)
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("@tag_id", SqlDbType.VarChar, 100));
@@ -97,9 +101,9 @@ public class TagService
         {
             using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.DeleteSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@tag_id", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@tag_id"].Value = id;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@id"].Value = id;
                 try
                 {
                     connection.Open();
@@ -119,7 +123,7 @@ public class TagService
         {
             using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.AddSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@title"].Value = entity.title;
@@ -152,7 +156,7 @@ public class TagService
         {
             using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.UpdateSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
