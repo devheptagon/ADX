@@ -3,22 +3,24 @@ public struct EnquiryEntity
 {
     public System.Guid? id { get; set; }
 
-    public string Enquiry_Type { get; set; }
+    public string enquiry_type { get; set; }
 
-    public string User_Type { get; set; }
+    public string user_type { get; set; }
 
-    public string First_Name { get; set; }
+    public string first_name { get; set; }
 
-    public string Last_Name { get; set; }
+    public string last_name { get; set; }
 
-    public string Email { get; set; }
+    public string email { get; set; }
 
-    public string Location { get; set; }
+    public string location { get; set; }
 
-    public string Property_Type { get; set; }
+    public string property_type { get; set; }
 
-    public string Price { get; set; }
+    public string price { get; set; }
 
-    public string Area_Size { get; set; }
+    public string area_size { get; set; }
+
+    public string create_date { get; set; }
 
 }

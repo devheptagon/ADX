@@ -8,11 +8,30 @@
 
 .tag,
 .seller,
-.sector {
+.sector,
+.enquiry {
   table[id="datatable"] {
     td {
       padding: 10px;
       @extend %actions-col;
+    }
+  }
+}
+
+.enquiry {
+  table[id="datatable"] {
+    td {
+      &:nth-child(2),
+      &:nth-child(3) {
+        b {
+          color: rgba(0, 0, 255, 0.459);
+        }
+        width: 50%;
+        div {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ import AdvertPage from "pages/advert/advert-page";
 import ContentsPage from "pages/contents/contents-page";
 import SellerPage from "pages/seller/seller-page";
 import ProfilePage from "pages/profile/profile-page";
+import EnquiryPage from "pages/enquiry/enquiry-page";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/sellers">
             <SellerPage />
+          </Route>
+          <Route path="/enquiries">
+            <EnquiryPage />
           </Route>
           {/*           <Route path="/profile">
             <ProfilePage />

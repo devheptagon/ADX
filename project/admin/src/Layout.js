@@ -84,6 +84,9 @@ function Layout(props) {
             <li>
               <Link to="/sellers">Sellers</Link>
             </li>
+            <li>
+              <Link to="/enquiries">Eval Requests</Link>
+            </li>
           </ul>
         </Col>
         <Col xs={12} md={10}>
