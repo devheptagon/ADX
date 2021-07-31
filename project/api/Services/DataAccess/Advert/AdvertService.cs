@@ -97,7 +97,7 @@ public class AdvertService
 
                 sqlCommand.Parameters.Add(new SqlParameter("@USER_ID", SqlDbType.VarChar, 100));
                 if (string.IsNullOrEmpty(filter.UserId))
-                    sqlCommand.Parameters["@USER_ID"].Value = SqlInt32.Null;
+                    sqlCommand.Parameters["@USER_ID"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@USER_ID"].Value = filter.UserId;
 

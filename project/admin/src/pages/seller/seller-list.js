@@ -10,9 +10,11 @@ export default function SellerList() {
     const id = e.currentTarget.dataset.id;
     const val = e.currentTarget.dataset.val === "true" ? true : false;
     await toggleSellerEP(id, val);
-    const sellers = await getSellersEP();
-    dispatch(setSellersAction(sellers));
+    const newlist = await getSellersEP();
+    dispatch(setSellersAction(newlist));
   };
+
+  const onlySellers = sellers.filter((s) => s.role === "seller");
 
   return (
     <div>
@@ -23,10 +25,11 @@ export default function SellerList() {
             <th>Seller name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {sellers.map((item, index) => (
+          {onlySellers.map((item, index) => (
             <tr key={item.id}>
               <td colSpan={2}>
                 {item.active ? (
@@ -52,10 +55,17 @@ export default function SellerList() {
               <td>{item.fullname}</td>
               <td>{item.email}</td>
               <td>{item.phone}</td>
+              <td>
+                {item.active ? (
+                  <i className="fa fa-check" color="green"></i>
+                ) : (
+                  <i className="fa fa-times" color="red"></i>
+                )}
+              </td>
             </tr>
           ))}
           <tr>
-            <td colSpan={5} align="right">
+            <td colSpan={6} align="right">
               Page 1 of 1
             </td>
           </tr>
