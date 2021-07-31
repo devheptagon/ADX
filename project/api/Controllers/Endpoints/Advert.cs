@@ -42,7 +42,7 @@ namespace adx
             if (!AppHelper.IsAdmin(this.HttpContext) && !AppHelper.IsSeller(this.HttpContext)) return;
 
             System.Guid id = AdvertService.AddAdvert(request);
-            AdvertService.RefreshDependencies(id.ToString(), request.sectors, request.tags, request.tenures);
+            AdvertService.UpdateDependencies(id.ToString(), request.sectors, request.tags, request.tenures);
         }
 
         [Authorize]
@@ -56,7 +56,7 @@ namespace adx
             if (!isAdmin && !isOwner) return;
 
             AdvertService.UpdateAdvert(request);
-            AdvertService.RefreshDependencies(request.id?.ToString(), request.sectors, request.tags, request.tenures);
+            AdvertService.UpdateDependencies(request.id?.ToString(), request.sectors, request.tags, request.tenures);
         }
 
         [Authorize]

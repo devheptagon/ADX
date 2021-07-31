@@ -13,36 +13,6 @@ using System.Linq;
 public class AdvertService
 {
 
-    public static List<AdvertEntity> GetAdvert(string id)
-    {
-        DataTable dataTable = new DataTable();
-        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
-        {
-            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectByIdSql, connection))
-            {
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@advert_id"].Value = id;
-
-                try
-                {
-                    connection.Open();
-                    using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
-                    {
-                        dataTable.Load(dataReader);
-                        dataReader.Close();
-                    }
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-        var result = CreateAdvertListFromDatatable(dataTable);
-        return result;
-    }
-
     public static List<AdvertEntity> GetAdverts(AdvertFilter filter)
     {
         DataTable dataTable = new DataTable();
@@ -51,7 +21,7 @@ public class AdvertService
             var sql = string.IsNullOrEmpty(filter.Page) ? AdvertSqlStrings.SelectSql : AdvertSqlStrings.SelectByPageSql;
             using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@MIN_PRICE", SqlDbType.Int));
                 if (string.IsNullOrEmpty(filter.SelectedMinPrice) || filter?.SelectedMinPrice == "0")
@@ -83,17 +53,27 @@ public class AdvertService
                 else
                     sqlCommand.Parameters["@TAGS"].Value = filter.SelectedKeywords;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@TENURES", SqlDbType.VarChar, 1000));
+                sqlCommand.Parameters.Add(new SqlParameter("@TENURES", SqlDbType.VarChar, 100));
                 if (string.IsNullOrEmpty(filter.SelectedTenures))
                     sqlCommand.Parameters["@TENURES"].Value = SqlString.Null;
                 else
                     sqlCommand.Parameters["@TENURES"].Value = filter.SelectedTenures;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@Page", SqlDbType.Int));
-                if (string.IsNullOrEmpty(filter.Page))
-                    sqlCommand.Parameters["@Page"].Value = SqlInt32.Null;
-                else
-                    sqlCommand.Parameters["@Page"].Value = filter.Page;
+                if (!string.IsNullOrEmpty(filter.Page))
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@Page", SqlDbType.TinyInt));
+                    if (string.IsNullOrEmpty(filter.Page))
+                        sqlCommand.Parameters["@Page"].Value = SqlInt32.Null;
+                    else
+                        sqlCommand.Parameters["@Page"].Value = filter.Page;
+
+                    sqlCommand.Parameters.Add(new SqlParameter("@Page_size", SqlDbType.TinyInt));
+                    if (string.IsNullOrEmpty(filter.Page))
+                        sqlCommand.Parameters["@Page_size"].Value = SqlInt32.Null;
+                    else
+                        sqlCommand.Parameters["@Page_size"].Value = filter.Page;
+                }
+
 
                 sqlCommand.Parameters.Add(new SqlParameter("@USER_ID", SqlDbType.VarChar, 100));
                 if (string.IsNullOrEmpty(filter.UserId))
@@ -121,86 +101,33 @@ public class AdvertService
         return result;
     }
 
-    //public static bool IsAdvertOwner(string userId, string advertId)
-    //{
-    //    var count = 0;
-
-    //    using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
-    //    {
-    //        using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectCountByUserIdAndAdvertIdSql, connection))
-    //        {
-    //            sqlCommand.CommandType = CommandType.Text;
-
-    //            sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
-    //            sqlCommand.Parameters["@user_id"].Value = userId;
-
-    //            sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
-    //            sqlCommand.Parameters["@advert_id"].Value = advertId;
-
-    //            try
-    //            {
-    //                connection.Open();
-    //                count = (int)sqlCommand.ExecuteScalar();
-    //            }
-    //            finally
-    //            {
-    //                connection.Close();
-    //            }
-    //        }
-    //    }
-    //    ;
-    //    return count > 0;
-    //}
-
-    private static List<AdvertEntity> CreateAdvertListFromDatatable(DataTable dataTable)
+    public static List<AdvertEntity> GetAdvert(string id)
     {
-        var result = new List<AdvertEntity>();
-        foreach (DataRow row in dataTable.Rows)
+        DataTable dataTable = new DataTable();
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            var item = new AdvertEntity();
-            item.id = (System.Guid)row["id"];
-            item.seller_id = (System.Guid)row["seller_id"];
-            item.title = row["title"] == DBNull.Value ? "" : (string)row["title"];
-            item.description = row["description"] == DBNull.Value ? "" : (string)row["description"];
-            item.status = row["status"] == DBNull.Value ? "" : (string)row["status"];
-            item.freeHoldPrice = row["freeHoldPrice"] == DBNull.Value ? "" : (string)row["freeHoldPrice"];
-            item.leaseHoldPrice = row["leaseHoldPrice"] == DBNull.Value ? "" : (string)row["leaseHoldPrice"];
-            item.weeklyProfit = row["weeklyProfit"] == DBNull.Value ? "" : (string)row["weeklyProfit"];
-            item.monthlyProfit = row["monthlyProfit"] == DBNull.Value ? "" : (string)row["monthlyProfit"];
-            item.annualProfit = row["annualProfit"] == DBNull.Value ? "" : (string)row["annualProfit"];
-            item.weeklyTurnover = row["weeklyTurnover"] == DBNull.Value ? "" : (string)row["weeklyTurnover"];
-            item.monthlyTurnover = row["monthlyTurnover"] == DBNull.Value ? "" : (string)row["monthlyTurnover"];
-            item.annualTurnover = row["annualTurnover"] == DBNull.Value ? "" : (string)row["annualTurnover"];
-            item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
-            item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
-            item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
-            item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
-            item.create_date = row["create_date"] == DBNull.Value ? "" : row["create_date"].ToString();
-
-            item.sectors = row["sectors"] == DBNull.Value ? "" : (string)row["sectors"];
-            item.tags = row["tags"] == DBNull.Value ? "" : (string)row["tags"];
-            item.images = row["images"] == DBNull.Value ? "" : (string)row["images"];
-            item.tenures = row["tenures"] == DBNull.Value ? "" : (string)row["tenures"];
-
-            if (row["seller"] != DBNull.Value)
+            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectByIdSql, connection))
             {
-                var sellerInfo = row["seller"].ToString().Split('|');
-                item.seller = new UserEntity()
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@id"].Value = id;
+
+                try
                 {
-                    fullname = sellerInfo[0],
-                    email = sellerInfo[1],
-                    phone = sellerInfo[2],
-                    avatar = sellerInfo[3],
-                    line1 = sellerInfo[4],
-                    line2 = sellerInfo[5],
-                    city = sellerInfo[6],
-                    postcode = sellerInfo[7]
-                };
+                    connection.Open();
+                    using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+                    {
+                        dataTable.Load(dataReader);
+                        dataReader.Close();
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-
-            result.Add(item);
         }
-
+        var result = CreateAdvertListFromDatatable(dataTable);
         return result;
     }
 
@@ -210,9 +137,9 @@ public class AdvertService
         {
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.DeleteSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@advert_id"].Value = id;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@id"].Value = id;
                 try
                 {
                     connection.Open();
@@ -233,7 +160,7 @@ public class AdvertService
         {
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.AddSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@seller_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@seller_id"].Value = entity.seller_id?.ToString();
@@ -315,7 +242,7 @@ public class AdvertService
         {
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.UpdateSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
@@ -392,13 +319,13 @@ public class AdvertService
         }
     }
 
-    public static void RefreshDependencies(string advertId, string sectors, string tags, string tenures)
+    public static void UpdateDependencies(string advertId, string sectors, string tags, string tenures)
     {
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
             using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.RefreshDependenciesSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@advert_id"].Value = advertId;
 
@@ -408,7 +335,7 @@ public class AdvertService
                 sqlCommand.Parameters.Add(new SqlParameter("@tags", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@tags"].Value = tags;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@tenures", SqlDbType.VarChar, -1));
+                sqlCommand.Parameters.Add(new SqlParameter("@tenures", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@tenures"].Value = tenures;
 
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
@@ -427,6 +354,59 @@ public class AdvertService
                 }
             }
         }
+    }
+
+
+    private static List<AdvertEntity> CreateAdvertListFromDatatable(DataTable dataTable)
+    {
+        var result = new List<AdvertEntity>();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            var item = new AdvertEntity();
+            item.id = (System.Guid)row["id"];
+            item.seller_id = (System.Guid)row["seller_id"];
+            item.title = row["title"] == DBNull.Value ? "" : (string)row["title"];
+            item.description = row["description"] == DBNull.Value ? "" : (string)row["description"];
+            item.status = row["status"] == DBNull.Value ? "" : (string)row["status"];
+            item.freeHoldPrice = row["freeHoldPrice"] == DBNull.Value ? "" : (string)row["freeHoldPrice"];
+            item.leaseHoldPrice = row["leaseHoldPrice"] == DBNull.Value ? "" : (string)row["leaseHoldPrice"];
+            item.weeklyProfit = row["weeklyProfit"] == DBNull.Value ? "" : (string)row["weeklyProfit"];
+            item.monthlyProfit = row["monthlyProfit"] == DBNull.Value ? "" : (string)row["monthlyProfit"];
+            item.annualProfit = row["annualProfit"] == DBNull.Value ? "" : (string)row["annualProfit"];
+            item.weeklyTurnover = row["weeklyTurnover"] == DBNull.Value ? "" : (string)row["weeklyTurnover"];
+            item.monthlyTurnover = row["monthlyTurnover"] == DBNull.Value ? "" : (string)row["monthlyTurnover"];
+            item.annualTurnover = row["annualTurnover"] == DBNull.Value ? "" : (string)row["annualTurnover"];
+            item.line1 = row["line1"] == DBNull.Value ? "" : (string)row["line1"];
+            item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
+            item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
+            item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
+            item.create_date = row["create_date"] == DBNull.Value ? "" : row["create_date"].ToString();
+
+            item.sectors = row["sectors"] == DBNull.Value ? "" : (string)row["sectors"];
+            item.tags = row["tags"] == DBNull.Value ? "" : (string)row["tags"];
+            item.images = row["images"] == DBNull.Value ? "" : (string)row["images"];
+            item.tenures = row["tenures"] == DBNull.Value ? "" : (string)row["tenures"];
+
+            if (row["seller"] != DBNull.Value)
+            {
+                var sellerInfo = row["seller"].ToString().Split('|');
+                item.seller = new UserEntity()
+                {
+                    fullname = sellerInfo[0],
+                    email = sellerInfo[1],
+                    phone = sellerInfo[2],
+                    avatar = sellerInfo[3],
+                    line1 = sellerInfo[4],
+                    line2 = sellerInfo[5],
+                    city = sellerInfo[6],
+                    postcode = sellerInfo[7]
+                };
+            }
+
+            result.Add(item);
+        }
+
+        return result;
     }
 
 }
