@@ -11,7 +11,7 @@ class TagSqlStrings
 
     public static string SelectByPageSql = "sp_select_tags_by_page";
 
-    public static string SelectByIdSql = "sp_select_tags_by_id";
+    public static string SelectByIdSql = "sp_select_tag_by_id";
 
     public static string AddSql = "sp_add_tag";
 

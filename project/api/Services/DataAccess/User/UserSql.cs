@@ -7,31 +7,18 @@ using adx;
 
 class UserSqlStrings
 {
-    public static string SelectSql = @"SELECT * FROM [User] AS T ORDER BY T.fullname";
+    public static string SelectSql = "sp_select_users";
 
-    public static string SelectByPageSql = SelectSql; // @"SELECT * FROM [User] AS T ORDER BY T.fullname OFFSET(@PAGE-1) * " + Constants.PAGE_SIZE + " ROWS FETCH NEXT " + Constants.PAGE_SIZE + " ROWS ONLY";
+    public static string SelectByPageSql = "sp_select_users_by_page";
 
-    public static string SelectByCredsSql = "SELECT TOP 1 * FROM [User] WHERE [email]=@email AND passhash=@passhash";
+    public static string SelectByCredsSql = "sp_select_user_by_creds";
 
+    public static string SelectByIdSql = "sp_select_user_by_id";
 
-    public static string SelectByIdSql = "SELECT * FROM [User] AS T WHERE CAST(T.id AS VARCHAR(50)) = @id";
+    public static string AddSql = "sp_add_user";
 
-    public static string AddSql = @"Insert Into [User] (fullname, email, phone, avatar, line1, line2, city, postcode) 
-                VALUES(@fullname, @email, @phone, @avatar, @line1, @line2, @city, @postcode); select CONVERT(varchar(50),scope_identity())";
+    public static string UpdateSql = "sp_update_user";
 
-    public static string DeleteSql = "Delete From [User] Where id = @user_id";
-
-    public static string UpdateSql = @"Update [User] Set 
-            fullname=@fullname, 
-            email=@email, 
-            phone=@phone, 
-            avatar=@avatar, 
-            line1=@line1, 
-            line2=@line2, 
-            city=@city, 
-            postcode=@postcode
-    WHERE CAST(id AS VARCHAR(50)) = @id";
-
-    public static string UpdateActivitySql = "UPDATE [USER] SET ACTIVE = @ACTIVE WHERE CAST(ID AS VARCHAR(100)) = @ID";
+    public static string UpdateActivitySql = "sp_update_user_active";
 
 }

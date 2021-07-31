@@ -11,7 +11,7 @@ class SectorSqlStrings
 
     public static string SelectByPageSql = "sp_select_sectors_by_page";
 
-    public static string SelectByIdSql = "sp_select_sectors_by_id";
+    public static string SelectByIdSql = "sp_select_sector_by_id";
 
     public static string AddSql = "sp_add_sector";
 

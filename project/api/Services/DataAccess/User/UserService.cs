@@ -20,11 +20,14 @@ public class UserService
             var sql = page != null ? UserSqlStrings.SelectByPageSql : UserSqlStrings.SelectSql;
             using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
                 if (page != null)
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar, 10));
                     sqlCommand.Parameters["@page"].Value = page;
+
+                    sqlCommand.Parameters.Add(new SqlParameter("@page_size", SqlDbType.TinyInt));
+                    sqlCommand.Parameters["@page_size"].Value = Constants.PAGE_SIZE;
                 }
 
                 try
@@ -70,7 +73,7 @@ public class UserService
         {
             using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.SelectByIdSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
                 if (id != null)
                 {
                     //id = user_id or user_id
@@ -121,7 +124,7 @@ public class UserService
         {
             using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.SelectByCredsSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@email"].Value = email;
@@ -162,7 +165,7 @@ public class UserService
         {
             using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.AddSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
@@ -216,7 +219,7 @@ public class UserService
         {
             using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.UpdateSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
@@ -284,7 +287,7 @@ public class UserService
         {
             using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.UpdateActivitySql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
