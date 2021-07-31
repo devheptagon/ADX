@@ -121,23 +121,20 @@ namespace adx
 
     public class EvaluationRequest
     {
-        public string Enquiry_Type { get; set; }
+        public EvaluationRequest() { }  //required for json serialisation        
 
-        public string User_Type { get; set; }
+        public EnquiryEntity Data { get; set; }
+    }
 
-        public string First_Name { get; set; }
+    public class EvaluationResponse
+    {
+        public EvaluationResponse() { }  //required for json serialisation        
 
-        public string Last_Name { get; set; }
+        public List<EnquiryEntity> Data { get; set; }
 
-        public string Email { get; set; }
+        public int Count { get; set; }
 
-        public string Location { get; set; }
-
-        public string Property_Type { get; set; }
-
-        public string Price { get; set; }
-
-        public string Area_Size { get; set; }
+        public int Page { get; set; }
     }
 
     public class ValidationRequest { }
