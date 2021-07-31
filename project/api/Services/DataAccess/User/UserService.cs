@@ -56,6 +56,7 @@ public class UserService
             item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
             item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
+            item.active = row["active"] == DBNull.Value ? false : (bool)row["active"];
 
             result.Add(item);
         }
@@ -106,6 +107,7 @@ public class UserService
             item.line2 = row["line2"] == DBNull.Value ? "" : (string)row["line2"];
             item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
+            item.active = row["active"] == DBNull.Value ? false : (bool)row["active"];
 
             result.Add(item);
         }
@@ -219,9 +221,6 @@ public class UserService
                 sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
                 sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
 
-                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar));
-                sqlCommand.Parameters["@user_id"].Value = entity.id?.ToString();
-
                 sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
@@ -277,6 +276,42 @@ public class UserService
 
         return result;
 
+    }
+
+    public static void UpdateUserActivity(UserEntity entity)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.UpdateActivitySql, connection))
+            {
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar));
+                sqlCommand.Parameters["@id"].Value = entity.id?.ToString();
+
+                sqlCommand.Parameters.Add(new SqlParameter("@active", SqlDbType.Bit));
+                sqlCommand.Parameters["@active"].Value = entity.active;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+                    Logger.LogError(exp.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 
 }

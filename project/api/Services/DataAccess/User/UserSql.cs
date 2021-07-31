@@ -30,6 +30,8 @@ class UserSqlStrings
             line2=@line2, 
             city=@city, 
             postcode=@postcode
-    WHERE CAST(id AS VARCHAR(50)) = @id or CAST(user_id AS VARCHAR(50)) = @user_id";
+    WHERE CAST(id AS VARCHAR(50)) = @id";
+
+    public static string UpdateActivitySql = "UPDATE [USER] SET ACTIVE = @ACTIVE WHERE CAST(ID AS VARCHAR(100)) = @ID";
 
 }

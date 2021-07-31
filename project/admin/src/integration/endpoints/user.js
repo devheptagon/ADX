@@ -27,3 +27,10 @@ export const getSellersEP = async () => {
   const response = await call(verbs.get, "sellers");
   return response?.data;
 };
+
+export const toggleSellerEP = async (id, active) => {
+  const response = await call(verbs.patch, "toggle", null, {
+    data: { id, active },
+  });
+  return response?.data;
+};

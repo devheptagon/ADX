@@ -61,6 +61,15 @@ namespace adx
             var data = UserService.GetSellers();
             return new UserResponse() { Data = data, Count = data.Count, Page = -1 };
         }
+
+        [Authorize]
+        [HttpPatch("toggle")]
+        public void UpdateUserActivity([FromBody] UserRequest request)
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            UserService.UpdateUserActivity(request.Data);
+        }
+
     }
 
 
