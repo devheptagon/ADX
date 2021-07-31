@@ -60,12 +60,12 @@ class AdvertSqlStrings
 
     public static string SelectByIdSql = SelectBaseSql + " WHERE CAST(ADV.id AS VARCHAR(50)) = @advert_id";
 
-    public static string SelectCountByUserIdAndAdvertIdSql = @"SELECT COUNT(0)
-        FROM[ADX].[DBO].[ADVERT]
-            AS T1
-            INNER JOIN DBO.SELLER AS T2 ON T1.SELLER_ID = T2.ID
-            INNER JOIN DBO.[USER] AS T3 ON T2.[USER_ID] = T3.ID
-        WHERE CAST(T3.ID AS VARCHAR(50)) = @user_id AND @advert_id = T1.ID";
+    //public static string SelectCountByUserIdAndAdvertIdSql = @"SELECT COUNT(0)
+    //    FROM[ADX].[DBO].[ADVERT]
+    //        AS T1
+    //        INNER JOIN DBO.SELLER AS T2 ON T1.SELLER_ID = T2.ID
+    //        INNER JOIN DBO.[USER] AS T3 ON T2.[USER_ID] = T3.ID
+    //    WHERE CAST(T3.ID AS VARCHAR(50)) = @user_id AND @advert_id = T1.ID";
 
     public static string AddSql = @"Insert Into [Advert] 
         ([seller_id]

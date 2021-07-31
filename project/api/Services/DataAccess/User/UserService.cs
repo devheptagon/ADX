@@ -1,4 +1,5 @@
 
+using adx;
 using adx.Services;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 
 public class UserService
 {
@@ -45,7 +47,7 @@ public class UserService
         {
             var item = new UserEntity();
             item.id = (System.Guid)row["id"];
-            //item.user_id = (System.Guid)row["user_id"]; //dont return this to client
+            item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
             item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
             item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
             item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
@@ -95,7 +97,7 @@ public class UserService
         {
             var item = new UserEntity();
             item.id = (System.Guid)row["id"];
-
+            item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
             item.fullname = row["fullname"] == DBNull.Value ? "" : (string)row["fullname"];
             item.email = row["email"] == DBNull.Value ? "" : (string)row["email"];
             item.phone = row["phone"] == DBNull.Value ? "" : (string)row["phone"];
@@ -109,7 +111,6 @@ public class UserService
         }
         return result;
     }
-
 
     public static UserEntity GetUserByCreds(string email, string passhash)
     {
@@ -152,7 +153,6 @@ public class UserService
         item.role = row["role"] == DBNull.Value ? "" : (string)row["role"];
         return item;
     }
-
 
     public static void AddUser(UserEntity entity)
     {
@@ -266,6 +266,17 @@ public class UserService
                 }
             }
         }
+    }
+
+    public static List<UserEntity> GetSellers()
+    {
+        var users = GetUsers(null);
+        var result = new List<UserEntity>();
+        result.AddRange(users.Where(u => u.role == UserRole.Admin));
+        result.AddRange(users.Where(u => u.role == UserRole.Seller));
+
+        return result;
+
     }
 
 }

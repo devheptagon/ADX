@@ -51,7 +51,7 @@ export const call = async (
 };
 
 const checkAuthError = (exception, dontCheckAuth) => {
-  if (!dontCheckAuth && exception.indexOf("401")) {
+  if (!dontCheckAuth && exception.response.status === 401) {
     //todo: logout
   }
 };

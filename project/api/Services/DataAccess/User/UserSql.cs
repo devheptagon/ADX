@@ -14,7 +14,7 @@ class UserSqlStrings
     public static string SelectByCredsSql = "SELECT TOP 1 * FROM [User] WHERE [email]=@email AND passhash=@passhash";
 
 
-    public static string SelectByIdSql = "SELECT * FROM [User] AS T WHERE CAST(T.id AS VARCHAR(50)) = @id or CAST(T.user_id AS VARCHAR(50)) = @id";
+    public static string SelectByIdSql = "SELECT * FROM [User] AS T WHERE CAST(T.id AS VARCHAR(50)) = @id";
 
     public static string AddSql = @"Insert Into [User] (fullname, email, phone, avatar, line1, line2, city, postcode) 
                 VALUES(@fullname, @email, @phone, @avatar, @line1, @line2, @city, @postcode); select CONVERT(varchar(50),scope_identity())";

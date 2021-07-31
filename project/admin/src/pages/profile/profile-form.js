@@ -1,7 +1,7 @@
-import { Formik } from "formik";
+/* import { Formik } from "formik";
 import * as yup from "yup";
 
-import { getProfileEP, updateProfileEP } from "integration/endpoints/seller";
+import { getProfileEP, updateProfileEP } from "integration/endpoints/user";
 import { useEffect, useState } from "react";
 
 export default function ContentList() {
@@ -194,3 +194,4 @@ export default function ContentList() {
     </Formik>
   );
 }
+ */

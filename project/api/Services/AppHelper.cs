@@ -67,14 +67,9 @@ namespace adx.Services
         public static UserEntity AuthenticateUser(UserEntity login)
         {
             var passhash = CreateMD5(login.password);
-            var result = UserService.GetUserByCreds(login.email, passhash);
-            if (result == null) return null;
-
-            var user = new UserEntity();
-            user.fullname = result.fullname;
-            user.email = result.email;
-            user.id = result.id;
-            user.role = result.role;
+            var user = UserService.GetUserByCreds(login.email, passhash);
+            if (user == null) return null;
+            user.password = null;
             user.token = GenerateJSONWebToken(user);
 
             return user;
@@ -86,8 +81,9 @@ namespace adx.Services
             if (user == null) return false;
 
             //check role from db for security, not from claims
-            var id = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var id = GetUserIdFromClaim(context);
             var selectedUser = UserService.GetUser(id);
+
             return selectedUser?.FirstOrDefault().role == UserRole.Admin;
         }
 
@@ -97,20 +93,21 @@ namespace adx.Services
             if (user == null) return false;
 
             //check role from db for security, not from claims
-            var id = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var id = GetUserIdFromClaim(context);
             var selectedUser = UserService.GetUser(id);
+
             return selectedUser?.FirstOrDefault().role == UserRole.Seller;
         }
 
-        public static bool IsAdvertOwner(HttpContext context, string advertId)
-        {
-            var user = context.User;
-            if (user == null) return false;
+        //public static bool IsAdvertOwner(HttpContext context, string advertId)
+        //{
+        //    var user = context.User;
+        //    if (user == null) return false;
 
-            //check role from db for security, not from claims
-            var userId = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
-            return AdvertService.IsAdvertOwner(userId, advertId);
-        }
+        //    //check role from db for security, not from claims
+        //    var userId = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+        //    return AdvertService.IsAdvertOwner(userId, advertId);
+        //}
 
         public static string CreateMD5(string input)
         {
@@ -128,6 +125,13 @@ namespace adx.Services
                 }
                 return sb.ToString();
             }
+        }
+
+        public static string GetUserIdFromClaim(HttpContext context)
+        {
+            var user = context.User;
+            if (user == null) return null;
+            return user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
         }
 
 

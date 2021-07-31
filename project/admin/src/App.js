@@ -41,9 +41,9 @@ function App() {
           <Route path="/sellers">
             <SellerPage />
           </Route>
-          <Route path="/profile">
+          {/*           <Route path="/profile">
             <ProfilePage />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Home />
           </Route>

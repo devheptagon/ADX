@@ -1,6 +1,7 @@
 ﻿using adx.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace adx
 {
@@ -49,7 +50,9 @@ namespace adx
         public void UpdateAdvert([FromBody] AdvertEntity request)
         {
             var isAdmin = AppHelper.IsAdmin(this.HttpContext);
-            var isOwner = AppHelper.IsAdvertOwner(this.HttpContext, request.id?.ToString());
+            var advert = AdvertService.GetAdvert(request.id?.ToString()).First();
+            var userId = AppHelper.GetUserIdFromClaim(HttpContext);
+            var isOwner = advert.seller_id.ToString() == userId;
             if (!isAdmin && !isOwner) return;
 
             AdvertService.UpdateAdvert(request);
@@ -60,12 +63,15 @@ namespace adx
         [HttpDelete("adverts/{id?}")]
         public void DeleteAdvert()
         {
-            var id = RouteData.Values.ContainsKey("id") ? RouteData.Values["id"].ToString() : null;
+            var advertId = RouteData.Values.ContainsKey("id") ? RouteData.Values["id"].ToString() : null;
             var isAdmin = AppHelper.IsAdmin(this.HttpContext);
-            var isOwner = AppHelper.IsAdvertOwner(this.HttpContext, id);
+            var advert = AdvertService.GetAdvert(advertId).First();
+            var userId = AppHelper.GetUserIdFromClaim(HttpContext);
+
+            var isOwner = advert.seller_id.ToString() == userId;
             if (!isAdmin && !isOwner) return;
 
-            AdvertService.DeleteAdvert(id);
+            AdvertService.DeleteAdvert(advertId);
         }
     }
 

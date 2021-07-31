@@ -51,6 +51,16 @@ namespace adx
             if (!AppHelper.IsAdmin(this.HttpContext)) return;
             UserService.UpdateUser(request.Data);
         }
+
+        [Authorize]
+        [HttpGet("sellers")]
+        public UserResponse GetSellers()
+        {
+            if (!AppHelper.IsAdmin(this.HttpContext)) return null;
+
+            var data = UserService.GetSellers();
+            return new UserResponse() { Data = data, Count = data.Count, Page = -1 };
+        }
     }
 
 

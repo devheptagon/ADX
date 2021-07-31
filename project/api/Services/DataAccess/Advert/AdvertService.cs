@@ -121,36 +121,36 @@ public class AdvertService
         return result;
     }
 
-    public static bool IsAdvertOwner(string userId, string advertId)
-    {
-        var count = 0;
+    //public static bool IsAdvertOwner(string userId, string advertId)
+    //{
+    //    var count = 0;
 
-        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
-        {
-            using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectCountByUserIdAndAdvertIdSql, connection))
-            {
-                sqlCommand.CommandType = CommandType.Text;
+    //    using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+    //    {
+    //        using (SqlCommand sqlCommand = new SqlCommand(AdvertSqlStrings.SelectCountByUserIdAndAdvertIdSql, connection))
+    //        {
+    //            sqlCommand.CommandType = CommandType.Text;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@user_id"].Value = userId;
+    //            sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
+    //            sqlCommand.Parameters["@user_id"].Value = userId;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@advert_id"].Value = advertId;
+    //            sqlCommand.Parameters.Add(new SqlParameter("@advert_id", SqlDbType.VarChar, 100));
+    //            sqlCommand.Parameters["@advert_id"].Value = advertId;
 
-                try
-                {
-                    connection.Open();
-                    count = (int)sqlCommand.ExecuteScalar();
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-        ;
-        return count > 0;
-    }
+    //            try
+    //            {
+    //                connection.Open();
+    //                count = (int)sqlCommand.ExecuteScalar();
+    //            }
+    //            finally
+    //            {
+    //                connection.Close();
+    //            }
+    //        }
+    //    }
+    //    ;
+    //    return count > 0;
+    //}
 
     private static List<AdvertEntity> CreateAdvertListFromDatatable(DataTable dataTable)
     {
