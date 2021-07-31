@@ -16,7 +16,7 @@ public class ContentService
         {
             using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.SelectSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
                 try
                 {
                     connection.Open();
@@ -57,7 +57,8 @@ public class ContentService
         {
             using (SqlCommand sqlCommand = new SqlCommand(ContentSqlStrings.UpdateSql, connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
                 sqlCommand.Parameters.Add(new SqlParameter("@about", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@about"].Value = entity.about;
 
@@ -105,5 +106,5 @@ public class ContentService
         }
     }
 
-    
+
 }
