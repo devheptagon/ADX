@@ -23,7 +23,7 @@ public class UserService
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 if (page != null)
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.VarChar, 10));
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.TinyInt));
                     sqlCommand.Parameters["@page"].Value = page;
 
                     sqlCommand.Parameters.Add(new SqlParameter("@page_size", SqlDbType.TinyInt));

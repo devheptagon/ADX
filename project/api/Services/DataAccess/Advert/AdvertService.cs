@@ -61,17 +61,11 @@ public class AdvertService
 
                 if (!string.IsNullOrEmpty(filter.Page))
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@Page", SqlDbType.TinyInt));
-                    if (string.IsNullOrEmpty(filter.Page))
-                        sqlCommand.Parameters["@Page"].Value = SqlInt32.Null;
-                    else
-                        sqlCommand.Parameters["@Page"].Value = filter.Page;
+                    sqlCommand.Parameters.Add(new SqlParameter("@page", SqlDbType.TinyInt));
+                    sqlCommand.Parameters["@page"].Value = filter.Page;
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@Page_size", SqlDbType.TinyInt));
-                    if (string.IsNullOrEmpty(filter.Page))
-                        sqlCommand.Parameters["@Page_size"].Value = SqlInt32.Null;
-                    else
-                        sqlCommand.Parameters["@Page_size"].Value = filter.Page;
+                    sqlCommand.Parameters.Add(new SqlParameter("@page_size", SqlDbType.TinyInt));
+                    sqlCommand.Parameters["@page_size"].Value = Constants.PAGE_SIZE;
                 }
 
 
