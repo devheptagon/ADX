@@ -5,10 +5,10 @@ export default function AdminFrame() {
   return (
     <iframe
       frameBorder="0"
-      scrolling="no"
+      scrolling="yes"
       marginHeight="0"
       marginWidth="0"
-      height="500"
+      height="1000"
       width="100%"
       src={adminUrl + "home"}
       title="panel"

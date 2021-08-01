@@ -61,7 +61,7 @@ function Layout(props) {
   return (
     <Container>
       <Row>
-        <Col xs={12} md={2}>
+        <Col xs={12} md={3}>
           <ul className={styles.left_menu}>
             <li>
               <Link to="/logout">LOG OUT</Link>
@@ -79,18 +79,21 @@ function Layout(props) {
               <Link to="/tags">Keywords</Link>
             </li>
             <li>
-              <Link to="/contents">Contents</Link>
-            </li>
-            <li>
               <Link to="/sellers">Sellers</Link>
             </li>
             <li>
               <Link to="/enquiries">Eval Requests</Link>
             </li>
+            <li>
+              <Link to="/contents">Parameters</Link>
+            </li>
           </ul>
         </Col>
-        <Col xs={12} md={10}>
+        <Col xs={12} md={9}>
+          <br />
           {props.children}
+          <br />
+          <br />
         </Col>
       </Row>
     </Container>

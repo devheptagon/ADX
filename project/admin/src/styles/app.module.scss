@@ -1,8 +1,20 @@
 .left_menu {
+  padding: 10px 0;
+  background-color: #efefef;
+  height: 100%;
   li {
     display: block;
-    background-color: #eee;
-    padding: 5px;
+    border-bottom: 1px solid white;
+    padding: 5px 5px 5px 20px;
+    min-width: 200px;
+    &::before {
+      content: "🞍  ";
+    }
+    &::after {
+      position: absolute;
+      right: 30px;
+      content: "▸";
+    }
   }
 }
 
