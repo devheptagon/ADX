@@ -1,7 +1,7 @@
 import axios from "axios";
 import { apiUrl } from "../config";
 
-export const fillAdverts = async (filters, dispatch) => {
+export const getAdverts = async (filters) => {
   const payload = {
     page: filters.page.toString(),
     selectedSectors:
@@ -25,7 +25,7 @@ export const fillAdverts = async (filters, dispatch) => {
   };
 
   const response = await axios.post(apiUrl + "adverts", payload);
-  return response.data?.data;
+  return response.data;
 };
 
 export const getContents = async () => {

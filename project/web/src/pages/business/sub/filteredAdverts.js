@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MultiSelect from "react-multi-select-component";
-import { fillAdverts } from "api/api";
+import { getAdverts } from "api/api";
 import styles from "styles/home.module.scss";
 import {
   setAreaFilterAction,
@@ -17,7 +17,7 @@ import AdvertList from "./advertList";
 const Filter = React.memo(() => {
   const dispatch = useDispatch();
 
-  const page = useSelector((state) => state.appReducer.page);
+  const [page, setPage] = useState(1);
   const selectedSectors = useSelector((state) => state.appReducer.sectorFilter);
   const selectedAreas = useSelector((state) => state.appReducer.areaFilter);
   const selectedTenures = useSelector((state) => state.appReducer.tenureFilter);
@@ -78,19 +78,18 @@ const Filter = React.memo(() => {
   const [data, setData] = React.useState([]);
 
   const search = React.useCallback(async () => {
-    const results = await fillAdverts(
-      {
-        page,
-        selectedSectors,
-        selectedAreas,
-        selectedTenures,
-        selectedKeywords,
-        selectedMinPrice,
-        selectedMaxPrice,
-      },
-      dispatch
-    );
-    setData(results);
+    const results = await getAdverts({
+      page,
+      selectedSectors,
+      selectedAreas,
+      selectedTenures,
+      selectedKeywords,
+      selectedMinPrice,
+      selectedMaxPrice,
+    });
+    setPage(1);
+    setData(results.data);
+    setShowLoadMore(true);
   }, [
     page,
     selectedAreas,
@@ -99,8 +98,27 @@ const Filter = React.memo(() => {
     selectedKeywords,
     selectedMinPrice,
     selectedMaxPrice,
-    dispatch,
   ]);
+
+  const [showLoadMore, setShowLoadMore] = useState(true);
+
+  const loadMore = async (e) => {
+    e.preventDefault();
+    const newPage = page + 1;
+    setPage(newPage);
+    const results = await getAdverts({
+      page: newPage,
+      selectedSectors,
+      selectedAreas,
+      selectedTenures,
+      selectedKeywords,
+      selectedMinPrice,
+      selectedMaxPrice,
+    });
+    const newList = [...data, ...results.data];
+    setData(newList);
+    setShowLoadMore(+results.count > newList.length);
+  };
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -189,9 +207,22 @@ const Filter = React.memo(() => {
             </div>
           </div>
         </div>
-        <button onClick={search}>SEARCH</button>
+        <div className={styles.searchbutton_wrapper}>
+          <button onClick={search} className={styles.searchbutton}>
+            SEARCH
+          </button>
+        </div>
       </details>
       <AdvertList data={data} />
+      <br />
+      <br />
+      {showLoadMore && data.length ? (
+        <div className={styles.loadmore}>
+          <a href="#" onClick={loadMore}>
+            Load more
+          </a>
+        </div>
+      ) : null}
     </>
   );
 });

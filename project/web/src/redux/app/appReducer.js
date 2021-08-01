@@ -12,7 +12,6 @@ import {
   SET_KEYWORDS_TYPE,
   SET_CONTENTS_TYPE,
   SET_TOP_ADVERTS_TYPE,
-  SET_PAGE_TYPE,
 } from "./actionTypes";
 import cities from "../../data/city.json";
 
@@ -30,7 +29,6 @@ const initialState = {
   areas: cities,
   tenures: ["Freehold", "Leasehold"],
   firstLoad: true,
-  page: 1,
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -73,8 +71,6 @@ export function appReducer(state = { ...initialState }, action) {
         minPriceFilter: 0,
         maxPriceFilter: 0,
       };
-    case SET_PAGE_TYPE:
-      return { ...state, page: action.payload.page };
     default:
       return state;
   }

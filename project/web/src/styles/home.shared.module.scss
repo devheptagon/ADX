@@ -398,6 +398,24 @@
         }
       }
     }
+    .searchbutton_wrapper {
+      text-align: right;
+      padding-right: 20px;
+      padding-bottom: 10px;
+    }
+    .searchbutton {
+      padding: 5px 20px;
+      background-color: royalblue;
+      border: 0;
+      color: white;
+      border-radius: 2px;
+    }
+    .loadmore {
+      text-align: center;
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
     .list {
       display: flex;
       flex-wrap: wrap;
