@@ -137,6 +137,15 @@ namespace adx.Services
             return user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
         }
 
+        public static string GenerateRandomPassword()
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            var random = new Random();
+            var letter = valid[random.Next(0, valid.Length - 1)].ToString();
+            var pos = random.Next(0, 5);
+            var number = random.Next(100000, 999999);
+            return number.ToString().Insert(pos, letter);
+        }
 
     }
 }

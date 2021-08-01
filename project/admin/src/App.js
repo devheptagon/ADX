@@ -7,6 +7,8 @@ import { store } from "redux/store";
 
 import Home from "pages/home";
 import Login from "pages/login";
+import Forgot from "pages/forgot";
+import Register from "pages/register";
 import Logout from "pages/logout";
 import TagPage from "pages/tag/tag-page";
 import SectorPage from "pages/sector/sector-page";
@@ -24,9 +26,16 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/forgot">
+            <Forgot />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
           <Route path="/logout">
             <Logout />
           </Route>
+
           <Route path="/sectors">
             <SectorPage />
           </Route>

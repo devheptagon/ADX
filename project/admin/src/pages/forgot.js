@@ -1,8 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUserAction, setSellersAction } from "redux/app/appActions";
-import { loginEP } from "integration/endpoints/auth";
-import { getSellersEP } from "integration/endpoints/user";
+import { forgotEP } from "integration/endpoints/auth";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/app.module.scss";
 import { Formik } from "formik";
@@ -10,8 +7,6 @@ import * as yup from "yup";
 
 export default function Login() {
   const history = useHistory();
-  const dispatch = useDispatch();
-
   return (
     <Container>
       <Row className={styles.loginWrapper}>
@@ -19,24 +14,20 @@ export default function Login() {
           <Formik
             initialValues={{
               email: "",
-              password: "",
             }}
             validationSchema={yup.object().shape({
               email: yup.string().required().email(),
-              password: yup.string().required().min(4).max(20),
             })}
             onSubmit={async (
               values,
               { setSubmitting, setStatus, resetForm }
             ) => {
               setSubmitting(true);
-              const user = await loginEP(values.email, values.password);
-              dispatch(setUserAction(user));
-              const sellers = await getSellersEP();
-              dispatch(setSellersAction(sellers));
+              await forgotEP(values.email);
               setSubmitting(false);
-              history.replace("/home");
               setStatus({ success: true });
+              alert("Your temporary password is sent to your email!");
+              history.replace("/login");
             }}
           >
             {(props) => {
@@ -70,22 +61,7 @@ export default function Login() {
                             <span data-id="error">{errors.email}</span>
                           </td>
                         </tr>
-                        <tr>
-                          <td>
-                            Password:
-                            <br />
-                            <input
-                              type="password"
-                              onChange={handleChange}
-                              name="password"
-                              id="password"
-                              placeholder="Password"
-                              title="* password"
-                              value={values.password}
-                            />
-                            <span data-id="error">{errors.password}</span>
-                          </td>
-                        </tr>
+
                         <tr>
                           <td>
                             <button
@@ -97,13 +73,13 @@ export default function Login() {
                                 Object.keys(errors).length
                               }
                             >
-                              Save
+                              Submit
                             </button>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <a href="/forgot">Forgot password</a>
+                            <a href="/login">Login</a>
                             <br />
                             <a href="/register">Register</a>
                           </td>

@@ -1,8 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUserAction, setSellersAction } from "redux/app/appActions";
-import { loginEP } from "integration/endpoints/auth";
-import { getSellersEP } from "integration/endpoints/user";
+import { registerEP } from "integration/endpoints/auth";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/app.module.scss";
 import { Formik } from "formik";
@@ -10,7 +7,6 @@ import * as yup from "yup";
 
 export default function Login() {
   const history = useHistory();
-  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -20,22 +16,22 @@ export default function Login() {
             initialValues={{
               email: "",
               password: "",
+              fullname: "",
             }}
             validationSchema={yup.object().shape({
               email: yup.string().required().email(),
               password: yup.string().required().min(4).max(20),
+              fullname: yup.string(),
             })}
             onSubmit={async (
               values,
               { setSubmitting, setStatus, resetForm }
             ) => {
               setSubmitting(true);
-              const user = await loginEP(values.email, values.password);
-              dispatch(setUserAction(user));
-              const sellers = await getSellersEP();
-              dispatch(setSellersAction(sellers));
+              await registerEP(values.email, values.password, values.fullname);
               setSubmitting(false);
-              history.replace("/home");
+              alert("Registration successful!");
+              history.replace("/login");
               setStatus({ success: true });
             }}
           >
@@ -88,6 +84,21 @@ export default function Login() {
                         </tr>
                         <tr>
                           <td>
+                            Full name:
+                            <br />
+                            <input
+                              type="text"
+                              onChange={handleChange}
+                              name="fullname"
+                              id="fullname"
+                              placeholder="Full name"
+                              title="* Fullname"
+                              value={values.fullname}
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
                             <button
                               data-id="save"
                               type="submit"
@@ -103,9 +114,9 @@ export default function Login() {
                         </tr>
                         <tr>
                           <td>
-                            <a href="/forgot">Forgot password</a>
+                            <a href="/login">Login</a>
                             <br />
-                            <a href="/register">Register</a>
+                            <a href="/forgot">Forgot password</a>
                           </td>
                         </tr>
                       </tbody>

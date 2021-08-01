@@ -165,6 +165,9 @@ public class UserService
                 sqlCommand.Parameters.Add(new SqlParameter("@postcode", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@postcode"].Value = entity.postcode;
 
+                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@passhash"].Value = entity.password;
+
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
                 {
                     if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
@@ -279,6 +282,38 @@ public class UserService
             }
         }
     }
+
+    public static void ResetPassword(string email, string passhash)
+    {
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
+        {
+            using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.ResetPasswordSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@email"].Value = email;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@passhash", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@passhash"].Value = passhash;
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+                    Logger.LogError(exp.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
+
 
 
     private static List<UserEntity> CreateUserListFromDatatable(DataTable dataTable)

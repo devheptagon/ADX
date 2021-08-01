@@ -21,4 +21,6 @@ class UserSqlStrings
 
     public static string UpdateActivitySql = "sp_update_user_active";
 
+    public static string ResetPasswordSql = "sp_reset_password";
+
 }
