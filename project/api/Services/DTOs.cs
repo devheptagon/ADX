@@ -137,6 +137,26 @@ namespace adx
         public int Page { get; set; }
     }
 
+    #region MessageRequest
+    public class MessageRequest
+    {
+        public MessageRequest() { }  //required for json serialisation        
+
+        public MessageEntity Data { get; set; }
+    }
+
+    public class MessageResponse
+    {
+        public MessageResponse() { } //required for json serialisation        
+
+        public List<MessageEntity> Data { get; set; }
+
+        public int Count { get; set; }
+
+        public int Page { get; set; }
+    }
+    #endregion
+
     public class ValidationRequest { }
 
 
