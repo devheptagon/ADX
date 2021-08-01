@@ -1,3 +1,5 @@
+import { deepClone } from "utils/genericHelper";
+
 import {
   SET_TOKEN_TYPE,
   SET_USER_TYPE,
@@ -6,6 +8,7 @@ import {
   SET_TAGS_TYPE,
   SET_SELLERS_TYPE,
   SET_MESSSAGES_TYPE,
+  LOGOUT_TYPE,
 } from "./actionTypes";
 
 const initialState = {
@@ -46,6 +49,9 @@ export function appReducer(state = { ...initialState }, action) {
         token: state.token || user.token,
         role: state.role || user.role,
       };
+    case LOGOUT_TYPE: {
+      return { ...deepClone(initialState) };
+    }
     case SET_FIRSTLOAD_TYPE:
       return { ...state, firstLoad: false };
     case SET_SELLERS_TYPE:

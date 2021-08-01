@@ -25,6 +25,8 @@ function Layout(props) {
   const firstLoad = useSelector((state) => state.appReducer.firstLoad);
   const messages = useSelector((state) => state.appReducer.messages);
   const id = useSelector((state) => state.appReducer.id);
+  const role = useSelector((state) => state.appReducer.role);
+  const admin = role === "admin";
   const unread = messages.filter(
     (m) => m.receiver?.toLowerCase() == id?.toLowerCase() && !m.seen
   );
@@ -68,37 +70,60 @@ function Layout(props) {
       <Row>
         <Col xs={12} md={3}>
           <ul className={styles.left_menu}>
-            <li>
-              <Link to="/logout">LOG OUT</Link>
-            </li>
-            <li>
-              <Link to="/profile">My Profile</Link>
-            </li>
-            <li>
-              <Link to="/adverts">Adverts</Link>
-            </li>
-            <li>
-              <Link to="/sectors">Sectors</Link>
-            </li>
-            <li>
-              <Link to="/tags">Keywords</Link>
-            </li>
-            <li>
-              <Link to="/sellers">Sellers</Link>
-            </li>
-            <li>
-              <Link to="/enquiries">Eval Requests</Link>
-            </li>
-            <li>
-              <Link to="/contents">Parameters</Link>
-            </li>
-            <li id="parent">Messages</li>
-            <li id="child">
-              <Link to="/inbox">✉ Inbox ({unread.length})</Link>
-            </li>
-            <li id="child">
-              <Link to="/sent">↗ Sent</Link>
-            </li>
+            {admin ? (
+              <>
+                <li>
+                  <Link to="/logout">LOG OUT</Link>
+                </li>
+                <li>
+                  <Link to="/profile">My Profile</Link>
+                </li>
+                <li>
+                  <Link to="/adverts">Adverts</Link>
+                </li>
+                <li>
+                  <Link to="/sectors">Sectors</Link>
+                </li>
+                <li>
+                  <Link to="/tags">Keywords</Link>
+                </li>
+                <li>
+                  <Link to="/sellers">Sellers</Link>
+                </li>
+                <li>
+                  <Link to="/enquiries">Eval Requests</Link>
+                </li>
+                <li>
+                  <Link to="/contents">Parameters</Link>
+                </li>
+                <li id="parent">Messages</li>
+                <li id="child">
+                  <Link to="/inbox">✉ Inbox ({unread.length})</Link>
+                </li>
+                <li id="child">
+                  <Link to="/sent">↗ Sent</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/logout">LOG OUT</Link>
+                </li>
+                <li>
+                  <Link to="/profile">My Profile</Link>
+                </li>
+                <li>
+                  <Link to="/adverts">Adverts</Link>
+                </li>
+                <li id="parent">Messages</li>
+                <li id="child">
+                  <Link to="/inbox">✉ Inbox ({unread.length})</Link>
+                </li>
+                <li id="child">
+                  <Link to="/sent">↗ Sent</Link>
+                </li>
+              </>
+            )}
           </ul>
         </Col>
         <Col xs={12} md={9}>

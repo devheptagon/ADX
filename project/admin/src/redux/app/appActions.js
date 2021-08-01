@@ -6,6 +6,7 @@ import {
   SET_TAGS_TYPE,
   SET_SELLERS_TYPE,
   SET_MESSSAGES_TYPE,
+  LOGOUT_TYPE,
 } from "./actionTypes";
 
 export const setTokenAction = (val) => ({
@@ -40,4 +41,8 @@ export const setSellersAction = (val) => ({
 export const setMessagesAction = (val) => ({
   type: SET_MESSSAGES_TYPE,
   payload: { messages: val },
+});
+
+export const logoutAction = () => ({
+  type: LOGOUT_TYPE,
 });
