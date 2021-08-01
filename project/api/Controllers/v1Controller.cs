@@ -41,7 +41,7 @@ namespace adx
             }
             catch
             {
-                image = System.IO.File.OpenRead(AppHelper.uploadPath + "na.jpg");
+                image = System.IO.File.OpenRead(AppHelper.assetsPath + "na.jpg");
             }
 
             return File(image, "image/jpeg");

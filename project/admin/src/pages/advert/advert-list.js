@@ -5,6 +5,7 @@ import { getPagerList } from "utils/appHelper";
 import { ROW_COUNT_PER_PAGE } from "config";
 import AdvertForm from "./advert-form";
 import { useSelector } from "react-redux";
+import { apiUrl } from "config";
 
 export default function AdvertList() {
   const [adverts, setAdverts] = useState([]);
@@ -88,7 +89,16 @@ export default function AdvertList() {
                   <i className="fa fa-pencil-square-o"></i>
                 </span>
               </td>
-              <td>img</td>
+              <td>
+                <img
+                  src={
+                    apiUrl +
+                    "images/" +
+                    (item.images ? item.images.split(",")[0] : "-")
+                  }
+                  alt="img"
+                />
+              </td>
               <td>{item.title}</td>
               <td>{item.seller?.fullname}</td>
               <td>{item.areas}</td>

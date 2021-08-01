@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileEP, updateProfileEP } from "integration/endpoints/user";
 import { setUserAction } from "redux/app/appActions";
+import styles from "styles/app.module.scss";
 
 export default function ContentList() {
   const dispatch = useDispatch();
@@ -56,6 +57,18 @@ export default function ContentList() {
           <form onSubmit={handleSubmit}>
             <table id="dataform">
               <tbody>
+                <tr>
+                  <td colSpan={2} align="center">
+                    <div className={styles.avatar}>
+                      <img
+                        alt="avatar"
+                        src="https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option1-764A5360-edit.jpg"
+                      />
+                    </div>
+                    <a>(x) delete</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a>change</a>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <label>Full name: &nbsp;</label>

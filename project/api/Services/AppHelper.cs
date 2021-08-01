@@ -23,6 +23,9 @@ namespace adx.Services
 
         public static string uploadPath = config.GetSection("UploadPath").Value;
 
+        public static string assetsPath = config.GetSection("AssetsPath").Value;
+
+
         public static string Upload(IFormFile file)
         {
             if (file == null) return "";
