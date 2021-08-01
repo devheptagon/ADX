@@ -35,9 +35,15 @@ export default function TagList() {
 
   return (
     <div>
-      <button id="addbutton" onClick={() => setModalOpen(true)}>
+      <button
+        id="addbutton"
+        onClick={() => setModalOpen(true)}
+        className="btn btn-primary"
+      >
         ADD NEW KEYWORD
       </button>
+      <br />
+      <br />
       <table id="datatable">
         <thead>
           <tr>
@@ -54,12 +60,18 @@ export default function TagList() {
                   data-label={item.title}
                   onClick={remove}
                   title="delete"
+                  className="btn btn-danger"
                 >
                   <i className="fa fa-trash-o"></i>
                 </span>
               </td>
               <td>
-                <span data-id={item.id} onClick={edit} title="edit">
+                <span
+                  data-id={item.id}
+                  onClick={edit}
+                  title="edit"
+                  className="btn btn-info"
+                >
                   <i className="fa fa-pencil-square-o"></i>
                 </span>
               </td>

@@ -50,6 +50,7 @@ export default function PhotosRow(props) {
           accept="image/*"
           onChange={selectFile}
           disabled={uploading}
+          className="btn btn-info"
         />
         {uploading && <h6>Uploading image, please wait...</h6>}
         <div className={styles.uploaded}>

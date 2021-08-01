@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { getEnquiriesEP, deleteEnquiryEP } from "integration/endpoints/enquiry";
-import moment from "moment";
 
 export default function SectorList() {
   const [enquiries, setEnquiries] = useState([]);
@@ -23,12 +22,6 @@ export default function SectorList() {
   return (
     <div>
       <table id="datatable">
-        <thead>
-          <tr>
-            <th></th>
-            <th colSpan={2}></th>
-          </tr>
-        </thead>
         <tbody>
           {enquiries.map((item, index) => (
             <tr key={item.id}>
@@ -38,6 +31,7 @@ export default function SectorList() {
                   data-label={item.title}
                   onClick={remove}
                   title="delete"
+                  className="btn btn-danger"
                 >
                   <i className="fa fa-trash-o"></i>
                 </span>

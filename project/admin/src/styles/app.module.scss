@@ -207,6 +207,7 @@ table[id="dataform"] {
   display: flex;
   flex-wrap: wrap;
   .image {
+    border-radius: 5px;
     margin-right: 10px;
     margin-top: 10px;
     border: 1px solid #ccc;
@@ -218,6 +219,7 @@ table[id="dataform"] {
       cursor: pointer;
       img {
         height: 70px;
+        border-radius: 5px;
       }
     }
   }

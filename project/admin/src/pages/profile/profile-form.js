@@ -99,6 +99,7 @@ export default function ContentList() {
                           accept="image/*"
                           onChange={(e) => selectFile(e, handleChange)}
                           disabled={uploading}
+                          className="btn btn-info"
                         />
                         {uploading && <h6>Uploading image, please wait...</h6>}
                         <br />
@@ -109,7 +110,12 @@ export default function ContentList() {
                         src={apiUrl + "images/" + (values.avatar || "-")}
                       />
                     </div>
-                    <a href="#" onClick={(e) => removePhoto(e, handleChange)}>
+                    <br />
+                    <a
+                      href="#"
+                      onClick={(e) => removePhoto(e, handleChange)}
+                      className="btn btn-danger"
+                    >
                       × delete
                     </a>
                   </td>

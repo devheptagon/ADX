@@ -40,6 +40,7 @@ export default function SellerList() {
                     data-val="false"
                     onClick={toggle}
                     title="edit"
+                    className="btn btn-danger"
                   >
                     <i className="fa fa-toggle-on"></i> Deactivate
                   </span>
@@ -49,6 +50,7 @@ export default function SellerList() {
                     data-val="true"
                     onClick={toggle}
                     title="edit"
+                    className="btn btn-info"
                   >
                     <i className="fa fa-toggle-off"></i> Activate
                   </span>
@@ -64,11 +66,15 @@ export default function SellerList() {
               <td>{item.email}</td>
               <td>{item.phone}</td>
               <td>
-                {item.active ? (
-                  <i className="fa fa-check" color="green"></i>
-                ) : (
-                  <i className="fa fa-times" color="red"></i>
-                )}
+                <span
+                  className={item.active ? "btn btn-success" : "btn btn-danger"}
+                >
+                  {item.active ? (
+                    <i className="fa fa-check"></i>
+                  ) : (
+                    <i className="fa fa-times"></i>
+                  )}
+                </span>
               </td>
             </tr>
           ))}
