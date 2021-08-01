@@ -35,7 +35,7 @@ export default function Login() {
               const sellers = await getSellersEP();
               dispatch(setSellersAction(sellers));
               setSubmitting(false);
-              history.replace("/home");
+              history.push("/home");
               setStatus({ success: true });
             }}
           >

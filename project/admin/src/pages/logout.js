@@ -6,6 +6,6 @@ export default function Logout() {
   const history = useHistory();
   const dispatch = useDispatch();
   dispatch(setTokenAction(null));
-  history.push("/login");
+  history.push("/home");
   return "Logging out...";
 }

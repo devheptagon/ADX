@@ -27,7 +27,7 @@ export default function Login() {
               setSubmitting(false);
               setStatus({ success: true });
               alert("Your temporary password is sent to your email!");
-              history.replace("/login");
+              history.push("/login");
             }}
           >
             {(props) => {

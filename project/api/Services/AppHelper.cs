@@ -71,7 +71,7 @@ namespace adx.Services
         {
             var passhash = CreateMD5(login.password);
             var user = UserService.GetUserByCreds(login.email, passhash);
-            if (user == null) return null;
+            if (user == null || !user.active) return null;
             user.password = null;
             user.token = GenerateJSONWebToken(user);
 

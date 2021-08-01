@@ -21,7 +21,7 @@ export default function Login() {
             validationSchema={yup.object().shape({
               email: yup.string().required().email(),
               password: yup.string().required().min(4).max(20),
-              fullname: yup.string(),
+              fullname: yup.string().required().min(4).max(30),
             })}
             onSubmit={async (
               values,
@@ -31,7 +31,7 @@ export default function Login() {
               await registerEP(values.email, values.password, values.fullname);
               setSubmitting(false);
               alert("Registration successful!");
-              history.replace("/login");
+              history.push("/login");
               setStatus({ success: true });
             }}
           >
