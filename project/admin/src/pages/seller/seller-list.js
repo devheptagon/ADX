@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getSellersEP, toggleSellerEP } from "integration/endpoints/user";
 import { setSellersAction } from "redux/app/appActions";
+import { apiUrl } from "config";
 
 export default function SellerList() {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ export default function SellerList() {
       <table id="datatable">
         <thead>
           <tr>
-            <th colSpan="2"></th>
+            <th></th>
+            <th></th>
             <th>Seller name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -31,7 +33,7 @@ export default function SellerList() {
         <tbody>
           {onlySellers.map((item, index) => (
             <tr key={item.id}>
-              <td colSpan={2}>
+              <td>
                 {item.active ? (
                   <span
                     data-id={item.id}
@@ -52,6 +54,12 @@ export default function SellerList() {
                   </span>
                 )}
               </td>
+              <td>
+                <img
+                  src={apiUrl + "images/" + (item.avatar || "-")}
+                  alt="img"
+                />
+              </td>
               <td>{item.fullname}</td>
               <td>{item.email}</td>
               <td>{item.phone}</td>
@@ -64,11 +72,6 @@ export default function SellerList() {
               </td>
             </tr>
           ))}
-          <tr>
-            <td colSpan={6} align="right">
-              Page 1 of 1
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>

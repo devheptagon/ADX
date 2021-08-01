@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { getAdvertsEP, deleteAdvertEP } from "integration/endpoints/advert";
 import { getPagerList } from "utils/appHelper";
-import { ROW_COUNT_PER_PAGE } from "config";
+import { ROW_COUNT_PER_PAGE, apiUrl } from "config";
 import AdvertForm from "./advert-form";
 import { useSelector } from "react-redux";
-import { apiUrl } from "config";
 
 export default function AdvertList() {
   const [adverts, setAdverts] = useState([]);

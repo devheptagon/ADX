@@ -88,11 +88,6 @@ export default function SectorList() {
               </td>
             </tr>
           ))}
-          <tr>
-            <td colSpan={3} align="right">
-              Page 1 of 1
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
