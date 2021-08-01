@@ -23,6 +23,11 @@ function Layout(props) {
   const history = useHistory();
   const reduxToken = useSelector((state) => state.appReducer.token);
   const firstLoad = useSelector((state) => state.appReducer.firstLoad);
+  const messages = useSelector((state) => state.appReducer.messages);
+  const id = useSelector((state) => state.appReducer.id);
+  const unread = messages.filter(
+    (m) => m.receiver?.toLowerCase() == id?.toLowerCase() && !m.seen
+  );
 
   useEffect(() => {
     if (firstLoad) {
@@ -86,6 +91,13 @@ function Layout(props) {
             </li>
             <li>
               <Link to="/contents">Parameters</Link>
+            </li>
+            <li id="parent">Messages</li>
+            <li id="child">
+              <Link to="/inbox">✉ Inbox ({unread.length})</Link>
+            </li>
+            <li id="child">
+              <Link to="/sent">↗ Sent</Link>
             </li>
           </ul>
         </Col>

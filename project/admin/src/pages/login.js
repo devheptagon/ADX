@@ -1,12 +1,17 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUserAction, setSellersAction } from "redux/app/appActions";
+import {
+  setUserAction,
+  setSellersAction,
+  setMessagesAction,
+} from "redux/app/appActions";
 import { loginEP } from "integration/endpoints/auth";
 import { getSellersEP } from "integration/endpoints/user";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { getMessagesEP } from "integration/endpoints/message";
 
 export default function Login() {
   const history = useHistory();
@@ -32,8 +37,13 @@ export default function Login() {
               setSubmitting(true);
               const user = await loginEP(values.email, values.password);
               dispatch(setUserAction(user));
-              const sellers = await getSellersEP();
-              dispatch(setSellersAction(sellers));
+              //dont wait for below
+              getSellersEP().then((sellers) =>
+                dispatch(setSellersAction(sellers))
+              );
+              getMessagesEP().then((messages) =>
+                dispatch(setMessagesAction(messages))
+              );
               setSubmitting(false);
               history.push("/home");
               setStatus({ success: true });

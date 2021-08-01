@@ -5,6 +5,7 @@ import {
   SET_FIRSTLOAD_TYPE,
   SET_TAGS_TYPE,
   SET_SELLERS_TYPE,
+  SET_MESSSAGES_TYPE,
 } from "./actionTypes";
 
 export const setTokenAction = (val) => ({
@@ -34,4 +35,9 @@ export const setTagsAction = (val) => ({
 export const setSellersAction = (val) => ({
   type: SET_SELLERS_TYPE,
   payload: { sellers: val },
+});
+
+export const setMessagesAction = (val) => ({
+  type: SET_MESSSAGES_TYPE,
+  payload: { messages: val },
 });

@@ -17,6 +17,8 @@ import ContentsPage from "pages/contents/contents-page";
 import SellerPage from "pages/seller/seller-page";
 import ProfilePage from "pages/profile/profile-page";
 import EnquiryPage from "pages/enquiry/enquiry-page";
+import InboxPage from "pages/message/inbox-page";
+import SentPage from "pages/message/sent-page";
 
 function App() {
   return (
@@ -56,6 +58,12 @@ function App() {
           </Route>
           <Route path="/profile">
             <ProfilePage />
+          </Route>
+          <Route path="/inbox">
+            <InboxPage />
+          </Route>
+          <Route path="/sent">
+            <SentPage />
           </Route>
           <Route path="/">
             <Home />

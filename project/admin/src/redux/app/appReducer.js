@@ -5,6 +5,7 @@ import {
   SET_SECTORS_TYPE,
   SET_TAGS_TYPE,
   SET_SELLERS_TYPE,
+  SET_MESSSAGES_TYPE,
 } from "./actionTypes";
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
   city: null,
   postcode: null,
   seller_until: null,
+  messages: [],
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -48,6 +50,8 @@ export function appReducer(state = { ...initialState }, action) {
       return { ...state, firstLoad: false };
     case SET_SELLERS_TYPE:
       return { ...state, sellers: action.payload.sellers };
+    case SET_MESSSAGES_TYPE:
+      return { ...state, messages: action.payload.messages };
     default:
       return state;
   }

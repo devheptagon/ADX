@@ -16,6 +16,16 @@
       content: "▸";
     }
   }
+  li[id="parent"]::before {
+    content: "";
+  }
+  li[id="parent"]::after {
+    content: "";
+  }
+  li[id="child"]::before {
+    content: "";
+    padding-left: 20px;
+  }
 }
 
 .tag,
