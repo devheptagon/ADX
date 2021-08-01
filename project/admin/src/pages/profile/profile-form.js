@@ -4,11 +4,42 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileEP, updateProfileEP } from "integration/endpoints/user";
 import { setUserAction } from "redux/app/appActions";
 import styles from "styles/app.module.scss";
+import { apiUrl } from "config";
+import { useState } from "react";
+import { uploadEP } from "integration/endpoints/advert";
 
 export default function ContentList() {
   const dispatch = useDispatch();
   const { fullname, email, phone, line1, line2, postcode, avatar, id } =
     useSelector((state) => state.appReducer);
+  const [uploading, setUploading] = useState(false);
+
+  const selectFile = async (e, handleChange) => {
+    e.preventDefault();
+
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("file", file);
+    setUploading(true);
+    const response = await uploadEP(formData);
+    setUploading(false);
+    handleChange({
+      target: {
+        name: "avatar",
+        value: response,
+      },
+    });
+  };
+
+  const removePhoto = (e, handleChange) => {
+    e.preventDefault();
+    handleChange({
+      target: {
+        name: "avatar",
+        value: "",
+      },
+    });
+  };
 
   return (
     <Formik
@@ -20,6 +51,7 @@ export default function ContentList() {
         line1,
         line2,
         postcode,
+        avatar,
       }}
       validationSchema={yup.object().shape({
         fullname: yup.string().required(),
@@ -28,6 +60,7 @@ export default function ContentList() {
         line1: yup.string(),
         line2: yup.string(),
         postcode: yup.string(),
+        avatar: yup.string(),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
@@ -60,13 +93,25 @@ export default function ContentList() {
                 <tr>
                   <td colSpan={2} align="center">
                     <div className={styles.avatar}>
+                      <div>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => selectFile(e, handleChange)}
+                          disabled={uploading}
+                        />
+                        {uploading && <h6>Uploading image, please wait...</h6>}
+                        <br />
+                        <br />
+                      </div>
                       <img
                         alt="avatar"
-                        src="https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option1-764A5360-edit.jpg"
+                        src={apiUrl + "images/" + (values.avatar || "-")}
                       />
                     </div>
-                    <a>(x) delete</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a>change</a>
+                    <a href="#" onClick={(e) => removePhoto(e, handleChange)}>
+                      × delete
+                    </a>
                   </td>
                 </tr>
                 <tr>
