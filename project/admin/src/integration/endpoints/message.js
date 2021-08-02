@@ -5,10 +5,8 @@ export const getMessagesEP = async () => {
   return response?.data;
 };
 
-export const updateMessageSeenEP = async (data) => {
-  const response = await call(verbs.patch, "messages", null, {
-    data,
-  });
+export const updateMessageSeenEP = async () => {
+  const response = await call(verbs.patch, "messages", null);
   return response?.data;
 };
 

@@ -49,6 +49,8 @@ public class MessageService
             item.text = row["text"] == DBNull.Value ? "" : (string)row["text"];
             item.seen = row["seen"] == DBNull.Value ? false : (bool)row["seen"];
             item.create_date = row["create_date"] == DBNull.Value ? "" : row["create_date"].ToString();
+            item.sender_name = row["sender_name"] == DBNull.Value ? "" : (string)row["sender_name"];
+            item.receiver_name = row["receiver_name"] == DBNull.Value ? "" : (string)row["receiver_name"];
 
             result.Add(item);
         }

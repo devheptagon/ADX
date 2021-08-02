@@ -25,9 +25,10 @@ namespace adx
 
         [Authorize]
         [HttpPatch("messages")]
-        public void UpdateSeenMessages([FromBody] MessageRequest request)
+        public void UpdateSeenMessages()
         {
-            MessageService.UpdateSeenMessages(request.Data.receiver);
+            var userId = AppHelper.GetUserIdFromClaim(HttpContext);
+            MessageService.UpdateSeenMessages(userId);
         }
 
     }

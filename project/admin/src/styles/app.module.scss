@@ -296,3 +296,24 @@ table[id="dataform"] {
     }
   }
 }
+
+.message {
+  table {
+    width: 100%;
+    td {
+      padding: 3px 5px;
+      &:first-of-type {
+        width: 100px;
+      }
+    }
+  }
+  .seen {
+    background-color: #efefef;
+  }
+  .unseen {
+    background-color: rgb(217, 238, 245);
+  }
+  .seperator {
+    height: 10px;
+  }
+}
