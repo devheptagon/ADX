@@ -12,3 +12,5 @@ project/api/bin
 project/api/Uploads
 !project/api/Uploads/Images/na.jpg
 client/api/.env
+project/admin/build
+project/web/build
