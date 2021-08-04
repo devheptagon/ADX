@@ -4,5 +4,6 @@ export const SET_SECTORS_TYPE = "SET_SECTORS";
 export const SET_TAGS_TYPE = "SET_TAGS";
 export const SET_FIRSTLOAD_TYPE = "SET_FIRSTLOAD";
 export const SET_SELLERS_TYPE = "SET_SELLERS";
-export const SET_MESSSAGES_TYPE = "SET_MESSSAGES";
+export const SET_MESSAGES_TYPE = "SET_MESSAGES";
 export const LOGOUT_TYPE = "LOGOUT";
+export const SET_AUTHED_TYPE = "SET_AUTHED";

@@ -1,68 +1,24 @@
-import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import {
-  setTokenAction,
-  setSectorsAction,
-  setFirstLoadAction,
-  setTagsAction,
-} from "redux/app/appActions";
-import {
-  checkLocalToken,
-  validateToken,
-  clearLocalToken,
-} from "utils/appHelper";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styles from "styles/app.module.scss";
-import { getSectorsEP } from "integration/endpoints/sector";
-import { getTagsEP } from "integration/endpoints/tag";
 
 function Layout(props) {
-  const dispatch = useDispatch();
   const history = useHistory();
-  const reduxToken = useSelector((state) => state.appReducer.token);
-  const firstLoad = useSelector((state) => state.appReducer.firstLoad);
+  const authed = useSelector((state) => state.appReducer.authed);
   const messages = useSelector((state) => state.appReducer.messages);
   const id = useSelector((state) => state.appReducer.id);
   const role = useSelector((state) => state.appReducer.role);
   const admin = role === "admin";
-  const unread = messages.filter(
+  const unread = messages?.filter(
     (m) => m.receiver?.toLowerCase() == id?.toLowerCase() && !m.seen
   );
 
-  useEffect(() => {
-    if (firstLoad) {
-      dispatch(setFirstLoadAction(false));
-      getSectorsEP().then((d) => dispatch(setSectorsAction(d)));
-      getTagsEP().then((d) => dispatch(setTagsAction(d)));
-    }
-  }, [dispatch, firstLoad]);
-
-  if (!reduxToken) {
-    const localToken = checkLocalToken();
-    if (localToken) {
-      const isLocalTokenValid = validateToken(localToken);
-      if (isLocalTokenValid) {
-        dispatch(setTokenAction(localToken));
-      } else {
-        clearLocalToken();
-        history.push("/login");
-        return null;
-      }
-    } else {
-      history.push("/login");
-      return null;
-    }
-  } else {
-    validateToken(reduxToken).then((isTokenValid) => {
-      if (!isTokenValid) {
-        dispatch(setTokenAction(null));
-        clearLocalToken();
-        history.push("/login");
-        return null;
-      }
-    });
+  if (!authed) {
+    history.push("/home"); //home not login, home checks for local token and redirects to login if necessary
+    return null;
   }
 
   return (
@@ -98,7 +54,7 @@ function Layout(props) {
                 </li>
                 <li id="parent">Messages</li>
                 <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread.length})</Link>
+                  <Link to="/inbox">✉ Inbox ({unread?.length})</Link>
                 </li>
                 <li id="child">
                   <Link to="/sent">↗ Sent</Link>
@@ -117,7 +73,7 @@ function Layout(props) {
                 </li>
                 <li id="parent">Messages</li>
                 <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread.length})</Link>
+                  <Link to="/inbox">✉ Inbox ({unread?.length})</Link>
                 </li>
                 <li id="child">
                   <Link to="/sent">↗ Sent</Link>

@@ -7,8 +7,9 @@ import {
   SET_SECTORS_TYPE,
   SET_TAGS_TYPE,
   SET_SELLERS_TYPE,
-  SET_MESSSAGES_TYPE,
+  SET_MESSAGES_TYPE,
   LOGOUT_TYPE,
+  SET_AUTHED_TYPE,
 } from "./actionTypes";
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
   postcode: null,
   seller_until: null,
   messages: [],
+  authed: false,
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -48,6 +50,7 @@ export function appReducer(state = { ...initialState }, action) {
         id: state.id || user.id,
         token: state.token || user.token,
         role: state.role || user.role,
+        authed: true,
       };
     case LOGOUT_TYPE: {
       return { ...deepClone(initialState) };
@@ -56,8 +59,11 @@ export function appReducer(state = { ...initialState }, action) {
       return { ...state, firstLoad: false };
     case SET_SELLERS_TYPE:
       return { ...state, sellers: action.payload.sellers };
-    case SET_MESSSAGES_TYPE:
+    case SET_MESSAGES_TYPE:
       return { ...state, messages: action.payload.messages };
+    case SET_AUTHED_TYPE:
+      return { ...state, authed: action.payload.authed };
+
     default:
       return state;
   }

@@ -17,10 +17,11 @@ namespace adx
     {
         [Authorize]
         [HttpPost("validate")]
-        public IActionResult ValidateToken([FromBody] ValidationRequest request)
+        public UserEntity ValidateToken([FromBody] ValidationRequest request)
         {
             //if token is invalid, it will throw 401 beforehand
-            return Ok("valid");
+            var users = UserService.GetUser(AppHelper.GetUserIdFromClaim(HttpContext));
+            return users.Count > 0 ? users[0] : null;
         }
 
         [AllowAnonymous]

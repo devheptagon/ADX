@@ -12,10 +12,23 @@ import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { getMessagesEP } from "integration/endpoints/message";
+import { setLocalToken } from "utils/appHelper";
 
 export default function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const login = async (email, password) => {
+    const user = await loginEP(email, password);
+    if (!user || !user.token) return false;
+    setLocalToken(user.token);
+    dispatch(setUserAction(user));
+
+    //dont await for below
+    getSellersEP().then((sellers) => dispatch(setSellersAction(sellers)));
+    getMessagesEP().then((messages) => dispatch(setMessagesAction(messages)));
+    return true;
+  };
 
   return (
     <Container>
@@ -35,17 +48,9 @@ export default function Login() {
               { setSubmitting, setStatus, resetForm }
             ) => {
               setSubmitting(true);
-              const user = await loginEP(values.email, values.password);
-              dispatch(setUserAction(user));
-              //dont wait for below
-              getSellersEP().then((sellers) =>
-                dispatch(setSellersAction(sellers))
-              );
-              getMessagesEP().then((messages) =>
-                dispatch(setMessagesAction(messages))
-              );
+              var isLoggedIn = await login(values.email, values.password);
               setSubmitting(false);
-              history.push("/home");
+              if (isLoggedIn) history.push("/home");
               setStatus({ success: true });
             }}
           >

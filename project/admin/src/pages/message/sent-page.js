@@ -11,7 +11,7 @@ export default function SentPage() {
 
   useEffect(() => {
     getMessagesEP().then((res) => {
-      setData(res.filter((m) => m.sender == userId));
+      setData(res?.filter((m) => m.sender == userId));
     });
   }, [userId]);
 
@@ -19,7 +19,7 @@ export default function SentPage() {
     <Layout>
       <div className={styles.message}>
         <h2>Sent</h2>
-        <MessageList data={data} inbox={false} />
+        <MessageList data={data || []} inbox={false} />
       </div>
     </Layout>
   );

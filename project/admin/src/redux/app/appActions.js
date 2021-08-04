@@ -5,8 +5,9 @@ import {
   SET_FIRSTLOAD_TYPE,
   SET_TAGS_TYPE,
   SET_SELLERS_TYPE,
-  SET_MESSSAGES_TYPE,
+  SET_MESSAGES_TYPE,
   LOGOUT_TYPE,
+  SET_AUTHED_TYPE,
 } from "./actionTypes";
 
 export const setTokenAction = (val) => ({
@@ -39,10 +40,15 @@ export const setSellersAction = (val) => ({
 });
 
 export const setMessagesAction = (val) => ({
-  type: SET_MESSSAGES_TYPE,
+  type: SET_MESSAGES_TYPE,
   payload: { messages: val },
 });
 
 export const logoutAction = () => ({
   type: LOGOUT_TYPE,
+});
+
+export const setAuthedAction = (val) => ({
+  type: SET_AUTHED_TYPE,
+  payload: { authed: val },
 });

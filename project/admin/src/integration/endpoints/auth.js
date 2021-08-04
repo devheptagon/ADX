@@ -1,8 +1,7 @@
 import { call, verbs } from "../api";
 
 export const validateTokenEP = async (token) => {
-  const response = await call(verbs.post, "validate", null, { token }, true);
-  return response ? true : false;
+  return call(verbs.post, "validate", null, { token }, true);
 };
 
 export const loginEP = async (email, password) => {

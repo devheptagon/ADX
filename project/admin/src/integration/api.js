@@ -20,6 +20,8 @@ export const call = async (
   const token = store.getState().appReducer.token;
   if (token) {
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  } else if (data?.token) {
+    axios.defaults.headers.common = { Authorization: `Bearer ${data.token}` }; //validate sends in data
   }
   let config = undefined;
   if (multipart) {

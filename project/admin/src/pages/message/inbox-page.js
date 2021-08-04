@@ -16,7 +16,7 @@ export default function InboxPage() {
 
   useEffect(() => {
     getMessagesEP().then((res) => {
-      setData(res.filter((m) => m.receiver == userId));
+      setData(res?.filter((m) => m.receiver == userId));
       dispatch(setMessagesAction(res));
       updateMessageSeenEP();
     });
@@ -26,7 +26,7 @@ export default function InboxPage() {
     <Layout>
       <div className={styles.message}>
         <h2>Inbox</h2>
-        <MessageList data={data} inbox={true} />
+        <MessageList data={data || []} inbox={true} />
       </div>
     </Layout>
   );
