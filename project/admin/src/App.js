@@ -19,6 +19,7 @@ import ProfilePage from "pages/profile/profile-page";
 import EnquiryPage from "pages/enquiry/enquiry-page";
 import InboxPage from "pages/message/inbox-page";
 import SentPage from "pages/message/sent-page";
+import NewMessagePage from "pages/message/new-page";
 
 function App() {
   return (
@@ -64,6 +65,9 @@ function App() {
           </Route>
           <Route path="/sent">
             <SentPage />
+          </Route>
+          <Route path="/newmessage">
+            <NewMessagePage />
           </Route>
           <Route path="/">
             <Home />
