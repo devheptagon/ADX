@@ -10,25 +10,28 @@ export default function Header() {
   const [userData, setUserData] = useState({ name: "", role: "anonym" });
 
   useEffect(() => {
-    var eventMethod = window.addEventListener
-      ? "addEventListener"
-      : "attachEvent";
-    var eventer = window[eventMethod];
-    var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
-
     // Listen to message from child window
-    eventer(
-      messageEvent,
-      function (e) {
-        if (e.data.payload || e.data.hello) return; //react-tools sends message, discard
-        const { action } = e.data;
-        const name = action === "login" ? e.data.name : "";
-        const role = action === "login" ? e.data.role : "anonym";
-        setUserData({ name, role });
-        console.log({ name, role });
-      },
-      false
-    );
+    const callback = (e) => {
+      if (e.data.payload || e.data.hello) return; //react-tools sends message, discard
+      const { action } = e.data;
+      const name = action === "login" ? e.data.name : "";
+      const role = action === "login" ? e.data.role : "anonym";
+      setUserData({ name, role });
+      console.log({ name, role });
+    };
+
+    if (window.addEventListener) {
+      window.addEventListener("message", callback);
+    } else {
+      window.attachEvent("onmessage", callback);
+    }
+    return () => {
+      if (window.addEventListener) {
+        window.removeEventListener("message", callback);
+      } else {
+        window.detachEvent("onmessage", callback);
+      }
+    };
   }, []);
 
   return (

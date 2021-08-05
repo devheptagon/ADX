@@ -10,8 +10,10 @@ import Business from "pages/business";
 import Contact from "pages/contact";
 import Privacy from "pages/privacy";
 import Detail from "pages/detail";
-import AdminFrame from "pages/adminframe";
-import Logout from "pages/logout";
+import AdminFrame from "pages/admin-home";
+import AdminLogout from "pages/admin-logout";
+import AdminLogin from "pages/admin-login";
+import AdminRegister from "pages/admin-register";
 
 function App() {
   const [store, setStore] = React.useState(null);
@@ -44,7 +46,13 @@ function App() {
             <AdminFrame />
           </Route>
           <Route path="/logout">
-            <Logout />
+            <AdminLogout />
+          </Route>
+          <Route path="/login">
+            <AdminLogin />
+          </Route>
+          <Route path="/register">
+            <AdminRegister />
           </Route>
           <Route path="/">
             <Home />
