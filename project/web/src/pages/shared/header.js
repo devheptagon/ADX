@@ -3,11 +3,27 @@ import styles from "styles/home.module.scss";
 import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
 import logo from "assets/logo.png";
+import { useEffect } from "react";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
-  /*   const isAdminFrame =
-    window.location.href.toLowerCase().indexOf("/manage") > -1; */
+
+  useEffect(() => {
+    var eventMethod = window.addEventListener
+      ? "addEventListener"
+      : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+
+    // Listen to message from child window
+    eventer(
+      messageEvent,
+      function (e) {
+        console.log(e.data);
+      },
+      false
+    );
+  }, []);
 
   return (
     <>

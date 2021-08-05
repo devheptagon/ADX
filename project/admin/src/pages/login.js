@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
@@ -21,6 +22,12 @@ export default function Login() {
   const login = async (email, password) => {
     const user = await loginEP(email, password);
     if (!user || !user.token) return false;
+
+    parent.postMessage(
+      { action: "login", name: user.fullname, role: user.role },
+      "*"
+    );
+
     setLocalToken(user.token);
     dispatch(setUserAction(user));
 

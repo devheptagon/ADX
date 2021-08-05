@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useDispatch } from "react-redux";
 import { logoutAction } from "redux/app/appActions";
 import { useHistory } from "react-router-dom";
@@ -8,6 +9,7 @@ export default function Logout() {
   const dispatch = useDispatch();
   clearLocalToken();
   dispatch(logoutAction());
+  parent.postMessage({ action: "logout" }, "*");
 
   history.push("/login");
   return "Logging out...";
