@@ -2,10 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSellersEP, toggleSellerEP } from "integration/endpoints/user";
 import { setSellersAction } from "redux/app/appActions";
 import { apiUrl } from "config";
+import { useEffect } from "react";
 
 export default function SellerList() {
   const dispatch = useDispatch();
   const sellers = useSelector((state) => state.appReducer.sellers);
+
+  useEffect(() => {
+    getSellersEP().then((list) => dispatch(setSellersAction(list)));
+  }, [dispatch]);
 
   const toggle = async (e) => {
     const id = e.currentTarget.dataset.id;

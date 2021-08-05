@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TagForm from "./tag-form";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,6 +32,10 @@ export default function TagList() {
       dispatch(setTagsAction(newList));
     }
   };
+
+  useEffect(() => {
+    getTagsEP().then((d) => dispatch(setTagsAction(d)));
+  }, [dispatch]);
 
   return (
     <div>

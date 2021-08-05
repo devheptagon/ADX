@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectorForm from "./sector-form";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,6 +32,10 @@ export default function SectorList() {
       dispatch(setSectorsAction(newList));
     }
   };
+
+  useEffect(() => {
+    getSectorsEP().then((d) => dispatch(setSectorsAction(d)));
+  }, [dispatch]);
 
   return (
     <div>

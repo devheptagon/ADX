@@ -25,7 +25,7 @@ function Layout(props) {
   return (
     <Container>
       <Row>
-        <Col xs={12} md={3}>
+        <Col xs={12} md={4}>
           <ul className={styles.left_menu}>
             {admin && (
               <>
@@ -101,7 +101,7 @@ function Layout(props) {
             )}
           </ul>
         </Col>
-        <Col xs={12} md={9}>
+        <Col xs={12} md={8}>
           {guest && <div>become a seller banner here</div>}
           <br />
           {props.children}
