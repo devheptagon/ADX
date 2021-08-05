@@ -54,7 +54,7 @@ function Layout(props) {
                 </li>
                 <li id="parent">Messages</li>
                 <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread?.length})</Link>
+                  <Link to="/inbox">✉ Inbox ({unread?.length || "0"} new)</Link>
                 </li>
                 <li id="child">
                   <Link to="/sent">↗ Sent</Link>
@@ -73,7 +73,7 @@ function Layout(props) {
                 </li>
                 <li id="parent">Messages</li>
                 <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread?.length})</Link>
+                  <Link to="/inbox">✉ Inbox ({unread?.length || "0"} new)</Link>
                 </li>
                 <li id="child">
                   <Link to="/sent">↗ Sent</Link>

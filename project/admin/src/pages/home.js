@@ -38,7 +38,8 @@ function Home(props) {
       validateToken(localToken).then((user) => {
         if (user) {
           dispatch(setUserAction(user));
-          history.push("/adverts");
+          if (history.location.pathname !== "/adverts")
+            history.push("/adverts");
         } else {
           clearLocalToken();
           history.push("/login");
@@ -55,7 +56,7 @@ function Home(props) {
         history.push("/login");
       } else {
         //if redux token is already set, user is set
-        history.push("/adverts");
+        if (history.location.pathname !== "/adverts") history.push("/adverts");
       }
     });
   }

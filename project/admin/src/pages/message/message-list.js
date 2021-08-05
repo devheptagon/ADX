@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "styles/app.module.scss";
 
 export default function MessageList(props) {
@@ -6,10 +7,18 @@ export default function MessageList(props) {
     <table>
       <tbody>
         {props.data.map((m) => {
-          const { advert_title, text, create_date, seen } = m;
+          const {
+            id,
+            advert_title,
+            text,
+            create_date,
+            seen,
+            receiver_name,
+            sender_name,
+          } = m;
           const classname = inbox && !seen ? "unseen" : "seen";
           return (
-            <>
+            <React.Fragment key={id}>
               <tr className={styles[classname]}>
                 <td>
                   <b>Date:</b>
@@ -20,7 +29,7 @@ export default function MessageList(props) {
                 <td>
                   <b>{inbox ? "From:" : "To:"}</b>
                 </td>
-                <td>{advert_title}</td>
+                <td>{inbox ? sender_name : receiver_name}</td>
               </tr>
               <tr className={styles[classname]}>
                 <td>
@@ -34,7 +43,7 @@ export default function MessageList(props) {
               <tr className={styles.seperator}>
                 <td colSpan={2}></td>
               </tr>
-            </>
+            </React.Fragment>
           );
         })}
       </tbody>
