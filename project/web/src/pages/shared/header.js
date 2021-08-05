@@ -5,6 +5,7 @@ import SocialMediaIcons from "./socialmedialist";
 import logo from "assets/logo.png";
 import { useEffect } from "react";
 import { setUserInfoAction } from "redux/app/appActions";
+import { setLocalUser } from "helpers/appHelper";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
@@ -20,7 +21,7 @@ export default function Header() {
       const new_name = action === "login" ? e.data.name : "";
       const new_role = action === "login" ? e.data.role : "anonym";
       dispatch(setUserInfoAction(new_name, new_role));
-      console.log({ new_name, new_role });
+      setLocalUser({ name: new_name, role: new_role });
     };
 
     if (window.addEventListener) {
@@ -44,7 +45,8 @@ export default function Header() {
           <ul>
             {role === "anonym" && (
               <li>
-                <Link to="/login" as={"/login"}>
+                {/* manage redirects login if necessary */}
+                <Link to="/manage" as={"/manage"}>
                   <i className="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
                   Login / Register
                 </Link>

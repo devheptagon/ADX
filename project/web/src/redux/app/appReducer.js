@@ -15,6 +15,9 @@ import {
   SET_USER_INFO_TYPE,
 } from "./actionTypes";
 import cities from "../../data/city.json";
+import { checkLocalUser } from "helpers/appHelper";
+
+const localUser = checkLocalUser() || { name: "", role: "anonym" };
 
 const initialState = {
   sectorFilter: [],
@@ -30,8 +33,8 @@ const initialState = {
   areas: cities,
   tenures: ["Freehold", "Leasehold"],
   firstLoad: true,
-  user_name: "",
-  user_role: "anonym",
+  user_name: localUser.name,
+  user_role: localUser.role,
 };
 
 export function appReducer(state = { ...initialState }, action) {

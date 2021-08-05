@@ -12,7 +12,6 @@ import Privacy from "pages/privacy";
 import Detail from "pages/detail";
 import AdminFrame from "pages/admin-home";
 import AdminLogout from "pages/admin-logout";
-import AdminLogin from "pages/admin-login";
 import AdminRegister from "pages/admin-register";
 
 function App() {
@@ -47,9 +46,6 @@ function App() {
           </Route>
           <Route path="/logout">
             <AdminLogout />
-          </Route>
-          <Route path="/login">
-            <AdminLogin />
           </Route>
           <Route path="/register">
             <AdminRegister />
