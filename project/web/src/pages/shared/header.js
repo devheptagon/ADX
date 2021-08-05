@@ -3,10 +3,11 @@ import styles from "styles/home.module.scss";
 import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
 import logo from "assets/logo.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
+  const [userData, setUserData] = useState({ name: "", role: "anonym" });
 
   useEffect(() => {
     var eventMethod = window.addEventListener
@@ -19,7 +20,12 @@ export default function Header() {
     eventer(
       messageEvent,
       function (e) {
-        console.log(e.data);
+        if (e.data.payload || e.data.hello) return; //react-tools sends message, discard
+        const { action } = e.data;
+        const name = action === "login" ? e.data.name : "";
+        const role = action === "login" ? e.data.role : "anonym";
+        setUserData({ name, role });
+        console.log({ name, role });
       },
       false
     );
@@ -30,16 +36,30 @@ export default function Header() {
       <nav className={styles.outer}>
         <div className={styles.inner}>
           <ul>
-            <li>
-              <Link to="/manage" as={"/manage"}>
-                Become a seller
-              </Link>
-            </li>
-            <li>
-              <Link to="/manage" as={"/manage"}>
-                Login
-              </Link>
-            </li>
+            {(userData.role === "anonym" || userData.role === "guest") && (
+              <li>
+                <Link to="/manage" as={"/manage"}>
+                  Become a seller
+                </Link>
+              </li>
+            )}
+            {userData.role === "anonym" && (
+              <li>
+                <Link to="/login" as={"/login"}>
+                  Login
+                </Link>
+              </li>
+            )}
+            {userData.role !== "anonym" && (
+              <>
+                <li>Signed in as {userData.name}</li>
+                <li>
+                  <Link to="/logout" as={"/logout"}>
+                    Logout
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>
