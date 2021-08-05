@@ -12,6 +12,7 @@ import {
   SET_KEYWORDS_TYPE,
   SET_CONTENTS_TYPE,
   SET_TOP_ADVERTS_TYPE,
+  SET_USER_INFO_TYPE,
 } from "./actionTypes";
 
 export const setContentsAction = (val) => ({
@@ -75,4 +76,9 @@ export const setFirstLoadAction = () => ({
 
 export const resetFiltersAction = () => ({
   type: RESET_FILTERS_TYPE,
+});
+
+export const setUserInfoAction = (name, role) => ({
+  type: SET_USER_INFO_TYPE,
+  payload: { name, role },
 });

@@ -13,7 +13,7 @@ import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { getMessagesEP } from "integration/endpoints/message";
-import { setLocalToken } from "utils/appHelper";
+import { postParentMessage, setLocalToken } from "utils/appHelper";
 
 export default function Login() {
   const history = useHistory();
@@ -22,11 +22,7 @@ export default function Login() {
   const login = async (email, password) => {
     const user = await loginEP(email, password);
     if (!user || !user.token) return false;
-
-    parent.postMessage(
-      { action: "login", name: user.fullname, role: user.role },
-      "*"
-    );
+    postParentMessage(user);
 
     setLocalToken(user.token);
     dispatch(setUserAction(user));

@@ -12,6 +12,7 @@ import {
   SET_KEYWORDS_TYPE,
   SET_CONTENTS_TYPE,
   SET_TOP_ADVERTS_TYPE,
+  SET_USER_INFO_TYPE,
 } from "./actionTypes";
 import cities from "../../data/city.json";
 
@@ -29,6 +30,8 @@ const initialState = {
   areas: cities,
   tenures: ["Freehold", "Leasehold"],
   firstLoad: true,
+  user_name: "",
+  user_role: "anonym",
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -61,6 +64,12 @@ export function appReducer(state = { ...initialState }, action) {
       return { ...state, keywords: action.payload.keywords };
     case SET_FIRSTLOAD_TYPE:
       return { ...state, firstLoad: false };
+    case SET_USER_INFO_TYPE:
+      return {
+        ...state,
+        user_name: action.payload.name,
+        user_role: action.payload.role,
+      };
     case RESET_FILTERS_TYPE:
       return {
         ...state,

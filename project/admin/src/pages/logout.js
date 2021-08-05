@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux";
 import { logoutAction } from "redux/app/appActions";
 import { useHistory } from "react-router-dom";
-import { clearLocalToken } from "utils/appHelper";
+import { clearLocalToken, postParentMessage } from "utils/appHelper";
 import { useEffect } from "react";
 
 export default function Logout() {
@@ -13,7 +13,7 @@ export default function Logout() {
     dispatch(logoutAction());
   }, [dispatch]);
 
-  parent.postMessage({ action: "logout" }, "*");
+  postParentMessage(null);
 
   history.push("/login");
   return null;

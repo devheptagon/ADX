@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +14,7 @@ import {
   checkLocalToken,
   validateToken,
   clearLocalToken,
+  postParentMessage,
 } from "utils/appHelper";
 
 import { getSectorsEP } from "integration/endpoints/sector";
@@ -38,6 +40,7 @@ function Home(props) {
       validateToken(localToken).then((user) => {
         if (user) {
           dispatch(setUserAction(user));
+          postParentMessage(user);
           if (history.location.pathname !== "/adverts")
             history.push("/adverts");
         } else {

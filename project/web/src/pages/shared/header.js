@@ -1,23 +1,26 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "styles/home.module.scss";
 import { Link } from "react-router-dom";
 import SocialMediaIcons from "./socialmedialist";
 import logo from "assets/logo.png";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { setUserInfoAction } from "redux/app/appActions";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
-  const [userData, setUserData] = useState({ name: "", role: "anonym" });
+  const name = useSelector((state) => state.appReducer.user_name);
+  const role = useSelector((state) => state.appReducer.user_role);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // Listen to message from child window
     const callback = (e) => {
       if (e.data.payload || e.data.hello) return; //react-tools sends message, discard
       const { action } = e.data;
-      const name = action === "login" ? e.data.name : "";
-      const role = action === "login" ? e.data.role : "anonym";
-      setUserData({ name, role });
-      console.log({ name, role });
+      const new_name = action === "login" ? e.data.name : "";
+      const new_role = action === "login" ? e.data.role : "anonym";
+      dispatch(setUserInfoAction(new_name, new_role));
+      console.log({ new_name, new_role });
     };
 
     if (window.addEventListener) {
@@ -32,30 +35,28 @@ export default function Header() {
         window.detachEvent("onmessage", callback);
       }
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <nav className={styles.outer}>
         <div className={styles.inner}>
           <ul>
-            {(userData.role === "anonym" || userData.role === "guest") && (
-              <li>
-                <Link to="/manage" as={"/manage"}>
-                  Become a seller
-                </Link>
-              </li>
-            )}
-            {userData.role === "anonym" && (
+            {role === "anonym" && (
               <li>
                 <Link to="/login" as={"/login"}>
-                  Login
+                  Login / Register
                 </Link>
               </li>
             )}
-            {userData.role !== "anonym" && (
+            {role !== "anonym" && (
               <>
-                <li>Signed in as {userData.name}</li>
+                <li>
+                  <Link to="/manage" as={"/manage"}>
+                    {" "}
+                    {name}
+                  </Link>
+                </li>
                 <li>
                   <Link to="/logout" as={"/logout"}>
                     Logout

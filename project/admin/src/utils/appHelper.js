@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import {
   readLocalStorage,
   writeLocalStorage,
@@ -42,4 +43,15 @@ export const getPagerList = (currentPage, totalRowCount) => {
   }
 
   return arr;
+};
+
+export const postParentMessage = (user) => {
+  if (user) {
+    parent.postMessage(
+      { action: "login", name: user.fullname, role: user.role },
+      "*"
+    );
+  } else {
+    parent.postMessage({ action: "logout" }, "*");
+  }
 };
