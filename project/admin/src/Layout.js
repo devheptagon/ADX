@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styles from "styles/app.module.scss";
 
 function Layout(props) {
@@ -12,6 +11,8 @@ function Layout(props) {
   const id = useSelector((state) => state.appReducer.id);
   const role = useSelector((state) => state.appReducer.role);
   const admin = role === "admin";
+  const seller = role === "seller";
+  const guest = role === "guest";
   const unread = messages?.filter(
     (m) => m.receiver?.toLowerCase() == id?.toLowerCase() && !m.seen
   );
@@ -26,7 +27,7 @@ function Layout(props) {
       <Row>
         <Col xs={12} md={3}>
           <ul className={styles.left_menu}>
-            {admin ? (
+            {admin && (
               <>
                 <li>
                   <Link to="/logout">LOG OUT</Link>
@@ -60,7 +61,8 @@ function Layout(props) {
                   <Link to="/sent">↗ Sent</Link>
                 </li>
               </>
-            ) : (
+            )}
+            {seller && (
               <>
                 <li>
                   <Link to="/logout">LOG OUT</Link>
@@ -80,9 +82,27 @@ function Layout(props) {
                 </li>
               </>
             )}
+            {guest && (
+              <>
+                <li>
+                  <Link to="/logout">LOG OUT</Link>
+                </li>
+                <li>
+                  <Link to="/profile">My Profile</Link>
+                </li>
+                <li id="parent">Messages</li>
+                <li id="child">
+                  <Link to="/inbox">✉ Inbox ({unread?.length || "0"} new)</Link>
+                </li>
+                <li id="child">
+                  <Link to="/sent">↗ Sent</Link>
+                </li>
+              </>
+            )}
           </ul>
         </Col>
         <Col xs={12} md={9}>
+          {guest && <div>become a seller banner here</div>}
           <br />
           {props.children}
           <br />

@@ -6,11 +6,27 @@ import logo from "assets/logo.png";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
-  const isAdminFrame =
-    window.location.href.toLowerCase().indexOf("/manage") > -1;
+  /*   const isAdminFrame =
+    window.location.href.toLowerCase().indexOf("/manage") > -1; */
 
   return (
     <>
+      <nav className={styles.outer}>
+        <div className={styles.inner}>
+          <ul>
+            <li>
+              <Link to="/manage" as={"/manage"}>
+                Become a seller
+              </Link>
+            </li>
+            <li>
+              <Link to="/manage" as={"/manage"}>
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <nav className={styles.outer}>
         <div className={styles.inner}>
           <div className={styles.brand}>
@@ -56,17 +72,6 @@ export default function Header() {
               <Link to="/contact" as={"/contact"}>
                 CONTACT
               </Link>
-            </li>
-            <li>
-              {isAdminFrame ? (
-                <Link to="/logout" as={"/logout"}>
-                  ✘ Logout
-                </Link>
-              ) : (
-                <Link to="/manage" as={"/manage"}>
-                  👨 Login
-                </Link>
-              )}
             </li>
           </ul>
         </div>

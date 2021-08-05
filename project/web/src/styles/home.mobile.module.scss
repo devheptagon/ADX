@@ -7,7 +7,7 @@
       ul {
         justify-content: center;
       }
-      &:first-child {
+      &:nth-child(2) {
         .brand {
           flex-direction: column;
           justify-content: center;

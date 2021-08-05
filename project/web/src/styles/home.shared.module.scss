@@ -13,6 +13,18 @@
   }
   nav {
     display: flex;
+    &:first-child {
+      justify-content: flex-end;
+      ul {
+        margin: 10px;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+        li {
+          margin-left: 20px;
+        }
+      }
+    }
     ul {
       margin: 0;
       padding: 0;
@@ -25,7 +37,7 @@
         cursor: pointer;
       }
     }
-    &:first-child {
+    &:nth-child(2) {
       padding: 30px 0;
       ul {
         color: #096dba;
@@ -49,7 +61,7 @@
         }
       }
     }
-    &:nth-child(2) {
+    &:nth-child(3) {
       background-color: #096dba;
       ul {
         color: white;
