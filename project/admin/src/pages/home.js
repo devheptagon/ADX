@@ -44,6 +44,7 @@ function Home(props) {
           if (history.location.pathname !== "/adverts")
             history.push("/adverts");
         } else {
+          postParentMessage(null);
           clearLocalToken();
           history.push("/login");
         }
@@ -56,9 +57,11 @@ function Home(props) {
       if (!user) {
         dispatch(logoutAction());
         clearLocalToken();
+        postParentMessage(null);
         history.push("/login");
       } else {
         //if redux token is already set, user is set
+        postParentMessage(user);
         if (history.location.pathname !== "/adverts") history.push("/adverts");
       }
     });

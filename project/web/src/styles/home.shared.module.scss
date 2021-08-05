@@ -23,6 +23,14 @@
         li {
           margin-left: 20px;
         }
+        .userlink {
+          background-color: rgb(232, 247, 207);
+          padding: 4px 8px;
+          border-radius: 5px;
+          &::after {
+            content: " ⮟";
+          }
+        }
       }
     }
     ul {

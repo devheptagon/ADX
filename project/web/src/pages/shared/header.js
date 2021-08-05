@@ -45,6 +45,7 @@ export default function Header() {
             {role === "anonym" && (
               <li>
                 <Link to="/login" as={"/login"}>
+                  <i className="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
                   Login / Register
                 </Link>
               </li>
@@ -53,13 +54,15 @@ export default function Header() {
               <>
                 <li>
                   <Link to="/manage" as={"/manage"}>
-                    {" "}
-                    {name}
+                    <span className={styles.userlink}>
+                      <i className="fa fa-user-circle" aria-hidden="true"></i>{" "}
+                      {name}
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/logout" as={"/logout"}>
-                    Logout
+                    <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
                   </Link>
                 </li>
               </>
