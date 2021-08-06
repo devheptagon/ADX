@@ -322,3 +322,33 @@ table[id="dataform"] {
   max-width: 100%;
   margin-bottom: 5px;
 }
+
+.plan {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 5px;
+  h1,
+  h3,
+  h6 {
+    display: inline;
+  }
+  h3 {
+    color: rgb(10, 167, 49);
+  }
+  button {
+    background-color: #009cdf;
+    color: white;
+    border: 0;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+
+.selectedplan {
+  background-color: #ebfcde;
+  &::before {
+    content: "👌";
+  }
+}
