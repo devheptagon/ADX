@@ -5,14 +5,15 @@ import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-export default function Register() {
+export default function Upgrade() {
   const history = useHistory();
 
   return (
     <Container>
-      <Row className={styles.loginWrapper}>
+      <Row>
         <Col xs={12} md={3}>
-          <Formik
+          upgrade here
+          {/* <Formik
             initialValues={{
               email: "",
               password: "",
@@ -125,7 +126,7 @@ export default function Register() {
                 </form>
               );
             }}
-          </Formik>
+          </Formik> */}
         </Col>
       </Row>
     </Container>

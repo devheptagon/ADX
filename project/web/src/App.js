@@ -11,8 +11,7 @@ import Contact from "pages/contact";
 import Privacy from "pages/privacy";
 import Detail from "pages/detail";
 import AdminFrame from "pages/admin-home";
-import AdminLogout from "pages/admin-logout";
-import AdminRegister from "pages/admin-register";
+//import AdminRegister from "pages/admin-register";
 
 function App() {
   const [store, setStore] = React.useState(null);
@@ -44,12 +43,9 @@ function App() {
           <Route path="/manage">
             <AdminFrame />
           </Route>
-          <Route path="/logout">
-            <AdminLogout />
-          </Route>
-          <Route path="/register">
+          {/*           <Route path="/register">
             <AdminRegister />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Home />
           </Route>

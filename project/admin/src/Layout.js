@@ -22,6 +22,29 @@ function Layout(props) {
     return null;
   }
 
+  const createLink = (path, title) => {
+    if (path !== "messages") {
+      return (
+        <li>
+          <Link to={`/${path}`}>{title}</Link>
+        </li>
+      );
+    }
+    return (
+      <>
+        <li id="parent">Messages</li>
+        <li id="child">
+          <Link to="/inbox">
+            ✉ Inbox {unread?.length ? `${unread.length} new` : ""}
+          </Link>
+        </li>
+        <li id="child">
+          <Link to="/sent">↗ Sent</Link>
+        </li>
+      </>
+    );
+  };
+
   return (
     <Container>
       <Row>
@@ -29,80 +52,44 @@ function Layout(props) {
           <ul className={styles.left_menu}>
             {admin && (
               <>
-                <li>
-                  <Link to="/logout">LOG OUT</Link>
-                </li>
-                <li>
-                  <Link to="/profile">My Profile</Link>
-                </li>
-                <li>
-                  <Link to="/adverts">Adverts</Link>
-                </li>
-                <li>
-                  <Link to="/sectors">Sectors</Link>
-                </li>
-                <li>
-                  <Link to="/tags">Keywords</Link>
-                </li>
-                <li>
-                  <Link to="/sellers">Sellers</Link>
-                </li>
-                <li>
-                  <Link to="/enquiries">Eval Requests</Link>
-                </li>
-                <li>
-                  <Link to="/contents">Parameters</Link>
-                </li>
-                <li id="parent">Messages</li>
-                <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread?.length || "0"} new)</Link>
-                </li>
-                <li id="child">
-                  <Link to="/sent">↗ Sent</Link>
-                </li>
+                {createLink("profile", "My Profile")}
+                {createLink("adverts", "Adverts")}
+                {createLink("sectors", "Sectors")}
+                {createLink("tags", "Keywords")}
+                {createLink("sellers", "Sellers")}
+                {createLink("enquiries", "Eval Requests")}
+                {createLink("contents", "Parameters")}
+                {createLink("messages")}
+                {createLink("logout", "Log Out")}
               </>
             )}
             {seller && (
               <>
-                <li>
-                  <Link to="/logout">LOG OUT</Link>
-                </li>
-                <li>
-                  <Link to="/profile">My Profile</Link>
-                </li>
-                <li>
-                  <Link to="/adverts">Adverts</Link>
-                </li>
-                <li id="parent">Messages</li>
-                <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread?.length || "0"} new)</Link>
-                </li>
-                <li id="child">
-                  <Link to="/sent">↗ Sent</Link>
-                </li>
+                {createLink("profile", "My Profile")}
+                {createLink("adverts", "Adverts")}
+                {createLink("messages")}
+                {createLink("logout", "Log Out")}
               </>
             )}
             {guest && (
               <>
-                <li>
-                  <Link to="/logout">LOG OUT</Link>
-                </li>
-                <li>
-                  <Link to="/profile">My Profile</Link>
-                </li>
-                <li id="parent">Messages</li>
-                <li id="child">
-                  <Link to="/inbox">✉ Inbox ({unread?.length || "0"} new)</Link>
-                </li>
-                <li id="child">
-                  <Link to="/sent">↗ Sent</Link>
-                </li>
+                {createLink("profile", "My Profile")}
+                {createLink("messages")}
+                {createLink("logout", "Log Out")}
               </>
             )}
           </ul>
         </Col>
         <Col xs={12} md={8}>
-          {guest && <div>become a seller banner here</div>}
+          {guest && history.location.pathname !== "/upgrade" && (
+            <Link to="/upgrade">
+              <img
+                src="seller.png"
+                alt="banner"
+                className={styles.seller_banner}
+              />
+            </Link>
+          )}
           <br />
           {props.children}
           <br />

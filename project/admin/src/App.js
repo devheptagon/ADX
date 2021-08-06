@@ -20,6 +20,7 @@ import EnquiryPage from "pages/enquiry/enquiry-page";
 import InboxPage from "pages/message/inbox-page";
 import SentPage from "pages/message/sent-page";
 import NewMessagePage from "pages/message/new-page";
+import UpgradePage from "pages/upgrade/upgrade-page";
 
 function App() {
   return (
@@ -68,6 +69,9 @@ function App() {
           </Route>
           <Route path="/newmessage">
             <NewMessagePage />
+          </Route>
+          <Route path="/upgrade">
+            <UpgradePage />
           </Route>
           <Route path="/">
             <Home />

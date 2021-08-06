@@ -5,7 +5,7 @@ import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-export default function Login() {
+export default function Forgot() {
   const history = useHistory();
   return (
     <Container>

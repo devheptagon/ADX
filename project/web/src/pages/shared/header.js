@@ -62,11 +62,6 @@ export default function Header() {
                     </span>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/logout" as={"/logout"}>
-                    <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
-                  </Link>
-                </li>
               </>
             )}
           </ul>
