@@ -327,11 +327,14 @@ table[id="dataform"] {
   padding: 30px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin: 5px;
+  margin: 10px 0;
   h1,
   h3,
   h6 {
     display: inline;
+    span {
+      font-size: small;
+    }
   }
   h3 {
     color: rgb(10, 167, 49);
@@ -350,5 +353,47 @@ table[id="dataform"] {
   background-color: #ebfcde;
   &::before {
     content: "👌";
+  }
+}
+
+table[id="paymentform"] {
+  width: 100%;
+  border: 1px solid #efefef;
+  tbody {
+    tr {
+      td {
+        background-color: #dbedf5;
+        padding: 10px;
+        input[type="text"],
+        input[type="number"] {
+          width: 100%;
+          border: 1px solid #efefef;
+          padding: 5px;
+        }
+        input[id="exp_month"],
+        input[id="exp_year"],
+        input[id="cvv"] {
+          width: 60px;
+          font-size: small;
+        }
+        button {
+          width: 100%;
+          background-color: #009cdf;
+          color: white;
+          &:disabled {
+            background-color: lightgray;
+          }
+          border: 0;
+          padding: 6px;
+        }
+        label {
+          font-weight: bold;
+        }
+        span[data-id="error"] {
+          font-size: small;
+          color: red;
+        }
+      }
+    }
   }
 }

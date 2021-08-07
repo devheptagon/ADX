@@ -14,10 +14,11 @@ export default function UpgradePlans(props) {
             }`}
           >
             <h1>
-              1 <h6>month</h6>
+              1 <span>month</span>
             </h1>
             <br />
-            for <h3>£6.99</h3>
+
+            <h3>£6.99</h3>
             <br />
             <br />
             <button onClick={onSelect} data-id="0">
@@ -32,10 +33,11 @@ export default function UpgradePlans(props) {
             }`}
           >
             <h1>
-              6 <h6>months</h6>
+              6 <span>months</span>
             </h1>
             <br />
-            for <h3>£34.99</h3>
+
+            <h3>£34.99</h3>
             <br />
             <br />
             <button onClick={onSelect} data-id="1">
@@ -50,10 +52,11 @@ export default function UpgradePlans(props) {
             }`}
           >
             <h1>
-              12 <h6>months</h6>
+              12 <span>months</span>
             </h1>
             <br />
-            for <h3>£69.99</h3>
+
+            <h3>£69.99</h3>
             <br />
             <br />
             <button onClick={onSelect} data-id="2">
