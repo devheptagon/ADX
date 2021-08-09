@@ -314,6 +314,26 @@ public class UserService
         }
     }
 
+    public static UserEntity UpgradeUser(UpgradeEntity entity)
+    {
+        //TODO: do payment        
+        var success = true;
+
+        //add paylog
+
+        if (success)
+        {
+            //upgrade user
+            //return user
+            return null;
+        }
+        else
+        {
+            return null;
+        }
+
+
+    }
 
 
     private static List<UserEntity> CreateUserListFromDatatable(DataTable dataTable)

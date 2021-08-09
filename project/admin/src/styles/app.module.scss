@@ -1,3 +1,15 @@
+button {
+  width: 100%;
+  padding: 5px;
+  border: 0;
+  border-radius: 2px;
+  background-color: #009cdf;
+  color: white;
+  &:disabled {
+    background-color: lightgray;
+  }
+}
+
 .left_menu {
   padding: 10px 0;
   background-color: #efefef;
@@ -256,7 +268,7 @@ table[id="dataform"] {
       padding: 10px;
     }
     background-color: white;
-    button {
+    /* button {
       width: 100%;
       border: 1px solid #ccc;
       padding: 5px;
@@ -267,7 +279,7 @@ table[id="dataform"] {
       &:disabled {
         background-color: lightgray;
       }
-    }
+    } */
   }
   span[data-id="error"] {
     font-size: small;
@@ -339,14 +351,14 @@ table[id="dataform"] {
   h3 {
     color: rgb(10, 167, 49);
   }
-  button {
+  /*   button {
     background-color: #009cdf;
     color: white;
     border: 0;
     padding: 5px;
     width: 100%;
     border-radius: 5px;
-  }
+  } */
 }
 
 .selectedplan {
@@ -376,7 +388,7 @@ table[id="paymentform"] {
           width: 60px;
           font-size: small;
         }
-        button {
+        /* button {
           width: 100%;
           background-color: #009cdf;
           color: white;
@@ -385,7 +397,7 @@ table[id="paymentform"] {
           }
           border: 0;
           padding: 6px;
-        }
+        } */
         label {
           font-weight: bold;
         }

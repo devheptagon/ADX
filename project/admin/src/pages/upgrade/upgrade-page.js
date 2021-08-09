@@ -32,14 +32,11 @@ export default function UpgradePage() {
     <Layout>
       <div className={styles.upgrade}>
         <UpgradePlans index={plan} onSelect={selectPlan} />
-
-        {plan != null && (
-          <PaymentForm
-            amount={options[plan].amount}
-            duration={options[plan].duration}
-            submit={submit}
-          />
-        )}
+        <br />
+        <br />
+        <button disabled={!plan} onClick={submit}>
+          CONTINUE CHECKOUT
+        </button>
       </div>
     </Layout>
   );

@@ -23,4 +23,8 @@ class UserSqlStrings
 
     public static string ResetPasswordSql = "sp_reset_password";
 
+    public static string AddPaylogSql = "sp_add_paylog";
+
+    public static string UpgradeSql = "sp_upgrade_user";
+
 }

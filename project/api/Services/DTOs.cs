@@ -157,6 +157,15 @@ namespace adx
     }
     #endregion
 
+    #region UpgradeRequest
+    public class UpgradeRequest
+    {
+        public UpgradeRequest() { }  //required for json serialisation        
+
+        public UpgradeEntity Data { get; set; }
+    }
+    #endregion
+
     public class ValidationRequest { }
 
 

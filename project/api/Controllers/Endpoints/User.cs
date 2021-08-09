@@ -94,6 +94,16 @@ namespace adx
             UserService.AddUser(request.Data);
         }
 
+        [Authorize]
+        [HttpPatch("upgrade")]
+        public UserEntity UpgradeUser([FromBody] UpgradeRequest request)
+        {
+            if (!AppHelper.IsSeller(this.HttpContext)) return null;
+            var entity = request.Data;
+            entity.user_id = AppHelper.GetUserIdFromClaim(HttpContext);
+            return UserService.UpgradeUser(entity);
+        }
+
     }
 
 
