@@ -29,8 +29,9 @@ function findTargetPage(queryHook) {
   const target = query.get("t");
   if (!target) return "/adverts";
 
-  const sid = query.get("sid");
-  return "/newmessage?sid=" + sid;
+  const sid = query.get("sid"); //sellerid
+  const aid = query.get("aid"); //advertid
+  return "/newmessage?sid=" + sid + "&aid=" + aid;
 }
 
 function Home(props) {

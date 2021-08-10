@@ -4,6 +4,11 @@ export const getAdvertsEP = async (page, userId) => {
   return call(verbs.post, "adverts", null, { page: page.toString(), userId });
 };
 
+export const getAdvertEP = async (id) => {
+  const response = await call(verbs.get, "advert/" + id);
+  return response?.data.length ? response?.data[0] : {};
+};
+
 export const deleteAdvertEP = async (id) => {
   await call(verbs.delete, `adverts/${id}`);
 };

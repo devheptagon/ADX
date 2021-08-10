@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace adx
 {
@@ -66,6 +67,19 @@ namespace adx
 
             var data = UserService.GetSellers();
             return new UserResponse() { Data = data, Count = data.Count, Page = -1 };
+        }
+
+        [Authorize]
+        [HttpGet("seller/{id?}")]
+        public UserResponse GetSeller()
+        {
+            var data = UserService.GetSellers();
+            var id = RouteData.Values.ContainsKey("id") ? RouteData.Values["id"].ToString() : null;
+            if (id == null) return null;
+            var seller = data.Where(s => s.id.ToString().ToLower() == id.ToLower()).FirstOrDefault();
+            if (seller == null) return null;
+
+            return new UserResponse() { Data = new System.Collections.Generic.List<UserEntity>() { seller }, Count = 1, Page = -1 };
         }
 
         [Authorize]

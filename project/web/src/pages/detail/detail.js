@@ -110,7 +110,7 @@ export default function Detail(props) {
                   <b>Seller:</b> {seller.fullname} (
                   {`${seller.email} / ${seller.phone}`}){" "}
                   <a
-                    href={`/manage?t=messages&sid=${data.seller_id}`}
+                    href={`/manage?t=messages&sid=${data.seller_id}&aid=${data.id}`}
                     rel="noreferrer"
                     className="link"
                   >

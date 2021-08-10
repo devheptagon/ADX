@@ -5,6 +5,11 @@ export const getSellersEP = async () => {
   return response?.data;
 };
 
+export const getSellerEP = async (id) => {
+  const response = await call(verbs.get, "seller/" + id);
+  return response?.data.length ? response?.data[0] : {};
+};
+
 export const toggleSellerEP = async (id, active) => {
   const response = await call(verbs.patch, "toggle", null, {
     data: { id, active },
