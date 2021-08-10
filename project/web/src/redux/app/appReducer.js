@@ -35,6 +35,7 @@ const initialState = {
   firstLoad: true,
   user_name: localUser.name,
   user_role: localUser.role,
+  user_avatar: localUser.avatar,
 };
 
 export function appReducer(state = { ...initialState }, action) {
@@ -72,6 +73,7 @@ export function appReducer(state = { ...initialState }, action) {
         ...state,
         user_name: action.payload.name,
         user_role: action.payload.role,
+        user_avatar: action.payload.avatar,
       };
     case RESET_FILTERS_TYPE:
       return {

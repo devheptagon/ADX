@@ -78,7 +78,7 @@ export const resetFiltersAction = () => ({
   type: RESET_FILTERS_TYPE,
 });
 
-export const setUserInfoAction = (name, role) => ({
+export const setUserInfoAction = (name, role, avatar) => ({
   type: SET_USER_INFO_TYPE,
-  payload: { name, role },
+  payload: { name, role, avatar },
 });

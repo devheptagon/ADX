@@ -6,11 +6,13 @@ import logo from "assets/logo.png";
 import { useEffect } from "react";
 import { setUserInfoAction } from "redux/app/appActions";
 import { setLocalUser } from "helpers/appHelper";
+import { apiUrl } from "config";
 
 export default function Header() {
   const contents = useSelector((state) => state.appReducer.contents);
   const name = useSelector((state) => state.appReducer.user_name);
   const role = useSelector((state) => state.appReducer.user_role);
+  const avatar = useSelector((state) => state.appReducer.user_avatar);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,8 +22,9 @@ export default function Header() {
       const { action } = e.data;
       const new_name = action === "login" ? e.data.name : "";
       const new_role = action === "login" ? e.data.role : "anonym";
-      dispatch(setUserInfoAction(new_name, new_role));
-      setLocalUser({ name: new_name, role: new_role });
+      const new_avatar = action === "login" ? e.data.avatar : "";
+      dispatch(setUserInfoAction(new_name, new_role, new_avatar));
+      setLocalUser({ name: new_name, role: new_role, avatar: new_avatar });
     };
 
     if (window.addEventListener) {
@@ -57,7 +60,11 @@ export default function Header() {
                 <li>
                   <Link to="/manage" as={"/manage"}>
                     <span className={styles.userlink}>
-                      <i className="fa fa-user-circle" aria-hidden="true"></i>{" "}
+                      {avatar ? (
+                        <img alt="avatar" src={apiUrl + "images/" + avatar} />
+                      ) : (
+                        <i className="fa fa-user-circle" aria-hidden="true"></i>
+                      )}{" "}
                       {name}
                     </span>
                   </Link>

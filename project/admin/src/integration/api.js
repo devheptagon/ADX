@@ -1,4 +1,5 @@
 import axios from "axios";
+import { logoutAction } from "redux/app/appActions";
 import { apiUrl } from "../config";
 import { store } from "../redux/store";
 
@@ -54,6 +55,7 @@ export const call = async (
 
 const checkAuthError = (exception, dontCheckAuth) => {
   if (!dontCheckAuth && exception.response.status === 401) {
-    //todo: logout
+    store.dispatch(logoutAction());
+    window.location.reload();
   }
 };

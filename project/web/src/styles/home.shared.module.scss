@@ -25,10 +25,18 @@
         }
         .userlink {
           background-color: rgb(232, 247, 207);
-          padding: 4px 8px;
+          padding: 2px 4px;
+          display: flex;
+          align-items: center;
           border-radius: 5px;
           &::after {
             content: " ⮟";
+          }
+          img {
+            height: 30px;
+            width: 30px;
+            border-radius: 15px;
+            margin-right: 5px;
           }
         }
       }

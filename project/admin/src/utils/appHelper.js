@@ -48,7 +48,12 @@ export const getPagerList = (currentPage, totalRowCount) => {
 export const postParentMessage = (user) => {
   if (user) {
     parent.postMessage(
-      { action: "login", name: user.fullname, role: user.role },
+      {
+        action: "login",
+        name: user.fullname,
+        role: user.role,
+        avatar: user.avatar,
+      },
       "*"
     );
   } else {
