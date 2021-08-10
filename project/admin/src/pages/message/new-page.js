@@ -1,4 +1,3 @@
-//import styles from "styles/app.module.scss";
 import Layout from "Layout";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -7,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { getAdvertEP } from "integration/endpoints/advert";
 import { getSellerEP } from "integration/endpoints/user";
+import { addMessageEP } from "integration/endpoints/message";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -30,13 +30,19 @@ export default function MessageList(props) {
       <h3>New message</h3>
       <Formik
         initialValues={{
-          title: "",
+          message: "",
         }}
         validationSchema={yup.object().shape({
-          title: yup.string().required(),
+          message: yup.string().required().max(500),
         })}
         onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
           setSubmitting(true);
+          await addMessageEP({
+            text: values.message,
+            receiver: sellerid,
+            advert_id: advertid,
+          });
+          alert("Message sent!");
           history.push("/sent");
           setSubmitting(false);
           resetForm({});
@@ -70,21 +76,22 @@ export default function MessageList(props) {
                   </tr>
                   <tr>
                     <td>
-                      <label htmlFor="Title">Title: &nbsp;</label>
+                      <label htmlFor="Title">Message: &nbsp;</label>
                     </td>
                     <td>
-                      {" "}
                       <fieldset>
-                        <input
-                          type="text"
-                          name="title"
-                          id="title"
-                          placeholder="Title"
-                          title="* Title"
+                        <textarea
+                          name="message"
+                          id="message"
+                          placeholder="Your message (max. 500 character)"
+                          title="* Message"
                           required="required"
-                          value={values.title}
+                          value={values.message}
+                          maxLength="500"
                           onChange={handleChange}
-                        />
+                          rows="5"
+                        ></textarea>
+                        <span data-id="error">{errors.message}</span>
                       </fieldset>
                     </td>
                   </tr>

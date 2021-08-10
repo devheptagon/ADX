@@ -1,6 +1,7 @@
 ﻿using adx.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace adx
 {
@@ -20,7 +21,10 @@ namespace adx
         [HttpPost("messages")]
         public void AddMessage([FromBody] MessageRequest request)
         {
-            MessageService.AddMessage(request.Data);
+            var userId = AppHelper.GetUserIdFromClaim(HttpContext);
+            var message = request.Data;
+            message.sender = userId;
+            MessageService.AddMessage(message);
         }
 
         [Authorize]

@@ -35,7 +35,7 @@ function Layout(props) {
         <li id="parent">Messages</li>
         <li id="child">
           <Link to="/inbox">
-            ✉ Inbox {unread?.length ? `${unread.length} new` : ""}
+            ✉ Inbox {unread?.length ? `(${unread.length} new)` : ""}
           </Link>
         </li>
         <li id="child">
