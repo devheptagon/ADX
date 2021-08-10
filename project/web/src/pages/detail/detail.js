@@ -3,7 +3,6 @@ import moment from "moment";
 import Slide from "./sub/slide";
 import Loading from "pages/shared/loading";
 import { formatter } from "helpers/genericHelper";
-import { adminUrl } from "../../config";
 
 export default function Detail(props) {
   const { data } = props;
@@ -110,7 +109,11 @@ export default function Detail(props) {
                 <td colSpan={3}>
                   <b>Seller:</b> {seller.fullname} (
                   {`${seller.email} / ${seller.phone}`}){" "}
-                  <a href="/manage" rel="noreferrer" className="link">
+                  <a
+                    href={`/manage?t=messages&sid=${data.seller_id}`}
+                    rel="noreferrer"
+                    className="link"
+                  >
                     Contact Seller
                   </a>
                 </td>

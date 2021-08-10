@@ -19,7 +19,7 @@ export default function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const login = async (email, password) => {
+  const loginUser = async (email, password) => {
     const user = await loginEP(email, password);
     if (!user || !user.token) return false;
     postParentMessage(user);
@@ -51,9 +51,9 @@ export default function Login() {
               { setSubmitting, setStatus, resetForm }
             ) => {
               setSubmitting(true);
-              var isLoggedIn = await login(values.email, values.password);
+              var isLoggedIn = await loginUser(values.email, values.password);
               setSubmitting(false);
-              if (isLoggedIn) history.push("/home");
+              if (isLoggedIn) history.push("home" + history.location.search);
               setStatus({ success: true });
             }}
           >

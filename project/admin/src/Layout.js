@@ -18,7 +18,7 @@ function Layout(props) {
   );
 
   if (!authed) {
-    history.push("/home"); //home not login, home checks for local token and redirects to login if necessary
+    history.push("home" + history.location.search); //home not login, home checks for local token and redirects to login if necessary
     return null;
   }
 

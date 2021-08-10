@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import {
   setSectorsAction,
   setFirstLoadAction,
@@ -20,11 +20,34 @@ import {
 import { getSectorsEP } from "integration/endpoints/sector";
 import { getTagsEP } from "integration/endpoints/tag";
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+function findTargetPage(queryHook) {
+  let query = queryHook();
+  const target = query.get("t");
+  if (!target) return "/adverts";
+
+  const sid = query.get("sid");
+  return "/newmessage?sid=" + sid;
+}
+
 function Home(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const reduxToken = useSelector((state) => state.appReducer.token);
   const firstLoad = useSelector((state) => state.appReducer.firstLoad);
+
+  const targetPage = findTargetPage(useQuery);
+  const redirectTarget = () => {
+    if (!history.location.pathname.includes(targetPage)) {
+      history.push(targetPage);
+    }
+  };
+  const redirectLogin = () => {
+    history.push("/login" + history.location.search);
+  };
 
   useEffect(() => {
     if (firstLoad) {
@@ -41,16 +64,15 @@ function Home(props) {
         if (user) {
           dispatch(setUserAction(user));
           postParentMessage(user);
-          if (history.location.pathname !== "/adverts")
-            history.push("/adverts");
+          redirectTarget();
         } else {
           postParentMessage(null);
           clearLocalToken();
-          history.push("/login");
+          redirectLogin();
         }
       });
     } else {
-      history.push("/login");
+      redirectLogin();
     }
   } else {
     validateToken(reduxToken).then((user) => {
@@ -58,11 +80,11 @@ function Home(props) {
         dispatch(logoutAction());
         clearLocalToken();
         postParentMessage(null);
-        history.push("/login");
+        redirectLogin();
       } else {
         //if redux token is already set, user is set
         postParentMessage(user);
-        if (history.location.pathname !== "/adverts") history.push("/adverts");
+        redirectTarget();
       }
     });
   }

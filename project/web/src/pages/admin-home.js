@@ -1,5 +1,7 @@
+import { useHistory } from "react-router-dom";
 import IFrame from "./shared/iframe";
 
 export default function Index() {
-  return <IFrame target="home" />;
+  const history = useHistory();
+  return <IFrame target={`home${history.location.search}`} />;
 }
