@@ -3,7 +3,6 @@ import styles from "styles/app.module.scss";
 import { useState } from "react";
 
 import UpgradePlans from "./upgrade-plans";
-import PaymentForm from "./payment-form";
 
 const options = [
   { amount: "£6.99", duration: "1" },
@@ -12,29 +11,29 @@ const options = [
 ];
 
 export default function UpgradePage() {
-  const [plan, setPlan] = useState(null);
+  const [planIndex, setPlanIndex] = useState(null);
 
   const selectPlan = (e) => {
-    const index = e.currentTarget.dataset.id;
-    setPlan(index);
+    const index = +e.currentTarget.dataset.index;
+    setPlanIndex(index);
   };
 
-  const submit = async (values, { setSubmitting, setStatus, resetForm }) => {
-    setSubmitting(true);
-
-    setSubmitting(false);
-    alert("Registration successful!");
+  const submit = async () => {
+    //upgradeEP(planIndex);
     //history.push("/login");
-    setStatus({ success: true });
   };
 
   return (
     <Layout>
       <div className={styles.upgrade}>
-        <UpgradePlans index={plan} onSelect={selectPlan} />
+        <UpgradePlans
+          index={planIndex}
+          onSelect={selectPlan}
+          options={options}
+        />
         <br />
         <br />
-        <button disabled={!plan} onClick={submit}>
+        <button disabled={!planIndex} onClick={submit}>
           CONTINUE CHECKOUT
         </button>
       </div>

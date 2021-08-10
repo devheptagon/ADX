@@ -94,14 +94,31 @@ namespace adx
             UserService.AddUser(request.Data);
         }
 
+
         [Authorize]
-        [HttpPatch("upgrade")]
+        [HttpPost("upgrade")]
         public UserEntity UpgradeUser([FromBody] UpgradeRequest request)
         {
             if (!AppHelper.IsSeller(this.HttpContext)) return null;
             var entity = request.Data;
             entity.user_id = AppHelper.GetUserIdFromClaim(HttpContext);
             return UserService.UpgradeUser(entity);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("success")]
+        public RedirectResult RedirectSuccess()
+        {
+
+            return Redirect("https://google.com");
+        }
+
+        [AllowAnonymous]
+        [HttpGet("cancel")]
+        public RedirectResult RedirectCancel()
+        {
+
+            return Redirect("https://google.com");
         }
 
     }

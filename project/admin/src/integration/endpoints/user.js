@@ -23,3 +23,10 @@ export const updateProfileEP = async (data) => {
   });
   return response?.data;
 };
+
+export const upgradeEP = async (data) => {
+  const response = await call(verbs.post, "upgrade", null, {
+    data,
+  });
+  return response?.data;
+};

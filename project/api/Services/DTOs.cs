@@ -158,6 +158,13 @@ namespace adx
     #endregion
 
     #region UpgradeRequest
+    public class PrepayRequest
+    {
+        public PrepayRequest() { }  //required for json serialisation        
+
+        public UpgradeEntity Data { get; set; }
+    }
+
     public class UpgradeRequest
     {
         public UpgradeRequest() { }  //required for json serialisation        
