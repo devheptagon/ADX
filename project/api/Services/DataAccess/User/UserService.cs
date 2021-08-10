@@ -204,8 +204,9 @@ public class UserService
                 sqlCommand.Parameters.Add(new SqlParameter("@fullname", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@fullname"].Value = entity.fullname;
 
-                sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
-                sqlCommand.Parameters["@email"].Value = entity.email;
+                //EMAIL SHOULD NOT BE UPDATED
+                //sqlCommand.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 100));
+                //sqlCommand.Parameters["@email"].Value = entity.email;
 
                 sqlCommand.Parameters.Add(new SqlParameter("@phone", SqlDbType.VarChar, 100));
                 sqlCommand.Parameters["@phone"].Value = entity.phone;

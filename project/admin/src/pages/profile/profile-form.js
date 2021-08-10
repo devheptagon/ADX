@@ -154,6 +154,8 @@ export default function ContentList() {
                         fullname="* Email"
                         value={values.email}
                         onChange={handleChange}
+                        readOnly
+                        className={styles.readOnly}
                       />
                     </fieldset>
                     <span data-id="error">{errors.email}</span>

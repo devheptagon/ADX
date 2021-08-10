@@ -50,7 +50,11 @@ namespace adx
         [HttpPatch("users")]
         public void UpdateUser([FromBody] UserRequest request)
         {
-            if (!AppHelper.IsAdmin(this.HttpContext)) return;
+            var isAdmin = AppHelper.IsAdmin(this.HttpContext);
+            var id = AppHelper.GetUserIdFromClaim(HttpContext);
+            var isUser = request.Data.id.ToString().ToLower().Equals(id.ToLower());
+            if (!isAdmin && !isUser) return;
+
             UserService.UpdateUser(request.Data);
         }
 
