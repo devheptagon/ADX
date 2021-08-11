@@ -18,7 +18,7 @@ export default function Header() {
   useEffect(() => {
     // Listen to message from child window
     const callback = (e) => {
-      if (e.data.payload || e.data.hello) return; //react-tools sends message, discard
+      if (e.data.payload || e.data.hello) return; //react-tools sends some messages too, discard them
       const { action } = e.data;
       const new_name = action === "login" ? e.data.name : "";
       const new_role = action === "login" ? e.data.role : "anonym";
@@ -64,7 +64,8 @@ export default function Header() {
                         <img alt="avatar" src={apiUrl + "images/" + avatar} />
                       ) : (
                         <i className="fa fa-user-circle" aria-hidden="true"></i>
-                      )}{" "}
+                      )}
+                      &nbsp;
                       {name}
                     </span>
                   </Link>

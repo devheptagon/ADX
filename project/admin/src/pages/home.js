@@ -9,6 +9,8 @@ import {
   setTagsAction,
   logoutAction,
   setUserAction,
+  setSellersAction,
+  setMessagesAction,
 } from "redux/app/appActions";
 import {
   checkLocalToken,
@@ -19,6 +21,8 @@ import {
 
 import { getSectorsEP } from "integration/endpoints/sector";
 import { getTagsEP } from "integration/endpoints/tag";
+import { getSellersEP } from "integration/endpoints/user";
+import { getMessagesEP } from "integration/endpoints/message";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -39,13 +43,22 @@ function Home(props) {
   const history = useHistory();
   const reduxToken = useSelector((state) => state.appReducer.token);
   const firstLoad = useSelector((state) => state.appReducer.firstLoad);
-
+  const sellers = useSelector((state) => state.appReducer.sellers);
+  const messages = useSelector((state) => state.appReducer.messages);
   const targetPage = findTargetPage(useQuery);
+
   const redirectTarget = () => {
+    if (!sellers?.length)
+      getSellersEP().then((res) => dispatch(setSellersAction(res)));
+
+    if (!messages?.length)
+      getMessagesEP().then((res) => dispatch(setMessagesAction(res)));
+
     if (!history.location.pathname.includes(targetPage)) {
       history.push(targetPage);
     }
   };
+
   const redirectLogin = () => {
     history.push("/login" + history.location.search);
   };

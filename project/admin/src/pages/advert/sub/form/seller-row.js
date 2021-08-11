@@ -3,6 +3,9 @@ import MultiSelect from "react-multi-select-component";
 export default function SellerRow(props) {
   const { sellerOptions, selectedSellers, selectSeller, handleChange, errors } =
     props;
+
+  if (!sellerOptions?.length) return null;
+
   return (
     <tr>
       <td>

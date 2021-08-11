@@ -1,8 +1,16 @@
 import React from "react";
 import styles from "styles/app.module.scss";
+import { Link } from "react-router-dom";
 
 export default function MessageList(props) {
   const { inbox } = props;
+  if (!props.data?.length)
+    return (
+      <div>
+        <h6>no messages</h6>
+      </div>
+    );
+
   return (
     <table>
       <tbody>
@@ -14,6 +22,8 @@ export default function MessageList(props) {
             create_date,
             seen,
             receiver_name,
+            sender,
+            advert_id,
             sender_name,
           } = m;
           const classname = inbox && !seen ? "unseen" : "seen";
@@ -40,6 +50,15 @@ export default function MessageList(props) {
               <tr className={styles[classname]}>
                 <td colSpan={2}>{text}</td>
               </tr>
+              {inbox && (
+                <tr className={styles[classname]}>
+                  <td colSpan={2}>
+                    <Link to={`/newmessage?sid=${sender}&aid=${advert_id}`}>
+                      Reply
+                    </Link>
+                  </td>
+                </tr>
+              )}
               <tr className={styles.seperator}>
                 <td colSpan={2}></td>
               </tr>

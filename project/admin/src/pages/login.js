@@ -27,9 +27,10 @@ export default function Login() {
     setLocalToken(user.token);
     dispatch(setUserAction(user));
 
-    //dont await for below
-    getSellersEP().then((sellers) => dispatch(setSellersAction(sellers)));
-    getMessagesEP().then((messages) => dispatch(setMessagesAction(messages)));
+    const sellers = await getSellersEP();
+    dispatch(setSellersAction(sellers));
+    const messages = await getMessagesEP();
+    dispatch(setMessagesAction(messages));
     return true;
   };
 
