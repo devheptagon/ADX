@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-export default function SellerParams(props) {
+export default function SellerParams(item) {
   const sellers = useSelector((state) => state.appReducer.sellers) || [];
 
   const sellerOptions =
@@ -11,8 +11,8 @@ export default function SellerParams(props) {
     })) || [];
 
   const [selectedSellers, setSelectedSellers] = useState(
-    props.item?.seller_id
-      ? [sellerOptions.find((s) => s.value === props.item.seller_id)]
+    item?.seller_id
+      ? [sellerOptions.find((s) => s.value === item.seller_id)]
       : []
   );
 

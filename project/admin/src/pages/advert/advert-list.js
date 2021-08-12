@@ -155,7 +155,7 @@ export default function AdvertList() {
         </tbody>
       </table>
       <Modal ariaHideApp={false} isOpen={modalOpen}>
-        <AdvertForm item={selectedItem || {}} onClose={closeModal} />
+        <AdvertForm item={selectedItem} onClose={closeModal} />
       </Modal>
     </div>
   );

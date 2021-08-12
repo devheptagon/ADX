@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-export default function TagParams(props) {
+export default function TagParams(item) {
   const tags = useSelector((state) => state.appReducer.tags);
   const tagOptions = tags?.map((s) => ({
     label: s.title,
@@ -9,8 +9,8 @@ export default function TagParams(props) {
   }));
 
   const [selectedTags, setSelectedTags] = useState(
-    props.item?.tags
-      ? tagOptions.filter((s) => props.item.tags.split(",").includes(s.label))
+    item?.tags
+      ? tagOptions.filter((s) => item.tags.split(",").includes(s.label))
       : []
   );
 

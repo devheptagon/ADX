@@ -4,7 +4,7 @@ export default function SellerRow(props) {
   const { sellerOptions, selectedSellers, selectSeller, handleChange, errors } =
     props;
 
-  if (!sellerOptions?.length) return null;
+  // if (!sellerOptions?.length) return null;
 
   return (
     <tr>

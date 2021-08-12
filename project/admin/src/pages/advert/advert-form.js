@@ -21,14 +21,22 @@ import CityParams from "./sub/form/params/city-params";
 import TenureParams from "./sub/form/params/tenure-params";
 import SectorParams from "./sub/form/params/sector-params";
 import TagParams from "./sub/form/params/tag-params";
+import { useSelector } from "react-redux";
 
 export default function AdvertForm(props) {
-  const { sellerOptions, selectedSellers, selectSeller } = SellerParams(props);
-  const { statusOptions, selectedStatutes, selectStatus } = StatusParams(props);
-  const { cityOptions, selectedCities, selectCity } = CityParams(props);
-  const { tenureOptions, selectedTenures, selectTenures } = TenureParams(props);
-  const { sectorOptions, selectedSectors, selectSector } = SectorParams(props);
-  const { tagOptions, selectedTags, selectTag } = TagParams(props);
+  const userId = useSelector((state) => state.appReducer.id);
+  const userRole = useSelector((state) => state.appReducer.role);
+  const isSeller = userRole === "seller";
+  const isAdmin = userRole === "admin";
+  const item = props.item || {};
+  if (isSeller) item.seller_id = userId;
+
+  const { sellerOptions, selectedSellers, selectSeller } = SellerParams(item);
+  const { statusOptions, selectedStatutes, selectStatus } = StatusParams(item);
+  const { cityOptions, selectedCities, selectCity } = CityParams(item);
+  const { tenureOptions, selectedTenures, selectTenures } = TenureParams(item);
+  const { sectorOptions, selectedSectors, selectSector } = SectorParams(item);
+  const { tagOptions, selectedTags, selectTag } = TagParams(item);
 
   const cancel = () => {
     props.onClose(false);
@@ -36,8 +44,8 @@ export default function AdvertForm(props) {
 
   const submit = async (values, { setSubmitting, setStatus, resetForm }) => {
     setSubmitting(true);
-    if (props.item.id) {
-      await updateAdvertsEP({ id: props.item.id, ...values });
+    if (item.id) {
+      await updateAdvertsEP({ id: item.id, ...values });
     } else {
       await addAdvertsEP({ ...values });
     }
@@ -48,7 +56,7 @@ export default function AdvertForm(props) {
 
   return (
     <Formik
-      initialValues={{ ...props.item }}
+      initialValues={{ ...item }}
       validationSchema={yupSchema}
       onSubmit={submit}
     >
@@ -64,15 +72,18 @@ export default function AdvertForm(props) {
           <form onSubmit={handleSubmit}>
             <table id="dataform" border="0">
               <tbody>
-                <SellerRow
-                  {...{
-                    sellerOptions,
-                    selectedSellers,
-                    selectSeller,
-                    handleChange,
-                    errors,
-                  }}
-                />
+                {isAdmin && (
+                  <SellerRow
+                    {...{
+                      sellerOptions,
+                      selectedSellers,
+                      selectSeller,
+                      handleChange,
+                      errors,
+                    }}
+                  />
+                )}
+
                 <TitleRow {...{ values, handleChange, errors }} />
                 <StatusAndTenuresRow
                   {...{
@@ -132,7 +143,7 @@ export default function AdvertForm(props) {
                 />
                 <PhotosRow
                   {...{
-                    item: props.item,
+                    item,
                     handleChange,
                   }}
                 />

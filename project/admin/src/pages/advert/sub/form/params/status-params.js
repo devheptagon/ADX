@@ -1,16 +1,14 @@
 import { useState } from "react";
 import statuses from "data/status.json";
 
-export default function StatusParams(props) {
+export default function StatusParams(item) {
   const statusOptions = statuses?.map((s) => ({
     label: s,
     value: s,
   }));
 
   const [selectedStatutes, setSelectedStatutes] = useState(
-    props.item?.status
-      ? [statusOptions.find((s) => s.value === props.item.status)]
-      : []
+    item?.status ? [statusOptions.find((s) => s.value === item.status)] : []
   );
 
   const selectStatus = (selection) => {

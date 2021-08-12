@@ -31,7 +31,7 @@ function useQuery() {
 function findTargetPage(queryHook) {
   let query = queryHook();
   const target = query.get("t");
-  if (!target) return "/adverts";
+  if (!target) return "/profile";
 
   const sid = query.get("sid"); //sellerid
   const aid = query.get("aid"); //advertid

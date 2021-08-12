@@ -1,16 +1,14 @@
 import { useState } from "react";
 import cities from "data/city.json";
 
-export default function CityParams(props) {
+export default function CityParams(item) {
   const cityOptions = cities?.map((s) => ({
     label: s,
     value: s,
   }));
 
   const [selectedCities, setSelectedCities] = useState(
-    props.item?.city
-      ? [cityOptions.find((s) => s.value === props.item.city)]
-      : []
+    item?.city ? [cityOptions.find((s) => s.value === item.city)] : []
   );
 
   const selectCity = (selection) => {

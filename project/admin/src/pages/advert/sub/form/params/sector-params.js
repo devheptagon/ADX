@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-export default function SectorParams(props) {
+export default function SectorParams(item) {
   const sectors = useSelector((state) => state.appReducer.sectors);
   const sectorOptions = sectors?.map((s) => ({
     label: s.title,
@@ -9,10 +9,8 @@ export default function SectorParams(props) {
   }));
 
   const [selectedSectors, setSelectedSectors] = useState(
-    props.item?.sectors
-      ? sectorOptions.filter((s) =>
-          props.item.sectors.split(",").includes(s.label)
-        )
+    item?.sectors
+      ? sectorOptions.filter((s) => item.sectors.split(",").includes(s.label))
       : []
   );
 
