@@ -14,11 +14,20 @@ export const deleteAdvertEP = async (id) => {
 };
 
 export const updateAdvertsEP = async (data) => {
+  Object.keys(data).map((k) => {
+    if (typeof data[k] === "number") data[k] = data[k].toString();
+    return null;
+  });
   const response = await call(verbs.patch, "advert", null, data);
   return response?.data;
 };
 
 export const addAdvertsEP = async (data) => {
+  Object.keys(data).map((k) => {
+    if (typeof data[k] === "number") data[k] = data[k].toString();
+    return null;
+  });
+
   const response = await call(verbs.post, "advert", null, data);
   return response?.data;
 };

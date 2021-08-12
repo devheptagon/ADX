@@ -31,7 +31,29 @@ export default function AdvertForm(props) {
   const tagList = useSelector((state) => state.appReducer.tags);
   const isSeller = userRole === "seller";
   const isAdmin = userRole === "admin";
-  const item = props.item || {};
+  const item = props.item || {
+    annualProfit: "",
+    annualTurnover: "",
+    city: "",
+    create_date: "",
+    description: "",
+    freeHoldPrice: "",
+    images: "",
+    leaseHoldPrice: "",
+    line1: "",
+    line2: "",
+    monthlyProfit: "",
+    monthlyTurnover: "",
+    postcode: "",
+    sectors: "",
+    seller_id: "",
+    status: "",
+    tags: "",
+    tenures: "",
+    title: "",
+    weeklyProfit: "",
+    weeklyTurnover: "",
+  };
   if (isSeller) item.seller_id = userId;
   if (item.sectors) {
     item.sectors = deepClone(props.item.sectors) //iteration changes does need to deepclone

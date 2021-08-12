@@ -7,7 +7,7 @@ export const getSellersEP = async () => {
 
 export const getSellerEP = async (id) => {
   const response = await call(verbs.get, "seller/" + id);
-  return response?.data.length ? response?.data[0] : {};
+  return response?.data?.length ? response?.data[0] : {};
 };
 
 export const toggleSellerEP = async (id, active) => {
@@ -19,7 +19,7 @@ export const toggleSellerEP = async (id, active) => {
 
 export const getProfileEP = async (id) => {
   const response = await call(verbs.get, "user/" + id, null);
-  return response?.data[0];
+  return response?.data ? response?.data[0] : {};
 };
 
 export const updateProfileEP = async (data) => {

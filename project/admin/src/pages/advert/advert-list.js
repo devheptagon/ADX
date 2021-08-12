@@ -112,7 +112,7 @@ export default function AdvertList() {
               </td>
               <td>{item.title}</td>
               <td>{item.seller?.fullname}</td>
-              <td>{item.areas}</td>
+              <td>{item.city}</td>
               <td>{item.create_date.split(" ")[0]}</td>
             </tr>
           ))}
