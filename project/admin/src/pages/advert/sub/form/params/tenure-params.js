@@ -14,7 +14,9 @@ export default function TenureParams(item) {
   );
 
   const selectTenures = (selection) => {
-    setSelectedTenures(selection);
+    setSelectedTenures(
+      selection.length ? [selection[selection.length - 1]] : []
+    ); //disables multi selection);
   };
   return { tenureOptions, selectedTenures, selectTenures };
 }

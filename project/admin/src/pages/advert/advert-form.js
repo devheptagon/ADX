@@ -22,14 +22,31 @@ import TenureParams from "./sub/form/params/tenure-params";
 import SectorParams from "./sub/form/params/sector-params";
 import TagParams from "./sub/form/params/tag-params";
 import { useSelector } from "react-redux";
+import { deepClone } from "utils/genericHelper";
 
 export default function AdvertForm(props) {
   const userId = useSelector((state) => state.appReducer.id);
   const userRole = useSelector((state) => state.appReducer.role);
+  const sectorList = useSelector((state) => state.appReducer.sectors);
+  const tagList = useSelector((state) => state.appReducer.tags);
   const isSeller = userRole === "seller";
   const isAdmin = userRole === "admin";
   const item = props.item || {};
   if (isSeller) item.seller_id = userId;
+  if (item.sectors) {
+    item.sectors = deepClone(props.item.sectors) //iteration changes does need to deepclone
+      .split(",")
+      .map((s) => sectorList.find((f) => f.title === s || f.id === s)?.id)
+      .filter((m) => Boolean(m) === true)
+      .join(",");
+  }
+  if (item.tags) {
+    item.tags = deepClone(props.item.tags) //iteration changes does need to deepclone
+      .split(",")
+      .map((s) => tagList.find((f) => f.title === s || f.id === s)?.id)
+      .filter((m) => Boolean(m) === true)
+      .join(",");
+  }
 
   const { sellerOptions, selectedSellers, selectSeller } = SellerParams(item);
   const { statusOptions, selectedStatutes, selectStatus } = StatusParams(item);

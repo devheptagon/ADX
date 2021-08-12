@@ -51,7 +51,9 @@ export default function StatusAndTenuresRow(props) {
               handleChange({
                 target: {
                   name: "tenures",
-                  value: selection.map((s) => s.value).join(","),
+                  value: selection.length
+                    ? selection[selection.length - 1].value
+                    : "",
                 },
               });
             }}

@@ -10,7 +10,11 @@ export default function TagParams(item) {
 
   const [selectedTags, setSelectedTags] = useState(
     item?.tags
-      ? tagOptions.filter((s) => item.tags.split(",").includes(s.label))
+      ? tagOptions.filter(
+          (s) =>
+            item.tags.split(",").includes(s.label) ||
+            item.tags.split(",").includes(s.value)
+        )
       : []
   );
 

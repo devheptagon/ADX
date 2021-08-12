@@ -10,7 +10,11 @@ export default function SectorParams(item) {
 
   const [selectedSectors, setSelectedSectors] = useState(
     item?.sectors
-      ? sectorOptions.filter((s) => item.sectors.split(",").includes(s.label))
+      ? sectorOptions.filter(
+          (s) =>
+            item.sectors.split(",").includes(s.label) ||
+            item.sectors.split(",").includes(s.value)
+        )
       : []
   );
 
