@@ -207,6 +207,11 @@ public class AdvertService
                 sqlCommand.Parameters.Add(new SqlParameter("@images", SqlDbType.VarChar, -1));
                 sqlCommand.Parameters["@images"].Value = entity.images;
 
+                var output = new SqlParameter("@NewRecordId", SqlDbType.UniqueIdentifier);
+                output.Direction = ParameterDirection.Output;
+                sqlCommand.Parameters.Add(output);
+
+
                 for (var i = 0; i < sqlCommand.Parameters.Count; i++)
                 {
                     if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
@@ -215,7 +220,8 @@ public class AdvertService
                 try
                 {
                     connection.Open();
-                    id = (System.Guid)sqlCommand.ExecuteScalar();
+                    sqlCommand.ExecuteScalar();
+                    id = (System.Guid)output.Value;
                 }
                 catch (Exception exp)
                 {

@@ -15,8 +15,7 @@ public class UserService
     public static List<UserEntity> GetSellers()
     {
         var users = GetUsers(null);
-        var result = new List<UserEntity>();
-        result.AddRange(users.Where(u => u.role == UserRole.Admin));
+        var result = new List<UserEntity>();        
         result.AddRange(users.Where(u => u.role == UserRole.Seller));
 
         return result;
