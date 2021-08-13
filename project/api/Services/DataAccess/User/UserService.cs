@@ -318,7 +318,7 @@ public class UserService
     {
         using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.UpdateSql, connection))
+            using (SqlCommand sqlCommand = new SqlCommand(UserSqlStrings.UpgradeSql, connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 

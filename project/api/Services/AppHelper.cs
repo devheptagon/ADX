@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,14 @@ namespace adx.Services
         public static string assetsPath = config.GetSection("AssetsPath").Value;
 
         public static string stripePrivateKey = config.GetSection("StripePrivateKey").Value;
+
+        public static List<Tuple<string, string, int>> PaymentOptions = new List<Tuple<string, string, int>>()
+        {
+            new Tuple<string, string, int>("1", "1 month Linxbiz membership", 699),   //in cents (or pence)
+            new Tuple<string, string, int>("6", "6 months Linxbiz membership", 3499),
+            new Tuple<string, string, int>("12", "12 months Linxbiz membership", 6999),
+        };
+
 
         public static string Upload(IFormFile file)
         {
@@ -148,5 +157,30 @@ namespace adx.Services
             return number.ToString().Insert(pos, letter);
         }
 
+        public static string CreateStripeSession(string userId, string token, string desc, int amount)
+        {
+            //var client = new StripeClient(stripePrivateKey);
+            //var sessionService = new Stripe.Checkout.SessionService(client);
+            //var options = new Stripe.Checkout.SessionCreateOptions()
+            //{
+            //    PaymentMethodTypes = new List<string>() { "card" },
+            //    Mode = "payment",
+            //    SuccessUrl = "https://google.com",
+            //    CancelUrl = "https://yahoo.com",
+            //    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
+            //    {
+            //        new Stripe.Checkout.SessionLineItemOptions()
+            //        {
+            //            Name=desc,
+            //            Amount=amount,
+            //            Currency="gbp",
+            //            Quantity=1
+            //        }
+            //    }
+            //};
+            //var session = sessionService.Create(options);
+            //return session.Url;
+            return "https://localhost:44307/v1/success?uid=" + userId + "&token=" + token;
+        }
     }
 }

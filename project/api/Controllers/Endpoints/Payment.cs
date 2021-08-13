@@ -15,70 +15,32 @@ namespace adx
         [HttpPost("payment")]
         public RedirectResult Payment([FromBody] PaymentRequest request)
         {
-            var sessionService = new Stripe.Checkout.SessionService();
-            var options = new Stripe.Checkout.SessionCreateOptions()
-            {
-                PaymentMethodTypes = new List<string>() { "card" },
-                Mode = "payment",
-                SuccessUrl = "",
-                CancelUrl = "",
-                LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
-                {
-                    new Stripe.Checkout.SessionLineItemOptions()
-                    {
-                        Amount=1000,
-                        Currency="gbp",
-                        Quantity=1,
-                        Description="test payment desc"
-                    }
-                }
-            };
-            var session = sessionService.Create(options);
+            var userId = AppHelper.GetUserIdFromClaim(HttpContext);
+            var paymentToken = Guid.NewGuid().ToString();
+            var option = AppHelper.PaymentOptions.Where(op => op.Item1 == request.Data.months).First();
+            var stripeUrl = AppHelper.CreateStripeSession(userId, paymentToken, option.Item2, option.Item3);
 
+            var entity = request.Data;
+            entity.token = paymentToken;
+            entity.months = option.Item1;
+            entity.amount = option.Item3.ToString();
+            entity.ip = HttpContext.Connection.RemoteIpAddress.ToString();
+            entity.user_id = userId;
 
-            //var entity = request.Data;
-            //entity.user_id = AppHelper.GetUserIdFromClaim(HttpContext);
-            //PaymentService.AddPayment(new PaymentEntity());
-            return Redirect(session.Url); // to stripe url
-        }
-
-
-        [HttpGet("payment")]
-        public RedirectResult Payment()
-        {
-            var client = new StripeClient(AppHelper.stripePrivateKey);
-            var sessionService = new Stripe.Checkout.SessionService(client);
-            var options = new Stripe.Checkout.SessionCreateOptions()
-            {
-                PaymentMethodTypes = new List<string>() { "card" },
-                Mode = "payment",
-                SuccessUrl = "https://google.com",
-                CancelUrl = "https://yahoo.com",
-                LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
-                {
-                    new Stripe.Checkout.SessionLineItemOptions()
-                    {
-                        Name="test payment desc",
-                        Amount=100,
-                        Currency="gbp",
-                        Quantity=1
-                    }
-                }
-            };
-            var session = sessionService.Create(options);
-
-
-            //var entity = request.Data;
-            //entity.user_id = AppHelper.GetUserIdFromClaim(HttpContext);
-            //PaymentService.AddPayment(new PaymentEntity());
-            return Redirect(session.Url); // to stripe url
+            PaymentService.AddPayment(entity);
+            return Redirect(stripeUrl);
         }
 
         [AllowAnonymous]
         [HttpGet("success")]
-        public RedirectResult RedirectSuccess()
+        public RedirectResult RedirectSuccess(string uid, string token)
         {
-            var paymentId = PaymentService.UpdatePayment(new PaymentEntity());
+            var entity = new PaymentEntity();
+            entity.user_id = uid;
+            entity.token = token;
+            entity.status = "success";
+            var paymentId = PaymentService.UpdatePayment(entity);
+
             var payment = PaymentService.GetPayment(paymentId.ToString());
             UserService.UpgradeUser(payment.user_id, paymentId.ToString(), payment.months);
 
@@ -87,10 +49,15 @@ namespace adx
 
         [AllowAnonymous]
         [HttpGet("cancel")]
-        public RedirectResult RedirectCancel()
+        public RedirectResult RedirectCancel(string uid, string token)
         {
-            PaymentService.UpdatePayment(new PaymentEntity());
-            return Redirect("https://google.com"); //to client cancel
+            var entity = new PaymentEntity();
+            entity.user_id = uid;
+            entity.token = token;
+            entity.status = "cancel";
+            PaymentService.UpdatePayment(entity);
+
+            return Redirect("https://yahoo.com"); //to client cancel
         }
 
     }

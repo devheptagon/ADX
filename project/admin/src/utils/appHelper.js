@@ -9,6 +9,12 @@ import { ROW_COUNT_PER_PAGE, MAX_PAGINATION_BUTTON_COUNT } from "config";
 
 const storageKey = "token";
 
+export const PaymentOptions = [
+  { amount: "£6.99", duration: "1" },
+  { amount: "£34.99", duration: "6" },
+  { amount: "£69.99", duration: "12" },
+];
+
 export const checkLocalToken = () => {
   return readLocalStorage(storageKey);
 };

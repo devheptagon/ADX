@@ -45,14 +45,14 @@ public class PaymentService
         if (row == null) return item;
 
         item.id = (System.Guid)row["id"];
-        item.user_id = row["user_id"] == DBNull.Value ? "" : (string)row["user_id"];
-        item.amount = row["amount"] == DBNull.Value ? "" : (string)row["amount"];
-        item.months = row["months"] == DBNull.Value ? "" : (string)row["months"];
+        item.user_id = row["user_id"] == DBNull.Value ? "" : row["user_id"].ToString();
+        item.amount = row["amount"] == DBNull.Value ? "" : row["amount"].ToString();
+        item.months = row["months"] == DBNull.Value ? "" : row["months"].ToString();
         item.token = row["token"] == DBNull.Value ? "" : (string)row["token"];
         item.status = row["status"] == DBNull.Value ? "" : (string)row["status"];
         item.ip = row["ip"] == DBNull.Value ? "" : (string)row["ip"];
-        item.create_date = row["create_date"] == DBNull.Value ? "" : (string)row["create_date"];
-        item.update_date = row["update_date"] == DBNull.Value ? "" : (string)row["update_date"];
+        item.create_date = row["create_date"] == DBNull.Value ? "" : row["create_date"].ToString();
+        item.update_date = row["update_date"] == DBNull.Value ? "" : row["update_date"].ToString();
 
         return item;
     }

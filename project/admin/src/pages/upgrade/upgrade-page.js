@@ -1,14 +1,8 @@
 import Layout from "Layout";
 import styles from "styles/app.module.scss";
 import { useState } from "react";
-
+import { PaymentOptions } from "utils/appHelper";
 import UpgradePlans from "./upgrade-plans";
-
-const options = [
-  { amount: "£6.99", duration: "1" },
-  { amount: "£34.99", duration: "6" },
-  { amount: "£69.99", duration: "12" },
-];
 
 export default function UpgradePage() {
   const [planIndex, setPlanIndex] = useState(null);
@@ -29,7 +23,7 @@ export default function UpgradePage() {
         <UpgradePlans
           index={planIndex}
           onSelect={selectPlan}
-          options={options}
+          options={PaymentOptions}
         />
         <br />
         <br />
