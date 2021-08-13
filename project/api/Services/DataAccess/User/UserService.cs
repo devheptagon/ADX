@@ -15,7 +15,7 @@ public class UserService
     public static List<UserEntity> GetSellers()
     {
         var users = GetUsers(null);
-        var result = new List<UserEntity>();        
+        var result = new List<UserEntity>();
         result.AddRange(users.Where(u => u.role == UserRole.Seller));
 
         return result;
@@ -314,24 +314,43 @@ public class UserService
         }
     }
 
-    public static UserEntity UpgradeUser(UpgradeEntity entity)
+    public static void UpgradeUser(string user_id, string paylog_id, string months)
     {
-        //TODO: do payment        
-        var success = true;
-
-        //add paylog
-
-        if (success)
+        using (SqlConnection connection = new SqlConnection(DBHelper.connStr))
         {
-            //upgrade user
-            //return user
-            return null;
-        }
-        else
-        {
-            return null;
-        }
+            using (SqlCommand sqlCommand = new SqlCommand(TagSqlStrings.UpdateSql, connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
 
+                sqlCommand.Parameters.Add(new SqlParameter("@user_id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@user_id"].Value = user_id;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@paylog_id", SqlDbType.VarChar, 100));
+                sqlCommand.Parameters["@paylog_id"].Value = paylog_id;
+
+                sqlCommand.Parameters.Add(new SqlParameter("@months", SqlDbType.TinyInt));
+                sqlCommand.Parameters["@months"].Value = months;
+
+                for (var i = 0; i < sqlCommand.Parameters.Count; i++)
+                {
+                    if (sqlCommand.Parameters[i].Value == null) sqlCommand.Parameters[i].Value = DBNull.Value;
+                }
+
+                try
+                {
+                    connection.Open();
+                    sqlCommand.ExecuteScalar();
+                }
+                catch (Exception exp)
+                {
+                    Logger.LogError(exp.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
 
     }
 
