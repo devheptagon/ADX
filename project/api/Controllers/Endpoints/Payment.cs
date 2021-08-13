@@ -44,7 +44,7 @@ namespace adx
             var payment = PaymentService.GetPayment(paymentId.ToString());
             UserService.UpgradeUser(payment.user_id, paymentId.ToString(), payment.months);
 
-            return Redirect("https://google.com"); //to client success
+            return Redirect(AppHelper.clientUrl + "/success");
         }
 
         [AllowAnonymous]
@@ -57,7 +57,7 @@ namespace adx
             entity.status = "cancel";
             PaymentService.UpdatePayment(entity);
 
-            return Redirect("https://yahoo.com"); //to client cancel
+            return Redirect(AppHelper.clientUrl + "/cancel");
         }
 
     }

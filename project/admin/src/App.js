@@ -21,6 +21,8 @@ import InboxPage from "pages/message/inbox-page";
 import SentPage from "pages/message/sent-page";
 import NewMessagePage from "pages/message/new-page";
 import UpgradePage from "pages/upgrade/upgrade-page";
+import UpgradeSuccessPage from "pages/upgrade/success-page";
+import UpgradeCancelPage from "pages/upgrade/cancel-page";
 
 function App() {
   return (
@@ -72,6 +74,12 @@ function App() {
           </Route>
           <Route path="/upgrade">
             <UpgradePage />
+          </Route>
+          <Route path="/success">
+            <UpgradeSuccessPage />
+          </Route>
+          <Route path="/cancel">
+            <UpgradeCancelPage />
           </Route>
           <Route path="/">
             <Home />

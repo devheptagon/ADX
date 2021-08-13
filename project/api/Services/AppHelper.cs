@@ -28,6 +28,10 @@ namespace adx.Services
 
         public static string stripePrivateKey = config.GetSection("StripePrivateKey").Value;
 
+        public static string serverUrl = config.GetSection("ServerUrl").Value;
+
+        public static string clientUrl = config.GetSection("ClientUrl").Value;
+
         public static List<Tuple<string, string, int>> PaymentOptions = new List<Tuple<string, string, int>>()
         {
             new Tuple<string, string, int>("1", "1 month Linxbiz membership", 699),   //in cents (or pence)
@@ -159,28 +163,28 @@ namespace adx.Services
 
         public static string CreateStripeSession(string userId, string token, string desc, int amount)
         {
-            //var client = new StripeClient(stripePrivateKey);
-            //var sessionService = new Stripe.Checkout.SessionService(client);
-            //var options = new Stripe.Checkout.SessionCreateOptions()
-            //{
-            //    PaymentMethodTypes = new List<string>() { "card" },
-            //    Mode = "payment",
-            //    SuccessUrl = "https://google.com",
-            //    CancelUrl = "https://yahoo.com",
-            //    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
-            //    {
-            //        new Stripe.Checkout.SessionLineItemOptions()
-            //        {
-            //            Name=desc,
-            //            Amount=amount,
-            //            Currency="gbp",
-            //            Quantity=1
-            //        }
-            //    }
-            //};
-            //var session = sessionService.Create(options);
-            //return session.Url;
-            return "https://localhost:44307/v1/success?uid=" + userId + "&token=" + token;
+
+            var client = new StripeClient(stripePrivateKey);
+            var sessionService = new Stripe.Checkout.SessionService(client);
+            var options = new Stripe.Checkout.SessionCreateOptions()
+            {
+                PaymentMethodTypes = new List<string>() { "card" },
+                Mode = "payment",
+                SuccessUrl = serverUrl + "success?uid=" + userId + "&token=" + token,
+                CancelUrl = serverUrl + "cancel?uid=" + userId + "&token=" + token,
+                LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
+                {
+                    new Stripe.Checkout.SessionLineItemOptions()
+                    {
+                        Name=desc,
+                        Amount=amount,
+                        Currency="gbp",
+                        Quantity=1
+                    }
+                }
+            };
+            var session = sessionService.Create(options);
+            return session.Url;
         }
     }
 }
