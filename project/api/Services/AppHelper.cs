@@ -25,6 +25,7 @@ namespace adx.Services
 
         public static string assetsPath = config.GetSection("AssetsPath").Value;
 
+        public static string stripePrivateKey = config.GetSection("StripePrivateKey").Value;
 
         public static string Upload(IFormFile file)
         {
