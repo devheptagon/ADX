@@ -37,12 +37,12 @@ const Filter = React.memo(() => {
 
   const sectorOptions = sectors.map((s) => ({
     label: s.title,
-    value: s.title,
+    value: s.id,
   }));
   const areaOptions = areas.map((a) => ({ label: a, value: a }));
   const keywordOptions = keywords.map((a) => ({
     label: a.title,
-    value: a.title,
+    value: a.id,
   }));
   const tenureOptions = tenures.map((a) => ({
     label: a,
@@ -77,41 +77,74 @@ const Filter = React.memo(() => {
 
   const [data, setData] = React.useState([]);
 
+  const getCorrectedFilters = React.useCallback(() => {
+    let correctedSectorsFilter =
+      selectedSectors.length === sectorOptions.length ? null : selectedSectors;
+    let correctedTagsFilter =
+      selectedKeywords.length === keywordOptions.length
+        ? null
+        : selectedKeywords;
+    let correctedTenuresFilter =
+      selectedTenures.length === tenureOptions.length ? null : selectedTenures;
+    let correctedAreasFilter =
+      selectedAreas.length === areaOptions.length ? null : selectedAreas;
+
+    return {
+      correctedSectorsFilter,
+      correctedAreasFilter,
+      correctedTagsFilter,
+      correctedTenuresFilter,
+    };
+  }, [
+    selectedTenures,
+    selectedSectors,
+    selectedAreas,
+    selectedKeywords,
+    areaOptions.length,
+    tenureOptions.length,
+    keywordOptions,
+    sectorOptions,
+  ]);
+
   const search = React.useCallback(async () => {
+    const {
+      correctedSectorsFilter,
+      correctedAreasFilter,
+      correctedTagsFilter,
+      correctedTenuresFilter,
+    } = getCorrectedFilters();
     const results = await getAdverts({
       page,
-      selectedSectors,
-      selectedAreas,
-      selectedTenures,
-      selectedKeywords,
+      selectedSectors: correctedSectorsFilter,
+      selectedAreas: correctedAreasFilter,
+      selectedTenures: correctedTenuresFilter,
+      selectedKeywords: correctedTagsFilter,
       selectedMinPrice,
       selectedMaxPrice,
     });
     setPage(1);
     setData(results.data);
     setShowLoadMore(true);
-  }, [
-    page,
-    selectedAreas,
-    selectedSectors,
-    selectedTenures,
-    selectedKeywords,
-    selectedMinPrice,
-    selectedMaxPrice,
-  ]);
+  }, [page, selectedMinPrice, selectedMaxPrice, getCorrectedFilters]);
 
   const [showLoadMore, setShowLoadMore] = useState(true);
 
   const loadMore = async (e) => {
+    const {
+      correctedSectorsFilter,
+      correctedAreasFilter,
+      correctedTagsFilter,
+      correctedTenuresFilter,
+    } = getCorrectedFilters();
     e.preventDefault();
     const newPage = page + 1;
     setPage(newPage);
     const results = await getAdverts({
       page: newPage,
-      selectedSectors,
-      selectedAreas,
-      selectedTenures,
-      selectedKeywords,
+      selectedSectors: correctedSectorsFilter,
+      selectedAreas: correctedAreasFilter,
+      selectedTenures: correctedTenuresFilter,
+      selectedKeywords: correctedTagsFilter,
       selectedMinPrice,
       selectedMaxPrice,
     });

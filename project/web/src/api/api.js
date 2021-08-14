@@ -2,13 +2,16 @@ import axios from "axios";
 import { apiUrl } from "../config";
 
 export const getAdverts = async (filters) => {
+  //send null if all selected (sectors, tags, tenures);
+
   const payload = {
     page: filters.page.toString(),
     selectedSectors:
       filters.selectedSectors && filters.selectedSectors.length
         ? filters.selectedSectors.map((s) => s.value).join(",")
         : null,
-    selectedAreas:
+    //named selectedCities in backend request
+    selectedCities:
       filters.selectedAreas && filters.selectedAreas.length
         ? filters.selectedAreas.map((s) => s.value).join(",")
         : null,
