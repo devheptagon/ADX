@@ -15,7 +15,7 @@ export default function UpgradePlans(props) {
               }`}
             >
               <h1>
-                {op.duration} <span>month(s)</span>
+                {op.months} <span>month(s)</span>
               </h1>
               <br />
 

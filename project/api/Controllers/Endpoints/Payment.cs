@@ -13,7 +13,7 @@ namespace adx
 
         [Authorize]
         [HttpPost("payment")]
-        public RedirectResult Payment([FromBody] PaymentRequest request)
+        public string Payment([FromBody] PaymentRequest request)
         {
             var userId = AppHelper.GetUserIdFromClaim(HttpContext);
             var paymentToken = Guid.NewGuid().ToString();
@@ -28,7 +28,7 @@ namespace adx
             entity.user_id = userId;
 
             PaymentService.AddPayment(entity);
-            return Redirect(stripeUrl);
+            return stripeUrl;
         }
 
         [AllowAnonymous]
@@ -44,7 +44,7 @@ namespace adx
             var payment = PaymentService.GetPayment(paymentId.ToString());
             UserService.UpgradeUser(payment.user_id, paymentId.ToString(), payment.months);
 
-            return Redirect(AppHelper.clientUrl + "/success");
+            return Redirect(AppHelper.clientUrl + "success");
         }
 
         [AllowAnonymous]
@@ -57,7 +57,7 @@ namespace adx
             entity.status = "cancel";
             PaymentService.UpdatePayment(entity);
 
-            return Redirect(AppHelper.clientUrl + "/cancel");
+            return Redirect(AppHelper.clientUrl + "cancel");
         }
 
     }

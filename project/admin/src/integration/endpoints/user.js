@@ -30,8 +30,8 @@ export const updateProfileEP = async (data) => {
 };
 
 export const upgradeEP = async (data) => {
-  const response = await call(verbs.post, "upgrade", null, {
+  const response = await call(verbs.post, "payment", null, {
     data,
   });
-  return response?.data;
+  return response;
 };

@@ -116,16 +116,6 @@ namespace adx.Services
             return selectedUser?.FirstOrDefault().role == UserRole.Seller;
         }
 
-        //public static bool IsAdvertOwner(HttpContext context, string advertId)
-        //{
-        //    var user = context.User;
-        //    if (user == null) return false;
-
-        //    //check role from db for security, not from claims
-        //    var userId = user.Claims.FirstOrDefault(c => c.Type == "Id").Value;
-        //    return AdvertService.IsAdvertOwner(userId, advertId);
-        //}
-
         public static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash
@@ -163,28 +153,27 @@ namespace adx.Services
 
         public static string CreateStripeSession(string userId, string token, string desc, int amount)
         {
-            //var client = new StripeClient(stripePrivateKey);
-            //var sessionService = new Stripe.Checkout.SessionService(client);
-            //var options = new Stripe.Checkout.SessionCreateOptions()
-            //{
-            //    PaymentMethodTypes = new List<string>() { "card" },
-            //    Mode = "payment",
-            //    SuccessUrl = serverUrl + "success?uid=" + userId + "&token=" + token,
-            //    CancelUrl = serverUrl + "cancel?uid=" + userId + "&token=" + token,
-            //    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
-            //    {
-            //        new Stripe.Checkout.SessionLineItemOptions()
-            //        {
-            //            Name=desc,
-            //            Amount=amount,
-            //            Currency="gbp",
-            //            Quantity=1
-            //        }
-            //    }
-            //};
-            //var session = sessionService.Create(options);
-            //return session.Url;
-            return serverUrl + "success?uid=" + userId + "&token=" + token;
+            var client = new StripeClient(stripePrivateKey);
+            var sessionService = new Stripe.Checkout.SessionService(client);
+            var options = new Stripe.Checkout.SessionCreateOptions()
+            {
+                PaymentMethodTypes = new List<string>() { "card" },
+                Mode = "payment",
+                SuccessUrl = serverUrl + "success?uid=" + userId + "&token=" + token,
+                CancelUrl = serverUrl + "cancel?uid=" + userId + "&token=" + token,
+                LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
+                {
+                    new Stripe.Checkout.SessionLineItemOptions()
+                    {
+                        Name=desc,
+                        Amount=amount,
+                        Currency="gbp",
+                        Quantity=1
+                    }
+                }
+            };
+            var session = sessionService.Create(options);
+            return session.Url;
         }
     }
 }

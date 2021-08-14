@@ -3,6 +3,7 @@ import styles from "styles/app.module.scss";
 import { useState } from "react";
 import { PaymentOptions } from "utils/appHelper";
 import UpgradePlans from "./upgrade-plans";
+import { upgradeEP } from "integration/endpoints/user";
 
 export default function UpgradePage() {
   const [planIndex, setPlanIndex] = useState(null);
@@ -13,8 +14,9 @@ export default function UpgradePage() {
   };
 
   const submit = async () => {
-    //upgradeEP(planIndex);
-    //history.push("/login");
+    const data = PaymentOptions[planIndex];
+    var stripeUrl = await upgradeEP(data);
+    window.location = stripeUrl;
   };
 
   return (
