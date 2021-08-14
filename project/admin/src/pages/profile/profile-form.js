@@ -10,8 +10,18 @@ import { uploadEP } from "integration/endpoints/advert";
 
 export default function ContentList() {
   const dispatch = useDispatch();
-  const { fullname, email, phone, line1, line2, postcode, avatar, id } =
-    useSelector((state) => state.appReducer);
+  const {
+    fullname,
+    email,
+    phone,
+    line1,
+    line2,
+    postcode,
+    avatar,
+    id,
+    role,
+    seller_until,
+  } = useSelector((state) => state.appReducer);
   const [uploading, setUploading] = useState(false);
 
   const selectFile = async (e, handleChange) => {
@@ -233,6 +243,14 @@ export default function ContentList() {
                     </fieldset>
                   </td>
                 </tr>
+                {role === "seller" && (
+                  <tr>
+                    <td colSpan={2}>
+                      Subscription End Date:{" "}
+                      {(seller_until || " ").split(" ")[0]}
+                    </td>
+                  </tr>
+                )}
               </tbody>
               <tfoot>
                 <tr>

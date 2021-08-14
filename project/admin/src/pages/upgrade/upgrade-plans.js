@@ -8,7 +8,7 @@ export default function UpgradePlans(props) {
     <Container>
       <Row>
         {options.map((op, opIndex) => (
-          <Col xs={12} lg={4}>
+          <Col xs={12} lg={4} key={opIndex}>
             <div
               className={`${styles.plan} ${
                 index === opIndex ? styles.selectedplan : ""

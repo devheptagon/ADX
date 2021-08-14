@@ -27,7 +27,7 @@ export default function UpgradePage() {
         />
         <br />
         <br />
-        <button disabled={!planIndex} onClick={submit}>
+        <button disabled={planIndex === null} onClick={submit}>
           CONTINUE CHECKOUT
         </button>
       </div>

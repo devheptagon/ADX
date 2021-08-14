@@ -372,7 +372,7 @@ public class UserService
             item.city = row["city"] == DBNull.Value ? "" : (string)row["city"];
             item.postcode = row["postcode"] == DBNull.Value ? "" : (string)row["postcode"];
             item.active = row["active"] == DBNull.Value ? false : (bool)row["active"];
-            //TODO: seller until
+            item.seller_until = row["seller_until"] == DBNull.Value ? "" : row["seller_until"].ToString();
 
             result.Add(item);
         }

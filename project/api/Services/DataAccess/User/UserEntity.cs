@@ -11,6 +11,7 @@ public class UserEntity
     public string line2 { get; set; }
     public string city { get; set; }
     public string postcode { get; set; }
+    public string seller_until { get; set; }
     public bool active { get; set; }
 
     public string token { get; set; }
