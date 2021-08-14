@@ -391,7 +391,7 @@
 
   .loading {
     width: 100%;
-    height: 500px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -448,6 +448,19 @@
     .list {
       display: flex;
       flex-wrap: wrap;
+      .item {
+        background-color: #faf9f9;
+        padding: 10px;
+        border: 5px solid white;
+        border-radius: 15px;
+        .property {
+          font-size: small;
+          margin-bottom: 5px;
+          b {
+            color: #555;
+          }
+        }
+      }
     }
   }
 }

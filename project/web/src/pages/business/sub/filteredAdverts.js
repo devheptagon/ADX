@@ -76,6 +76,7 @@ const Filter = React.memo(() => {
   };
 
   const [data, setData] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
   const getCorrectedFilters = React.useCallback(() => {
     let correctedSectorsFilter =
@@ -107,6 +108,7 @@ const Filter = React.memo(() => {
   ]);
 
   const search = React.useCallback(async () => {
+    setLoading(true);
     const {
       correctedSectorsFilter,
       correctedAreasFilter,
@@ -122,6 +124,7 @@ const Filter = React.memo(() => {
       selectedMinPrice,
       selectedMaxPrice,
     });
+    setLoading(false);
     setPage(1);
     setData(results.data);
     setShowLoadMore(true);
@@ -130,6 +133,7 @@ const Filter = React.memo(() => {
   const [showLoadMore, setShowLoadMore] = useState(true);
 
   const loadMore = async (e) => {
+    setLoading(true);
     const {
       correctedSectorsFilter,
       correctedAreasFilter,
@@ -148,6 +152,7 @@ const Filter = React.memo(() => {
       selectedMinPrice,
       selectedMaxPrice,
     });
+    setLoading(false);
     const newList = [...data, ...results.data];
     setData(newList);
     setShowLoadMore(+results.count > newList.length);
@@ -246,10 +251,10 @@ const Filter = React.memo(() => {
           </button>
         </div>
       </details>
-      <AdvertList data={data} />
+      <AdvertList data={data} loading={loading} />
       <br />
       <br />
-      {showLoadMore && data.length ? (
+      {showLoadMore && data.length && !loading ? (
         <div className={styles.loadmore}>
           <a href="#" onClick={loadMore}>
             Load more
