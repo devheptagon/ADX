@@ -19,7 +19,7 @@ export default function UpgradePage() {
     setRedirecting(true);
     var stripeUrl = await upgradeEP(data);
     setRedirecting(false);
-    window.location = stripeUrl;
+    window.parent.location = stripeUrl;
   };
 
   return (

@@ -11,6 +11,8 @@ import Contact from "pages/contact";
 import Privacy from "pages/privacy";
 import Detail from "pages/detail";
 import AdminFrame from "pages/admin-home";
+import UpgradeSuccess from "pages/upgrade-success";
+import UpgradeCancel from "pages/upgrade-cancel";
 
 function App() {
   const [store, setStore] = React.useState(null);
@@ -41,6 +43,12 @@ function App() {
           </Route>
           <Route path="/manage">
             <AdminFrame />
+          </Route>
+          <Route path="/success">
+            <UpgradeSuccess />
+          </Route>
+          <Route path="/cancel">
+            <UpgradeCancel />
           </Route>
 
           <Route path="/">
