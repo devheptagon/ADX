@@ -7,6 +7,7 @@ import { upgradeEP } from "integration/endpoints/user";
 
 export default function UpgradePage() {
   const [planIndex, setPlanIndex] = useState(null);
+  const [redirecting, setRedirecting] = useState(false);
 
   const selectPlan = (e) => {
     const index = +e.currentTarget.dataset.index;
@@ -15,7 +16,9 @@ export default function UpgradePage() {
 
   const submit = async () => {
     const data = PaymentOptions[planIndex];
+    setRedirecting(true);
     var stripeUrl = await upgradeEP(data);
+    setRedirecting(false);
     window.location = stripeUrl;
   };
 
@@ -29,8 +32,8 @@ export default function UpgradePage() {
         />
         <br />
         <br />
-        <button disabled={planIndex === null} onClick={submit}>
-          CONTINUE CHECKOUT
+        <button disabled={planIndex === null || redirecting} onClick={submit}>
+          {redirecting ? "Processing..." : "CONTINUE CHECKOUT"}
         </button>
       </div>
     </Layout>
