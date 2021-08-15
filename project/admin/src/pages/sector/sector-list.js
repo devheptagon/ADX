@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSectorEP, getSectorsEP } from "integration/endpoints/sector";
 import { setSectorsAction } from "redux/app/appActions";
+import { customConfirm } from "utils/appHelper";
 
 export default function SectorList() {
   const dispatch = useDispatch();
@@ -25,12 +26,12 @@ export default function SectorList() {
   const remove = async (e) => {
     const id = e.currentTarget.dataset.id;
     const label = e.currentTarget.dataset.label;
-    const ok = window.confirm("Are you sure to delete " + label);
-    if (ok) {
+
+    customConfirm("Are you sure to delete " + label, async () => {
       await deleteSectorEP(id);
       const newList = await getSectorsEP();
       dispatch(setSectorsAction(newList));
-    }
+    });
   };
 
   useEffect(() => {

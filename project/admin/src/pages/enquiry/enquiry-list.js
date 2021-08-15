@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { getEnquiriesEP, deleteEnquiryEP } from "integration/endpoints/enquiry";
+import { customConfirm } from "utils/appHelper";
 
 export default function SectorList() {
   const [enquiries, setEnquiries] = useState([]);
 
   const remove = async (e) => {
     const id = e.currentTarget.dataset.id;
-    const label = e.currentTarget.dataset.label;
-    const ok = window.confirm("Are you sure to delete " + label);
-    if (ok) {
+
+    customConfirm("Are you sure to delete?", async () => {
       await deleteEnquiryEP(id);
       const newList = await getEnquiriesEP();
       setEnquiries(newList);
-    }
+    });
   };
 
   useEffect(() => {

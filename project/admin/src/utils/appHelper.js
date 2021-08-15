@@ -90,11 +90,11 @@ export const customConfirm = (message, confirmCallback, cancelCallback) => {
     buttons: [
       {
         label: "Yes",
-        onClick: () => confirmCallback && confirmCallback(),
+        onClick: async () => confirmCallback && confirmCallback(),
       },
       {
         label: "No",
-        onClick: () => cancelCallback && cancelCallback(),
+        onClick: async () => cancelCallback && cancelCallback(),
       },
     ],
   });

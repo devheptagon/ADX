@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { getAdvertsEP, deleteAdvertEP } from "integration/endpoints/advert";
-import { getPagerList } from "utils/appHelper";
+import { customConfirm, getPagerList } from "utils/appHelper";
 import { ROW_COUNT_PER_PAGE, apiUrl } from "config";
 import AdvertForm from "./advert-form";
 import { useSelector } from "react-redux";
@@ -34,12 +34,12 @@ export default function AdvertList() {
   const remove = async (e) => {
     const id = e.currentTarget.dataset.id;
     const label = e.currentTarget.dataset.label;
-    const ok = window.confirm("Are you sure to delete " + label);
-    if (ok) {
+
+    customConfirm("Are you sure to delete " + label, async () => {
       await deleteAdvertEP(id);
       const response = await getAdvertsEP(page, userId);
       setAdverts(response?.data || []);
-    }
+    });
   };
 
   React.useEffect(() => {

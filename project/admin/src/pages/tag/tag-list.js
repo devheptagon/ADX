@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTagEP, getTagsEP } from "integration/endpoints/tag";
 import { setTagsAction } from "redux/app/appActions";
+import { customConfirm } from "utils/appHelper";
 
 export default function TagList() {
   const dispatch = useDispatch();
@@ -25,12 +26,12 @@ export default function TagList() {
   const remove = async (e) => {
     const id = e.currentTarget.dataset.id;
     const label = e.currentTarget.dataset.label;
-    const ok = window.confirm("Are you sure to delete " + label);
-    if (ok) {
+
+    customConfirm("Are you sure to delete " + label, async () => {
       await deleteTagEP(id);
       const newList = await getTagsEP();
       dispatch(setTagsAction(newList));
-    }
+    });
   };
 
   useEffect(() => {
