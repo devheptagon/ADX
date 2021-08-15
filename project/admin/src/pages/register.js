@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { customAlert } from "utils/appHelper";
 
 export default function Register() {
   const history = useHistory();
@@ -30,9 +31,10 @@ export default function Register() {
               setSubmitting(true);
               await registerEP(values.email, values.password, values.fullname);
               setSubmitting(false);
-              alert("Registration successful!");
-              history.push("/login");
               setStatus({ success: true });
+              customAlert("Registration successful, you can login!", () =>
+                history.push("/login")
+              );
             }}
           >
             {(props) => {

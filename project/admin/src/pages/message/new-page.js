@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getAdvertEP } from "integration/endpoints/advert";
 import { getSellerEP } from "integration/endpoints/user";
 import { addMessageEP } from "integration/endpoints/message";
+import { customAlert } from "utils/appHelper";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -42,11 +43,11 @@ export default function MessageList(props) {
             receiver: sellerid,
             advert_id: advertid,
           });
-          alert("Message sent!");
-          history.push("/sent");
+
           setSubmitting(false);
           resetForm({});
           setStatus({ success: true });
+          customAlert("Message sent!", () => history.push("/sent"));
         }}
       >
         {({

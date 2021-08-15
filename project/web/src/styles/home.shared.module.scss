@@ -261,7 +261,7 @@
           color: white;
           font-size: 1.2em;
           &:disabled {
-            background-color: gray;
+            background-color: #ccc;
             cursor: default;
           }
           cursor: pointer;

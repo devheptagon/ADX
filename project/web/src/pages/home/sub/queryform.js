@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "styles/home.module.scss";
-import { Formik, dis } from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
 import { postEvaluationRequest } from "api/api";
 import { useSelector } from "react-redux";
+import { customAlert } from "helpers/appHelper";
 
 export default function QueryForm() {
   const sectors = useSelector((state) => state.appReducer.sectors);
@@ -44,9 +45,9 @@ export default function QueryForm() {
           setSubmitting(false);
           resetForm({});
           setStatus({ success: true });
-          alert("Request received, thanks");
-          window.location.href = window.location.href;
-          return false;
+          customAlert("Request received, thanks", () =>
+            window.location.reload()
+          );
         }}
       >
         {(props) => {

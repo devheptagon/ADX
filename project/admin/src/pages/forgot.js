@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { customAlert } from "utils/appHelper";
 
 export default function Forgot() {
   const history = useHistory();
@@ -26,8 +27,11 @@ export default function Forgot() {
               await forgotEP(values.email);
               setSubmitting(false);
               setStatus({ success: true });
-              alert("Your temporary password is sent to your email!");
-              history.push("/login");
+
+              customAlert(
+                "Your temporary password is sent to your email!",
+                () => history.push("/login")
+              );
             }}
           >
             {(props) => {

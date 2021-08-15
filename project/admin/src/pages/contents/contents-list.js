@@ -7,6 +7,7 @@ import {
 } from "integration/endpoints/contents";
 import { useEffect, useState } from "react";
 import RichText from "components/richtext";
+import { customAlert } from "utils/appHelper";
 
 export default function ContentList() {
   const [contents, setContents] = useState(null);
@@ -59,7 +60,8 @@ export default function ContentList() {
         setSubmitting(false);
         setStatus({ success: true });
         getContentsEP().then((res) => setContents(res));
-        alert("Changes saved!");
+
+        customAlert("Changes saved!");
       }}
     >
       {(props) => {
