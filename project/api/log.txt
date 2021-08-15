@@ -1,9 +1,0 @@
-31/07/2021 15:22:08
-Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.31/07/2021 15:22:17
-Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.31/07/2021 15:23:28
-Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.31/07/2021 15:23:36
-Procedure or function 'sp_update_sector' expects parameter '@sector_id', which was not supplied.13/08/2021 22:21:54
-Error converting data type varchar to tinyint.13/08/2021 22:22:56
-Conversion failed when converting the varchar value '6 m' to data type tinyint.13/08/2021 22:23:07
-Unable to cast object of type 'System.DBNull' to type 'System.Guid'.13/08/2021 22:23:16
-Procedure or function sp_update_tag has too many arguments specified.

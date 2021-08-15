@@ -262,7 +262,9 @@
           font-size: 1.2em;
           &:disabled {
             background-color: gray;
+            cursor: default;
           }
+          cursor: pointer;
         }
         h2 {
           line-height: 1em;

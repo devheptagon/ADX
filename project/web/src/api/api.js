@@ -62,5 +62,5 @@ export const postEvaluationRequest = async (values) => {
   if (values.price) values.price = values.price.toString();
   if (values.area_size) values.area_size = values.area_size.toString();
   delete values.gdpr_agreement;
-  await axios.post(apiUrl + "eval", values);
+  await axios.post(apiUrl + "enquiries", { data: { ...values } });
 };
