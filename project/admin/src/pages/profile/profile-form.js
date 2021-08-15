@@ -7,6 +7,7 @@ import styles from "styles/app.module.scss";
 import { apiUrl } from "config";
 import { useState } from "react";
 import { uploadEP } from "integration/endpoints/advert";
+import { customAlert } from "utils/appHelper";
 
 export default function ContentList() {
   const dispatch = useDispatch();
@@ -51,6 +52,11 @@ export default function ContentList() {
     });
   };
 
+  const [useExistingPassword, setUseExistingPassword] = useState(true);
+  const toggleUseExistingPassword = (e) => {
+    setUseExistingPassword(!useExistingPassword);
+  };
+
   return (
     <Formik
       initialValues={{
@@ -62,6 +68,8 @@ export default function ContentList() {
         line2,
         postcode,
         avatar,
+        password: "",
+        password2: "",
       }}
       validationSchema={yup.object().shape({
         fullname: yup.string().required(),
@@ -71,19 +79,27 @@ export default function ContentList() {
         line2: yup.string(),
         postcode: yup.string(),
         avatar: yup.string(),
+        password: yup.string(),
+        password2: yup.string(),
       })}
       onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
         setSubmitting(true);
+        if (
+          values.password &&
+          (values.password.length < 5 || values.password !== values.password2)
+        ) {
+          customAlert("Check your passwords");
+          return;
+        }
         await updateProfileEP({
           ...values,
           id,
         });
-
         const newProfile = await getProfileEP(id);
         dispatch(setUserAction(newProfile));
         setSubmitting(false);
         setStatus({ success: true });
-        alert("Saved");
+        customAlert("Changes saved!");
       }}
     >
       {(props) => {
@@ -243,6 +259,57 @@ export default function ContentList() {
                     </fieldset>
                   </td>
                 </tr>
+                <tr>
+                  <td colSpan={2}>
+                    <input
+                      type="checkbox"
+                      checked={useExistingPassword}
+                      onChange={toggleUseExistingPassword}
+                    />{" "}
+                    I want to use my current password
+                  </td>
+                </tr>
+                {!useExistingPassword && (
+                  <>
+                    <tr>
+                      <td>
+                        <label>New Password: &nbsp;</label>
+                      </td>
+                      <td>
+                        <fieldset>
+                          <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="New password"
+                            title="* New password"
+                            value={values.password}
+                            onChange={handleChange}
+                          />
+                        </fieldset>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Retype New Password: &nbsp;</label>
+                      </td>
+                      <td>
+                        <fieldset>
+                          <input
+                            type="password"
+                            name="password2"
+                            id="password2"
+                            placeholder="Retype New password"
+                            title="* Retype New password"
+                            value={values.password2}
+                            onChange={handleChange}
+                          />
+                        </fieldset>
+                      </td>
+                    </tr>
+                  </>
+                )}
+
                 {role === "seller" && (
                   <tr>
                     <td colSpan={2}>

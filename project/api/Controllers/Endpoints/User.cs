@@ -57,6 +57,12 @@ namespace adx
             if (!isAdmin && !isUser) return;
 
             UserService.UpdateUser(request.Data);
+
+            if (!String.IsNullOrEmpty(request.Data.password))
+            {
+                var passhash = AppHelper.CreateMD5(request.Data.password);
+                UserService.ResetPassword(request.Data.email, passhash);
+            }
         }
 
         [Authorize]
