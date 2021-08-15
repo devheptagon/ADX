@@ -65,7 +65,7 @@ export default function MessageList(props) {
                 <tbody>
                   <tr>
                     <td>
-                      <label htmlFor="Title">Seller: &nbsp;</label>
+                      <label htmlFor="Title">To: &nbsp;</label>
                     </td>
                     <td>{sellerName}</td>
                   </tr>
