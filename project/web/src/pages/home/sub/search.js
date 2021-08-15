@@ -11,7 +11,7 @@ export default function Search() {
 
   const sectorOptions = sectors?.map((s) => ({
     label: s.title,
-    value: s.title,
+    value: s.id,
   }));
   const areaOptions = areas?.map((a) => ({ label: a, value: a }));
 
@@ -28,7 +28,9 @@ export default function Search() {
 
   const search = (e) => {
     const sectorParam = selectedSectors.length
-      ? selectedSectors?.map((s) => encodeURIComponent(s.value)).join(",")
+      ? selectedSectors
+          ?.map((s) => encodeURIComponent(s.label) + "|" + s.value)
+          .join(",")
       : "";
     const areaParam = selectedAreas.length
       ? selectedAreas?.map((a) => encodeURIComponent(a.value)).join(",")

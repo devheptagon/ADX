@@ -19,7 +19,7 @@ export default function SectorList() {
     getEnquiriesEP().then((res) => setEnquiries(res));
   }, []);
 
-  return (
+  return enquiries?.length ? (
     <div>
       <table id="datatable">
         <tbody>
@@ -85,5 +85,7 @@ export default function SectorList() {
         </tbody>
       </table>
     </div>
+  ) : (
+    "No enquiry found..."
   );
 }

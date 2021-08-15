@@ -38,7 +38,7 @@ const AdvertList = React.memo((props) => {
                   <b>Tags</b>: {d.tags}
                 </div>
                 <div className={styles.property}>
-                  <b>Area</b>: {d.area}
+                  <b>Area</b>: {d.city}
                 </div>
                 <br />
                 <img alt="list" src={coverUrl} style={{ maxWidth: "90%" }} />

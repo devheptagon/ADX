@@ -20,7 +20,7 @@ export default function Index() {
     if (sectors) {
       const sectorFilter = decodeURIComponent(sectors)
         .split(",")
-        .map((s) => ({ label: s, value: s }));
+        .map((s) => ({ label: s.split("|")[0], value: s.split("|")[1] }));
       dispatch(setSectorFilterAction(sectorFilter));
     }
     const areas = query.get("a");
