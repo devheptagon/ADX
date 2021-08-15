@@ -97,7 +97,7 @@ namespace adx
             var password = AppHelper.GenerateRandomPassword();
             var passhash = AppHelper.CreateMD5(password);
             UserService.ResetPassword(request.Data.email, passhash);
-            //TODO: Email password (not passhash) to user email
+            AppHelper.Email("Password reset", "Your password is resetted to: " + password, request.Data.email);
         }
 
         [AllowAnonymous]

@@ -47,13 +47,6 @@ namespace adx
             return File(image, "image/jpeg");
         }
 
-        [AllowAnonymous]
-        [HttpPost("eval")]
-        public void SaveEvaluationRequest([FromBody] EvaluationRequest request)
-        {
-            //todo: evaluationrequesti html olarak mail at
-        }
-
     }
 
 

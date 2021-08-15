@@ -13,7 +13,7 @@ import styles from "styles/app.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { getMessagesEP } from "integration/endpoints/message";
-import { postParentMessage, setLocalToken } from "utils/appHelper";
+import { customAlert, postParentMessage, setLocalToken } from "utils/appHelper";
 
 export default function Login() {
   const history = useHistory();
@@ -21,7 +21,11 @@ export default function Login() {
 
   const loginUser = async (email, password) => {
     const user = await loginEP(email, password);
-    if (!user || !user.token) return false;
+    if (!user || !user.token) {
+      customAlert("Please check your username/password!");
+      return false;
+    }
+
     postParentMessage(user);
 
     setLocalToken(user.token);

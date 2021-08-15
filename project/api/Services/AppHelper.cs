@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MimeKit;
+using MimeKit.Text;
 using Stripe;
 using System;
 using System.Collections;
@@ -174,6 +178,30 @@ namespace adx.Services
             };
             var session = sessionService.Create(options);
             return session.Url;
+        }
+
+        public static void Email(string subject, string message, string to)
+        {
+            using var smtp = new SmtpClient();
+            try
+            {
+                // create email message
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(config["Mailing:From"]));
+                email.To.Add(MailboxAddress.Parse(to));
+                email.Subject = subject;
+                email.Body = new TextPart(TextFormat.Plain) { Text = message };
+
+                // send email
+                smtp.Connect(config["Mailing:Server"], 587, SecureSocketOptions.None);
+                smtp.Authenticate(config["Mailing:From"], config["Mailing:FromPassword"]);
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception exp)
+            {
+                Logger.LogError(exp.Message);
+            }
         }
     }
 }
